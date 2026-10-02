@@ -1,0 +1,53 @@
+name: Publish queued LinkedIn post
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Pakistan Standard Time is UTC+5 year-round. 06:15 UTC = 11:15 PKT.
+    - cron: "15 6 * * 1-5"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: linkedin-publisher
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Publish queued post
+        env:
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
+          LINKEDIN_VERSION: ${{ vars.LINKEDIN_VERSION || '202607' }}
+          AUTO_PUBLISH: "true"
+        run: python src/publish.py
+
+      - name: Persist publication state
+        run: |
+          if git diff --quiet -- data/history.json queue/latest.json; then
+            echo "No state changes to commit."
+            exit 0
+          fi
+
+          git config user.name "shopify-linkedin-agent[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/history.json queue/latest.json
+          git commit -m "chore: record LinkedIn publication"
+          git push
