@@ -1,10 +1,12 @@
 {
   "id": "shopify-canvas-2026-10-02",
-  "status": "ready",
+  "status": "published",
   "topic": "Shopify Canvas early access",
   "caption": "Shopify Canvas is now in early access — and it changes how theme customization can be approached.\n\nCanvas lets merchants view store templates side by side and work with Sidekick to create or change a theme from natural-language instructions. It also supports direct editing of blocks, settings, and text.\n\nFor developers, the interesting part is where the boundary now sits: simple visual changes can become easier, while custom architecture, app integrations, performance, accessibility, and complex theme logic still need proper engineering.\n\nThere are also important limitations right now: Canvas supports Shopify-developed and custom themes, but not third-party themes, and it currently has limitations around app blocks/embeds, translations, and Markets customization.\n\nI’ll be watching how this fits into real production Shopify workflows as the feature matures.\n\nSource: https://help.shopify.com/en/manual/online-store/themes/canvas\n\n#Shopify #ShopifyDevelopment #Ecommerce #WebDevelopment",
   "source_url": "https://help.shopify.com/en/manual/online-store/themes/canvas",
   "image_url": "",
   "image_alt": "",
-  "created_at": "2026-10-02T18:35:00+05:00"
+  "created_at": "2026-10-02T18:35:00+05:00",
+  "linkedin_post_id": "urn:li:share:7511784510943010816",
+  "published_at": "2026-10-02T13:49:50.529828+00:00"
 }
