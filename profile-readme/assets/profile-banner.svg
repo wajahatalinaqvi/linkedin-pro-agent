@@ -1,0 +1,49 @@
+<svg width="1200" height="360" viewBox="0 0 1200 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#07111F"/>
+      <stop offset="0.52" stop-color="#4C1D95"/>
+      <stop offset="1" stop-color="#0EA5E9"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="150" y1="300" x2="1050" y2="80" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22D3EE" stop-opacity="0.75"/>
+      <stop offset="0.5" stop-color="#A78BFA" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#60A5FA" stop-opacity="0.65"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="35"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="360" rx="28" fill="url(#bg)"/>
+  <circle cx="1030" cy="70" r="170" fill="#38BDF8" fill-opacity="0.14" filter="url(#glow)"/>
+  <circle cx="175" cy="330" r="190" fill="#8B5CF6" fill-opacity="0.16" filter="url(#glow)"/>
+  <path d="M0 315C210 265 388 337 592 292C790 248 985 238 1200 274V360H0V315Z" fill="url(#accent)" fill-opacity="0.22"/>
+  <path d="M0 326C256 284 445 345 642 310C846 273 1032 278 1200 296" stroke="#7DD3FC" stroke-opacity="0.42" stroke-width="2"/>
+
+  <text x="84" y="122" fill="#7DD3FC" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" letter-spacing="4">
+    BUILDING FOR COMMERCE • WEB • AI
+  </text>
+
+  <text x="82" y="205" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="800" letter-spacing="-1.5">
+    WAJAHAT NAQVI
+  </text>
+
+  <text x="84" y="252" fill="#DCE9F7" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600">
+    Shopify Developer • Full-stack Engineer • AI Builder
+  </text>
+
+  <g transform="translate(84 288)">
+    <rect width="124" height="34" rx="17" fill="#0B1220" fill-opacity="0.72" stroke="#A7F3D0" stroke-opacity="0.55"/>
+    <text x="62" y="23" text-anchor="middle" fill="#A7F3D0" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700">SHOPIFY</text>
+
+    <rect x="138" width="116" height="34" rx="17" fill="#0B1220" fill-opacity="0.72" stroke="#93C5FD" stroke-opacity="0.55"/>
+    <text x="196" y="23" text-anchor="middle" fill="#93C5FD" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700">REACT</text>
+
+    <rect x="268" width="126" height="34" rx="17" fill="#0B1220" fill-opacity="0.72" stroke="#FCA5A5" stroke-opacity="0.55"/>
+    <text x="331" y="23" text-anchor="middle" fill="#FCA5A5" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700">LARAVEL</text>
+
+    <rect x="408" width="94" height="34" rx="17" fill="#0B1220" fill-opacity="0.72" stroke="#C4B5FD" stroke-opacity="0.55"/>
+    <text x="455" y="23" text-anchor="middle" fill="#C4B5FD" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700">AI</text>
+  </g>
+</svg>
