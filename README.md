@@ -121,6 +121,8 @@ The preview workflow can run manually, and also runs when `queue/latest.json` ch
 
 The publish workflow is separate. It runs only through `workflow_dispatch` and only after the operator types `PUBLISH`.
 
+If a prepared story is not worth posting, run **Skip current LinkedIn post** from GitHub Actions and type `SKIP`. The workflow records the decision in `data/skipped.json`, marks the queue as skipped, and future preparation excludes the same story/source from being selected again.
+
 ## Safety checks
 
 ```powershell
