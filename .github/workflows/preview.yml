@@ -52,7 +52,8 @@ jobs:
         if: steps.inspect.outputs.ready == 'true' && steps.inspect.outputs.format == 'document'
         env:
           DOCUMENT_PATH: ${{ steps.inspect.outputs.document_path }}
-        run: python -c "import os; from pathlib import Path; path = Path(os.environ['DOCUMENT_PATH']); assert path.is_file(), f'Rendered PDF not found: {path}'"
+        run: |
+          python -c "import os; from pathlib import Path; path = Path(os.environ['DOCUMENT_PATH']); assert path.is_file(), f'Rendered PDF not found: {path}'"
 
       - name: Upload document preview artifact
         if: steps.inspect.outputs.ready == 'true' && steps.inspect.outputs.format == 'document'
