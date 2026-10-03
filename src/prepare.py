@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 STRATEGY_PATH = ROOT / "config" / "content_strategy.json"
 SOURCES_PATH = ROOT / "config" / "official_sources.json"
 HISTORY_PATH = ROOT / "data" / "history.json"
+SKIPPED_PATH = ROOT / "data" / "skipped.json"
 BACKLOG_PATH = ROOT / "data" / "backlog.json"
 QUEUE_PATH = ROOT / "queue" / "latest.json"
 PREVIEW_DIR = ROOT / "generated" / "previews"
@@ -226,6 +227,8 @@ def prepare(candidates: list[dict], now: datetime) -> dict | None:
     strategy = load_json(STRATEGY_PATH, {})
     sources = load_json(SOURCES_PATH, {})
     history = load_json(HISTORY_PATH, [])
+    skipped = load_json(SKIPPED_PATH, [])
+    decisions = [*history, *skipped]
     backlog = expire_backlog(load_json(BACKLOG_PATH, []), now, strategy)
 
     incoming = []
