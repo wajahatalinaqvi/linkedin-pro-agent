@@ -2,6 +2,10 @@
 
 A priority-driven content agent for preparing high-quality **LinkedIn + X** posts from the same verified technology story while keeping final publishing under human control.
 
+Built and maintained by **[Wajahat Naqvi](https://github.com/wajahatalinaqvi)** — a Shopify-focused full-stack developer working across React, Laravel, ecommerce automation, and practical AI workflows.
+
+[Portfolio](https://wajahatalinaqvi.github.io/) · [GitHub Profile](https://github.com/wajahatalinaqvi) · [LinkedIn](https://www.linkedin.com/in/wajahatnaqvi-developer/)
+
 ```text
 Official primary sources
         ↓
