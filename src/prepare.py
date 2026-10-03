@@ -233,10 +233,10 @@ def prepare(candidates: list[dict], now: datetime) -> dict | None:
         validate_candidate(candidate, sources)
         enriched = dict(candidate)
         enriched["priority_score"] = score_candidate(candidate)
-        if enriched["priority_score"] >= int(strategy.get("min_publish_score", 60)) and not is_duplicate(enriched, history):
+        if enriched["priority_score"] >= int(strategy.get("min_publish_score", 60)) and not is_duplicate(enriched, decisions):
             incoming.append(enriched)
 
-    combined = {item["id"]: item for item in [*backlog, *incoming] if not is_duplicate(item, history)}
+    combined = {item["id"]: item for item in [*backlog, *incoming] if not is_duplicate(item, decisions)}
     eligible = list(combined.values())
     eligible.sort(key=lambda item: (-int(item["priority_score"]), category_priority(item, strategy), -parse_time(item["published_at"], now).timestamp()))
 
