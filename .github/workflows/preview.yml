@@ -1,0 +1,75 @@
+name: Preview prepared LinkedIn post
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - queue/latest.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: linkedin-preview-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install Chromium for PDF rendering
+        run: python -m playwright install --with-deps chromium
+
+      - name: Inspect ready queue and create summary
+        id: inspect
+        run: python src/preview.py --summary generated/preview-summary.txt --github-output "$GITHUB_OUTPUT"
+
+      - name: Explain skipped preview
+        if: steps.inspect.outputs.ready != 'true'
+        run: echo "Queue is not ready; preview completed without creating an artifact."
+
+      - name: Render queued document
+        if: steps.inspect.outputs.ready == 'true' && steps.inspect.outputs.format == 'document'
+        run: python src/publish.py --render-only
+
+      - name: Verify rendered document
+        if: steps.inspect.outputs.ready == 'true' && steps.inspect.outputs.format == 'document'
+        env:
+          DOCUMENT_PATH: ${{ steps.inspect.outputs.document_path }}
+        run: python -c "import os; from pathlib import Path; path = Path(os.environ['DOCUMENT_PATH']); assert path.is_file(), f'Rendered PDF not found: {path}'"
+
+      - name: Upload document preview artifact
+        if: steps.inspect.outputs.ready == 'true' && steps.inspect.outputs.format == 'document'
+        uses: actions/upload-artifact@v4
+        with:
+          name: linkedin-post-preview
+          path: |
+            ${{ steps.inspect.outputs.document_path }}
+            generated/preview-summary.txt
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Upload text or image preview artifact
+        if: steps.inspect.outputs.ready == 'true' && steps.inspect.outputs.format != 'document'
+        uses: actions/upload-artifact@v4
+        with:
+          name: linkedin-post-preview
+          path: generated/preview-summary.txt
+          if-no-files-found: error
+          retention-days: 7

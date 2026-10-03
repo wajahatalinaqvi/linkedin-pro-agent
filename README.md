@@ -99,6 +99,28 @@ Optional repository variable:
 
 - `LINKEDIN_VERSION` (defaults to `202609`)
 
+## Mobile review workflow
+
+LinkedIn's mobile document viewer adds its own title and page-count controls over the top of a PDF. V3 therefore keeps readable content inside reusable mobile-safe tokens: 170px at the top, 110px at the bottom, and 80px on each side. Decorative glows and shapes may still extend to the page edges.
+
+Use this review sequence:
+
+```text
+Research/preparation
+→ queue/latest.json = ready
+→ Preview prepared LinkedIn post workflow
+→ download/open linkedin-post-preview
+→ review preview-summary.txt and the PDF
+→ if approved
+→ manually run Publish approved LinkedIn post
+→ type PUBLISH
+→ LinkedIn official API publishes
+```
+
+The preview workflow can run manually, and also runs when `queue/latest.json` changes on `main`. It has read-only repository permissions, receives no LinkedIn secrets, never calls LinkedIn, and cannot change queue status or publication history. Its `linkedin-post-preview` artifact is retained for seven days and is downloadable from the GitHub Actions run on desktop or phone.
+
+The publish workflow is separate. It runs only through `workflow_dispatch` and only after the operator types `PUBLISH`.
+
 ## Safety checks
 
 ```powershell
