@@ -1,0 +1,14 @@
+{
+  "theme": "openai",
+  "topic": "Example: agent platform architecture",
+  "brand": {"name": "WAJAHAT NAQVI", "subtitle": "Shopify · Full-stack · AI"},
+  "slides": [
+    {"type": "cover", "eyebrow": "DESIGN DEMO · FICTIONAL", "title": "An agent is not\njust a prompt.", "subtitle": "A conceptual architecture walkthrough using example content—not a current product announcement.", "footer": "7 slides · example narrative →"},
+    {"type": "browser", "eyebrow": "CONTROL SURFACE", "title": "The browser is a tool,\nnot the operator.", "subtitle": "Your application still owns intent, boundaries, and approvals.", "bullets": ["Observe before acting", "Ask before sensitive steps", "Record what changed"], "address": "example.local / agent-session", "code": ["session = browser.create()", "", "await session.run({", "  task: exampleTask,", "  approval: 'required'", "})"], "language": "EXAMPLE.TS"},
+    {"type": "network", "eyebrow": "ORCHESTRATION", "title": "Specialists work around\na shared objective.", "subtitle": "A conceptual multi-agent topology.", "center": "ROOT AGENT", "nodes": ["RESEARCH", "CODE", "BROWSER", "REVIEW"]},
+    {"type": "architecture", "eyebrow": "SYSTEM DESIGN", "title": "Reliability lives\nin the surrounding layers.", "layers": [{"title": "Experience", "body": "Intent, progress, and human handoff"}, {"title": "Orchestration", "body": "Plans, routing, retries, state"}, {"title": "Controls", "body": "Permissions, approvals, audit trail"}, {"title": "Tools", "body": "Browser, APIs, code, retrieval"}]},
+    {"type": "model_comparison", "eyebrow": "ROUTING EXAMPLE", "title": "Choose by job,\nnot by hype.", "models": ["FAST", "DEEP", "TOOL"], "rows": [{"label": "Triage", "values": ["Best", "Good", "Good"]}, {"label": "Planning", "values": ["Good", "Best", "Good"]}, {"label": "Action", "values": ["Good", "Good", "Best"]}, {"label": "Cost control", "values": ["Best", "Variable", "Variable"]}]},
+    {"type": "workflow", "eyebrow": "SAFE EXECUTION", "title": "A production loop\nneeds explicit gates.", "steps": [{"title": "Understand", "body": "Clarify the requested outcome."}, {"title": "Plan", "body": "Choose tools and checkpoints."}, {"title": "Approve", "body": "Pause before consequential action."}, {"title": "Execute", "body": "Make the smallest scoped change."}, {"title": "Verify", "body": "Check output against intent."}, {"title": "Report", "body": "Leave a clear audit trail."}]},
+    {"type": "closing", "eyebrow": "EXAMPLE TAKEAWAY", "title": "Build the system\naround the model.", "subtitle": "The demo story: orchestration, controls, and verification turn capability into dependable work.", "source": "Design demo · fictional example content · no current news claim"}
+  ]
+}

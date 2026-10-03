@@ -1,10 +1,12 @@
-name: Publish queued LinkedIn post
+name: Publish approved LinkedIn post
 
 on:
   workflow_dispatch:
-  schedule:
-    # Pakistan Standard Time is UTC+5 year-round. 06:15 UTC = 11:15 PKT.
-    - cron: "15 6 * * 1-5"
+    inputs:
+      confirm:
+        description: "Type PUBLISH to confirm this LinkedIn post"
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -15,8 +17,9 @@ concurrency:
 
 jobs:
   publish:
+    if: ${{ github.event.inputs.confirm == 'PUBLISH' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
 
     steps:
       - name: Checkout
@@ -31,11 +34,14 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Publish queued post
+      - name: Install Chromium for carousel rendering
+        run: python -m playwright install --with-deps chromium
+
+      - name: Publish approved post
         env:
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
           LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
-          LINKEDIN_VERSION: ${{ vars.LINKEDIN_VERSION || '202607' }}
+          LINKEDIN_VERSION: ${{ vars.LINKEDIN_VERSION || '202609' }}
           AUTO_PUBLISH: "true"
         run: python src/publish.py
 
@@ -46,8 +52,8 @@ jobs:
             exit 0
           fi
 
-          git config user.name "shopify-linkedin-agent[bot]"
+          git config user.name "linkedin-content-agent[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/history.json queue/latest.json
-          git commit -m "chore: record LinkedIn publication"
+          git commit -m "chore: record approved LinkedIn publication"
           git push

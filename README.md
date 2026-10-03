@@ -1,130 +1,114 @@
-# Shopify → LinkedIn Agent
+# Priority-driven LinkedIn Content Agent
 
-A lightweight, reusable agent that separates **Shopify research/content generation** from **LinkedIn publishing**.
+A reusable agent that keeps research and preparation separate from manual LinkedIn publishing.
 
 ```text
-Research producer → queue/latest.json → Python publisher → LinkedIn
+Official sources → candidates → scoring → preview → queue/latest.json → manual approval → LinkedIn API
 ```
 
-The publisher itself uses no AI model, so the publishing step consumes no AI tokens.
+## Capabilities
 
-## Features
+- Text, image, and PDF document posts
+- V3 HTML/CSS carousel renderer with 18 story-driven layouts
+- 1080×1350 pages with OpenAI, Claude, Shopify, and developer-tool art direction
+- Remote and local image support with graceful visual fallback
+- Exact 100-point editorial scoring, history deduplication, and expiring backlog
+- LinkedIn official Posts, Images, and Documents APIs only
+- Safe dry-run behavior and manual-only GitHub publishing
+- Legacy `src/slides.py` renderer retained as a fallback
 
-- Text-only or single-image LinkedIn posts
-- LinkedIn official Posts + Images APIs
-- Duplicate protection by post ID and source URL
-- Safe dry-run mode by default
-- Publication history
-- Windows PowerShell runner
-- GitHub Actions scheduling
-- No secrets committed to Git
-
-## LinkedIn requirements
-
-Create a LinkedIn Developer application and obtain:
-
-- an OAuth access token with `w_member_social`
-- your member author URN, for example `urn:li:person:abc123`
-
-LinkedIn tokens expire, so keep the token in environment variables or GitHub Secrets, never in the repository.
-
-## Local setup
+## Setup
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
+python -m playwright install chromium
 Copy-Item .env.example .env
 ```
 
-Fill `.env`:
+Keep LinkedIn credentials in local environment variables or GitHub Secrets. Never commit them.
 
-```env
-LINKEDIN_ACCESS_TOKEN=...
-LINKEDIN_AUTHOR_URN=urn:li:person:...
-LINKEDIN_VERSION=202607
-AUTO_PUBLISH=false
+## Research and preparation
+
+`AGENT_PROMPT.md` defines the source, narrative, scoring, and visual contract. Place researched candidates in the ignored `queue/candidates.json` file, then run:
+
+```powershell
+.venv\Scripts\python.exe src\prepare.py --candidates queue\candidates.json
 ```
 
-## Queue format
+The preparation command:
 
-A research agent writes one ready post into `queue/latest.json`:
+1. validates the candidate scores and official-source claims;
+2. removes stories already represented in `data/history.json`;
+3. combines fresh candidates with the non-stale backlog;
+4. selects at most one strongest story;
+5. chooses text, image, or V3 document format;
+6. renders a document preview before writing `status=ready`;
+7. updates `queue/latest.json` and stops.
+
+It does not import the LinkedIn client, read publishing secrets, or publish anything.
+
+## V3 carousel rendering
+
+New document posts use:
 
 ```json
 {
-  "id": "shopify-example-2026-10-02",
-  "status": "ready",
-  "topic": "Shopify example",
-  "caption": "Final LinkedIn caption here",
-  "source_url": "https://changelog.shopify.com/...",
-  "image_url": "https://cdn.shopify.com/...",
-  "image_alt": "Short description of the image",
-  "created_at": "2026-10-02T11:00:00+05:00"
+  "format": "document",
+  "document": {
+    "renderer": "v3",
+    "carousel": {
+      "theme": "openai",
+      "brand": {
+        "name": "WAJAHAT NAQVI",
+        "subtitle": "Shopify · Full-stack · AI"
+      },
+      "slides": []
+    }
+  }
 }
 ```
 
-Leave `image_url` empty for a text-only post.
+V3 supports `cover`, `browser`, `code`, `network`, `architecture`, `cards`, `feature_grid`, `comparison`, `before_after`, `timeline`, `metrics`, `quote`, `screenshot`, `annotated_screenshot`, `workflow`, `ecommerce`, `model_comparison`, and `closing`. Each carousel must contain 5–8 slides.
 
-## Dry run
-
-```powershell
-python src\publish.py
-```
-
-With `AUTO_PUBLISH=false`, the script validates the queue and duplicate history but does not publish.
-
-## One-time real test
+Render the current queued document without publishing:
 
 ```powershell
-python src\publish.py --force
+.venv\Scripts\python.exe src\publish.py --render-only
 ```
 
-`--force` bypasses only the AUTO_PUBLISH safety switch. It does **not** bypass queue validation or duplicate checks.
+Render an individual example:
 
-## Full automation
-
-After the first successful test, set:
-
-```env
-AUTO_PUBLISH=true
+```powershell
+.venv\Scripts\python.exe src\carousel\render_pdf.py examples\carousels\openai.json --output generated\examples\openai.pdf
 ```
 
-For local Windows use, schedule `scripts/run-publisher.ps1`.
+## Manual publishing only
 
-For GitHub-hosted automation, the included workflow runs Monday–Friday at **11:15 PKT**.
+The GitHub workflow uses `workflow_dispatch` only and requires `confirm=PUBLISH`. It has no schedule or cron. Publishing uses the official LinkedIn API in `src/linkedin.py`.
 
-Add GitHub Actions secrets:
+Never automate LinkedIn browser interaction, likes, comments, DMs, connections, or reposts.
+
+Required GitHub Secrets:
 
 - `LINKEDIN_ACCESS_TOKEN`
 - `LINKEDIN_AUTHOR_URN`
 
 Optional repository variable:
 
-- `LINKEDIN_VERSION` (defaults to `202607`)
+- `LINKEDIN_VERSION` (defaults to `202609`)
 
-## Research producer
+## Safety checks
 
-`AGENT_PROMPT.md` defines the strict output contract for the research side. It should research one useful fresh Shopify development and update only `queue/latest.json`.
+```powershell
+.venv\Scripts\python.exe -m py_compile src\linkedin.py src\publish.py src\carousel\renderer.py src\carousel\render_pdf.py src\prepare.py
+.venv\Scripts\python.exe src\publish.py
+git diff --check
+```
 
-This design means Codex/OpenAI does **not** need to run during publishing.
-
-## Security
-
-Never commit:
-
-- `.env`
-- LinkedIn access tokens
-- LinkedIn client secrets
-- OAuth authorization codes
-
-Use local environment variables or GitHub Actions Secrets.
-
-## Notes
-
-- LinkedIn requires a supported date-version header for its REST APIs. Update `LINKEDIN_VERSION` when LinkedIn retires an older version.
-- The access token may periodically require reauthorization.
-- Prefer official Shopify visuals only when appropriate to reuse; otherwise use an original visual or a text-only post.
+The default publisher run validates the queue and remains a dry run unless the explicit manual publishing controls are satisfied.
 
 ## License
 
-MIT.
+MIT

@@ -7,140 +7,211 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+import requests
 from dotenv import load_dotenv
 
 from linkedin import LinkedInClient, LinkedInError
+from slides import SlideRenderError, render_document
+from carousel.render_pdf import render_carousel_pdf
 
 ROOT = Path(__file__).resolve().parents[1]
 QUEUE_PATH = ROOT / "queue" / "latest.json"
 HISTORY_PATH = ROOT / "data" / "history.json"
+GENERATED_DIR = ROOT / "generated"
+SUPPORTED_FORMATS = {"text", "image", "document"}
+NOOP_STATUSES = {"idle", "published", "skipped"}
 
 
 def load_json(path: Path, default):
     if not path.exists():
         return default
-    with path.open("r", encoding="utf-8") as handle:
-        return json.load(handle)
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def save_json(path: Path, value) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_suffix(path.suffix + ".tmp")
-    with temporary.open("w", encoding="utf-8") as handle:
-        json.dump(value, handle, indent=2, ensure_ascii=False)
-        handle.write("\n")
-    temporary.replace(path)
+    temp = path.with_suffix(path.suffix + ".tmp")
+    temp.write_text(json.dumps(value, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    temp.replace(path)
 
 
 def env_bool(name: str, default: bool = False) -> bool:
     raw = os.getenv(name)
-    if raw is None:
-        return default
-    return raw.strip().lower() in {"1", "true", "yes", "on"}
+    return default if raw is None else raw.strip().lower() in {"1", "true", "yes", "on"}
 
 
-def validate_queue(post: dict) -> None:
-    if post.get("status") != "ready":
-        raise ValueError(
-            f"Queue status is {post.get('status')!r}; nothing is ready to publish."
-        )
+def validate_queue(post: dict) -> str:
+    status = str(post.get("status", "idle")).strip().lower()
+    if status in NOOP_STATUSES:
+        return status
+    if status != "ready":
+        raise ValueError(f"Unsupported queue status: {status!r}")
 
     for field in ("id", "caption", "source_url"):
         if not str(post.get(field, "")).strip():
             raise ValueError(f"Missing required queue field: {field}")
 
+    post_format = str(post.get("format", "text")).strip().lower()
+    if post_format not in SUPPORTED_FORMATS:
+        raise ValueError(f"Unsupported format: {post_format}")
     if len(post["caption"]) > 3000:
-        raise ValueError("Caption exceeds the 3000-character limit used by this agent.")
+        raise ValueError("Caption exceeds the 3000-character safety limit used by this agent.")
+    if post_format == "image" and not str(post.get("image_url", "")).strip():
+        raise ValueError("Image format requires image_url.")
+    if post_format == "document":
+        document = post.get("document") or {}
+        has_path = bool(str(document.get("path", "")).strip())
+        has_legacy_slides = bool(document.get("slides") or [])
+        uses_v3 = str(document.get("renderer", "")).strip().lower() == "v3"
+        has_v3_carousel = uses_v3 and bool(document.get("carousel") or {})
+        if not (has_path or has_legacy_slides or has_v3_carousel):
+            raise ValueError(
+                "Document format requires document.path, document.slides, "
+                'or renderer="v3" with document.carousel.'
+            )
+    return status
+
+
+def all_source_urls(post: dict) -> set[str]:
+    urls = {str(post.get("source_url", "")).strip()}
+    for item in post.get("sources") or []:
+        if isinstance(item, str):
+            urls.add(item.strip())
+        elif isinstance(item, dict):
+            urls.add(str(item.get("url", "")).strip())
+    return {u for u in urls if u}
 
 
 def duplicate_reason(post: dict, history: list[dict]) -> str | None:
     post_id = str(post.get("id", "")).strip()
-    source_url = str(post.get("source_url", "")).strip()
-
+    source_urls = all_source_urls(post)
     for item in history:
         if post_id and item.get("id") == post_id:
             return f"id {post_id!r} is already in history"
-        if source_url and item.get("source_url") == source_url:
-            return f"source_url {source_url!r} is already in history"
-
+        historical = {str(item.get("source_url", "")).strip()}
+        historical.update(str(url).strip() for url in item.get("sources", []) or [])
+        if source_urls.intersection({u for u in historical if u}):
+            return "one of this post's source URLs is already in history"
     return None
 
 
+def prepare_document(post: dict):
+    document = post.get("document") or {}
+
+    title = str(
+        document.get("title")
+        or post.get("topic")
+        or "Tech update"
+    ).strip()
+
+    configured = str(
+        document.get("path", "")
+    ).strip()
+
+    if configured:
+        path = ROOT / configured
+
+        if not path.exists():
+            raise ValueError(
+                f"Configured document.path does not exist: {path}"
+            )
+
+        return path, title
+
+    output = GENERATED_DIR / f"{post['id']}.pdf"
+
+    renderer = str(
+        document.get("renderer", "legacy")
+    ).strip().lower()
+
+    if renderer == "v3" and document.get("carousel"):
+        carousel = document.get("carousel") or {}
+        rendered = render_carousel_pdf(
+            carousel,
+            output,
+        )
+
+        return rendered, title
+
+    return render_document(
+        post,
+        output,
+    ), title
+
+
 def main() -> int:
-    parser = argparse.ArgumentParser(
-        description="Publish queue/latest.json to LinkedIn."
-    )
-    parser.add_argument(
-        "--force",
-        action="store_true",
-        help=(
-            "Publish even when AUTO_PUBLISH=false. "
-            "Does not bypass validation or duplicate checks."
-        ),
-    )
+    parser = argparse.ArgumentParser(description="Publish queue/latest.json to LinkedIn.")
+    parser.add_argument("--force", action="store_true")
+    parser.add_argument("--render-only", action="store_true")
     args = parser.parse_args()
 
     load_dotenv(ROOT / ".env")
-
     post = load_json(QUEUE_PATH, {})
     history = load_json(HISTORY_PATH, [])
-    validate_queue(post)
+    status = validate_queue(post)
+    if status in NOOP_STATUSES:
+        print(f"NOOP: queue status is {status!r}.")
+        return 0
 
     reason = duplicate_reason(post, history)
     if reason:
         print(f"SKIP: {reason}")
         return 0
 
-    auto_publish = env_bool("AUTO_PUBLISH", False)
-    if not auto_publish and not args.force:
-        print("DRY RUN: queue is valid and not previously published.")
-        print(f"Topic: {post.get('topic', '')}")
-        print(f"Source: {post['source_url']}")
-        print("Set AUTO_PUBLISH=true or run with --force to publish.")
+    post_format = str(post.get("format", "text")).lower()
+    if args.render_only:
+        if post_format != "document":
+            print("NOOP: --render-only only applies to document posts.")
+            return 0
+        path, _ = prepare_document(post)
+        print(f"RENDERED: {path}")
+        return 0
+
+    if not env_bool("AUTO_PUBLISH", False) and not args.force:
+        print(f"DRY RUN: valid {post_format} post ready: {post.get('topic', '')}")
         return 0
 
     token = os.getenv("LINKEDIN_ACCESS_TOKEN", "").strip()
     author = os.getenv("LINKEDIN_AUTHOR_URN", "").strip()
-    version = os.getenv("LINKEDIN_VERSION", "202607").strip()
-
+    version = os.getenv("LINKEDIN_VERSION", "202609").strip()
     if not token or not author:
-        raise ValueError(
-            "LINKEDIN_ACCESS_TOKEN and LINKEDIN_AUTHOR_URN are required."
-        )
+        raise ValueError("LINKEDIN_ACCESS_TOKEN and LINKEDIN_AUTHOR_URN are required.")
 
     client = LinkedInClient(token, author, version)
+    image_urn = document_urn = None
+    document_title = ""
 
-    image_urn = None
-    image_url = str(post.get("image_url", "")).strip()
-    if image_url:
-        print("Uploading image to LinkedIn...")
-        image_urn = client.upload_image_from_url(image_url)
+    if post_format == "image":
+        image_urn = client.upload_image_from_url(post["image_url"])
+    elif post_format == "document":
+        path, document_title = prepare_document(post)
+        document_urn = client.upload_document(path)
 
-    print("Publishing LinkedIn post...")
     linkedin_post_id = client.create_post(
         caption=post["caption"],
         image_urn=image_urn,
         image_alt=str(post.get("image_alt", "")).strip(),
+        document_urn=document_urn,
+        document_title=document_title,
     )
 
     published_at = datetime.now(timezone.utc).isoformat()
-
-    history.append(
-        {
-            "id": post["id"],
-            "topic": post.get("topic", ""),
-            "source_url": post["source_url"],
-            "linkedin_post_id": linkedin_post_id,
-            "published_at": published_at,
-        }
-    )
+    history.append({
+        "id": post["id"],
+        "topic": post.get("topic", ""),
+        "category": post.get("category", ""),
+        "format": post_format,
+        "priority_score": post.get("priority_score", 0),
+        "source_url": post["source_url"],
+        "sources": sorted(all_source_urls(post)),
+        "linkedin_post_id": linkedin_post_id,
+        "published_at": published_at,
+    })
     save_json(HISTORY_PATH, history)
-
     post["status"] = "published"
     post["linkedin_post_id"] = linkedin_post_id
     post["published_at"] = published_at
     save_json(QUEUE_PATH, post)
-
     print(f"SUCCESS: {linkedin_post_id}")
     return 0
 
@@ -148,6 +219,6 @@ def main() -> int:
 if __name__ == "__main__":
     try:
         raise SystemExit(main())
-    except (ValueError, LinkedInError, json.JSONDecodeError) as exc:
+    except (ValueError, LinkedInError, SlideRenderError, json.JSONDecodeError, requests.RequestException) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         raise SystemExit(1)
