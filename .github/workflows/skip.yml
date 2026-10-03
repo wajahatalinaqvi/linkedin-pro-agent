@@ -1,0 +1,47 @@
+name: Skip current LinkedIn post
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type SKIP to skip the current ready post"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: linkedin-content-decision
+  cancel-in-progress: false
+
+jobs:
+  skip:
+    if: ${{ github.event.inputs.confirm == 'SKIP' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Skip current ready post
+        run: python src/skip.py --confirm SKIP
+
+      - name: Persist skip decision
+        run: |
+          if git diff --quiet -- data/skipped.json queue/latest.json; then
+            echo "No state changes to commit."
+            exit 0
+          fi
+
+          git config user.name "linkedin-content-agent[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/skipped.json queue/latest.json
+          git commit -m "chore: record skipped LinkedIn post"
+          git push
