@@ -1,0 +1,95 @@
+{
+  "brand": {
+    "name": "WAJAHAT NAQVI",
+    "subtitle": "Shopify • Full-stack • AI"
+  },
+  "topic": "OpenAI Agents API",
+  "date": "SEP 29, 2026",
+  "slides": [
+    {
+      "type": "cover",
+      "eyebrow": "OPENAI AGENTS • SEP 29, 2026",
+      "title": "AI agents just got\nmore capable.",
+      "subtitle": "Computer use, GPT-6.1 Sol and multi-agent workflows - explained for developers.",
+      "footer": "6 slides • swipe →"
+    },
+    {
+      "type": "browser",
+      "number": "01",
+      "eyebrow": "COMPUTER USE",
+      "title": "Agents can now operate\na hosted browser.",
+      "subtitle": "The Agents API can navigate websites and interact with browser UIs inside an OpenAI-hosted environment.",
+      "bullets": [
+        "Website access approvals stay in your application",
+        "Sign-in flows remain application-controlled",
+        "Useful for multi-step web workflows"
+      ]
+    },
+    {
+      "type": "network",
+      "number": "02",
+      "eyebrow": "MULTI-AGENT",
+      "title": "One agent can delegate\nto specialized subagents.",
+      "subtitle": "A root agent can split work across focused agents in parallel, then combine the results.",
+      "nodes": [
+        "RESEARCH",
+        "CODE",
+        "BROWSER"
+      ]
+    },
+    {
+      "type": "cards",
+      "number": "03",
+      "eyebrow": "THE ARCHITECTURE SHIFT",
+      "title": "The hard part is no longer\njust the model.",
+      "cards": [
+        [
+          "01",
+          "Permissions",
+          "Decide what every agent is allowed to access and change."
+        ],
+        [
+          "02",
+          "Observability",
+          "Track tool calls, subagent work, failures and recovery."
+        ],
+        [
+          "03",
+          "Human handoff",
+          "Put approvals around actions that carry real-world impact."
+        ]
+      ]
+    },
+    {
+      "type": "split",
+      "number": "04",
+      "eyebrow": "FROM CHAT TO WORKFLOWS",
+      "title": "Think orchestration,\nnot just prompting.",
+      "left": {
+        "label": "OLD MENTAL MODEL",
+        "title": "Prompt → Answer",
+        "items": [
+          "Single model",
+          "Single response",
+          "Mostly text"
+        ]
+      },
+      "right": {
+        "label": "NEW MENTAL MODEL",
+        "title": "Plan → Delegate → Act",
+        "items": [
+          "Multiple agents",
+          "Tools + browser",
+          "Approvals + state"
+        ]
+      }
+    },
+    {
+      "type": "closing",
+      "eyebrow": "THE TAKEAWAY",
+      "title": "Agents are becoming\nsoftware systems.",
+      "subtitle": "The opportunity is not only smarter models. It is building reliable orchestration around tools, permissions, state and human judgment.",
+      "source": "Source: OpenAI API Changelog • developers.openai.com"
+    }
+  ]
+}

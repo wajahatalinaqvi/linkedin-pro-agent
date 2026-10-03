@@ -1,0 +1,13 @@
+{
+  "theme": "claude",
+  "topic": "Example: thoughtful AI-assisted development",
+  "brand": {"name": "WAJAHAT NAQVI", "subtitle": "Shopify · Full-stack · AI"},
+  "slides": [
+    {"type": "cover", "eyebrow": "EDITORIAL DEMO · FICTIONAL", "title": "Better context\nbeats more context.", "subtitle": "An example editorial carousel about preparing focused inputs for an AI coding assistant.", "footer": "6 slides · example essay →"},
+    {"type": "quote", "quote": "The useful unit of context is not the file. It is the decision the developer needs to make.", "attribution": "Original example copy for this design demonstration"},
+    {"type": "feature_grid", "eyebrow": "THE BRIEF", "title": "Give the assistant\na shaped problem.", "features": [{"icon": "01", "title": "Outcome", "body": "Define what success looks like."}, {"icon": "02", "title": "Constraints", "body": "Name the boundaries that cannot move."}, {"icon": "03", "title": "Evidence", "body": "Include the files and failures that matter."}, {"icon": "04", "title": "Checks", "body": "State how the result will be verified."}]},
+    {"type": "timeline", "eyebrow": "WORKING RHYTHM", "title": "Context should arrive\nin deliberate layers.", "events": [{"number": "01", "title": "Frame", "body": "Describe the decision and its stakes."}, {"number": "02", "title": "Ground", "body": "Add the smallest relevant source set."}, {"number": "03", "title": "Explore", "body": "Ask for options before implementation."}, {"number": "04", "title": "Verify", "body": "Test the chosen answer against reality."}]},
+    {"type": "before_after", "eyebrow": "PROMPT QUALITY", "title": "Move from volume\nto signal.", "before": {"title": "Dump everything", "items": ["Unclear objective", "Competing instructions", "No acceptance test"]}, "after": {"title": "Curate the decision", "items": ["One explicit outcome", "Relevant constraints", "Observable success"]}},
+    {"type": "closing", "eyebrow": "EXAMPLE TAKEAWAY", "title": "Curate context\nlike an editor.", "subtitle": "The demo story: clarity comes from selection, structure, and a concrete definition of done.", "source": "Design demo · fictional example content · no current news claim"}
+  ]
+}

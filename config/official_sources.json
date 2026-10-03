@@ -1,0 +1,14 @@
+{
+  "policy": "Prefer primary sources. Secondary sources may add context but cannot replace claim verification.",
+  "sources": [
+    {"category": "OpenAI", "name": "OpenAI News", "url": "https://openai.com/news/"},
+    {"category": "OpenAI", "name": "OpenAI Developer Changelog", "url": "https://developers.openai.com/api/docs/changelog"},
+    {"category": "Anthropic / Claude", "name": "Anthropic News", "url": "https://www.anthropic.com/news"},
+    {"category": "Anthropic / Claude", "name": "Anthropic Documentation", "url": "https://docs.anthropic.com/"},
+    {"category": "Shopify", "name": "Shopify Changelog", "url": "https://changelog.shopify.com/"},
+    {"category": "Shopify", "name": "Shopify Developer Documentation", "url": "https://shopify.dev/"},
+    {"category": "Shopify", "name": "Shopify Editions", "url": "https://www.shopify.com/editions"},
+    {"category": "Shopify", "name": "Shopify Help Center", "url": "https://help.shopify.com/"},
+    {"category": "Developer Tools", "name": "GitHub Changelog", "url": "https://github.blog/changelog/"}
+  ]
+}

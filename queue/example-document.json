@@ -1,0 +1,25 @@
+{
+  "id": "example-major-ai-release-2026-10-03",
+  "status": "ready",
+  "category": "OpenAI",
+  "priority_score": 94,
+  "format": "document",
+  "topic": "Example major AI release",
+  "caption": "Example caption. Replace this before a real post.",
+  "source_url": "https://example.com/primary-source",
+  "sources": ["https://example.com/primary-source"],
+  "image_url": "",
+  "image_alt": "",
+  "document": {
+    "title": "Major AI Release - What Developers Should Know",
+    "accent": "#665CF6",
+    "slides": [
+      {"layout": "cover", "title": "A major AI release just landed", "body": "Here are the changes developers should actually care about."},
+      {"layout": "standard", "kicker": "WHAT CHANGED", "title": "The release in 30 seconds", "body": "Keep this concise and source-grounded.", "bullets": ["Capability one", "Capability two", "Capability three"]},
+      {"layout": "standard", "kicker": "WHY IT MATTERS", "title": "The developer impact", "bullets": ["Practical implication one", "Practical implication two", "Practical implication three"]},
+      {"layout": "quote", "title": "The important shift is not the announcement - it is what this makes practical."},
+      {"layout": "closing", "title": "The takeaway", "body": "Finish with a measured, useful conclusion."}
+    ]
+  },
+  "created_at": "2026-10-03T11:00:00+05:00"
+}

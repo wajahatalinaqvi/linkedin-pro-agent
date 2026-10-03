@@ -1,0 +1,28 @@
+{
+  "max_selected_posts_per_run": 1,
+  "skip_if_no_strong_story": true,
+  "min_publish_score": 60,
+  "document_score": 90,
+  "image_score": 75,
+  "backlog_min_score": 75,
+  "backlog_max_age_days": 3,
+  "evergreen_backlog_max_age_days": 30,
+  "backlog_max_items": 12,
+  "score_limits": {
+    "significance": 30,
+    "freshness": 20,
+    "developer_business_impact": 20,
+    "novelty": 15,
+    "source_quality": 10,
+    "profile_relevance": 5
+  },
+  "priorities": [
+    {"rank": 1, "name": "OpenAI major news", "keywords": ["openai"]},
+    {"rank": 2, "name": "Claude/Anthropic major news", "keywords": ["anthropic", "claude"]},
+    {"rank": 3, "name": "AI agents", "keywords": ["ai agents", "agent"]},
+    {"rank": 4, "name": "Important AI/dev tools", "keywords": ["developer ai tools", "ai tools", "developer tools"]},
+    {"rank": 5, "name": "Shopify platform/developer news", "keywords": ["shopify"]},
+    {"rank": 6, "name": "Ecommerce automation", "keywords": ["ecommerce automation", "e-commerce automation"]},
+    {"rank": 7, "name": "Evergreen insight", "keywords": ["evergreen"]}
+  ]
+}
