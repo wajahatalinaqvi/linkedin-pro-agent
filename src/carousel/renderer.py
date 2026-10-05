@@ -23,8 +23,10 @@ def esc(value: Any) -> str:
 
 
 def _lines(value: Any) -> str:
-    return esc(value).replace("\n", "<br>")
-
+    """Normalize real and literal escaped newlines before rendering."""
+    text = str(value or "")
+    text = text.replace("\\r\\n", "\n").replace("\\n", "\n").replace("\\r", "\n")
+    return esc(text).replace("\n", "<br>")
 
 def _items(values: Iterable[Any], class_name: str = "bullet-list") -> str:
     return f'<ul class="{class_name}">' + "".join(f"<li>{esc(value)}</li>" for value in values) + "</ul>"
