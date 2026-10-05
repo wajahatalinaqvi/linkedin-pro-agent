@@ -18,5 +18,19 @@
     ],
     "linkedin_post_id": "urn:li:ugcPost:7512133859845767168",
     "published_at": "2026-10-03T12:58:01.192396+00:00"
+  },
+  {
+    "id": "shopify-next-gen-events-ga-2026-10-05",
+    "topic": "Shopify Next Gen Events are now generally available",
+    "category": "Shopify Developer Platform",
+    "format": "document",
+    "priority_score": 90,
+    "source_url": "https://shopify.dev/changelog/blog/next-generation-events-are-now-generally-available",
+    "sources": [
+      "https://shopify.dev/changelog/blog/next-generation-events-are-now-generally-available",
+      "https://shopify.dev/changelog/release-notes/2026-10"
+    ],
+    "linkedin_post_id": "urn:li:ugcPost:7512773177366986753",
+    "published_at": "2026-10-05T07:18:26.551990+00:00"
   }
 ]
