@@ -1,117 +1,137 @@
 {
-  "id": "openai-gpt-6-1-sol-agents-2026-10-02",
-  "status": "published",
-  "category": "OpenAI",
-  "priority_score": 96,
+  "id": "shopify-next-gen-events-ga-2026-10-05",
+  "status": "ready",
+  "category": "Shopify Developer Platform",
+  "priority_score": 90,
+  "score_breakdown": {
+    "significance": 27,
+    "freshness": 17,
+    "developer_business_impact": 19,
+    "novelty": 13,
+    "source_quality": 10,
+    "profile_relevance": 4
+  },
   "format": "document",
-  "topic": "OpenAI expands the Agents API with computer use and GPT-6.1 Sol",
-  "caption": "OpenAI's latest developer update is much bigger than a model refresh.\n\nGPT-6.1 Sol is now available for complex coding and professional work, while the Agents API can now use an OpenAI-hosted browser for computer-use tasks. OpenAI also added Multi-agent support in beta, allowing a model to delegate work to subagents inside a Responses API request.\n\nThe interesting part for developers is the direction: agents are moving from generating answers toward executing multi-step work across browsers, tools, and specialized subagents.\n\nThat changes how we should think about AI application architecture — less single-prompt automation, more orchestration, permissions, observability, and reliable handoffs between agents and humans.\n\nSource: OpenAI API Changelog\n\n#OpenAI #AIAgents #AIEngineering #Developers",
-  "source_url": "https://developers.openai.com/api/docs/changelog",
+  "topic": "Shopify Next Gen Events are now generally available",
+  "caption": "Shopify just made a meaningful change to how apps can react to commerce data.\n\nWith the 2026-10 API version, Next Gen Events are now generally available across 18 topics as a declarative successor to classic webhooks.\n\nThe practical improvement is important for app developers: instead of receiving a broad webhook and then making follow-up API calls to discover what actually changed, apps can define the changes they care about and request richer data directly in the event payload.\n\nThat can mean fewer deliveries, fewer follow-up queries, and cleaner event-driven architecture.\n\nFor Shopify app teams, I’d start evaluating existing webhook-heavy flows now — especially product, collection, order, and inventory automations — and identify where richer event payloads can remove unnecessary API work.\n\nThis isn’t just a webhook upgrade. It’s a better foundation for real-time Shopify automation.\n\nSource: Shopify Developer Changelog\n\n#Shopify #ShopifyDev #Ecommerce #Webhooks #SoftwareArchitecture",
+  "x_post": "Shopify’s Next Gen Events are now GA in API 2026-10. Apps can subscribe to the changes they actually need and receive richer payloads—reducing webhook noise and follow-up API queries. A meaningful upgrade for event-driven Shopify apps.",
+  "x_thread": [],
+  "source_url": "https://shopify.dev/changelog/blog/next-generation-events-are-now-generally-available",
   "sources": [
-    "https://developers.openai.com/api/docs/changelog"
+    "https://shopify.dev/changelog/blog/next-generation-events-are-now-generally-available",
+    "https://shopify.dev/changelog/release-notes/2026-10"
   ],
   "image_url": "",
   "image_alt": "",
   "document": {
-    "title": "OpenAI Agents API: What Developers Should Know",
+    "title": "Shopify Next Gen Events: What App Developers Should Know",
     "renderer": "v3",
     "carousel": {
       "brand": {
         "name": "WAJAHAT NAQVI",
         "subtitle": "Shopify • Full-stack • AI"
       },
-      "topic": "OpenAI Agents API",
-      "date": "SEP 29, 2026",
+      "topic": "Shopify Next Gen Events",
+      "date": "OCT 5, 2026",
       "slides": [
         {
           "type": "cover",
-          "eyebrow": "OPENAI AGENTS • SEP 29, 2026",
-          "title": "AI agents just got\nmore capable.",
-          "subtitle": "Computer use, GPT-6.1 Sol and multi-agent workflows - explained for developers.",
+          "eyebrow": "SHOPIFY DEV • API 2026-10",
+          "title": "Shopify is changing\\nhow apps react to events.",
+          "subtitle": "Next Gen Events are now generally available — with richer payloads and more control.",
           "footer": "6 slides • swipe →"
         },
         {
-          "type": "browser",
-          "number": "01",
-          "eyebrow": "COMPUTER USE",
-          "title": "Agents can now operate\na hosted browser.",
-          "subtitle": "The Agents API can navigate websites and interact with browser UIs inside an OpenAI-hosted environment.",
-          "bullets": [
-            "Website access approvals stay in your application",
-            "Sign-in flows remain application-controlled",
-            "Useful for multi-step web workflows"
-          ]
-        },
-        {
-          "type": "network",
-          "number": "02",
-          "eyebrow": "MULTI-AGENT",
-          "title": "One agent can delegate\nto specialized subagents.",
-          "subtitle": "A root agent can split work across focused agents in parallel, then combine the results.",
-          "nodes": [
-            "RESEARCH",
-            "CODE",
-            "BROWSER"
-          ]
-        },
-        {
           "type": "cards",
-          "number": "03",
-          "eyebrow": "THE ARCHITECTURE SHIFT",
-          "title": "The hard part is no longer\njust the model.",
+          "number": "01",
+          "eyebrow": "WHAT CHANGED",
+          "title": "Next Gen Events\\nare now GA.",
           "cards": [
             [
               "01",
-              "Permissions",
-              "Decide what every agent is allowed to access and change."
+              "Declarative",
+              "Choose the changes your app actually needs."
             ],
             [
               "02",
-              "Observability",
-              "Track tool calls, subagent work, failures and recovery."
+              "Richer payloads",
+              "Request useful data with the event instead of always fetching it later."
             ],
             [
               "03",
-              "Human handoff",
-              "Put approvals around actions that carry real-world impact."
+              "18 topics",
+              "General availability arrives with Shopify API version 2026-10."
             ]
           ]
         },
         {
           "type": "split",
-          "number": "04",
-          "eyebrow": "FROM CHAT TO WORKFLOWS",
-          "title": "Think orchestration,\nnot just prompting.",
+          "number": "02",
+          "eyebrow": "WHY IT MATTERS",
+          "title": "Less webhook plumbing.\\nMore useful events.",
           "left": {
-            "label": "OLD MENTAL MODEL",
-            "title": "Prompt → Answer",
+            "label": "CLASSIC FLOW",
+            "title": "Receive → Fetch → Compare",
             "items": [
-              "Single model",
-              "Single response",
-              "Mostly text"
+              "Broad webhook arrives",
+              "Query Shopify for details",
+              "Compare and decide what changed"
             ]
           },
           "right": {
-            "label": "NEW MENTAL MODEL",
-            "title": "Plan → Delegate → Act",
+            "label": "NEXT GEN",
+            "title": "Define → Receive → Act",
             "items": [
-              "Multiple agents",
-              "Tools + browser",
-              "Approvals + state"
+              "Subscribe to relevant changes",
+              "Receive richer event data",
+              "Act with fewer follow-up queries"
             ]
           }
         },
         {
+          "type": "cards",
+          "number": "03",
+          "eyebrow": "DEVELOPER IMPACT",
+          "title": "This can simplify\\nevent-driven apps.",
+          "cards": [
+            [
+              "01",
+              "Fewer deliveries",
+              "Reduce events your app does not need."
+            ],
+            [
+              "02",
+              "Fewer queries",
+              "Avoid unnecessary follow-up API requests."
+            ],
+            [
+              "03",
+              "Cleaner logic",
+              "Move from detective work toward explicit event contracts."
+            ]
+          ]
+        },
+        {
+          "type": "browser",
+          "number": "04",
+          "eyebrow": "WHAT I’D REVIEW",
+          "title": "Audit webhook-heavy\\nworkflows first.",
+          "subtitle": "Look for flows where a webhook immediately triggers extra GraphQL queries just to determine what changed.",
+          "bullets": [
+            "Product and collection synchronization",
+            "Order and fulfillment automation",
+            "Inventory and operational integrations"
+          ]
+        },
+        {
           "type": "closing",
           "eyebrow": "THE TAKEAWAY",
-          "title": "Agents are becoming\nsoftware systems.",
-          "subtitle": "The opportunity is not only smarter models. It is building reliable orchestration around tools, permissions, state and human judgment.",
-          "source": "Source: OpenAI API Changelog • developers.openai.com"
+          "title": "Events are becoming\\na better app primitive.",
+          "subtitle": "For Shopify developers, Next Gen Events are worth evaluating as part of the 2026-10 upgrade — especially where classic webhooks create noisy or query-heavy workflows.",
+          "source": "Source: Shopify Developer Changelog • shopify.dev"
         }
       ]
     }
   },
-  "created_at": "2026-10-03T10:15:00+05:00",
-  "linkedin_post_id": "urn:li:ugcPost:7512133859845767168",
-  "published_at": "2026-10-03T12:58:01.192396+00:00"
+  "created_at": "2026-10-05T12:08:00+05:00"
 }
