@@ -1,10 +1,12 @@
 # LinkedIn Pro Agent
 
-A priority-driven content agent for preparing high-quality **LinkedIn + X** posts from the same verified technology story while keeping final publishing under human control.
+A priority-driven LinkedIn content agent that researches strong technology stories, prepares professional LinkedIn posts, generates previews, and keeps final publication under explicit human control.
 
 Built and maintained by **[Wajahat Naqvi](https://github.com/wajahatalinaqvi)** — a Shopify-focused full-stack developer working across React, Laravel, ecommerce automation, and practical AI workflows.
 
 [Portfolio](https://wajahatalinaqvi.github.io/) · [GitHub Profile](https://github.com/wajahatalinaqvi) · [LinkedIn](https://www.linkedin.com/in/wajahatnaqvi-developer/)
+
+## How it works
 
 ```text
 Official primary sources
@@ -13,20 +15,20 @@ Research + candidate scoring
         ↓
 Strongest eligible story
         ↓
-LinkedIn version + X version
+Prepare LinkedIn content
         ↓
 queue/latest.json = ready
         ↓
 GitHub preview
         ↓
-Human decision
+Human review
    ├── PUBLISH → LinkedIn
    └── SKIP    → record decision
-
-X → review x_post → copy/paste manually
 ```
 
-## What it does
+The repository intentionally separates **content preparation**, **preview**, and **publication** so developers can work on each stage safely.
+
+## What the agent does
 
 - Prioritizes major OpenAI, Anthropic / Claude, AI-agent, developer-tool, Shopify, and ecommerce-automation stories.
 - Uses a 100-point editorial score:
@@ -37,17 +39,16 @@ X → review x_post → copy/paste manually
   - source quality: 0–10
   - profile relevance: 0–5
 - Selects at most one strongest story per preparation run.
-- Rejects duplicate published stories and stories previously skipped.
-- Keeps strong secondary candidates in a short-lived backlog.
-- Supports **text**, **single-image**, and **PDF carousel/document** LinkedIn posts.
-- Produces a separate platform-appropriate **X post** for the same story.
-- Stores primary source URLs in the queue and preview so claims can be checked before publishing.
-- Uses the official LinkedIn API only for approved LinkedIn publication.
-- Keeps X completely manual: no Metricool, no X API, no automated browser posting.
+- Rejects already-published stories and stories previously skipped.
+- Keeps useful secondary candidates in a short-lived backlog.
+- Supports LinkedIn **text**, **single-image**, and **PDF carousel/document** posts.
+- Stores verified primary-source URLs with every prepared story.
+- Uses the official LinkedIn API only after explicit approval.
+- Never automates likes, comments, DMs, connection requests, reposts, or other engagement.
 
 ## Editorial priority
 
-The agent does not use a fixed weekday topic rotation. It evaluates all current candidates and picks the strongest eligible story.
+The agent does not rely on a fixed weekday topic rotation. It evaluates current candidates and selects the strongest eligible story.
 
 Priority order is used as a tie-breaker:
 
@@ -59,21 +60,21 @@ Priority order is used as a tie-breaker:
 6. Ecommerce automation
 7. Evergreen developer insight only when no fresh story qualifies
 
-Primary sources are preferred. Examples include official OpenAI, Anthropic, Shopify, and GitHub changelogs, documentation, release notes, and product announcements.
+Primary sources are preferred, including official changelogs, documentation, release notes, and product announcements.
 
 ## LinkedIn format selection
 
-The post format is chosen from the story rather than forcing everything into a carousel.
+The story determines the post format.
 
 ### Text
 
-Best for a concise update, observation, or developer takeaway that does not need a visual.
+Use for concise updates, observations, or developer takeaways that do not require a visual.
 
 ### Single image
 
-Best when one branded visual can communicate the story clearly.
+Use when one branded visual communicates the story clearly.
 
-The queue can include:
+Example queue fields:
 
 ```json
 {
@@ -83,9 +84,9 @@ The queue can include:
 }
 ```
 
-### PDF carousel
+### PDF carousel / document
 
-Best for stories that benefit from explanation, architecture, comparisons, workflows, timelines, or several distinct takeaways.
+Use when a story benefits from explanation, architecture, comparisons, workflows, timelines, or multiple takeaways.
 
 New document posts use the V3 HTML/CSS renderer:
 
@@ -95,7 +96,7 @@ New document posts use the V3 HTML/CSS renderer:
   "document": {
     "renderer": "v3",
     "carousel": {
-      "theme": "openai",
+      "theme": "shopify",
       "brand": {
         "name": "WAJAHAT NAQVI",
         "subtitle": "Shopify · Full-stack · AI"
@@ -106,162 +107,199 @@ New document posts use the V3 HTML/CSS renderer:
 }
 ```
 
-V3 supports these story-driven layouts:
+Supported V3 layouts:
 
 `cover`, `browser`, `code`, `network`, `architecture`, `cards`, `feature_grid`, `comparison`, `before_after`, `timeline`, `metrics`, `quote`, `screenshot`, `annotated_screenshot`, `workflow`, `ecommerce`, `model_comparison`, and `closing`.
 
-Carousels normally contain 5–8 slides depending on story complexity.
+Carousels normally contain 5–8 slides.
 
-## LinkedIn + X from one story
+The renderer also normalizes escaped line breaks so literal `\n` sequences do not appear in published carousel titles.
 
-A prepared queue item is designed to carry both platform versions.
-
-LinkedIn gets the fuller professional explanation and, when useful, a visual asset.
-
-X gets a separate concise version such as:
-
-```json
-{
-  "x_post": "A short platform-specific version of the same story.",
-  "x_thread": []
-}
-```
-
-The X copy should be written for X rather than being a truncated LinkedIn caption.
-
-**X publishing is manual-only.** Review `x_post`, then copy and paste it into X yourself. This avoids Metricool fees and X API costs.
-
-## Sources and links
-
-Every prepared story should keep its source data in the queue:
-
-```json
-{
-  "source_url": "https://official-source.example/article",
-  "sources": [
-    "https://official-source.example/article"
-  ]
-}
-```
-
-The LinkedIn caption can include a short source line such as:
+## Repository structure
 
 ```text
-Source: OpenAI API Changelog
+.github/workflows/
+  preview.yml       Preview the currently queued LinkedIn post
+  publish.yml       Publish an approved LinkedIn post
+  skip.yml          Skip the current queued story
+
+src/
+  prepare.py        Candidate validation, scoring, deduplication, queue creation
+  preview.py        Preview preparation
+  publish.py        LinkedIn publication flow
+  skip.py           Skip/rejection flow
+  linkedin.py       LinkedIn API client
+  carousel/
+    renderer.py     V3 HTML renderer
+    render_pdf.py   PDF generation
+    carousel.css    Carousel presentation styles
+
+queue/
+  latest.json       Current handoff item
+  example-document.json
+  openai-v3.json
+
+data/
+  history.json      Successfully published stories
+  skipped.json      Rejected stories
+  backlog.json      Short-lived secondary candidates
+
+examples/
+  carousels/        Example carousel payloads
+  assets/           Example visual assets
 ```
 
-The full URLs remain available in `queue/latest.json` and the GitHub preview summary for verification before publication.
+## Queue contract
 
-Do not invent dates, benchmarks, capabilities, quotes, availability, or metrics.
-
-## Daily workflow
-
-A companion scheduled ChatGPT task can prepare the same LinkedIn + X story **Monday–Friday at 11:00 AM Asia/Karachi**.
-
-Normal flow:
-
-```text
-11:00 AM
-↓
-Research strongest fresh story
-↓
-If an existing queue item is still ready, do not overwrite it
-↓
-Prepare LinkedIn content + X copy
-↓
-Write queue/latest.json with status=ready
-↓
-Preview workflow runs automatically
-↓
-Review
-↓
-PUBLISH or SKIP
-```
-
-When a post is ready, the notification should begin with:
-
-```text
-NEW POST READY — <topic>
-```
-
-If no story is strong enough, the agent should create no filler post.
-
-## Queue states
-
-`queue/latest.json` is the handoff between preparation and approval.
+`queue/latest.json` is the handoff between content preparation and human approval.
 
 Typical states:
 
-- `ready` — waiting for review
+- `ready` — prepared and waiting for review
 - `published` — successfully published to LinkedIn
 - `skipped` — intentionally rejected
 - `idle` — no eligible story
 
-A new story should never overwrite an existing `ready` item that still needs a human decision.
+A new story must never overwrite an existing `ready` item that still needs a human decision.
 
-## GitHub review and approval
+A typical prepared item includes:
 
-### Preview
+```json
+{
+  "id": "unique-story-id",
+  "status": "ready",
+  "category": "Shopify Developer Platform",
+  "priority_score": 90,
+  "format": "document",
+  "topic": "Story title",
+  "caption": "LinkedIn caption",
+  "source_url": "https://official-source.example/article",
+  "sources": [
+    "https://official-source.example/article"
+  ],
+  "document": {
+    "renderer": "v3",
+    "carousel": {}
+  }
+}
+```
 
-**Preview prepared LinkedIn post**
+## Normal operating procedure
 
-Runs automatically when `queue/latest.json` changes on `main`, and can also be run manually.
+### 1. Prepare a story
 
-For a ready post it creates the `linkedin-post-preview` artifact. The preview summary includes:
+Research authoritative primary sources, score candidates, exclude duplicate or skipped stories, and select at most one qualifying topic.
 
-- topic
-- category
-- priority score
-- post format
-- LinkedIn caption
-- source URL
-- full source list
+If a qualifying story is found:
 
-For document posts the rendered PDF is included in the artifact.
+```text
+queue/latest.json → status=ready
+```
 
-The preview workflow has read-only repository permission and does not receive LinkedIn publishing secrets.
+If nothing is strong enough, do not create filler.
 
-### Publish
+### 2. Preview
 
-**Publish approved LinkedIn post**
+The **Preview prepared LinkedIn post** workflow runs automatically when `queue/latest.json` changes on `main`, and it can also be run manually.
 
-Manual only.
+For a document post it:
 
-Run it from GitHub Actions and type:
+1. reads the ready queue item;
+2. renders the carousel;
+3. validates the generated document;
+4. uploads the document preview artifact;
+5. shows a GitHub Actions summary.
+
+For text or image posts, the appropriate preview artifact is generated instead.
+
+A skipped artifact step can be normal when it belongs to a different post format. For example, a document post uploads the document preview and skips the text/image artifact step.
+
+### 3. Review
+
+Before publishing, verify:
+
+- topic and source accuracy;
+- caption quality;
+- title and slide wrapping;
+- no visible escape sequences such as `\n`;
+- no clipping or text overflow;
+- mobile-safe spacing;
+- correct brand and theme;
+- correct source references.
+
+### 4. Publish
+
+Run the **Publish approved LinkedIn post** workflow manually from GitHub Actions and enter:
 
 ```text
 PUBLISH
 ```
 
-The workflow then uses the official LinkedIn API and records the result in `data/history.json` and `queue/latest.json`.
+The workflow uses the official LinkedIn API.
 
-There is intentionally no scheduled LinkedIn publishing.
+On success it:
 
-### Skip
+1. receives a LinkedIn post URN;
+2. appends the story to `data/history.json`;
+3. changes `queue/latest.json` to `status=published`;
+4. stores `linkedin_post_id` and `published_at`;
+5. commits the publication state back to the repository.
 
-**Skip current LinkedIn post**
+There is intentionally no scheduled LinkedIn publication.
 
-If you do not want to publish the current story, run the workflow and type:
+### 5. Skip
+
+If the story should not be published, run the **Skip current LinkedIn post** workflow and enter:
 
 ```text
 SKIP
 ```
 
-The decision is recorded in `data/skipped.json`, the queue becomes skipped, and the preparation system excludes the same story/source from future selection.
+The story is recorded in `data/skipped.json` so it is not selected again.
+
+## Important GitHub Actions behavior
+
+A green GitHub Actions **Success** means the workflow completed successfully. It does not always mean a new LinkedIn post was created.
+
+For example, if `queue/latest.json` already has:
+
+```json
+{
+  "status": "published"
+}
+```
+
+the publish script intentionally exits as a no-op.
+
+Developers should inspect the workflow log for either:
+
+```text
+SUCCESS: urn:li:...
+```
+
+or:
+
+```text
+NOOP: queue status is 'published'.
+```
+
+before concluding that a new LinkedIn post was created.
 
 ## Mobile-safe carousel design
 
-LinkedIn's mobile document viewer places its own controls over part of the PDF.
+LinkedIn's mobile document viewer overlays controls on part of the PDF.
 
-V3 therefore keeps important readable content inside reusable safe areas:
+V3 keeps important readable content inside reusable safe areas:
 
 - top: 170px
 - bottom: 110px
 - left/right: 80px
 
-Decorative shapes may bleed outside these boundaries, but essential text should remain inside them.
+Decorative shapes can extend outside these areas, but essential text should stay inside them.
 
 ## Local setup
+
+### Windows PowerShell
 
 ```powershell
 python -m venv .venv
@@ -271,43 +309,10 @@ python -m playwright install chromium
 Copy-Item .env.example .env
 ```
 
-If PowerShell blocks virtual-environment activation, invoke the interpreter directly:
+If PowerShell blocks virtual-environment activation:
 
 ```powershell
 .venv\Scripts\python.exe
-```
-
-## Manual research/preparation
-
-The repository also supports local preparation from candidate JSON.
-
-Create `queue/candidates.json`, then run:
-
-```powershell
-.venv\Scripts\python.exe src\prepare.py --candidates queue\candidates.json
-```
-
-The preparation command:
-
-1. validates score ranges and official-source claims;
-2. excludes published and skipped stories;
-3. combines fresh candidates with the non-stale backlog;
-4. selects at most one strongest story;
-5. chooses text, image, or document format;
-6. renders a local V3 preview for document posts;
-7. writes `queue/latest.json` with `status=ready`;
-8. stops without publishing.
-
-## Render a queued carousel locally
-
-```powershell
-.venv\Scripts\python.exe src\publish.py --render-only
-```
-
-Render an example directly:
-
-```powershell
-.venv\Scripts\python.exe src\carousel\render_pdf.py examples\carousels\openai.json --output generated\examples\openai.pdf
 ```
 
 ## LinkedIn credentials
@@ -323,6 +328,71 @@ Optional repository variable:
 
 - `LINKEDIN_VERSION` — defaults to `202609`
 
+The access token and author URN must belong to the intended LinkedIn publishing identity.
+
+## Manual candidate preparation
+
+Create `queue/candidates.json`, then run:
+
+```powershell
+.venv\Scripts\python.exe src\prepare.py --candidates queue\candidates.json
+```
+
+The preparation command:
+
+1. validates scoring ranges and source requirements;
+2. excludes published and skipped stories;
+3. combines fresh candidates with valid backlog items;
+4. selects at most one strongest story;
+5. chooses text, image, or document format;
+6. renders a local V3 preview for document posts;
+7. writes `queue/latest.json` with `status=ready`;
+8. stops without publishing.
+
+## Render a carousel locally
+
+Render the queued document:
+
+```powershell
+.venv\Scripts\python.exe src\publish.py --render-only
+```
+
+Render an example:
+
+```powershell
+.venv\Scripts\python.exe src\carousel\render_pdf.py examples\carousels\shopify.json --output generated\examples\shopify.pdf
+```
+
+## Developer workflow
+
+For contributors working on the repository:
+
+1. pull the latest `main`;
+2. create a feature branch;
+3. keep queue/history changes separate from renderer or publisher code when possible;
+4. make the smallest targeted change;
+5. run local validation;
+6. render a sample document when changing carousel code;
+7. inspect the generated PDF visually;
+8. open a pull request;
+9. do not expose LinkedIn credentials in commits, logs, screenshots, or test fixtures.
+
+When changing publication logic, test the no-op and dry-run paths before using real LinkedIn credentials.
+
+When changing carousel rendering, test both normal titles and titles containing escaped line breaks such as `\\n`.
+
+## Validation
+
+Run:
+
+```powershell
+.venv\Scripts\python.exe -m py_compile src\linkedin.py src\publish.py src\carousel\renderer.py src\carousel\render_pdf.py src\prepare.py src\skip.py
+.venv\Scripts\python.exe src\publish.py
+git diff --check
+```
+
+The default publisher run remains a dry run unless the explicit manual publishing controls are satisfied.
+
 ## Safety boundaries
 
 This project intentionally separates preparation from publication.
@@ -335,20 +405,9 @@ It does **not** automate:
 - DMs
 - connection requests
 - reposts
-- X posting
-- X engagement
+- engagement automation
 
-LinkedIn publication requires explicit human approval. X remains manual copy/paste.
-
-## Validation
-
-```powershell
-.venv\Scripts\python.exe -m py_compile src\linkedin.py src\publish.py src\carousel\renderer.py src\carousel\render_pdf.py src\prepare.py src\skip.py
-.venv\Scripts\python.exe src\publish.py
-git diff --check
-```
-
-The default publisher run remains a dry run unless the explicit manual publishing controls are satisfied.
+LinkedIn publication requires explicit human approval.
 
 ## Repository
 
