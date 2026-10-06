@@ -1,139 +1,149 @@
 {
-  "id": "shopify-next-gen-events-ga-2026-10-05",
-  "status": "published",
-  "category": "Shopify Developer Platform",
-  "priority_score": 90,
+  "id": "anthropic-claude-sonnet-5-5-2026-10-06",
+  "status": "ready",
+  "category": "Anthropic / Claude",
+  "priority_score": 91,
   "score_breakdown": {
-    "significance": 27,
-    "freshness": 17,
+    "significance": 28,
+    "freshness": 15,
     "developer_business_impact": 19,
-    "novelty": 13,
+    "novelty": 14,
     "source_quality": 10,
-    "profile_relevance": 4
+    "profile_relevance": 5
   },
   "format": "document",
-  "topic": "Shopify Next Gen Events are now generally available",
-  "caption": "Shopify just made a meaningful change to how apps can react to commerce data.\n\nWith the 2026-10 API version, Next Gen Events are now generally available across 18 topics as a declarative successor to classic webhooks.\n\nThe practical improvement is important for app developers: instead of receiving a broad webhook and then making follow-up API calls to discover what actually changed, apps can define the changes they care about and request richer data directly in the event payload.\n\nThat can mean fewer deliveries, fewer follow-up queries, and cleaner event-driven architecture.\n\nFor Shopify app teams, I’d start evaluating existing webhook-heavy flows now — especially product, collection, order, and inventory automations — and identify where richer event payloads can remove unnecessary API work.\n\nThis isn’t just a webhook upgrade. It’s a better foundation for real-time Shopify automation.\n\nSource: Shopify Developer Changelog\n\n#Shopify #ShopifyDev #Ecommerce #Webhooks #SoftwareArchitecture",
-  "x_post": "Shopify’s Next Gen Events are now GA in API 2026-10. Apps can subscribe to the changes they actually need and receive richer payloads—reducing webhook noise and follow-up API queries. A meaningful upgrade for event-driven Shopify apps.",
-  "x_thread": [],
-  "source_url": "https://shopify.dev/changelog/blog/next-generation-events-are-now-generally-available",
+  "topic": "Claude Sonnet 5.5: faster agent work at lower per-task cost",
+  "caption": "Claude Sonnet 5.5 is a good reminder that model upgrades are not just about benchmark scores.\n\nAnthropic reports 30%+ faster output generation than Sonnet 5 and up to 30% lower cost per task for most work. The interesting detail? Its per-token API prices are unchanged. The efficiency gain comes from how much work the model gets done with fewer tokens and faster execution.\n\nFor developers building AI agents, that changes the economics of everyday workflows.\n\nI'd evaluate Sonnet 5.5 for targeted code changes, repeated tool calls, document generation, and other well-scoped tasks. For long-running, ambiguous decisions, I'd still route work to a model better suited to sustained judgment.\n\nBefore migrating, check your model ID, thinking settings, and tool-choice behavior. Then benchmark your own workload rather than assuming published results will translate directly.\n\nThe real question isn't 'Which model is smartest?' It's 'Which model is reliable enough for this task at the right cost?'\n\nSource: Anthropic announcement and Claude Platform Docs\n\n#Claude #Anthropic #AIAgents #AIEngineering #DeveloperTools #SoftwareEngineering",
+  "x_post": "Claude Sonnet 5.5 generates output 30%+ faster than Sonnet 5, while Anthropic reports up to 30% lower cost per task. Token prices are unchanged. For agent builders, the real win is better throughput and smarter model routing.",
+  "source_url": "https://www.anthropic.com/claude-sonnet-5-5",
   "sources": [
-    "https://shopify.dev/changelog/blog/next-generation-events-are-now-generally-available",
-    "https://shopify.dev/changelog/release-notes/2026-10"
+    "https://www.anthropic.com/claude-sonnet-5-5",
+    "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
+    "https://platform.claude.com/docs/en/models/sonnet-5-5/whats-new-sonnet-5-5"
   ],
   "image_url": "",
   "image_alt": "",
   "document": {
-    "title": "Shopify Next Gen Events: What App Developers Should Know",
+    "title": "Claude Sonnet 5.5: What Agent Builders Should Know",
     "renderer": "v3",
     "carousel": {
+      "theme": "claude",
       "brand": {
         "name": "WAJAHAT NAQVI",
-        "subtitle": "Shopify • Full-stack • AI"
+        "subtitle": "Shopify · Full-stack · AI"
       },
-      "topic": "Shopify Next Gen Events",
-      "date": "OCT 5, 2026",
+      "topic": "Claude Sonnet 5.5",
+      "date": "OCT 6, 2026",
       "slides": [
         {
           "type": "cover",
-          "eyebrow": "SHOPIFY DEV • API 2026-10",
-          "title": "Shopify is changing\\nhow apps react to events.",
-          "subtitle": "Next Gen Events are now generally available — with richer payloads and more control.",
-          "footer": "6 slides • swipe →"
+          "eyebrow": "CLAUDE MODELS • SEP 28, 2026",
+          "title": "Claude Sonnet 5.5 changes the agent cost equation.",
+          "subtitle": "Faster generation. Better coding performance. Lower cost per task — and a few migration details developers should know.",
+          "footer": "6 slides • swipe for the breakdown"
         },
         {
-          "type": "cards",
+          "type": "metrics",
           "number": "01",
-          "eyebrow": "WHAT CHANGED",
-          "title": "Next Gen Events\\nare now GA.",
-          "cards": [
+          "eyebrow": "ANTHROPIC'S RELEASE",
+          "title": "Three numbers worth understanding",
+          "metrics": [
             [
               "01",
-              "Declarative",
-              "Choose the changes your app actually needs."
+              "30%+ faster",
+              "Reported output generation speed compared with Sonnet 5."
             ],
             [
               "02",
-              "Richer payloads",
-              "Request useful data with the event instead of always fetching it later."
+              "Up to 30% less",
+              "Reported total cost per task for most work, not a lower price per token."
             ],
             [
               "03",
-              "18 topics",
-              "General availability arrives with Shopify API version 2026-10."
+              "1M tokens",
+              "Context window listed in the Claude API model documentation."
+            ]
+          ]
+        },
+        {
+          "type": "cards",
+          "number": "02",
+          "eyebrow": "DEVELOPER FIT",
+          "title": "Where Sonnet 5.5 makes sense",
+          "cards": [
+            [
+              "01",
+              "Scoped coding",
+              "Bug fixes, targeted implementation, and iterative code changes."
+            ],
+            [
+              "02",
+              "Tool-driven agents",
+              "Fast tool use and structured steps across everyday workflows."
+            ],
+            [
+              "03",
+              "Polished deliverables",
+              "Documents, slides, spreadsheets, and design-focused work."
             ]
           ]
         },
         {
           "type": "split",
-          "number": "02",
-          "eyebrow": "WHY IT MATTERS",
-          "title": "Less webhook plumbing.\\nMore useful events.",
+          "number": "03",
+          "eyebrow": "IMPORTANT COST DISTINCTION",
+          "title": "Per-token price is not per-task cost",
           "left": {
-            "label": "CLASSIC FLOW",
-            "title": "Receive → Fetch → Compare",
+            "label": "TOKEN PRICING",
+            "title": "Same rate as Sonnet 5",
             "items": [
-              "Broad webhook arrives",
-              "Query Shopify for details",
-              "Compare and decide what changed"
+              "$2 per million input tokens",
+              "$10 per million output tokens",
+              "No blanket 30% API price cut"
             ]
           },
           "right": {
-            "label": "NEXT GEN",
-            "title": "Define → Receive → Act",
+            "label": "TASK ECONOMICS",
+            "title": "Potentially lower total spend",
             "items": [
-              "Subscribe to relevant changes",
-              "Receive richer event data",
-              "Act with fewer follow-up queries"
+              "Fewer tokens for similar work",
+              "Faster generation",
+              "Anthropic reports up to 30% less per task"
             ]
           }
         },
         {
-          "type": "cards",
-          "number": "03",
-          "eyebrow": "DEVELOPER IMPACT",
-          "title": "This can simplify\\nevent-driven apps.",
-          "cards": [
+          "type": "feature_grid",
+          "number": "04",
+          "eyebrow": "MIGRATION CHECKLIST",
+          "title": "Upgrade carefully, not blindly",
+          "features": [
             [
               "01",
-              "Fewer deliveries",
-              "Reduce events your app does not need."
+              "Model ID",
+              "Switch to claude-sonnet-5-5 in your API calls."
             ],
             [
               "02",
-              "Fewer queries",
-              "Avoid unnecessary follow-up API requests."
+              "Thinking and tools",
+              "Review thinking-disabled flows and tool_choice behavior."
             ],
             [
               "03",
-              "Cleaner logic",
-              "Move from detective work toward explicit event contracts."
+              "Real-world evals",
+              "Benchmark your own prompts, tool calls, latency, and cost."
             ]
           ]
         },
         {
-          "type": "browser",
-          "number": "04",
-          "eyebrow": "WHAT I’D REVIEW",
-          "title": "Audit webhook-heavy\\nworkflows first.",
-          "subtitle": "Look for flows where a webhook immediately triggers extra GraphQL queries just to determine what changed.",
-          "bullets": [
-            "Product and collection synchronization",
-            "Order and fulfillment automation",
-            "Inventory and operational integrations"
-          ]
-        },
-        {
           "type": "closing",
-          "eyebrow": "THE TAKEAWAY",
-          "title": "Events are becoming\\na better app primitive.",
-          "subtitle": "For Shopify developers, Next Gen Events are worth evaluating as part of the 2026-10 upgrade — especially where classic webhooks create noisy or query-heavy workflows.",
-          "source": "Source: Shopify Developer Changelog • shopify.dev"
+          "eyebrow": "THE PRACTICAL TAKEAWAY",
+          "title": "Route tasks by difficulty, not by model hype.",
+          "subtitle": "Evaluate Sonnet 5.5 for frequent, well-scoped work. Keep higher-capability models for tasks that need sustained judgment. Measure quality, latency, and cost together.",
+          "source": "Sources: Anthropic announcement and Claude Platform Docs • anthropic.com"
         }
       ]
     }
   },
-  "created_at": "2026-10-05T12:08:00+05:00",
-  "linkedin_post_id": "urn:li:ugcPost:7512773177366986753",
-  "published_at": "2026-10-05T07:18:26.551990+00:00"
+  "created_at": "2026-10-06T11:50:49+05:00"
 }
