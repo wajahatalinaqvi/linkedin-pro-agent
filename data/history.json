@@ -32,5 +32,20 @@
     ],
     "linkedin_post_id": "urn:li:ugcPost:7512773177366986753",
     "published_at": "2026-10-05T07:18:26.551990+00:00"
+  },
+  {
+    "id": "anthropic-claude-sonnet-5-5-2026-10-06",
+    "topic": "Claude Sonnet 5.5: faster agent work at lower per-task cost",
+    "category": "Anthropic / Claude",
+    "format": "document",
+    "priority_score": 91,
+    "source_url": "https://www.anthropic.com/claude-sonnet-5-5",
+    "sources": [
+      "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
+      "https://platform.claude.com/docs/en/models/sonnet-5-5/whats-new-sonnet-5-5",
+      "https://www.anthropic.com/claude-sonnet-5-5"
+    ],
+    "linkedin_post_id": "urn:li:ugcPost:7513129407931199488",
+    "published_at": "2026-10-06T06:53:58.468745+00:00"
   }
 ]

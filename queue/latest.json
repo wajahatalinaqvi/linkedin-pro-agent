@@ -1,6 +1,6 @@
 {
   "id": "anthropic-claude-sonnet-5-5-2026-10-06",
-  "status": "ready",
+  "status": "published",
   "category": "Anthropic / Claude",
   "priority_score": 91,
   "score_breakdown": {
@@ -145,5 +145,7 @@
       ]
     }
   },
-  "created_at": "2026-10-06T11:50:49+05:00"
+  "created_at": "2026-10-06T11:50:49+05:00",
+  "linkedin_post_id": "urn:li:ugcPost:7513129407931199488",
+  "published_at": "2026-10-06T06:53:58.468745+00:00"
 }
