@@ -13,6 +13,7 @@ from dotenv import load_dotenv
 from linkedin import LinkedInClient, LinkedInError
 from slides import SlideRenderError, render_document
 from carousel.render_pdf import render_carousel_pdf
+from post_store import load_post, save_post
 
 ROOT = Path(__file__).resolve().parents[1]
 QUEUE_PATH = ROOT / "queue" / "latest.json"
@@ -141,12 +142,13 @@ def prepare_document(post: dict):
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Publish queue/latest.json to LinkedIn.")
+    parser.add_argument("--post-id", default="", help="Saved draft ID to publish instead of latest.")
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--render-only", action="store_true")
     args = parser.parse_args()
 
     load_dotenv(ROOT / ".env")
-    post = load_json(QUEUE_PATH, {})
+    post, selected_path = load_post(args.post_id)
     history = load_json(HISTORY_PATH, [])
     status = validate_queue(post)
     if status in NOOP_STATUSES:
@@ -211,7 +213,7 @@ def main() -> int:
     post["status"] = "published"
     post["linkedin_post_id"] = linkedin_post_id
     post["published_at"] = published_at
-    save_json(QUEUE_PATH, post)
+    save_post(post, selected_path)
     print(f"SUCCESS: {linkedin_post_id}")
     return 0
 
