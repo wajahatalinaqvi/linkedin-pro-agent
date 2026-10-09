@@ -3,6 +3,10 @@ name: Publish approved LinkedIn post
 on:
   workflow_dispatch:
     inputs:
+      post_id:
+        description: "Saved draft ID (leave blank for latest)"
+        required: false
+        type: string
       confirm:
         description: "Type PUBLISH to confirm this LinkedIn post"
         required: true
@@ -12,7 +16,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: linkedin-publisher
+  group: linkedin-content-decision
   cancel-in-progress: false
 
 jobs:
@@ -43,17 +47,18 @@ jobs:
           LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
           LINKEDIN_VERSION: ${{ vars.LINKEDIN_VERSION || '202609' }}
           AUTO_PUBLISH: "true"
-        run: python src/publish.py
+          POST_ID: ${{ inputs.post_id }}
+        run: python src/publish.py --post-id "$POST_ID"
 
       - name: Persist publication state
         run: |
-          if git diff --quiet -- data/history.json queue/latest.json; then
+          git add data/history.json queue/latest.json queue/drafts/
+          if git diff --cached --quiet; then
             echo "No state changes to commit."
             exit 0
           fi
 
           git config user.name "linkedin-content-agent[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/history.json queue/latest.json
           git commit -m "chore: record approved LinkedIn publication"
           git push
