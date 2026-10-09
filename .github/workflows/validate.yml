@@ -1,0 +1,25 @@
+name: Validate LinkedIn agent
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "tests/**"
+      - ".github/workflows/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile all Python modules
+        run: python -m compileall -q src tests
+      - name: Run draft-store safety tests
+        run: python -m unittest discover -s tests -v
