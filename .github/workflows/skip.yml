@@ -41,7 +41,8 @@ jobs:
 
       - name: Persist skip decision
         run: |
-          git add data/skipped.json queue/latest.json queue/drafts/
+          git add -A data/skipped.json queue/latest.json
+          if [ -d queue/drafts ]; then git add -A queue/drafts; fi
           if git diff --cached --quiet; then
             echo "No state changes to commit."
             exit 0
