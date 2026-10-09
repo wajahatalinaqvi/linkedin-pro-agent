@@ -5,6 +5,7 @@
     {"category": "OpenAI", "name": "OpenAI Developer Changelog", "url": "https://developers.openai.com/api/docs/changelog"},
     {"category": "Anthropic / Claude", "name": "Anthropic News", "url": "https://www.anthropic.com/news"},
     {"category": "Anthropic / Claude", "name": "Anthropic Documentation", "url": "https://docs.anthropic.com/"},
+    {"category": "Anthropic / Claude", "name": "Claude Products", "url": "https://claude.com/"},
     {"category": "Shopify", "name": "Shopify Changelog", "url": "https://changelog.shopify.com/"},
     {"category": "Shopify", "name": "Shopify Developer Documentation", "url": "https://shopify.dev/"},
     {"category": "Shopify", "name": "Shopify Editions", "url": "https://www.shopify.com/editions"},
