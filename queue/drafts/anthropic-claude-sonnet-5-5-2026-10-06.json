@@ -1,0 +1,151 @@
+{
+  "id": "anthropic-claude-sonnet-5-5-2026-10-06",
+  "status": "published",
+  "category": "Anthropic / Claude",
+  "priority_score": 91,
+  "score_breakdown": {
+    "significance": 28,
+    "freshness": 15,
+    "developer_business_impact": 19,
+    "novelty": 14,
+    "source_quality": 10,
+    "profile_relevance": 5
+  },
+  "format": "document",
+  "topic": "Claude Sonnet 5.5: faster agent work at lower per-task cost",
+  "caption": "Claude Sonnet 5.5 is a good reminder that model upgrades are not just about benchmark scores.\n\nAnthropic reports 30%+ faster output generation than Sonnet 5 and up to 30% lower cost per task for most work. The interesting detail? Its per-token API prices are unchanged. The efficiency gain comes from how much work the model gets done with fewer tokens and faster execution.\n\nFor developers building AI agents, that changes the economics of everyday workflows.\n\nI'd evaluate Sonnet 5.5 for targeted code changes, repeated tool calls, document generation, and other well-scoped tasks. For long-running, ambiguous decisions, I'd still route work to a model better suited to sustained judgment.\n\nBefore migrating, check your model ID, thinking settings, and tool-choice behavior. Then benchmark your own workload rather than assuming published results will translate directly.\n\nThe real question isn't 'Which model is smartest?' It's 'Which model is reliable enough for this task at the right cost?'\n\nSource: Anthropic announcement and Claude Platform Docs\n\n#Claude #Anthropic #AIAgents #AIEngineering #DeveloperTools #SoftwareEngineering",
+  "x_post": "Claude Sonnet 5.5 generates output 30%+ faster than Sonnet 5, while Anthropic reports up to 30% lower cost per task. Token prices are unchanged. For agent builders, the real win is better throughput and smarter model routing.",
+  "source_url": "https://www.anthropic.com/claude-sonnet-5-5",
+  "sources": [
+    "https://www.anthropic.com/claude-sonnet-5-5",
+    "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
+    "https://platform.claude.com/docs/en/models/sonnet-5-5/whats-new-sonnet-5-5"
+  ],
+  "image_url": "",
+  "image_alt": "",
+  "document": {
+    "title": "Claude Sonnet 5.5: What Agent Builders Should Know",
+    "renderer": "v3",
+    "carousel": {
+      "theme": "claude",
+      "brand": {
+        "name": "WAJAHAT NAQVI",
+        "subtitle": "Shopify · Full-stack · AI"
+      },
+      "topic": "Claude Sonnet 5.5",
+      "date": "OCT 6, 2026",
+      "slides": [
+        {
+          "type": "cover",
+          "eyebrow": "CLAUDE MODELS • SEP 28, 2026",
+          "title": "Claude Sonnet 5.5 changes the agent cost equation.",
+          "subtitle": "Faster generation. Better coding performance. Lower cost per task — and a few migration details developers should know.",
+          "footer": "6 slides • swipe for the breakdown"
+        },
+        {
+          "type": "metrics",
+          "number": "01",
+          "eyebrow": "ANTHROPIC'S RELEASE",
+          "title": "Three numbers worth understanding",
+          "metrics": [
+            [
+              "01",
+              "30%+ faster",
+              "Reported output generation speed compared with Sonnet 5."
+            ],
+            [
+              "02",
+              "Up to 30% less",
+              "Reported total cost per task for most work, not a lower price per token."
+            ],
+            [
+              "03",
+              "1M tokens",
+              "Context window listed in the Claude API model documentation."
+            ]
+          ]
+        },
+        {
+          "type": "cards",
+          "number": "02",
+          "eyebrow": "DEVELOPER FIT",
+          "title": "Where Sonnet 5.5 makes sense",
+          "cards": [
+            [
+              "01",
+              "Scoped coding",
+              "Bug fixes, targeted implementation, and iterative code changes."
+            ],
+            [
+              "02",
+              "Tool-driven agents",
+              "Fast tool use and structured steps across everyday workflows."
+            ],
+            [
+              "03",
+              "Polished deliverables",
+              "Documents, slides, spreadsheets, and design-focused work."
+            ]
+          ]
+        },
+        {
+          "type": "split",
+          "number": "03",
+          "eyebrow": "IMPORTANT COST DISTINCTION",
+          "title": "Per-token price is not per-task cost",
+          "left": {
+            "label": "TOKEN PRICING",
+            "title": "Same rate as Sonnet 5",
+            "items": [
+              "$2 per million input tokens",
+              "$10 per million output tokens",
+              "No blanket 30% API price cut"
+            ]
+          },
+          "right": {
+            "label": "TASK ECONOMICS",
+            "title": "Potentially lower total spend",
+            "items": [
+              "Fewer tokens for similar work",
+              "Faster generation",
+              "Anthropic reports up to 30% less per task"
+            ]
+          }
+        },
+        {
+          "type": "feature_grid",
+          "number": "04",
+          "eyebrow": "MIGRATION CHECKLIST",
+          "title": "Upgrade carefully, not blindly",
+          "features": [
+            [
+              "01",
+              "Model ID",
+              "Switch to claude-sonnet-5-5 in your API calls."
+            ],
+            [
+              "02",
+              "Thinking and tools",
+              "Review thinking-disabled flows and tool_choice behavior."
+            ],
+            [
+              "03",
+              "Real-world evals",
+              "Benchmark your own prompts, tool calls, latency, and cost."
+            ]
+          ]
+        },
+        {
+          "type": "closing",
+          "eyebrow": "THE PRACTICAL TAKEAWAY",
+          "title": "Route tasks by difficulty, not by model hype.",
+          "subtitle": "Evaluate Sonnet 5.5 for frequent, well-scoped work. Keep higher-capability models for tasks that need sustained judgment. Measure quality, latency, and cost together.",
+          "source": "Sources: Anthropic announcement and Claude Platform Docs • anthropic.com"
+        }
+      ]
+    }
+  },
+  "created_at": "2026-10-06T11:50:49+05:00",
+  "linkedin_post_id": "urn:li:ugcPost:7513129407931199488",
+  "published_at": "2026-10-06T06:53:58.468745+00:00"
+}
