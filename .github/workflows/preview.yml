@@ -2,6 +2,11 @@ name: Preview prepared LinkedIn post
 
 on:
   workflow_dispatch:
+    inputs:
+      post_id:
+        description: "Optional saved draft ID; blank previews latest"
+        required: false
+        type: string
   push:
     branches:
       - main
@@ -38,7 +43,9 @@ jobs:
 
       - name: Inspect ready queue and create summary
         id: inspect
-        run: python src/preview.py --summary generated/preview-summary.txt --github-output "$GITHUB_OUTPUT"
+        env:
+          POST_ID: ${{ inputs.post_id }}
+        run: python src/preview.py --post-id "$POST_ID" --summary generated/preview-summary.txt --github-output "$GITHUB_OUTPUT"
 
       - name: Explain skipped preview
         if: steps.inspect.outputs.ready != 'true'
@@ -46,7 +53,9 @@ jobs:
 
       - name: Render queued document
         if: steps.inspect.outputs.ready == 'true' && steps.inspect.outputs.format == 'document'
-        run: python src/publish.py --render-only
+        env:
+          POST_ID: ${{ inputs.post_id }}
+        run: python src/publish.py --post-id "$POST_ID" --render-only
 
       - name: Verify rendered document
         if: steps.inspect.outputs.ready == 'true' && steps.inspect.outputs.format == 'document'
