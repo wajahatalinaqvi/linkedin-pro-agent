@@ -1,0 +1,54 @@
+name: Prepare existing topic request (free tier)
+
+on:
+  workflow_dispatch:
+    inputs:
+      request_file:
+        description: "Filename in queue/topic_requests/ (including .json)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: linkedin-content-decision
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies and Chromium
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+      - name: Prepare existing request
+        id: prepare
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          REQUEST_FILE: ${{ inputs.request_file }}
+        run: python src/free_prepare.py --request "queue/topic_requests/$REQUEST_FILE" --github-output "$GITHUB_OUTPUT"
+      - name: Upload preview
+        if: steps.prepare.outputs.post_id != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: linkedin-post-preview
+          path: |
+            ${{ steps.prepare.outputs.pdf_path }}
+            queue/drafts/${{ steps.prepare.outputs.post_id }}.json
+          retention-days: 7
+      - name: Persist state and draft
+        run: |
+          git config user.name "linkedin-content-agent[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add queue/topic_requests/ queue/latest.json
+          if [ -d queue/drafts ]; then git add -A queue/drafts; fi
+          git diff --cached --quiet && exit 0
+          git commit -m "content: prepare requested LinkedIn draft"
+          git push
