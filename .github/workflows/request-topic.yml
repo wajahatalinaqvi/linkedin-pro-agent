@@ -31,17 +31,39 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install dependencies and Chromium
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
       - name: Save request
+        id: request
         env:
           TOPIC: ${{ inputs.topic }}
           SOURCE_URL: ${{ inputs.source_url }}
           NOTES: ${{ inputs.notes }}
-        run: python src/request_topic.py --topic "$TOPIC" --source-url "$SOURCE_URL" --notes "$NOTES"
+        run: python src/request_topic.py --topic "$TOPIC" --source-url "$SOURCE_URL" --notes "$NOTES" --github-output "$GITHUB_OUTPUT"
+      - name: Research and prepare free-tier draft
+        id: prepare
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          REQUEST_PATH: ${{ steps.request.outputs.request_path }}
+        run: python src/free_prepare.py --request "$REQUEST_PATH" --github-output "$GITHUB_OUTPUT"
+      - name: Upload draft preview (when ready)
+        if: steps.prepare.outputs.post_id != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: linkedin-post-preview
+          path: |
+            ${{ steps.prepare.outputs.pdf_path }}
+            queue/drafts/${{ steps.prepare.outputs.post_id }}.json
+          retention-days: 7
+          if-no-files-found: error
       - name: Commit request
         run: |
           git config user.name "linkedin-content-agent[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add queue/topic_requests/
+          git add queue/topic_requests/ queue/latest.json
+          if [ -d queue/drafts ]; then git add -A queue/drafts; fi
           git diff --cached --quiet && exit 0
           git commit -m "content: request priority LinkedIn topic"
           git push
