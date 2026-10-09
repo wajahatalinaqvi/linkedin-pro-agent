@@ -6,6 +6,27 @@ Built and maintained by **[Wajahat Naqvi](https://github.com/wajahatalinaqvi)** 
 
 [Portfolio](https://wajahatalinaqvi.github.io/) · [GitHub Profile](https://github.com/wajahatalinaqvi) · [LinkedIn](https://www.linkedin.com/in/wajahatnaqvi-developer/)
 
+## Free automatic preparation (Gemini API free tier)
+
+The **Request priority LinkedIn topic** action now attempts to prepare a saved LinkedIn draft automatically with Google's free-tier Gemini API (subject to model availability and quotas). No paid OpenAI API key is required.
+
+**One-time setup:** Create an API key at https://aistudio.google.com/apikey in a **free-tier project without paid billing**. Save it under GitHub → Settings → Secrets and variables → Actions → New repository secret as `GEMINI_API_KEY`. Never paste your key into a topic field, a commit, or a public issue.
+
+Then run **Actions → Request priority LinkedIn topic** with a **verified official source URL** and the topic/angle. The workflow:
+1. saves your request under `queue/topic_requests/`;
+2. reads the supplied official webpage with URL context;
+3. prepares a LinkedIn caption and six-slide V3 carousel;
+4. renders the PDF and saves `queue/drafts/<request-id>.json`;
+5. uploads a `linkedin-post-preview` artifact and selects the new draft as latest only if another `ready` post isn't already selected.
+
+No LinkedIn publication is attempted. **You must inspect the sources, caption and all six slides before manually publishing.** A generated draft is not a guarantee that every claim is correct.
+
+If the source is missing, the domain is not in `config/official_sources.json`, the Gemini key/quota is unavailable, or webpage retrieval fails, the workflow records a request status such as `needs_source`, `needs_configuration` or `needs_review` instead of inventing content. Free-tier availability and quotas can change. Do not enable billing if you want to ensure there are no API charges.
+
+For a topic you already requested, run **Actions → Prepare existing topic request (free tier)** and enter the request's filename (including `.json`). A request filename is **not** a draft ID until preparation succeeds. Refer to the resulting `draft_id` inside the updated request JSON.
+
+---
+
 ## Flexible manual workflow (new)
 
 **There is no daily publishing limit or posting schedule.** Prepare, preview, skip, or publish whenever you choose. Keep more than one draft without overwriting an existing ready post.
