@@ -6,6 +6,53 @@ Built and maintained by **[Wajahat Naqvi](https://github.com/wajahatalinaqvi)** 
 
 [Portfolio](https://wajahatalinaqvi.github.io/) · [GitHub Profile](https://github.com/wajahatalinaqvi) · [LinkedIn](https://www.linkedin.com/in/wajahatnaqvi-developer/)
 
+## Flexible manual workflow (new)
+
+**There is no daily publishing limit or posting schedule.** Prepare, preview, skip, or publish whenever you choose. Keep more than one draft without overwriting an existing ready post.
+
+### 1. Request your own topic (highest editorial priority)
+
+Open **Actions → Request priority LinkedIn topic → Run workflow**. Enter a topic, optional primary-source URL, and the angle you want. For example: "OpenAI DOTS: developer implications."
+
+This saves a request under `queue/topic_requests/`. It **does not** invent facts, produce a researched post, or publish by itself. A researcher/developer must verify official sources and prepare a complete draft. Explicit user requests take priority for editorial consideration; fact-checking still applies.
+
+### 2. Import a prepared draft
+
+When a complete source-verified JSON post is ready, save it as `queue/drafts/<post-id>.json` on `main` or run the following locally:
+
+```powershell
+.venv\Scripts\python.exe src\drafts.py import path\to\post.json
+.venv\Scripts\python.exe src\drafts.py list
+```
+
+Each saved draft has its own stable `id`. It must have `status: "ready"`, `caption`, `source_url`, and a supported format. Editing `queue/drafts/<post-id>.json` lets you revise the caption/slides and preview the updated draft. The research preparation script also archives new selected candidates into this directory, protecting an existing ready post.
+
+To select a saved draft as the legacy current queue item, run **Actions → Select LinkedIn draft** and enter its `post_id`. This preserves any displaced ready draft. Alternatively run:
+
+```powershell
+.venv\Scripts\python.exe src\drafts.py select <post-id>
+```
+
+### 3. Preview any post whenever you want
+
+Open **Actions → Preview prepared LinkedIn post → Run workflow**. Enter `post_id` to preview any saved draft, including an already-published or skipped item. Leave it blank to preview `queue/latest.json`.
+
+The workflow generates `linkedin-post-preview` (for document posts, a rendered PDF plus summary; for text/image, a summary). Published posts are **previewable without becoming publishable again**.
+
+### 4. Publish only the post you select
+
+Open **Actions → Publish approved LinkedIn post → Run workflow**. Enter the saved `post_id`, then type **exactly** `PUBLISH`. Leave `post_id` blank to use `queue/latest.json`. The publish action refuses previously published/skipped posts, checks `data/history.json` for duplicates, and updates the selected draft and matching latest queue state after successful API publication.
+
+You may publish more than one **different, reviewed** post per day. There is no automated engagement or auto-publishing. Keep your GitHub Actions credentials private.
+
+### 5. Skip selected drafts
+
+Run **Actions → Skip current LinkedIn post**, optionally enter `post_id`, and confirm `SKIP`. It records the decision without affecting other drafts.
+
+**Safety:** never edit a published post's status back to `ready` to force a repost. Use a genuinely new, independently verified story and unique ID. Actions run sequentially to avoid overlapping publish/skip/select operations.
+
+---
+
 ## How it works
 
 ```text
@@ -200,11 +247,11 @@ If nothing is strong enough, do not create filler.
 
 ### 2. Preview
 
-The **Preview prepared LinkedIn post** workflow runs automatically when `queue/latest.json` changes on `main`, and it can also be run manually.
+The **Preview prepared LinkedIn post** workflow runs automatically when `queue/latest.json` changes on `main`, and it can also be run manually with an optional saved `post_id`.
 
 For a document post it:
 
-1. reads the ready queue item;
+1. reads the selected saved post (including previously published items);
 2. renders the carousel;
 3. validates the generated document;
 4. uploads the document preview artifact;
