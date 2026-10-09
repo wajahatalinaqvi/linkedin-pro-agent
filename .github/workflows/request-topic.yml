@@ -1,0 +1,47 @@
+name: Request priority LinkedIn topic
+
+on:
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: "Topic to prioritize for research"
+        required: true
+        type: string
+      source_url:
+        description: "Optional official source URL"
+        required: false
+        type: string
+      notes:
+        description: "Optional angle or instructions"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: linkedin-content-decision
+  cancel-in-progress: false
+
+jobs:
+  request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Save request
+        env:
+          TOPIC: ${{ inputs.topic }}
+          SOURCE_URL: ${{ inputs.source_url }}
+          NOTES: ${{ inputs.notes }}
+        run: python src/request_topic.py --topic "$TOPIC" --source-url "$SOURCE_URL" --notes "$NOTES"
+      - name: Commit request
+        run: |
+          git config user.name "linkedin-content-agent[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add queue/topic_requests/
+          git diff --cached --quiet && exit 0
+          git commit -m "content: request priority LinkedIn topic"
+          git push
