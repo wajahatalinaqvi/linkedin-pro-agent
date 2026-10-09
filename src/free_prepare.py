@@ -19,7 +19,7 @@ from carousel.render_pdf import render_carousel_pdf
 from post_store import ROOT, LATEST, create_draft, draft_path, load_json, save_json
 
 REQUEST_DIR = ROOT / "queue" / "topic_requests"
-MODEL = "gemini-2.5-flash"
+MODEL = "gemini-3.5-flash-lite"
 LAYOUTS = ["cover", "cards", "comparison", "cards", "timeline", "closing"]
 
 
