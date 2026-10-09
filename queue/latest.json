@@ -4,7 +4,7 @@
   "topic": "Design your idea with Claude",
   "category": "Product Update",
   "format": "document",
-  "caption": "Turn text prompts into visual assets, mockups, and UI components instantly with Claude Design. Accessible right inside your chat, it bridges the gap from initial concept to production-ready code. Try it today! #ClaudeDesign #UIUX #ProductDesign #AI",
+  "caption": "From an idea to a working design draft—without starting from a blank canvas.\n\nClaude Design is Anthropic's beta workspace for creating prototypes, wireframes, pitch decks, and visual assets from a description.\n\nWhat caught my attention is the workflow: bring in an existing design system from GitHub or a local codebase, adjust elements directly, then hand the work over to Claude Code or connected tools.\n\nFor product teams and developers, that could shorten the journey from a rough concept to something people can review and build on. It doesn't replace thoughtful design decisions, but it can make early exploration faster.\n\nClaude Design is currently listed for Pro, Max, Team, and Enterprise plans.\n\nSource: https://claude.com/product/design\n\n#ClaudeDesign #ProductDesign #UXDesign #AITools",
   "source_url": "https://claude.com/product/design",
   "sources": [
     "https://claude.com/product/design"
@@ -24,105 +24,105 @@
       "slides": [
         {
           "type": "cover",
-          "eyebrow": "New Capability",
-          "title": "Design Your Idea with Claude",
-          "subtitle": "Generate visual assets, mockups, and UI components from descriptive text prompts."
+          "eyebrow": "ANTHROPIC · CLAUDE DESIGN",
+          "title": "Your idea, designed with Claude",
+          "subtitle": "From a description to prototypes, decks, wireframes and visual assets."
         },
         {
           "type": "cards",
-          "eyebrow": "Core Features",
-          "title": "What Claude Design Does",
+          "eyebrow": "WHAT YOU CAN CREATE",
+          "title": "From first draft to feedback",
           "cards": [
             [
               "01",
-              "Brand Integration",
-              "Import design systems from GitHub or local codebases to build with real components."
+              "Interactive prototypes",
+              "Turn static mockups into shareable prototypes you can test."
             ],
             [
               "02",
-              "Editing Controls",
-              "Make fine-grained adjustments using comments, text editing, and visual sliders."
+              "On-brand output",
+              "Import design systems from GitHub, design files or a local codebase."
             ],
             [
               "03",
-              "Flexible Exports",
-              "Download outputs into PDF, HTML, PowerPoint, Word, and Excel formats."
+              "Direct refinement",
+              "Edit text, comment on elements and adjust layouts, spacing or color."
             ]
           ]
         },
         {
           "type": "comparison",
-          "eyebrow": "Workflow Shift",
-          "title": "Design to Production",
+          "eyebrow": "WORKFLOW",
+          "title": "Shorter path from concept to review",
           "left": {
-            "label": "Traditional Design",
-            "title": "Manual Handoffs",
+            "label": "TYPICAL PROCESS",
+            "title": "Separate handoffs",
             "items": [
-              "Static mockups without code context",
-              "Siloed tools separate from logic",
-              "Time-consuming manual migration"
+              "Sketch an early concept",
+              "Translate the brand system",
+              "Share files across tools"
             ]
           },
           "right": {
-            "label": "With Claude",
-            "title": "Integrated Workflow",
+            "label": "CLAUDE DESIGN",
+            "title": "Connected exploration",
             "items": [
-              "React systems mapped to code",
-              "Developer tools like Claude Code",
-              "Direct export to external apps"
+              "Generate a design draft",
+              "Work with real brand components",
+              "Export or hand off to Claude Code"
             ]
           }
         },
         {
           "type": "cards",
-          "eyebrow": "Developer Impact",
-          "title": "Built for Builders",
+          "eyebrow": "FOR BUILDERS",
+          "title": "Bring design closer to development",
           "cards": [
             [
               "01",
-              "Code Alignment",
-              "Mockups and frontend components align directly with your production code."
+              "Claude Code handoff",
+              "Work between Claude Design and Claude Code with /design and /design-sync."
             ],
             [
               "02",
-              "Developer Environments",
-              "Use terminal commands to pull in design systems seamlessly."
+              "Useful exports",
+              "Export to PDF, PowerPoint or HTML, depending on the output."
             ],
             [
               "03",
-              "Platform Sync",
-              "Connect with tools like Vercel, Replit, Lovable, and more."
+              "Connected destinations",
+              "Send work to supported apps such as Canva, Replit and Vercel."
             ]
           ]
         },
         {
           "type": "timeline",
-          "eyebrow": "Availability",
-          "title": "Access and Rollout",
+          "eyebrow": "GETTING STARTED",
+          "title": "What to know before trying it",
           "events": [
             [
               "01",
-              "All Plans",
-              "Included across all plans, including the Free tier with usage limits."
+              "Check availability",
+              "Claude Design beta is listed for Pro, Max, Team and Enterprise plans."
             ],
             [
               "02",
-              "Any Conversation",
-              "Accessible inside any conversation with Claude and the Artifacts tab."
+              "Describe the first draft",
+              "Start with a prototype, deck, wireframe or one-pager."
             ],
             [
               "03",
-              "Migration Window",
-              "Standalone interface remains open until December 14, 2026."
+              "Refine and hand off",
+              "Adjust the design, then export or continue in your tools."
             ]
           ]
         },
         {
           "type": "closing",
-          "eyebrow": "Get Started",
-          "title": "Bring Your Vision to Life",
-          "subtitle": "Start creating professional assets and mockups directly inside Claude.",
-          "source": "https://claude.com/product/design"
+          "eyebrow": "THE TAKEAWAY",
+          "title": "Design faster. Keep the judgment.",
+          "subtitle": "Use AI to explore the first draft, then refine the details with your team.",
+          "source": "claude.com/product/design"
         }
       ]
     }
