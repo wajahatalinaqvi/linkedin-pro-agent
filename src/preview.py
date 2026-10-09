@@ -4,6 +4,7 @@ import argparse
 import json
 import os
 from pathlib import Path
+from post_store import load_post
 
 ROOT = Path(__file__).resolve().parents[1]
 QUEUE_PATH = ROOT / "queue" / "latest.json"
@@ -73,18 +74,19 @@ def write_github_outputs(values: dict[str, str], output_file: str) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Prepare metadata for a read-only LinkedIn preview artifact.")
+    parser.add_argument("--post-id", default="", help="Optional saved draft ID; any status can be previewed.")
     parser.add_argument("--summary", default="generated/preview-summary.txt")
     parser.add_argument("--github-output", default=os.getenv("GITHUB_OUTPUT", ""))
     args = parser.parse_args()
 
-    post = load_queue()
+    post, _ = load_post(args.post_id)
     status = str(post.get("status", "idle")).strip().lower()
     post_format = str(post.get("format", "text")).strip().lower()
     outputs = {"ready": "false", "format": post_format, "document_path": ""}
 
-    if status != "ready":
+    if status not in {"ready", "published", "skipped"} or not post.get("id"):
         write_github_outputs(outputs, args.github_output)
-        print(f"PREVIEW SKIPPED: queue status is {status!r}; expected 'ready'.")
+        print(f"PREVIEW SKIPPED: no complete saved post is selected (status={status!r}).")
         return 0
 
     summary = Path(args.summary)
