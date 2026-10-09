@@ -150,6 +150,16 @@ def main() -> int:
     load_dotenv(ROOT / ".env")
     post, selected_path = load_post(args.post_id)
     history = load_json(HISTORY_PATH, [])
+    if args.render_only:
+        if post.get("format", "text") != "document":
+            print("NOOP: --render-only only applies to document posts.")
+            return 0
+        if not post.get("id") or not (post.get("document") or {}):
+            raise ValueError("A saved document post is required for rendering.")
+        path, _ = prepare_document(post)
+        print(f"RENDERED: {path}")
+        return 0
+
     status = validate_queue(post)
     if status in NOOP_STATUSES:
         print(f"NOOP: queue status is {status!r}.")
