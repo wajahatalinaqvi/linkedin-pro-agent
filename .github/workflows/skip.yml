@@ -3,6 +3,10 @@ name: Skip current LinkedIn post
 on:
   workflow_dispatch:
     inputs:
+      post_id:
+        description: "Saved draft ID (leave blank for latest)"
+        required: false
+        type: string
       confirm:
         description: "Type SKIP to skip the current ready post"
         required: true
@@ -31,17 +35,19 @@ jobs:
           python-version: "3.12"
 
       - name: Skip current ready post
-        run: python src/skip.py --confirm SKIP
+        env:
+          POST_ID: ${{ inputs.post_id }}
+        run: python src/skip.py --confirm SKIP --post-id "$POST_ID"
 
       - name: Persist skip decision
         run: |
-          if git diff --quiet -- data/skipped.json queue/latest.json; then
+          git add data/skipped.json queue/latest.json queue/drafts/
+          if git diff --cached --quiet; then
             echo "No state changes to commit."
             exit 0
           fi
 
           git config user.name "linkedin-content-agent[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/skipped.json queue/latest.json
           git commit -m "chore: record skipped LinkedIn post"
           git push
