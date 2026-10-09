@@ -8,6 +8,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 from carousel.render_pdf import render_carousel_pdf
+from post_store import create_draft, load_json as read_post_json, LATEST
 
 ROOT = Path(__file__).resolve().parents[1]
 STRATEGY_PATH = ROOT / "config" / "content_strategy.json"
@@ -245,7 +246,7 @@ def prepare(candidates: list[dict], now: datetime) -> dict | None:
 
     if not eligible:
         save_json(BACKLOG_PATH, [])
-        save_json(QUEUE_PATH, {"status": "idle", "reason": "No non-duplicate candidate scored 60 or higher.", "prepared_at": now.isoformat()})
+        # Never replace existing prepared/published posts with a filler idle entry.
         return None
 
     selected = eligible[0]
@@ -262,7 +263,10 @@ def prepare(candidates: list[dict], now: datetime) -> dict | None:
         preview = PREVIEW_DIR / f"{post['id']}.pdf"
         render_carousel_pdf(post["document"]["carousel"], preview)
         post["document"]["preview_path"] = str(preview.relative_to(ROOT)).replace("\\", "/")
-    save_json(QUEUE_PATH, post)
+    # Save each post independently so preparation can run multiple times per day.
+    # Retain an existing ready queue item rather than silently overwriting it.
+    current = read_post_json(LATEST, {}) or {}
+    create_draft(post, select=current.get("status") != "ready")
     return post
 
 
