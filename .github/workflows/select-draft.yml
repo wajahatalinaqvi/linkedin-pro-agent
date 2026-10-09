@@ -1,0 +1,37 @@
+name: Select LinkedIn draft
+
+on:
+  workflow_dispatch:
+    inputs:
+      post_id:
+        description: "Saved draft ID from queue/drafts/"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: linkedin-content-decision
+  cancel-in-progress: false
+
+jobs:
+  select:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Select draft
+        env:
+          POST_ID: ${{ inputs.post_id }}
+        run: python src/drafts.py select "$POST_ID"
+      - name: Persist selection
+        run: |
+          git config user.name "linkedin-content-agent[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add queue/latest.json queue/drafts/
+          git diff --cached --quiet && exit 0
+          git commit -m "content: select LinkedIn draft"
+          git push
