@@ -58,18 +58,9 @@ def main() -> int:
         skipped.append(entry)
         save_json(SKIPPED_PATH, skipped)
 
-    save_post(
-        {
-            "status": "skipped",
-            "id": entry["id"],
-            "topic": entry["topic"],
-            "category": entry["category"],
-            "priority_score": entry["priority_score"],
-            "source_url": entry["source_url"],
-            "skipped_at": entry["skipped_at"],
-        },
-        selected_path,
-    )
+    queue["status"] = "skipped"
+    queue["skipped_at"] = entry["skipped_at"]
+    save_post(queue, selected_path)
 
     print(f"SKIPPED: {entry['id']} — {entry['topic']}")
     return 0
