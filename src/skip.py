@@ -4,6 +4,7 @@ import argparse
 import json
 from datetime import datetime, timezone
 from pathlib import Path
+from post_store import load_post, save_post
 
 ROOT = Path(__file__).resolve().parents[1]
 QUEUE_PATH = ROOT / "queue" / "latest.json"
@@ -25,13 +26,14 @@ def save_json(path: Path, value) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Skip the current ready post without publishing it.")
+    parser.add_argument("--post-id", default="", help="Optional draft ID.")
     parser.add_argument("--confirm", required=True, help="Must be SKIP")
     args = parser.parse_args()
 
     if args.confirm != "SKIP":
         raise SystemExit("Confirmation failed. Re-run with --confirm SKIP.")
 
-    queue = load_json(QUEUE_PATH, {})
+    queue, selected_path = load_post(args.post_id)
     status = str(queue.get("status", "")).strip().lower()
     if status != "ready":
         print(f"NOOP: queue status is {status!r}; expected 'ready'.")
@@ -56,8 +58,7 @@ def main() -> int:
         skipped.append(entry)
         save_json(SKIPPED_PATH, skipped)
 
-    save_json(
-        QUEUE_PATH,
+    save_post(
         {
             "status": "skipped",
             "id": entry["id"],
@@ -67,6 +68,7 @@ def main() -> int:
             "source_url": entry["source_url"],
             "skipped_at": entry["skipped_at"],
         },
+        selected_path,
     )
 
     print(f"SKIPPED: {entry['id']} — {entry['topic']}")
