@@ -8,6 +8,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 from carousel.render_pdf import render_carousel_pdf
+from carousel.art_direction import set_art_direction
 from post_store import create_draft, load_json as read_post_json, LATEST
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -260,6 +261,7 @@ def prepare(candidates: list[dict], now: datetime) -> dict | None:
 
     post = build_post(selected, int(selected["priority_score"]), now)
     if post["format"] == "document":
+        set_art_direction(post["document"]["carousel"], post["id"], ROOT / "queue" / "drafts")
         preview = PREVIEW_DIR / f"{post['id']}.pdf"
         render_carousel_pdf(post["document"]["carousel"], preview)
         post["document"]["preview_path"] = str(preview.relative_to(ROOT)).replace("\\", "/")
