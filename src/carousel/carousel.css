@@ -82,3 +82,102 @@ html, body { margin: 0; padding: 0; background: #20242d; font-family: var(--text
 .theme-shopify.layout-cover { background: linear-gradient(145deg, #0b2416, #153c25); }.theme-shopify .cover-orbit { border-radius: 34% 66% 58% 42%; transform: rotate(18deg); }.theme-shopify .product-card { transform: translateY(12px); }.theme-shopify .product-card:nth-child(2) { transform: translateY(-12px); }
 .theme-openai.layout-cover, .theme-openai.layout-closing { background: radial-gradient(circle at 90% 86%, rgba(74,88,210,.28), transparent 34%), var(--ink); }
 @media print { html, body { background: transparent; } }
+
+
+/* Fresh visual directions (opt-in on newly prepared posts only). */
+.art-editorial { --ink:#25221c;--paper:#f7f0e3;--surface:#fffaf0;--accent:#aa462b;--accent-2:#c7a35a;--accent-3:#593e31;--muted:#6d6256;--display:Georgia,"Times New Roman",serif; }
+.art-editorial.layout-cover { background:#f7f0e3;color:#25221c; }
+.art-editorial.layout-cover .cover-copy { margin-top:110px; border-top:8px double #25221c; padding-top:60px; }
+.art-editorial.layout-cover .display { font:700 105px/1.04 Georgia,serif;letter-spacing:-.065em;max-width:880px; }
+.art-editorial .cover-grid,.art-editorial .cover-orbit,.art-editorial .cover-mark {display:none;}
+.art-editorial.layout-cover::before{content:"THE PRODUCT BRIEF  /  EDITION 01";position:absolute;left:80px;top:78px;font:700 17px Georgia,serif;letter-spacing:.18em;}
+.art-editorial.layout-cover .lead,.art-editorial.layout-cover .brand-lockup span{color:#675b4b;}
+.art-editorial .info-card {border-radius:0;border-top:6px solid var(--accent);box-shadow:none;}
+.art-editorial.layout-closing{background:#f7f0e3;color:#25221c;}
+.art-editorial .closing-glow{display:none;}
+
+.art-neon {--ink:#08051c;--paper:#eeefff;--surface:#fff;--accent:#f84ab4;--accent-2:#17ebc9;--accent-3:#9e76ff;--display:"Segoe UI",Arial,sans-serif;}
+.art-neon.layout-cover {background:linear-gradient(135deg,#090421 0%,#180849 53%,#411066 100%);}
+.art-neon.layout-cover::before{content:"";position:absolute;inset:240px -140px 280px 440px;transform:rotate(-25deg);border:60px solid rgba(23,235,201,.23);box-shadow:0 0 95px rgba(248,74,180,.19);}
+.art-neon.layout-cover .cover-copy{margin:265px 0 0;transform:rotate(-4deg);}
+.art-neon.layout-cover .display{font-size:105px;text-transform:uppercase;max-width:950px;letter-spacing:-.085em;}
+.art-neon .cover-grid,.art-neon .cover-orbit,.art-neon .cover-mark{display:none;}
+.art-neon .info-card{border-radius:12px;box-shadow:10px 10px 0 var(--accent);}
+.art-neon.layout-closing{background:linear-gradient(145deg,#0a0820,#241052);}
+
+.art-swiss {--ink:#111;--paper:#f5f5f1;--surface:#fff;--accent:#df3524;--accent-2:#111;--accent-3:#df3524;--display:Arial,Helvetica,sans-serif;}
+.art-swiss.layout-cover{background:#f5f5f1;color:#111;}
+.art-swiss.layout-cover::before{content:"01 / INSIGHT";position:absolute;top:90px;left:80px;font:700 22px Arial;letter-spacing:.05em;}
+.art-swiss.layout-cover::after{content:"";position:absolute;right:0;top:0;width:220px;height:340px;background:#df3524;}
+.art-swiss .cover-grid,.art-swiss .cover-orbit,.art-swiss .cover-mark{display:none;}
+.art-swiss.layout-cover .cover-copy{margin-top:245px;border-left:15px solid #df3524;padding-left:44px;}
+.art-swiss.layout-cover .display{font:900 118px/.91 Arial,sans-serif;max-width:815px;letter-spacing:-.085em;}
+.art-swiss.layout-cover .lead,.art-swiss.layout-cover .brand-lockup span{color:#555;}
+.art-swiss .info-card,.art-swiss .compare-panel{border-radius:0;box-shadow:none;}
+.art-swiss.layout-closing{background:#df3524;color:#fff;}
+
+.art-collage {--ink:#283c45;--paper:#fff2dd;--surface:#fff9ec;--accent:#ed673f;--accent-2:#397e7c;--accent-3:#ad4f6c;--display:Georgia,serif;}
+.art-collage.layout-cover{background:#fff2dd;color:#283c45;}
+.art-collage.layout-cover::before{content:"";position:absolute;width:670px;height:700px;right:-320px;top:190px;background:#ef8c69;transform:rotate(20deg);}
+.art-collage.layout-cover::after{content:"";position:absolute;width:380px;height:410px;right:-120px;bottom:70px;background:#5e9891;border-radius:48% 52% 30% 70%;transform:rotate(-17deg);}
+.art-collage .cover-grid,.art-collage .cover-orbit,.art-collage .cover-mark{display:none;}
+.art-collage.layout-cover .cover-copy{margin-top:180px;background:#fff9ec;padding:45px 48px 60px;transform:rotate(-3deg);max-width:830px;box-shadow:22px 23px 0 #dfcaad;}
+.art-collage.layout-cover .display{font:700 93px/1 Georgia,serif;}
+.art-collage.layout-cover .lead,.art-collage.layout-cover .brand-lockup span{color:#46616a;}
+.art-collage .info-card{border-radius:35px 5px 40px 8px;box-shadow:none;}
+.art-collage.layout-closing{background:#283c45;}
+
+.art-blueprint{--ink:#072d53;--paper:#e9f4fa;--surface:#fff;--accent:#227bc6;--accent-2:#66d6ee;--accent-3:#0b4b8a;--display:Arial,sans-serif;}
+.art-blueprint.layout-cover{background-color:#07365f;background-image:linear-gradient(rgba(116,202,248,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(116,202,248,.09) 1px,transparent 1px);background-size:40px 40px;}
+.art-blueprint.layout-cover::before{content:"DESIGN / SYSTEM / 001";position:absolute;top:92px;left:80px;border:1px solid rgba(198,230,255,.5);padding:19px;color:#bbd9f3;letter-spacing:.22em;font:700 17px Consolas,monospace;}
+.art-blueprint.layout-cover::after{content:"+";position:absolute;right:115px;top:310px;color:#5be6ef;font:300 420px/.9 Consolas,monospace;opacity:.3;}
+.art-blueprint .cover-grid,.art-blueprint .cover-orbit,.art-blueprint .cover-mark{display:none;}
+.art-blueprint.layout-cover .cover-copy{margin-top:330px;}
+.art-blueprint.layout-cover .display{font:800 96px/1 Arial,sans-serif;}
+.art-blueprint .info-card{border:2px solid #89c9e0;border-radius:4px;box-shadow:none;}
+.art-blueprint.layout-closing{background:#07365f;}
+
+.art-gradient{--ink:#292250;--paper:#f2edff;--surface:#fff;--accent:#6f43ed;--accent-2:#fc9b5c;--accent-3:#e54ca5;--display:"Segoe UI",Arial,sans-serif;}
+.art-gradient.layout-cover{background:linear-gradient(135deg,#f7ad68 0%,#ec80b0 44%,#9775ed 100%);color:#28194d;}
+.art-gradient.layout-cover::before{content:"";position:absolute;width:700px;height:700px;right:-280px;top:65px;border-radius:50%;background:rgba(255,255,255,.3);}
+.art-gradient.layout-cover::after{content:"";position:absolute;width:300px;height:300px;right:115px;top:180px;background:rgba(255,255,255,.4);border-radius:35%;transform:rotate(33deg);}
+.art-gradient .cover-grid,.art-gradient .cover-orbit,.art-gradient .cover-mark{display:none;}
+.art-gradient.layout-cover .cover-copy{margin-top:460px;}
+.art-gradient.layout-cover .display{font-size:101px;max-width:900px;letter-spacing:-.07em;}
+.art-gradient.layout-cover .eyebrow,.art-gradient.layout-cover .lead,.art-gradient.layout-cover .brand-lockup span{color:#302059;}
+.art-gradient .info-card{background:linear-gradient(130deg,#fff,#f2e9ff);border-radius:40px;}
+.art-gradient.layout-closing{background:linear-gradient(135deg,#5d47a7,#e5729b);}
+
+.art-brutalist{--ink:#101010;--paper:#fffdf5;--surface:#fff;--accent:#fa392e;--accent-2:#f3dd2f;--accent-3:#101010;--display:Impact,"Arial Black",Arial,sans-serif;}
+.art-brutalist.layout-cover{background:#f4e637;color:#101010;}
+.art-brutalist.layout-cover::before{content:"BREAKING DOWN THE CHANGE";position:absolute;top:85px;left:0;right:0;background:#101010;color:#fff;padding:25px 80px;font:900 24px Arial;letter-spacing:.12em;}
+.art-brutalist.layout-cover .cover-copy{margin-top:310px;transform:rotate(-2deg);}
+.art-brutalist.layout-cover .display{font:900 112px/.95 Impact,"Arial Black",sans-serif;text-transform:uppercase;letter-spacing:-.035em;}
+.art-brutalist.layout-cover .lead,.art-brutalist.layout-cover .brand-lockup span{color:#222;}
+.art-brutalist .cover-grid,.art-brutalist .cover-orbit,.art-brutalist .cover-mark{display:none;}
+.art-brutalist .info-card{border:4px solid #101010;border-radius:0;box-shadow:12px 12px 0 #101010;}
+.art-brutalist.layout-closing{background:#101010;}
+
+.art-journal{--ink:#202426;--paper:#faf9f4;--surface:#fff;--accent:#46625e;--accent-2:#9aaca0;--accent-3:#666;--display:Georgia,serif;}
+.art-journal.layout-cover{background:#faf9f4;color:#202426;}
+.art-journal.layout-cover::before{content:"FIELD NOTES";position:absolute;left:80px;top:92px;color:#46625e;font:italic 38px Georgia,serif;border-bottom:1px solid #9ba59c;padding-bottom:24px;width:830px;}
+.art-journal .cover-grid,.art-journal .cover-orbit,.art-journal .cover-mark{display:none;}
+.art-journal.layout-cover .cover-copy{margin-top:260px;}
+.art-journal.layout-cover .display{font:400 100px/1.12 Georgia,serif;letter-spacing:-.05em;}
+.art-journal.layout-cover .lead,.art-journal.layout-cover .brand-lockup span{color:#57605c;}
+.art-journal .info-card{border-radius:0;border-left:4px solid #46625e;box-shadow:none;}
+.art-journal.layout-closing{background:#faf9f4;color:#202426;}
+.art-journal .closing-glow{display:none;}
+
+/* Readable light covers: do not inherit forced white-on-dark legibility. */
+.art-editorial.layout-cover .cover-footer,.art-swiss.layout-cover .cover-footer,.art-collage.layout-cover .cover-footer,
+.art-gradient.layout-cover .cover-footer,.art-brutalist.layout-cover .cover-footer,.art-journal.layout-cover .cover-footer{color:var(--ink);}
+.art-editorial.layout-cover .page-number,.art-swiss.layout-cover .page-number,.art-collage.layout-cover .page-number,
+.art-gradient.layout-cover .page-number,.art-brutalist.layout-cover .page-number,.art-journal.layout-cover .page-number{color:var(--ink);}
+.art-editorial.layout-cover .eyebrow,.art-swiss.layout-cover .eyebrow,.art-collage.layout-cover .eyebrow,
+.art-gradient.layout-cover .eyebrow,.art-brutalist.layout-cover .eyebrow,.art-journal.layout-cover .eyebrow{color:var(--accent);}
+.art-editorial.layout-cover .lead,.art-swiss.layout-cover .lead,.art-collage.layout-cover .lead,
+.art-gradient.layout-cover .lead,.art-brutalist.layout-cover .lead,.art-journal.layout-cover .lead{opacity:1;}
+.art-editorial.layout-cover .brand-lockup,.art-swiss.layout-cover .brand-lockup,.art-collage.layout-cover .brand-lockup,
+.art-gradient.layout-cover .brand-lockup,.art-brutalist.layout-cover .brand-lockup,.art-journal.layout-cover .brand-lockup{color:var(--ink);}
+.art-editorial.layout-closing .source-line,.art-journal.layout-closing .source-line{color:#59605b;border-color:#8d9188;}
