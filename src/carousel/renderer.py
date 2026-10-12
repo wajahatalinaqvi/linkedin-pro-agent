@@ -313,7 +313,10 @@ def render_slide(slide: dict, data: dict, number: int) -> str:
     content = renderers[layout](slide)
     theme = _theme(data)
     tone = "dark" if layout in {"cover", "code", "network", "architecture", "quote", "closing"} else "light"
-    return f'<section class="slide theme-{theme} layout-{layout} {tone}"><div class="slide-inner">{content}</div>{_brand(data, number)}</section>'
+    direction = str(data.get("art_direction") or "classic").lower()
+    if direction not in {"classic", "editorial", "neon", "swiss", "collage", "blueprint", "gradient", "brutalist", "journal"}:
+        raise ValueError("Unknown carousel art direction.")
+    return f'<section class="slide theme-{theme} art-{direction} layout-{layout} {tone}"><div class="slide-inner">{content}</div>{_brand(data, number)}</section>'
 
 
 def render_html(data: dict) -> str:
