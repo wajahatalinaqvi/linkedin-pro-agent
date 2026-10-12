@@ -16,6 +16,7 @@ from urllib.parse import urlparse
 import requests
 
 from carousel.render_pdf import render_carousel_pdf
+from carousel.art_direction import set_art_direction
 from post_store import ROOT, LATEST, create_draft, draft_path, load_json, save_json
 
 REQUEST_DIR = ROOT / "queue" / "topic_requests"
@@ -150,6 +151,8 @@ def prepare(request_name: str) -> tuple[str, str]:
         history = load_json(ROOT / "data" / "history.json", []) or []
         if any(x.get("id") == post_id or x.get("source_url") == post["source_url"] for x in history):
             raise ValueError("Story already published. No duplicate draft created.")
+        direction = set_art_direction(post["document"]["carousel"], post_id, ROOT / "queue" / "drafts")
+        print(f"ART DIRECTION: {direction}")
         destination = ROOT / "generated" / f"{post_id}.pdf"
         render_carousel_pdf(post["document"]["carousel"], destination)
         latest = load_json(LATEST, {}) or {}
