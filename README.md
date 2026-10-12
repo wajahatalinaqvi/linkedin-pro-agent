@@ -27,6 +27,16 @@ For a topic you already requested, run **Actions → Prepare existing topic requ
 
 ---
 
+## Distinct carousel designs (new)
+
+New six-slide carousels now save a deterministic `document.carousel.art_direction` instead of always reusing the same branded cover. The renderer includes **eight distinct visual directions**: editorial, neon, Swiss grid, collage, blueprint, gradient poster, brutalist, and journal.
+
+Automatic and manual preparation both rotate designs using saved draft history and avoid repeating the immediately previous direction. Each post's design choice is embedded in its draft JSON, so rerendering does not unexpectedly swap the cover. You may also set `art_direction` explicitly to one of those names in a new draft to choose a specific design.
+
+The **existing published carousels are preserved**: legacy documents without an art-direction field render using the classic layout. This changes future drafts, not documents already published to LinkedIn. Design variety is automatic; source checking and manual `PUBLISH` approval remain mandatory.
+
+---
+
 ## Flexible manual workflow (new)
 
 **There is no daily publishing limit or posting schedule.** Prepare, preview, skip, or publish whenever you choose. Keep more than one draft without overwriting an existing ready post.
