@@ -162,12 +162,21 @@ def main() -> int:
 
     status = validate_queue(post)
     if status in NOOP_STATUSES:
-        print(f"NOOP: queue status is {status!r}.")
+        message = (
+            f"NOT PUBLISHED: selected post is already {status!r}. "
+            "Prepare a new topic, or supply the post_id of a different ready draft."
+        )
+        if env_bool("AUTO_PUBLISH", False) or args.force:
+            raise ValueError(message)
+        print(message)
         return 0
 
     reason = duplicate_reason(post, history)
     if reason:
-        print(f"SKIP: {reason}")
+        message = f"NOT PUBLISHED: duplicate post. {reason}. Choose a new, unique story."
+        if env_bool("AUTO_PUBLISH", False) or args.force:
+            raise ValueError(message)
+        print(message)
         return 0
 
     post_format = str(post.get("format", "text")).lower()
