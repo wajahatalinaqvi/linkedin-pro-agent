@@ -23,6 +23,7 @@ jobs:
         working-directory: apps/api
         env:
           JWT_SECRET: test-run-not-for-production-123456789
+          PYTHONPATH: .
         run: pytest -q tests
       - name: Check Alembic offline migration
         working-directory: apps/api
