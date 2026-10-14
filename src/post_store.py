@@ -82,7 +82,7 @@ def create_draft(post: dict, *, select: bool = False) -> Path:
     return path
 
 
-def select_draft(post_id: str) -> None:
+def select_draft(post_id: str, *, replace_ready: bool = True) -> None:
     """Select a saved post and preserve any displaced active ready post."""
     post, source = load_post(post_id)
     if source == LATEST:
@@ -93,6 +93,8 @@ def select_draft(post_id: str) -> None:
         previous_path = draft_path(old_id)
         if not previous_path.exists():
             save_json(previous_path, current)
+    if current.get("status") == "ready" and current.get("id") != post_id and not replace_ready:
+        return
     save_json(LATEST, post)
 
 
