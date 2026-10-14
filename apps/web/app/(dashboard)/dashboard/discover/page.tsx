@@ -1,0 +1,1 @@
+export default function Discover(){return <><p className="eyebrow">Research</p><h1 className="heading">Discover</h1><div className="card"><h3>Research pipeline: next milestone</h3><p className="muted">Your existing Shopify and GitHub discovery engine will be integrated as tenant-aware background jobs here.</p></div></>}

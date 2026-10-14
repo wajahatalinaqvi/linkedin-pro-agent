@@ -1,0 +1,1 @@
+export default function Calendar(){return <><p className="eyebrow">Publishing workflow</p><h1 className="heading">Content Calendar</h1><div className="card"><h3>Scheduling: planned</h3><p className="muted">No background publishing is enabled in Milestone 1.</p></div></>}

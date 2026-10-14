@@ -1,0 +1,7 @@
+import Link from "next/link";
+import {api} from "../../lib/api";
+export default async function Dashboard(){
+ const me=await api<{email:string,workspaces:{id:string,name:string}[]}>("/api/v1/auth/me");
+ const workspace=me?.workspaces?.[0];const drafts=workspace?await api<{id:string,status:string,title:string}[]>("/api/v1/workspaces/"+workspace.id+"/drafts"):[];
+ return <><div className="head"><div><div className="eyebrow">Workspace overview</div><h1 className="heading">Good to have you here.</h1><p className="muted">{workspace?.name||"Your content studio"} · Your content, organized.</p></div><Link className="button" href="/dashboard/drafts">View drafts</Link></div><section className="grid"><div className="card"><span className="tag">Library</span><h3>Saved drafts</h3><div className="stat">{drafts?.length||0}</div><p className="muted">Your workspace's content</p></div><div className="card"><span className="tag">AI research</span><h3>Coming next</h3><p className="muted">Automatic topic discovery and request priority will be integrated with the existing agent engine.</p></div><div className="card"><span className="tag">LinkedIn</span><h3>Not connected yet</h3><p className="muted">OAuth publishing will follow once multi-user API access is validated.</p></div></section><section className="card" style={{marginTop:24}}><h2>Milestone 1 foundation</h2><p className="muted">Authentication, workspace isolation and the first database-backed draft endpoints are now available. AI generation and publishing remain disabled in this foundation.</p></section></>
+}

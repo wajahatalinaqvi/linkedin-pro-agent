@@ -1,0 +1,45 @@
+name: SaaS foundation checks
+on:
+  push:
+    branches: [saas-development]
+    paths:
+      - 'apps/**'
+      - 'infra/**'
+      - '.github/workflows/saas-ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install API packages
+        run: pip install -r apps/api/requirements.txt
+      - name: Unit and isolation tests
+        working-directory: apps/api
+        env:
+          JWT_SECRET: test-run-not-for-production-123456789
+        run: pytest -q tests
+      - name: Check Alembic offline migration
+        working-directory: apps/api
+        run: alembic upgrade head --sql > /tmp/saas-schema.sql
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install packages
+        working-directory: apps/web
+        run: npm install --no-audit --no-fund
+      - name: Type check
+        working-directory: apps/web
+        run: npm run lint
+      - name: Build
+        working-directory: apps/web
+        run: npm run build

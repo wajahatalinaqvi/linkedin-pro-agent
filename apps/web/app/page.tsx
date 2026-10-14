@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function Home(){return <main className="auth"><p className="eyebrow">LinkedIn Pro Studio</p><h1 className="heading">Create posts worth sharing.</h1><p className="muted">AI-powered research, editable carousels and a publishing workflow designed for professional creators.</p><p><Link className="button" href="/register">Create workspace</Link> &nbsp; <Link href="/login">Sign in</Link></p></main>}
