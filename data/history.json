@@ -60,5 +60,18 @@
     ],
     "linkedin_post_id": "urn:li:ugcPost:7515296344983621634",
     "published_at": "2026-10-12T06:24:36.604844+00:00"
+  },
+  {
+    "id": "auto-2026-10-14-122c473501dd",
+    "topic": "Shopify Carts Update Webhooks",
+    "category": "Developer Updates",
+    "format": "document",
+    "priority_score": 75,
+    "source_url": "https://shopify.dev/changelog/unchanged-carts-no-longer-trigger-carts-update-webhooks",
+    "sources": [
+      "https://shopify.dev/changelog/unchanged-carts-no-longer-trigger-carts-update-webhooks"
+    ],
+    "linkedin_post_id": "urn:li:ugcPost:7516090930156871680",
+    "published_at": "2026-10-14T11:02:00.266837+00:00"
   }
 ]
