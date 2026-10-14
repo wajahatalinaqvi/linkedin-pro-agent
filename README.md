@@ -6,6 +6,20 @@ Built and maintained by **[Wajahat Naqvi](https://github.com/wajahatalinaqvi)** 
 
 [Portfolio](https://wajahatalinaqvi.github.io/) · [GitHub Profile](https://github.com/wajahatalinaqvi) · [LinkedIn](https://www.linkedin.com/in/wajahatnaqvi-developer/)
 
+## Daily automatic research with manual-topic priority
+
+Every day at **11:00 AM Asia/Karachi (06:00 UTC)**, GitHub Actions runs **Daily automatic LinkedIn research** and looks for recent, not-yet-posted developer/ecommerce news from official Shopify and GitHub changelog feeds. It uses the existing free-tier `GEMINI_API_KEY` to read a candidate source, generate a six-slide carousel, and save a PDF and JSON draft. The free tier has quotas; if news, source retrieval, or quota are unavailable, **no filler draft is created**. OpenAI and Anthropic topics can still be submitted manually; automatic discovery currently covers the configured Shopify and GitHub feeds.
+
+**Requested topics always take selection priority:**
+- If you submit a topic **before 11 AM**, the scheduled automatic post is skipped for that calendar day (Pakistan time), even if the requested source needs review.
+- If you submit a topic **after the automatic draft was prepared**, its completed draft replaces the automatic post in `queue/latest.json`. The automatic draft remains saved under `queue/drafts/` for later selection.
+- A failed or source-less requested topic **never creates a fabricated ready post**. Fix the source and run the existing-topic workflow to prepare it.
+- The manual topic action remains available whenever you choose, not just at 11 AM.
+- The automatic workflow can also be run manually from GitHub Actions. It avoids generating more than one automatic draft on the same local day.
+
+**Publishing is never automatic.** After reviewing the PDF, run `Publish approved LinkedIn post` with a ready draft ID and the exact `PUBLISH` confirmation. Historical posts remain unchanged.
+
+---
 ## Free automatic preparation (Gemini API free tier)
 
 The **Request priority LinkedIn topic** action now attempts to prepare a saved LinkedIn draft automatically with Google's free-tier Gemini API (subject to model availability and quotas). No paid OpenAI API key is required.
