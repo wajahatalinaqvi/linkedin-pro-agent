@@ -1,0 +1,134 @@
+{
+  "id": "auto-2026-10-14-122c473501dd",
+  "status": "ready",
+  "topic": "Shopify Carts Update Webhooks",
+  "category": "Developer Updates",
+  "format": "document",
+  "caption": "Shopify just rolled out a major webhook update for developers using the Ajax and Storefront APIs. Redundant notifications are officially a thing of the past. #ShopifyDev #Webhooks #EcommerceDev #APIs",
+  "source_url": "https://shopify.dev/changelog/unchanged-carts-no-longer-trigger-carts-update-webhooks",
+  "sources": [
+    "https://shopify.dev/changelog/unchanged-carts-no-longer-trigger-carts-update-webhooks"
+  ],
+  "created_at": "2026-10-14T10:57:31.734216+00:00",
+  "origin_request": "queue/topic_requests/auto-2026-10-14-122c473501dd.json",
+  "document": {
+    "title": "Shopify Carts Update Webhooks",
+    "renderer": "v3",
+    "carousel": {
+      "topic": "Shopify Carts Update Webhooks",
+      "theme": "shopify",
+      "brand": {
+        "name": "WAJAHAT NAQVI",
+        "subtitle": "Shopify · Full-stack · AI"
+      },
+      "slides": [
+        {
+          "type": "cover",
+          "eyebrow": "Shopify Developer Update",
+          "title": "Smarter Cart Webhooks",
+          "subtitle": "Unchanged carts no longer trigger update webhooks"
+        },
+        {
+          "type": "cards",
+          "eyebrow": "The Core Change",
+          "title": "What's New in Carts",
+          "cards": [
+            [
+              "01",
+              "No-Op Filter",
+              "Cart operations resulting in zero cart changes no longer fire webhooks."
+            ],
+            [
+              "02",
+              "Exact Values",
+              "Resubmitting existing cart values will not trigger duplicate alerts."
+            ],
+            [
+              "03",
+              "Release Date",
+              "This update was officially released on October 12, 2026."
+            ]
+          ]
+        },
+        {
+          "type": "comparison",
+          "eyebrow": "Behavior Shift",
+          "title": "Before vs. After",
+          "left": {
+            "label": "Previously",
+            "title": "Every Request",
+            "items": [
+              "Every cart operation produced a webhook",
+              "Fired regardless of actual cart data changes",
+              "Created high volumes of redundant traffic"
+            ]
+          },
+          "right": {
+            "label": "Now",
+            "title": "Actual Changes",
+            "items": [
+              "Webhooks only fire on genuine modifications",
+              "Contents or properties must actually change",
+              "Eliminates unnecessary webhook noise"
+            ]
+          }
+        },
+        {
+          "type": "cards",
+          "eyebrow": "API Impact",
+          "title": "Affected Endpoints",
+          "cards": [
+            [
+              "01",
+              "Ajax API",
+              "Updates apply directly to standard Ajax API cart operations."
+            ],
+            [
+              "02",
+              "Storefront API",
+              "Storefront API cart requests now benefit from smarter webhook triggers."
+            ],
+            [
+              "03",
+              "Clean Data",
+              "Developers receive precisely one notification per true modification."
+            ]
+          ]
+        },
+        {
+          "type": "timeline",
+          "eyebrow": "Developer Impact",
+          "title": "Why This Matters",
+          "events": [
+            [
+              "1",
+              "Fewer Duplicates",
+              "Apps no longer receive repetitive alerts for identical requests."
+            ],
+            [
+              "2",
+              "Cleaner Logic",
+              "Webhook handling code can focus strictly on real state changes."
+            ],
+            [
+              "3",
+              "Better Scale",
+              "Reduced event volume optimizes overall application processing."
+            ]
+          ]
+        },
+        {
+          "type": "closing",
+          "eyebrow": "Stay Updated",
+          "title": "Optimize Your Apps",
+          "subtitle": "Review your webhook handlers to take advantage of this cleaner event stream.",
+          "source": "https://shopify.dev/changelog/unchanged-carts-no-longer-trigger-carts-update-webhooks"
+        }
+      ],
+      "art_direction": "swiss"
+    }
+  },
+  "origin": "automatic",
+  "priority_score": 75,
+  "source_published_at": "2026-10-12T16:00:00+00:00"
+}

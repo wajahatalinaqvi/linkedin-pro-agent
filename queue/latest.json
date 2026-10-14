@@ -1,22 +1,22 @@
 {
-  "id": "20261009T073339014325Z-design-your-idea-with-claude",
-  "status": "published",
-  "topic": "Design your idea with Claude",
-  "category": "Product Update",
+  "id": "auto-2026-10-14-122c473501dd",
+  "status": "ready",
+  "topic": "Shopify Carts Update Webhooks",
+  "category": "Developer Updates",
   "format": "document",
-  "caption": "From an idea to a working design draft—without starting from a blank canvas.\n\nClaude Design is Anthropic's beta workspace for creating prototypes, wireframes, pitch decks, and visual assets from a description.\n\nWhat caught my attention is the workflow: bring in an existing design system from GitHub or a local codebase, adjust elements directly, then hand the work over to Claude Code or connected tools.\n\nFor product teams and developers, that could shorten the journey from a rough concept to something people can review and build on. It doesn't replace thoughtful design decisions, but it can make early exploration faster.\n\nClaude Design is currently listed for Pro, Max, Team, and Enterprise plans.\n\nSource: https://claude.com/product/design\n\n#ClaudeDesign #ProductDesign #UXDesign #AITools",
-  "source_url": "https://claude.com/product/design",
+  "caption": "Shopify just rolled out a major webhook update for developers using the Ajax and Storefront APIs. Redundant notifications are officially a thing of the past. #ShopifyDev #Webhooks #EcommerceDev #APIs",
+  "source_url": "https://shopify.dev/changelog/unchanged-carts-no-longer-trigger-carts-update-webhooks",
   "sources": [
-    "https://claude.com/product/design"
+    "https://shopify.dev/changelog/unchanged-carts-no-longer-trigger-carts-update-webhooks"
   ],
-  "created_at": "2026-10-09T08:59:19.075275+00:00",
-  "origin_request": "queue/topic_requests/20261009T073339014325Z-design-your-idea-with-claude.json",
+  "created_at": "2026-10-14T10:57:31.734216+00:00",
+  "origin_request": "queue/topic_requests/auto-2026-10-14-122c473501dd.json",
   "document": {
-    "title": "Design your idea with Claude",
+    "title": "Shopify Carts Update Webhooks",
     "renderer": "v3",
     "carousel": {
-      "topic": "Design your idea with Claude",
-      "theme": "claude",
+      "topic": "Shopify Carts Update Webhooks",
+      "theme": "shopify",
       "brand": {
         "name": "WAJAHAT NAQVI",
         "subtitle": "Shopify · Full-stack · AI"
@@ -24,109 +24,111 @@
       "slides": [
         {
           "type": "cover",
-          "eyebrow": "ANTHROPIC · CLAUDE DESIGN",
-          "title": "Your idea, designed with Claude",
-          "subtitle": "From a description to prototypes, decks, wireframes and visual assets."
+          "eyebrow": "Shopify Developer Update",
+          "title": "Smarter Cart Webhooks",
+          "subtitle": "Unchanged carts no longer trigger update webhooks"
         },
         {
           "type": "cards",
-          "eyebrow": "WHAT YOU CAN CREATE",
-          "title": "From first draft to feedback",
+          "eyebrow": "The Core Change",
+          "title": "What's New in Carts",
           "cards": [
             [
               "01",
-              "Interactive prototypes",
-              "Turn static mockups into shareable prototypes you can test."
+              "No-Op Filter",
+              "Cart operations resulting in zero cart changes no longer fire webhooks."
             ],
             [
               "02",
-              "On-brand output",
-              "Import design systems from GitHub, design files or a local codebase."
+              "Exact Values",
+              "Resubmitting existing cart values will not trigger duplicate alerts."
             ],
             [
               "03",
-              "Direct refinement",
-              "Edit text, comment on elements and adjust layouts, spacing or color."
+              "Release Date",
+              "This update was officially released on October 12, 2026."
             ]
           ]
         },
         {
           "type": "comparison",
-          "eyebrow": "WORKFLOW",
-          "title": "Shorter path from concept to review",
+          "eyebrow": "Behavior Shift",
+          "title": "Before vs. After",
           "left": {
-            "label": "TYPICAL PROCESS",
-            "title": "Separate handoffs",
+            "label": "Previously",
+            "title": "Every Request",
             "items": [
-              "Sketch an early concept",
-              "Translate the brand system",
-              "Share files across tools"
+              "Every cart operation produced a webhook",
+              "Fired regardless of actual cart data changes",
+              "Created high volumes of redundant traffic"
             ]
           },
           "right": {
-            "label": "CLAUDE DESIGN",
-            "title": "Connected exploration",
+            "label": "Now",
+            "title": "Actual Changes",
             "items": [
-              "Generate a design draft",
-              "Work with real brand components",
-              "Export or hand off to Claude Code"
+              "Webhooks only fire on genuine modifications",
+              "Contents or properties must actually change",
+              "Eliminates unnecessary webhook noise"
             ]
           }
         },
         {
           "type": "cards",
-          "eyebrow": "FOR BUILDERS",
-          "title": "Bring design closer to development",
+          "eyebrow": "API Impact",
+          "title": "Affected Endpoints",
           "cards": [
             [
               "01",
-              "Claude Code handoff",
-              "Work between Claude Design and Claude Code with /design and /design-sync."
+              "Ajax API",
+              "Updates apply directly to standard Ajax API cart operations."
             ],
             [
               "02",
-              "Useful exports",
-              "Export to PDF, PowerPoint or HTML, depending on the output."
+              "Storefront API",
+              "Storefront API cart requests now benefit from smarter webhook triggers."
             ],
             [
               "03",
-              "Connected destinations",
-              "Send work to supported apps such as Canva, Replit and Vercel."
+              "Clean Data",
+              "Developers receive precisely one notification per true modification."
             ]
           ]
         },
         {
           "type": "timeline",
-          "eyebrow": "GETTING STARTED",
-          "title": "What to know before trying it",
+          "eyebrow": "Developer Impact",
+          "title": "Why This Matters",
           "events": [
             [
-              "01",
-              "Check availability",
-              "Claude Design beta is listed for Pro, Max, Team and Enterprise plans."
+              "1",
+              "Fewer Duplicates",
+              "Apps no longer receive repetitive alerts for identical requests."
             ],
             [
-              "02",
-              "Describe the first draft",
-              "Start with a prototype, deck, wireframe or one-pager."
+              "2",
+              "Cleaner Logic",
+              "Webhook handling code can focus strictly on real state changes."
             ],
             [
-              "03",
-              "Refine and hand off",
-              "Adjust the design, then export or continue in your tools."
+              "3",
+              "Better Scale",
+              "Reduced event volume optimizes overall application processing."
             ]
           ]
         },
         {
           "type": "closing",
-          "eyebrow": "THE TAKEAWAY",
-          "title": "Design faster. Keep the judgment.",
-          "subtitle": "Use AI to explore the first draft, then refine the details with your team.",
-          "source": "claude.com/product/design"
+          "eyebrow": "Stay Updated",
+          "title": "Optimize Your Apps",
+          "subtitle": "Review your webhook handlers to take advantage of this cleaner event stream.",
+          "source": "https://shopify.dev/changelog/unchanged-carts-no-longer-trigger-carts-update-webhooks"
         }
-      ]
+      ],
+      "art_direction": "swiss"
     }
   },
-  "linkedin_post_id": "urn:li:ugcPost:7515296344983621634",
-  "published_at": "2026-10-12T06:24:36.604844+00:00"
+  "origin": "automatic",
+  "priority_score": 75,
+  "source_published_at": "2026-10-12T16:00:00+00:00"
 }
