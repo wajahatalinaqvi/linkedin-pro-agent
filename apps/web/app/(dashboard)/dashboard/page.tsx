@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {api} from "../../lib/api";
+import {api} from "../../../lib/api";
 export default async function Dashboard(){
  const me=await api<{email:string,workspaces:{id:string,name:string}[]}>("/api/v1/auth/me");
  const workspace=me?.workspaces?.[0];const drafts=workspace?await api<{id:string,status:string,title:string}[]>("/api/v1/workspaces/"+workspace.id+"/drafts"):[];
