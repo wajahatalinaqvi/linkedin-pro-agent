@@ -17,7 +17,7 @@ import requests
 
 from carousel.render_pdf import render_carousel_pdf
 from carousel.art_direction import set_art_direction
-from post_store import ROOT, LATEST, create_draft, draft_path, load_json, save_json
+from post_store import ROOT, LATEST, create_draft, draft_path, load_json, save_json, select_draft
 
 REQUEST_DIR = ROOT / "queue" / "topic_requests"
 MODEL = "gemini-3.5-flash-lite"
@@ -156,8 +156,10 @@ def prepare(request_name: str) -> tuple[str, str]:
         destination = ROOT / "generated" / f"{post_id}.pdf"
         render_carousel_pdf(post["document"]["carousel"], destination)
         latest = load_json(LATEST, {}) or {}
-        select = latest.get("status") != "ready"
-        create_draft(post, select=select)
+        create_draft(post, select=False)
+        # Explicit manual requests outrank already-prepared automatic drafts.
+        select_draft(post_id)
+        select = True
         req.update(status="ready", draft_id=post_id, selected_as_latest=select)
         req.pop("message", None)
         save_json(request_path, req)
