@@ -1,0 +1,134 @@
+{
+  "id": "auto-2026-10-15-325f6a102c1c",
+  "status": "ready",
+  "topic": "Checkout footer visibility now applies to merchant-configurable content",
+  "category": "Shopify Developer Updates",
+  "format": "document",
+  "caption": "Shopify's latest GraphQL API update changes how checkout footer visibility works for merchant-configurable content. Previews may need updating! #ShopifyDev #CheckoutAPI #DeveloperUpdates #ShopifyPlus",
+  "source_url": "https://shopify.dev/changelog/checkout-footer-visibility-now-applies-to-merchant-configurable-content",
+  "sources": [
+    "https://shopify.dev/changelog/checkout-footer-visibility-now-applies-to-merchant-configurable-content"
+  ],
+  "created_at": "2026-10-15T10:38:27.329299+00:00",
+  "origin_request": "queue/topic_requests/auto-2026-10-15-325f6a102c1c.json",
+  "document": {
+    "title": "Checkout footer visibility now applies to merchant-configurable content",
+    "renderer": "v3",
+    "carousel": {
+      "topic": "Checkout footer visibility now applies to merchant-configurable content",
+      "theme": "shopify",
+      "brand": {
+        "name": "WAJAHAT NAQVI",
+        "subtitle": "Shopify · Full-stack · AI"
+      },
+      "slides": [
+        {
+          "type": "cover",
+          "eyebrow": "Developer Update",
+          "title": "Checkout Footer Visibility Changes",
+          "subtitle": "New behavior for merchant-configurable content"
+        },
+        {
+          "type": "cards",
+          "eyebrow": "What Changed",
+          "title": "Core Visibility Updates",
+          "cards": [
+            [
+              "01",
+              "Scoped Visibility",
+              "Settings now apply only to merchant-configurable content like policy links and copyright copy."
+            ],
+            [
+              "02",
+              "Transaction Info",
+              "Checkouts can now display Shopify-provided transaction information regardless of visibility settings."
+            ],
+            [
+              "03",
+              "No Schema Breaks",
+              "No fields, input types, or mutations were added, modified, or removed."
+            ]
+          ]
+        },
+        {
+          "type": "comparison",
+          "eyebrow": "Behavioral Shift",
+          "title": "Hidden vs Visible Footers",
+          "left": {
+            "label": "Previous Assumption",
+            "title": "Blank Footer",
+            "items": [
+              "Hidden setting meant total blankness",
+              "No content rendered in footer area",
+              "Previews expected completely empty space"
+            ]
+          },
+          "right": {
+            "label": "New Reality",
+            "title": "Coexisting Content",
+            "items": [
+              "Merchant content is suppressed",
+              "Shopify transaction info may still appear",
+              "Previews must account for shared space"
+            ]
+          }
+        },
+        {
+          "type": "cards",
+          "eyebrow": "API Objects",
+          "title": "Updated Field Descriptions",
+          "cards": [
+            [
+              "A",
+              "Legacy Branding API",
+              "CheckoutBrandingFooterContent.visibility field descriptions updated."
+            ],
+            [
+              "B",
+              "Input Types",
+              "CheckoutBrandingFooterContentInput.visibility descriptions clarified."
+            ],
+            [
+              "C",
+              "Configuration API",
+              "Updates also applied to CheckoutAndAccountsConfiguration objects."
+            ]
+          ]
+        },
+        {
+          "type": "timeline",
+          "eyebrow": "Release & Scope",
+          "title": "Rollout Details",
+          "events": [
+            [
+              "Oct",
+              "Release Date",
+              "Changes officially went live on October 15, 2026."
+            ],
+            [
+              "All",
+              "API Version Binding",
+              "Applies to every GraphQL Admin API version where these branding types exist."
+            ],
+            [
+              "Plus",
+              "Scope of Impact",
+              "Primarily affects apps managing checkout branding for Shopify Plus stores."
+            ]
+          ]
+        },
+        {
+          "type": "closing",
+          "eyebrow": "Action Item",
+          "title": "Update Your Previews",
+          "subtitle": "Developers must no longer assume that a HIDDEN visibility state results in an entirely empty footer.",
+          "source": "https://shopify.dev/changelog/checkout-footer-visibility-now-applies-to-merchant-configurable-content"
+        }
+      ],
+      "art_direction": "collage"
+    }
+  },
+  "origin": "automatic",
+  "priority_score": 75,
+  "source_published_at": "2026-10-15T04:00:00+00:00"
+}
