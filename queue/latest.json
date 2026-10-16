@@ -1,22 +1,22 @@
 {
-  "id": "auto-2026-10-15-325f6a102c1c",
+  "id": "auto-2026-10-16-6fdf4a6bc9a4",
   "status": "ready",
-  "topic": "Checkout footer visibility now applies to merchant-configurable content",
-  "category": "Shopify Developer Updates",
+  "topic": "Multi-repo support and other improvements for GitHub Copilot in Slack and Microsoft Teams",
+  "category": "Developer Tools",
   "format": "document",
-  "caption": "Shopify's latest GraphQL API update changes how checkout footer visibility works for merchant-configurable content. Previews may need updating! #ShopifyDev #CheckoutAPI #DeveloperUpdates #ShopifyPlus",
-  "source_url": "https://shopify.dev/changelog/checkout-footer-visibility-now-applies-to-merchant-configurable-content",
+  "caption": "Say goodbye to constant context switching. The latest GitHub Copilot updates for Slack and Microsoft Teams bring multi-repository querying, flexible conversations, and rock-solid reliability straight to your chat apps. #GitHubCopilot #DeveloperTools #Slack #MicrosoftTeams",
+  "source_url": "https://github.blog/changelog/2026-10-15-copilot-in-slack-and-teams-adds-model-and-repository-updates",
   "sources": [
-    "https://shopify.dev/changelog/checkout-footer-visibility-now-applies-to-merchant-configurable-content"
+    "https://github.blog/changelog/2026-10-15-copilot-in-slack-and-teams-adds-model-and-repository-updates"
   ],
-  "created_at": "2026-10-15T10:38:27.329299+00:00",
-  "origin_request": "queue/topic_requests/auto-2026-10-15-325f6a102c1c.json",
+  "created_at": "2026-10-16T10:25:49.369978+00:00",
+  "origin_request": "queue/topic_requests/auto-2026-10-16-6fdf4a6bc9a4.json",
   "document": {
-    "title": "Checkout footer visibility now applies to merchant-configurable content",
+    "title": "Multi-repo support and other improvements for GitHub Copilot in Slack and Microsoft Teams",
     "renderer": "v3",
     "carousel": {
-      "topic": "Checkout footer visibility now applies to merchant-configurable content",
-      "theme": "shopify",
+      "topic": "Multi-repo support and other improvements for GitHub Copilot in Slack and Microsoft Teams",
+      "theme": "developer",
       "brand": {
         "name": "WAJAHAT NAQVI",
         "subtitle": "Shopify · Full-stack · AI"
@@ -24,111 +24,111 @@
       "slides": [
         {
           "type": "cover",
-          "eyebrow": "Developer Update",
-          "title": "Checkout Footer Visibility Changes",
-          "subtitle": "New behavior for merchant-configurable content"
+          "eyebrow": "GitHub Copilot Update",
+          "title": "Streamline Chat Workflows",
+          "subtitle": "Multi-repo support and powerful improvements for Slack and Microsoft Teams."
         },
         {
           "type": "cards",
-          "eyebrow": "What Changed",
-          "title": "Core Visibility Updates",
+          "eyebrow": "Core Features",
+          "title": "What's New in Chat",
           "cards": [
             [
               "01",
-              "Scoped Visibility",
-              "Settings now apply only to merchant-configurable content like policy links and copyright copy."
+              "Multi-Repo Support",
+              "Query and track pull requests across multiple repositories within a single conversation."
             ],
             [
               "02",
-              "Transaction Info",
-              "Checkouts can now display Shopify-provided transaction information regardless of visibility settings."
+              "Natural Mentions",
+              "Mention @GitHub anywhere in your message without being restricted to the start."
             ],
             [
               "03",
-              "No Schema Breaks",
-              "No fields, input types, or mutations were added, modified, or removed."
+              "Repository Switching",
+              "Streamline how you shift between different codebases mid-conversation."
             ]
           ]
         },
         {
           "type": "comparison",
-          "eyebrow": "Behavioral Shift",
-          "title": "Hidden vs Visible Footers",
+          "eyebrow": "Workflow Shift",
+          "title": "Before vs. After",
           "left": {
-            "label": "Previous Assumption",
-            "title": "Blank Footer",
+            "label": "Traditional Chat",
+            "title": "Siloed Discussions",
             "items": [
-              "Hidden setting meant total blankness",
-              "No content rendered in footer area",
-              "Previews expected completely empty space"
+              "Restricted to single repos",
+              "Rigid message formatting",
+              "Frequent copy-pasting"
             ]
           },
           "right": {
-            "label": "New Reality",
-            "title": "Coexisting Content",
+            "label": "Copilot Integration",
+            "title": "Unified Context",
             "items": [
-              "Merchant content is suppressed",
-              "Shopify transaction info may still appear",
-              "Previews must account for shared space"
+              "Cross-repository queries",
+              "Flexible @GitHub mentions",
+              "Shared thread context"
             ]
           }
         },
         {
           "type": "cards",
-          "eyebrow": "API Objects",
-          "title": "Updated Field Descriptions",
+          "eyebrow": "Deep Dive",
+          "title": "Context & Reliability",
           "cards": [
             [
-              "A",
-              "Legacy Branding API",
-              "CheckoutBrandingFooterContent.visibility field descriptions updated."
+              "01",
+              "Slack Context",
+              "Leverage shared Slack messages and threads directly as context to skip manual copying."
             ],
             [
-              "B",
-              "Input Types",
-              "CheckoutBrandingFooterContentInput.visibility descriptions clarified."
+              "02",
+              "Reliability Fixes",
+              "Enjoy lower error rates and faster task startup across supported chat apps."
             ],
             [
-              "C",
-              "Configuration API",
-              "Updates also applied to CheckoutAndAccountsConfiguration objects."
+              "03",
+              "Smooth Recovery",
+              "Experience better handling and recovery from interruptions in Slack and Teams."
             ]
           ]
         },
         {
           "type": "timeline",
-          "eyebrow": "Release & Scope",
-          "title": "Rollout Details",
+          "eyebrow": "Release Details",
+          "title": "Rollout & Impact",
           "events": [
             [
-              "Oct",
+              "01",
               "Release Date",
-              "Changes officially went live on October 15, 2026."
+              "Officially launched and available now on October 15, 2026."
             ],
             [
-              "All",
-              "API Version Binding",
-              "Applies to every GraphQL Admin API version where these branding types exist."
+              "02",
+              "Full-Stack Debugging",
+              "Investigate issues spanning frontend and backend codebases without leaving chat."
             ],
             [
-              "Plus",
-              "Scope of Impact",
-              "Primarily affects apps managing checkout branding for Shopify Plus stores."
+              "03",
+              "Developer Impact",
+              "Reduces context switching by uniting dependencies in communication channels."
             ]
           ]
         },
         {
           "type": "closing",
-          "eyebrow": "Action Item",
-          "title": "Update Your Previews",
-          "subtitle": "Developers must no longer assume that a HIDDEN visibility state results in an entirely empty footer.",
-          "source": "https://shopify.dev/changelog/checkout-footer-visibility-now-applies-to-merchant-configurable-content"
+          "eyebrow": "Get Started",
+          "title": "Upgrade Your Chat Workflow",
+          "subtitle": "Head over to the official GitHub changelog to explore the latest integration updates.",
+          "source": "https://github.blog/changelog/2026-10-15-copilot-in-slack-and-teams-adds-model-and-repository-updates"
         }
       ],
-      "art_direction": "collage"
+      "art_direction": "blueprint"
     }
   },
   "origin": "automatic",
   "priority_score": 75,
-  "source_published_at": "2026-10-15T04:00:00+00:00"
+  "source_published_at": "2026-10-16T02:16:35+00:00"
 }

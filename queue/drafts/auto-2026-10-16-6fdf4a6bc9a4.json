@@ -1,0 +1,134 @@
+{
+  "id": "auto-2026-10-16-6fdf4a6bc9a4",
+  "status": "ready",
+  "topic": "Multi-repo support and other improvements for GitHub Copilot in Slack and Microsoft Teams",
+  "category": "Developer Tools",
+  "format": "document",
+  "caption": "Say goodbye to constant context switching. The latest GitHub Copilot updates for Slack and Microsoft Teams bring multi-repository querying, flexible conversations, and rock-solid reliability straight to your chat apps. #GitHubCopilot #DeveloperTools #Slack #MicrosoftTeams",
+  "source_url": "https://github.blog/changelog/2026-10-15-copilot-in-slack-and-teams-adds-model-and-repository-updates",
+  "sources": [
+    "https://github.blog/changelog/2026-10-15-copilot-in-slack-and-teams-adds-model-and-repository-updates"
+  ],
+  "created_at": "2026-10-16T10:25:49.369978+00:00",
+  "origin_request": "queue/topic_requests/auto-2026-10-16-6fdf4a6bc9a4.json",
+  "document": {
+    "title": "Multi-repo support and other improvements for GitHub Copilot in Slack and Microsoft Teams",
+    "renderer": "v3",
+    "carousel": {
+      "topic": "Multi-repo support and other improvements for GitHub Copilot in Slack and Microsoft Teams",
+      "theme": "developer",
+      "brand": {
+        "name": "WAJAHAT NAQVI",
+        "subtitle": "Shopify · Full-stack · AI"
+      },
+      "slides": [
+        {
+          "type": "cover",
+          "eyebrow": "GitHub Copilot Update",
+          "title": "Streamline Chat Workflows",
+          "subtitle": "Multi-repo support and powerful improvements for Slack and Microsoft Teams."
+        },
+        {
+          "type": "cards",
+          "eyebrow": "Core Features",
+          "title": "What's New in Chat",
+          "cards": [
+            [
+              "01",
+              "Multi-Repo Support",
+              "Query and track pull requests across multiple repositories within a single conversation."
+            ],
+            [
+              "02",
+              "Natural Mentions",
+              "Mention @GitHub anywhere in your message without being restricted to the start."
+            ],
+            [
+              "03",
+              "Repository Switching",
+              "Streamline how you shift between different codebases mid-conversation."
+            ]
+          ]
+        },
+        {
+          "type": "comparison",
+          "eyebrow": "Workflow Shift",
+          "title": "Before vs. After",
+          "left": {
+            "label": "Traditional Chat",
+            "title": "Siloed Discussions",
+            "items": [
+              "Restricted to single repos",
+              "Rigid message formatting",
+              "Frequent copy-pasting"
+            ]
+          },
+          "right": {
+            "label": "Copilot Integration",
+            "title": "Unified Context",
+            "items": [
+              "Cross-repository queries",
+              "Flexible @GitHub mentions",
+              "Shared thread context"
+            ]
+          }
+        },
+        {
+          "type": "cards",
+          "eyebrow": "Deep Dive",
+          "title": "Context & Reliability",
+          "cards": [
+            [
+              "01",
+              "Slack Context",
+              "Leverage shared Slack messages and threads directly as context to skip manual copying."
+            ],
+            [
+              "02",
+              "Reliability Fixes",
+              "Enjoy lower error rates and faster task startup across supported chat apps."
+            ],
+            [
+              "03",
+              "Smooth Recovery",
+              "Experience better handling and recovery from interruptions in Slack and Teams."
+            ]
+          ]
+        },
+        {
+          "type": "timeline",
+          "eyebrow": "Release Details",
+          "title": "Rollout & Impact",
+          "events": [
+            [
+              "01",
+              "Release Date",
+              "Officially launched and available now on October 15, 2026."
+            ],
+            [
+              "02",
+              "Full-Stack Debugging",
+              "Investigate issues spanning frontend and backend codebases without leaving chat."
+            ],
+            [
+              "03",
+              "Developer Impact",
+              "Reduces context switching by uniting dependencies in communication channels."
+            ]
+          ]
+        },
+        {
+          "type": "closing",
+          "eyebrow": "Get Started",
+          "title": "Upgrade Your Chat Workflow",
+          "subtitle": "Head over to the official GitHub changelog to explore the latest integration updates.",
+          "source": "https://github.blog/changelog/2026-10-15-copilot-in-slack-and-teams-adds-model-and-repository-updates"
+        }
+      ],
+      "art_direction": "blueprint"
+    }
+  },
+  "origin": "automatic",
+  "priority_score": 75,
+  "source_published_at": "2026-10-16T02:16:35+00:00"
+}
