@@ -1,21 +1,21 @@
 {
-  "id": "auto-2026-10-16-6fdf4a6bc9a4",
+  "id": "auto-2026-10-17-3d4a6935764e",
   "status": "ready",
-  "topic": "Multi-repo support and other improvements for GitHub Copilot in Slack and Microsoft Teams",
-  "category": "Developer Tools",
+  "topic": "Hydrogen 2026-10 is now available",
+  "category": "Engineering",
   "format": "document",
-  "caption": "Say goodbye to constant context switching. The latest GitHub Copilot updates for Slack and Microsoft Teams bring multi-repository querying, flexible conversations, and rock-solid reliability straight to your chat apps. #GitHubCopilot #DeveloperTools #Slack #MicrosoftTeams",
-  "source_url": "https://github.blog/changelog/2026-10-15-copilot-in-slack-and-teams-adds-model-and-repository-updates",
+  "caption": "Shopify's Hydrogen is now framework-agnostic. Integrate commerce features into any JS stack without a full rebuild. #Shopify #Hydrogen #WebDev #React",
+  "source_url": "https://shopify.dev/changelog/hydrogen-2026-10-is-now-available",
   "sources": [
-    "https://github.blog/changelog/2026-10-15-copilot-in-slack-and-teams-adds-model-and-repository-updates"
+    "https://shopify.dev/changelog/hydrogen-2026-10-is-now-available"
   ],
-  "created_at": "2026-10-16T10:25:49.369978+00:00",
-  "origin_request": "queue/topic_requests/auto-2026-10-16-6fdf4a6bc9a4.json",
+  "created_at": "2026-10-17T09:58:06.878701+00:00",
+  "origin_request": "queue/topic_requests/auto-2026-10-17-3d4a6935764e.json",
   "document": {
-    "title": "Multi-repo support and other improvements for GitHub Copilot in Slack and Microsoft Teams",
+    "title": "Hydrogen 2026-10 is now available",
     "renderer": "v3",
     "carousel": {
-      "topic": "Multi-repo support and other improvements for GitHub Copilot in Slack and Microsoft Teams",
+      "topic": "Hydrogen 2026-10 is now available",
       "theme": "developer",
       "brand": {
         "name": "WAJAHAT NAQVI",
@@ -24,111 +24,111 @@
       "slides": [
         {
           "type": "cover",
-          "eyebrow": "GitHub Copilot Update",
-          "title": "Streamline Chat Workflows",
-          "subtitle": "Multi-repo support and powerful improvements for Slack and Microsoft Teams."
+          "eyebrow": "Shopify Update",
+          "title": "Hydrogen 2026-10 is Live",
+          "subtitle": "Framework-agnostic commerce for any JavaScript stack"
         },
         {
           "type": "cards",
-          "eyebrow": "Core Features",
-          "title": "What's New in Chat",
+          "eyebrow": "Core Capabilities",
+          "title": "What It Does",
           "cards": [
             [
               "01",
-              "Multi-Repo Support",
-              "Query and track pull requests across multiple repositories within a single conversation."
+              "Library Shift",
+              "Transitions from a React Router-bound framework into a framework-agnostic JavaScript library."
             ],
             [
               "02",
-              "Natural Mentions",
-              "Mention @GitHub anywhere in your message without being restricted to the start."
+              "Any Stack",
+              "Integrate Shopify commerce features into any existing JavaScript stack seamlessly."
             ],
             [
               "03",
-              "Repository Switching",
-              "Streamline how you shift between different codebases mid-conversation."
+              "No Replatform",
+              "Add powerful commerce tools without requiring a full store replatform."
             ]
           ]
         },
         {
           "type": "comparison",
-          "eyebrow": "Workflow Shift",
-          "title": "Before vs. After",
+          "eyebrow": "Flexibility",
+          "title": "Hosting & Setup",
           "left": {
-            "label": "Traditional Chat",
-            "title": "Siloed Discussions",
+            "label": "Hosting",
+            "title": "Flexible Options",
             "items": [
-              "Restricted to single repos",
-              "Rigid message formatting",
-              "Frequent copy-pasting"
+              "Can be hosted anywhere",
+              "Oxygen hosting remains free",
+              "Deploy on your preferred infrastructure"
             ]
           },
           "right": {
-            "label": "Copilot Integration",
-            "title": "Unified Context",
+            "label": "Starters",
+            "title": "Ready to Deploy",
             "items": [
-              "Cross-repository queries",
-              "Flexible @GitHub mentions",
-              "Shared thread context"
+              "Includes React Router starters",
+              "Includes Next.js starters like Vercel Shop",
+              "Add via setup command"
             ]
           }
         },
         {
           "type": "cards",
-          "eyebrow": "Deep Dive",
-          "title": "Context & Reliability",
+          "eyebrow": "Advanced Tech",
+          "title": "Agent Integration",
           "cards": [
             [
               "01",
-              "Slack Context",
-              "Leverage shared Slack messages and threads directly as context to skip manual copying."
+              "Coding Agents",
+              "Ships with 20 built-in skills for building storefront pages and running smoke tests."
             ],
             [
               "02",
-              "Reliability Fixes",
-              "Enjoy lower error rates and faster task startup across supported chat apps."
+              "Skill Syncing",
+              "Sync skills easily after version upgrades using the command line."
             ],
             [
               "03",
-              "Smooth Recovery",
-              "Experience better handling and recovery from interruptions in Slack and Teams."
+              "Shopping Agents",
+              "Supports shopping agents in WebMCP-compatible browsers out-of-the-box."
             ]
           ]
         },
         {
           "type": "timeline",
-          "eyebrow": "Release Details",
-          "title": "Rollout & Impact",
+          "eyebrow": "Release Path",
+          "title": "Availability",
           "events": [
             [
-              "01",
-              "Release Date",
-              "Officially launched and available now on October 15, 2026."
+              "June 2026",
+              "Developer Preview",
+              "Initial preview period for developers to test upcoming features."
             ],
             [
-              "02",
-              "Full-Stack Debugging",
-              "Investigate issues spanning frontend and backend codebases without leaving chat."
+              "October 2026",
+              "Generally Available",
+              "Official GA release of Hydrogen 2026-10 on October 14, 2026."
             ],
             [
-              "03",
-              "Developer Impact",
-              "Reduces context switching by uniting dependencies in communication channels."
+              "Future",
+              "Migration Path",
+              "Older storefronts continue working with dedicated migration skills available."
             ]
           ]
         },
         {
           "type": "closing",
           "eyebrow": "Get Started",
-          "title": "Upgrade Your Chat Workflow",
-          "subtitle": "Head over to the official GitHub changelog to explore the latest integration updates.",
-          "source": "https://github.blog/changelog/2026-10-15-copilot-in-slack-and-teams-adds-model-and-repository-updates"
+          "title": "Upgrade Your Stack",
+          "subtitle": "Reduce migration friction and build faster with framework-agnostic commerce.",
+          "source": "shopify.dev/changelog/hydrogen-2026-10-is-now-available"
         }
       ],
-      "art_direction": "blueprint"
+      "art_direction": "gradient"
     }
   },
   "origin": "automatic",
   "priority_score": 75,
-  "source_published_at": "2026-10-16T02:16:35+00:00"
+  "source_published_at": "2026-10-14T15:00:00+00:00"
 }

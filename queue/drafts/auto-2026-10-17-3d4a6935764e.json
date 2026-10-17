@@ -1,0 +1,134 @@
+{
+  "id": "auto-2026-10-17-3d4a6935764e",
+  "status": "ready",
+  "topic": "Hydrogen 2026-10 is now available",
+  "category": "Engineering",
+  "format": "document",
+  "caption": "Shopify's Hydrogen is now framework-agnostic. Integrate commerce features into any JS stack without a full rebuild. #Shopify #Hydrogen #WebDev #React",
+  "source_url": "https://shopify.dev/changelog/hydrogen-2026-10-is-now-available",
+  "sources": [
+    "https://shopify.dev/changelog/hydrogen-2026-10-is-now-available"
+  ],
+  "created_at": "2026-10-17T09:58:06.878701+00:00",
+  "origin_request": "queue/topic_requests/auto-2026-10-17-3d4a6935764e.json",
+  "document": {
+    "title": "Hydrogen 2026-10 is now available",
+    "renderer": "v3",
+    "carousel": {
+      "topic": "Hydrogen 2026-10 is now available",
+      "theme": "developer",
+      "brand": {
+        "name": "WAJAHAT NAQVI",
+        "subtitle": "Shopify · Full-stack · AI"
+      },
+      "slides": [
+        {
+          "type": "cover",
+          "eyebrow": "Shopify Update",
+          "title": "Hydrogen 2026-10 is Live",
+          "subtitle": "Framework-agnostic commerce for any JavaScript stack"
+        },
+        {
+          "type": "cards",
+          "eyebrow": "Core Capabilities",
+          "title": "What It Does",
+          "cards": [
+            [
+              "01",
+              "Library Shift",
+              "Transitions from a React Router-bound framework into a framework-agnostic JavaScript library."
+            ],
+            [
+              "02",
+              "Any Stack",
+              "Integrate Shopify commerce features into any existing JavaScript stack seamlessly."
+            ],
+            [
+              "03",
+              "No Replatform",
+              "Add powerful commerce tools without requiring a full store replatform."
+            ]
+          ]
+        },
+        {
+          "type": "comparison",
+          "eyebrow": "Flexibility",
+          "title": "Hosting & Setup",
+          "left": {
+            "label": "Hosting",
+            "title": "Flexible Options",
+            "items": [
+              "Can be hosted anywhere",
+              "Oxygen hosting remains free",
+              "Deploy on your preferred infrastructure"
+            ]
+          },
+          "right": {
+            "label": "Starters",
+            "title": "Ready to Deploy",
+            "items": [
+              "Includes React Router starters",
+              "Includes Next.js starters like Vercel Shop",
+              "Add via setup command"
+            ]
+          }
+        },
+        {
+          "type": "cards",
+          "eyebrow": "Advanced Tech",
+          "title": "Agent Integration",
+          "cards": [
+            [
+              "01",
+              "Coding Agents",
+              "Ships with 20 built-in skills for building storefront pages and running smoke tests."
+            ],
+            [
+              "02",
+              "Skill Syncing",
+              "Sync skills easily after version upgrades using the command line."
+            ],
+            [
+              "03",
+              "Shopping Agents",
+              "Supports shopping agents in WebMCP-compatible browsers out-of-the-box."
+            ]
+          ]
+        },
+        {
+          "type": "timeline",
+          "eyebrow": "Release Path",
+          "title": "Availability",
+          "events": [
+            [
+              "June 2026",
+              "Developer Preview",
+              "Initial preview period for developers to test upcoming features."
+            ],
+            [
+              "October 2026",
+              "Generally Available",
+              "Official GA release of Hydrogen 2026-10 on October 14, 2026."
+            ],
+            [
+              "Future",
+              "Migration Path",
+              "Older storefronts continue working with dedicated migration skills available."
+            ]
+          ]
+        },
+        {
+          "type": "closing",
+          "eyebrow": "Get Started",
+          "title": "Upgrade Your Stack",
+          "subtitle": "Reduce migration friction and build faster with framework-agnostic commerce.",
+          "source": "shopify.dev/changelog/hydrogen-2026-10-is-now-available"
+        }
+      ],
+      "art_direction": "gradient"
+    }
+  },
+  "origin": "automatic",
+  "priority_score": 75,
+  "source_published_at": "2026-10-14T15:00:00+00:00"
+}
