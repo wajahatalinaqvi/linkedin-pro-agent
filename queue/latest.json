@@ -1,22 +1,22 @@
 {
-  "id": "auto-2026-10-17-3d4a6935764e",
+  "id": "auto-2026-10-18-ebc6ccd5cca3",
   "status": "ready",
-  "topic": "Hydrogen 2026-10 is now available",
-  "category": "Engineering",
+  "topic": "Build with confidence: Shopify AI Toolkit's security check",
+  "category": "Developer Security",
   "format": "document",
-  "caption": "Shopify's Hydrogen is now framework-agnostic. Integrate commerce features into any JS stack without a full rebuild. #Shopify #Hydrogen #WebDev #React",
-  "source_url": "https://shopify.dev/changelog/hydrogen-2026-10-is-now-available",
+  "caption": "Catch vulnerabilities early and build with confidence using the new security check command in Shopify AI Toolkit. #ShopifyDev #AppSecurity #DevTools #ShopifyCLI",
+  "source_url": "https://shopify.dev/changelog/build-more-secure-apps-with-shopify-s-ai-toolkit-security-check",
   "sources": [
-    "https://shopify.dev/changelog/hydrogen-2026-10-is-now-available"
+    "https://shopify.dev/changelog/build-more-secure-apps-with-shopify-s-ai-toolkit-security-check"
   ],
-  "created_at": "2026-10-17T09:58:06.878701+00:00",
-  "origin_request": "queue/topic_requests/auto-2026-10-17-3d4a6935764e.json",
+  "created_at": "2026-10-18T10:10:24.829683+00:00",
+  "origin_request": "queue/topic_requests/auto-2026-10-18-ebc6ccd5cca3.json",
   "document": {
-    "title": "Hydrogen 2026-10 is now available",
+    "title": "Build with confidence: Shopify AI Toolkit's security check",
     "renderer": "v3",
     "carousel": {
-      "topic": "Hydrogen 2026-10 is now available",
-      "theme": "developer",
+      "topic": "Build with confidence: Shopify AI Toolkit's security check",
+      "theme": "shopify",
       "brand": {
         "name": "WAJAHAT NAQVI",
         "subtitle": "Shopify · Full-stack · AI"
@@ -24,111 +24,111 @@
       "slides": [
         {
           "type": "cover",
-          "eyebrow": "Shopify Update",
-          "title": "Hydrogen 2026-10 is Live",
-          "subtitle": "Framework-agnostic commerce for any JavaScript stack"
+          "eyebrow": "Shopify AI Toolkit",
+          "title": "Build More Secure Apps",
+          "subtitle": "Scan your codebase locally before submission"
         },
         {
           "type": "cards",
-          "eyebrow": "Core Capabilities",
-          "title": "What It Does",
+          "eyebrow": "Core Feature",
+          "title": "What Is Security Check",
           "cards": [
             [
               "01",
-              "Library Shift",
-              "Transitions from a React Router-bound framework into a framework-agnostic JavaScript library."
+              "Local Command",
+              "Built into the Shopify AI Toolkit and Shopify CLI as a developer command."
             ],
             [
               "02",
-              "Any Stack",
-              "Integrate Shopify commerce features into any existing JavaScript stack seamlessly."
+              "Deep Scanning",
+              "Scans codebases, extension point configurations, and dependencies."
             ],
             [
               "03",
-              "No Replatform",
-              "Add powerful commerce tools without requiring a full store replatform."
+              "Proactive Defense",
+              "Catches common security vulnerability patterns before release."
             ]
           ]
         },
         {
           "type": "comparison",
           "eyebrow": "Flexibility",
-          "title": "Hosting & Setup",
+          "title": "Execution & Tech Stack",
           "left": {
-            "label": "Hosting",
-            "title": "Flexible Options",
+            "label": "Execution",
+            "title": "How It Runs",
             "items": [
-              "Can be hosted anywhere",
-              "Oxygen hosting remains free",
-              "Deploy on your preferred infrastructure"
+              "Runs locally on your machine via Shopify CLI",
+              "Prompt coding agents directly for checks",
+              "Open source engine hosted on GitHub"
             ]
           },
           "right": {
-            "label": "Starters",
-            "title": "Ready to Deploy",
+            "label": "Compatibility",
+            "title": "Framework Agnostic",
             "items": [
-              "Includes React Router starters",
-              "Includes Next.js starters like Vercel Shop",
-              "Add via setup command"
+              "Supports public and custom apps",
+              "Works with React Router, Rails, Django, Laravel",
+              "Compatible with custom authentication stacks"
             ]
           }
         },
         {
           "type": "cards",
-          "eyebrow": "Advanced Tech",
-          "title": "Agent Integration",
+          "eyebrow": "Detailed Reports",
+          "title": "What Findings Include",
           "cards": [
             [
               "01",
-              "Coding Agents",
-              "Ships with 20 built-in skills for building storefront pages and running smoke tests."
+              "Location",
+              "Identifies the exact affected file and line number."
             ],
             [
               "02",
-              "Skill Syncing",
-              "Sync skills easily after version upgrades using the command line."
+              "Context",
+              "Provides severity level and reasoning for the issue."
             ],
             [
               "03",
-              "Shopping Agents",
-              "Supports shopping agents in WebMCP-compatible browsers out-of-the-box."
+              "Remediation",
+              "Shows sample code snippets and official docs links."
             ]
           ]
         },
         {
           "type": "timeline",
-          "eyebrow": "Release Path",
-          "title": "Availability",
+          "eyebrow": "Developer Workflow",
+          "title": "Implications & Hygiene",
           "events": [
             [
-              "June 2026",
-              "Developer Preview",
-              "Initial preview period for developers to test upcoming features."
+              "01",
+              "Early Detection",
+              "Catch authentication gaps and merchant data isolation flaws prior to app store reviews."
             ],
             [
-              "October 2026",
-              "Generally Available",
-              "Official GA release of Hydrogen 2026-10 on October 14, 2026."
+              "02",
+              "Agent Integration",
+              "Iterate and fix issues seamlessly without switching your existing tech stack."
             ],
             [
-              "Future",
-              "Migration Path",
-              "Older storefronts continue working with dedicated migration skills available."
+              "03",
+              "Release Hygiene",
+              "Integrate into every release cycle, starting with critical and high-severity findings."
             ]
           ]
         },
         {
           "type": "closing",
-          "eyebrow": "Get Started",
-          "title": "Upgrade Your Stack",
-          "subtitle": "Reduce migration friction and build faster with framework-agnostic commerce.",
-          "source": "shopify.dev/changelog/hydrogen-2026-10-is-now-available"
+          "eyebrow": "Important Note",
+          "title": "Shared Responsibility",
+          "subtitle": "A clean security report does not guarantee absolute security. Use as a complement to existing internal reviews.",
+          "source": "shopify.dev/changelog"
         }
       ],
-      "art_direction": "gradient"
+      "art_direction": "brutalist"
     }
   },
   "origin": "automatic",
   "priority_score": 75,
-  "source_published_at": "2026-10-14T15:00:00+00:00"
+  "source_published_at": "2026-10-15T14:00:00+00:00"
 }
