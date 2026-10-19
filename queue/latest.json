@@ -1,22 +1,22 @@
 {
-  "id": "auto-2026-10-18-ebc6ccd5cca3",
-  "status": "published",
-  "topic": "Build with confidence: Shopify AI Toolkit's security check",
-  "category": "Developer Security",
+  "id": "auto-2026-10-19-80cffe4a1501",
+  "status": "ready",
+  "topic": "Checkout MCP and Cart MCP now support UCP buyer consent",
+  "category": "Developer Updates",
   "format": "document",
-  "caption": "Catch vulnerabilities early and build with confidence using the new security check command in Shopify AI Toolkit. #ShopifyDev #AppSecurity #DevTools #ShopifyCLI",
-  "source_url": "https://shopify.dev/changelog/build-more-secure-apps-with-shopify-s-ai-toolkit-security-check",
+  "caption": "Shopify Checkout MCP and Cart MCP now support UCP buyer consent, allowing AI agent users to manage privacy, marketing, and analytics choices directly in the interface. #Shopify #AI #Commerce #Developers",
+  "source_url": "https://shopify.dev/changelog/checkout-mcp-and-cart-mcp-now-support-ucp-buyer-consent",
   "sources": [
-    "https://shopify.dev/changelog/build-more-secure-apps-with-shopify-s-ai-toolkit-security-check"
+    "https://shopify.dev/changelog/checkout-mcp-and-cart-mcp-now-support-ucp-buyer-consent"
   ],
-  "created_at": "2026-10-18T10:10:24.829683+00:00",
-  "origin_request": "queue/topic_requests/auto-2026-10-18-ebc6ccd5cca3.json",
+  "created_at": "2026-10-19T11:43:27.928655+00:00",
+  "origin_request": "queue/topic_requests/auto-2026-10-19-80cffe4a1501.json",
   "document": {
-    "title": "Build with confidence: Shopify AI Toolkit's security check",
+    "title": "Checkout MCP and Cart MCP now support UCP buyer consent",
     "renderer": "v3",
     "carousel": {
-      "topic": "Build with confidence: Shopify AI Toolkit's security check",
-      "theme": "shopify",
+      "topic": "Checkout MCP and Cart MCP now support UCP buyer consent",
+      "theme": "developer",
       "brand": {
         "name": "WAJAHAT NAQVI",
         "subtitle": "Shopify · Full-stack · AI"
@@ -24,113 +24,111 @@
       "slides": [
         {
           "type": "cover",
-          "eyebrow": "Shopify AI Toolkit",
-          "title": "Build More Secure Apps",
-          "subtitle": "Scan your codebase locally before submission"
+          "eyebrow": "Shopify Developer Update",
+          "title": "UCP Buyer Consent Support",
+          "subtitle": "Checkout MCP and Cart MCP integrations now support universal commerce protocol buyer consent."
         },
         {
           "type": "cards",
-          "eyebrow": "Core Feature",
-          "title": "What Is Security Check",
+          "eyebrow": "Core Capabilities",
+          "title": "Consent Integration",
           "cards": [
             [
               "01",
-              "Local Command",
-              "Built into the Shopify AI Toolkit and Shopify CLI as a developer command."
+              "Consent Object",
+              "Responses include buyer.consent detailing purposes, states, descriptions, and shop policy links."
             ],
             [
               "02",
-              "Deep Scanning",
-              "Scans codebases, extension point configurations, and dependencies."
+              "Advertised Purposes",
+              "Storefronts cover analytics, preferences, sale or sharing, and marketing segments."
             ],
             [
               "03",
-              "Proactive Defense",
-              "Catches common security vulnerability patterns before release."
+              "Default Settings",
+              "Omissions apply store defaults by country, defaulting to opt-out if country is unknown."
             ]
           ]
         },
         {
           "type": "comparison",
-          "eyebrow": "Flexibility",
-          "title": "Execution & Tech Stack",
+          "eyebrow": "Validation & Requirements",
+          "title": "Rules and Handling",
           "left": {
-            "label": "Execution",
-            "title": "How It Runs",
+            "label": "Warnings",
+            "title": "Missing Data",
             "items": [
-              "Runs locally on your machine via Shopify CLI",
-              "Prompt coding agents directly for checks",
-              "Open source engine hosted on GitHub"
+              "Triggers missing_consent_data",
+              "Blocks checkout completion",
+              "Requires missing details"
             ]
           },
           "right": {
-            "label": "Compatibility",
-            "title": "Framework Agnostic",
+            "label": "Developer Actions",
+            "title": "Payload Rules",
             "items": [
-              "Supports public and custom apps",
-              "Works with React Router, Rails, Django, Laravel",
-              "Compatible with custom authentication stacks"
+              "Declare extension in profile",
+              "Render UI dynamically",
+              "Set source to platform"
             ]
           }
         },
         {
           "type": "cards",
-          "eyebrow": "Detailed Reports",
-          "title": "What Findings Include",
+          "eyebrow": "Availability",
+          "title": "Release Details",
           "cards": [
             [
               "01",
-              "Location",
-              "Identifies the exact affected file and line number."
+              "Release Date",
+              "Published on October 16, 2026."
             ],
             [
               "02",
-              "Context",
-              "Provides severity level and reasoning for the issue."
+              "Target Version",
+              "Requires UCP version 2026-08-25 and later."
             ],
             [
               "03",
-              "Remediation",
-              "Shows sample code snippets and official docs links."
+              "Discovery Profiles",
+              "Storefronts list the extension under /.well-known/ucp."
             ]
           ]
         },
         {
           "type": "timeline",
-          "eyebrow": "Developer Workflow",
-          "title": "Implications & Hygiene",
+          "eyebrow": "Implementation Steps",
+          "title": "Deployment Flow",
           "events": [
             [
-              "01",
-              "Early Detection",
-              "Catch authentication gaps and merchant data isolation flaws prior to app store reviews."
+              "1",
+              "Update Profile",
+              "Declare the buyer consent extension at version 2026-08-25 in your agent profile."
             ],
             [
-              "02",
-              "Agent Integration",
-              "Iterate and fix issues seamlessly without switching your existing tech stack."
+              "2",
+              "Render Choices",
+              "Dynamically present consent options using descriptions and policy links supplied."
             ],
             [
-              "03",
-              "Release Hygiene",
-              "Integrate into every release cycle, starting with critical and high-severity findings."
+              "3",
+              "Submit Payload",
+              "Relay buyer choices back on cart and checkout calls using platform source."
             ]
           ]
         },
         {
           "type": "closing",
-          "eyebrow": "Important Note",
-          "title": "Shared Responsibility",
-          "subtitle": "A clean security report does not guarantee absolute security. Use as a complement to existing internal reviews.",
-          "source": "shopify.dev/changelog"
+          "eyebrow": "Summary",
+          "title": "Enable Privacy Choices",
+          "subtitle": "Bring full storefront buyer consent capabilities directly into AI agent checkout flows today.",
+          "source": "Shopify Developer Changelog"
         }
       ],
-      "art_direction": "brutalist"
+      "art_direction": "journal"
     }
   },
   "origin": "automatic",
   "priority_score": 75,
-  "source_published_at": "2026-10-15T14:00:00+00:00",
-  "linkedin_post_id": "urn:li:ugcPost:7517819215601360896",
-  "published_at": "2026-10-19T05:29:35.714401+00:00"
+  "source_published_at": "2026-10-16T14:00:00+00:00"
 }

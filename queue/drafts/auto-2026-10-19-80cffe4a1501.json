@@ -1,0 +1,134 @@
+{
+  "id": "auto-2026-10-19-80cffe4a1501",
+  "status": "ready",
+  "topic": "Checkout MCP and Cart MCP now support UCP buyer consent",
+  "category": "Developer Updates",
+  "format": "document",
+  "caption": "Shopify Checkout MCP and Cart MCP now support UCP buyer consent, allowing AI agent users to manage privacy, marketing, and analytics choices directly in the interface. #Shopify #AI #Commerce #Developers",
+  "source_url": "https://shopify.dev/changelog/checkout-mcp-and-cart-mcp-now-support-ucp-buyer-consent",
+  "sources": [
+    "https://shopify.dev/changelog/checkout-mcp-and-cart-mcp-now-support-ucp-buyer-consent"
+  ],
+  "created_at": "2026-10-19T11:43:27.928655+00:00",
+  "origin_request": "queue/topic_requests/auto-2026-10-19-80cffe4a1501.json",
+  "document": {
+    "title": "Checkout MCP and Cart MCP now support UCP buyer consent",
+    "renderer": "v3",
+    "carousel": {
+      "topic": "Checkout MCP and Cart MCP now support UCP buyer consent",
+      "theme": "developer",
+      "brand": {
+        "name": "WAJAHAT NAQVI",
+        "subtitle": "Shopify · Full-stack · AI"
+      },
+      "slides": [
+        {
+          "type": "cover",
+          "eyebrow": "Shopify Developer Update",
+          "title": "UCP Buyer Consent Support",
+          "subtitle": "Checkout MCP and Cart MCP integrations now support universal commerce protocol buyer consent."
+        },
+        {
+          "type": "cards",
+          "eyebrow": "Core Capabilities",
+          "title": "Consent Integration",
+          "cards": [
+            [
+              "01",
+              "Consent Object",
+              "Responses include buyer.consent detailing purposes, states, descriptions, and shop policy links."
+            ],
+            [
+              "02",
+              "Advertised Purposes",
+              "Storefronts cover analytics, preferences, sale or sharing, and marketing segments."
+            ],
+            [
+              "03",
+              "Default Settings",
+              "Omissions apply store defaults by country, defaulting to opt-out if country is unknown."
+            ]
+          ]
+        },
+        {
+          "type": "comparison",
+          "eyebrow": "Validation & Requirements",
+          "title": "Rules and Handling",
+          "left": {
+            "label": "Warnings",
+            "title": "Missing Data",
+            "items": [
+              "Triggers missing_consent_data",
+              "Blocks checkout completion",
+              "Requires missing details"
+            ]
+          },
+          "right": {
+            "label": "Developer Actions",
+            "title": "Payload Rules",
+            "items": [
+              "Declare extension in profile",
+              "Render UI dynamically",
+              "Set source to platform"
+            ]
+          }
+        },
+        {
+          "type": "cards",
+          "eyebrow": "Availability",
+          "title": "Release Details",
+          "cards": [
+            [
+              "01",
+              "Release Date",
+              "Published on October 16, 2026."
+            ],
+            [
+              "02",
+              "Target Version",
+              "Requires UCP version 2026-08-25 and later."
+            ],
+            [
+              "03",
+              "Discovery Profiles",
+              "Storefronts list the extension under /.well-known/ucp."
+            ]
+          ]
+        },
+        {
+          "type": "timeline",
+          "eyebrow": "Implementation Steps",
+          "title": "Deployment Flow",
+          "events": [
+            [
+              "1",
+              "Update Profile",
+              "Declare the buyer consent extension at version 2026-08-25 in your agent profile."
+            ],
+            [
+              "2",
+              "Render Choices",
+              "Dynamically present consent options using descriptions and policy links supplied."
+            ],
+            [
+              "3",
+              "Submit Payload",
+              "Relay buyer choices back on cart and checkout calls using platform source."
+            ]
+          ]
+        },
+        {
+          "type": "closing",
+          "eyebrow": "Summary",
+          "title": "Enable Privacy Choices",
+          "subtitle": "Bring full storefront buyer consent capabilities directly into AI agent checkout flows today.",
+          "source": "Shopify Developer Changelog"
+        }
+      ],
+      "art_direction": "journal"
+    }
+  },
+  "origin": "automatic",
+  "priority_score": 75,
+  "source_published_at": "2026-10-16T14:00:00+00:00"
+}
