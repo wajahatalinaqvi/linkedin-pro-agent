@@ -1,6 +1,6 @@
 {
   "id": "auto-2026-10-18-ebc6ccd5cca3",
-  "status": "ready",
+  "status": "published",
   "topic": "Build with confidence: Shopify AI Toolkit's security check",
   "category": "Developer Security",
   "format": "document",
@@ -130,5 +130,7 @@
   },
   "origin": "automatic",
   "priority_score": 75,
-  "source_published_at": "2026-10-15T14:00:00+00:00"
+  "source_published_at": "2026-10-15T14:00:00+00:00",
+  "linkedin_post_id": "urn:li:ugcPost:7517819215601360896",
+  "published_at": "2026-10-19T05:29:35.714401+00:00"
 }

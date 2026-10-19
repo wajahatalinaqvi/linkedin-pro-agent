@@ -73,5 +73,18 @@
     ],
     "linkedin_post_id": "urn:li:ugcPost:7516090930156871680",
     "published_at": "2026-10-14T11:02:00.266837+00:00"
+  },
+  {
+    "id": "auto-2026-10-18-ebc6ccd5cca3",
+    "topic": "Build with confidence: Shopify AI Toolkit's security check",
+    "category": "Developer Security",
+    "format": "document",
+    "priority_score": 75,
+    "source_url": "https://shopify.dev/changelog/build-more-secure-apps-with-shopify-s-ai-toolkit-security-check",
+    "sources": [
+      "https://shopify.dev/changelog/build-more-secure-apps-with-shopify-s-ai-toolkit-security-check"
+    ],
+    "linkedin_post_id": "urn:li:ugcPost:7517819215601360896",
+    "published_at": "2026-10-19T05:29:35.714401+00:00"
   }
 ]
