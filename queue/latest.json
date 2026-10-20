@@ -1,21 +1,21 @@
 {
-  "id": "auto-2026-10-19-80cffe4a1501",
+  "id": "auto-2026-10-20-ed6489056834",
   "status": "ready",
-  "topic": "Checkout MCP and Cart MCP now support UCP buyer consent",
-  "category": "Developer Updates",
+  "topic": "Copilot model policy API for enterprise, orgs, and teams",
+  "category": "Engineering Management",
   "format": "document",
-  "caption": "Shopify Checkout MCP and Cart MCP now support UCP buyer consent, allowing AI agent users to manage privacy, marketing, and analytics choices directly in the interface. #Shopify #AI #Commerce #Developers",
-  "source_url": "https://shopify.dev/changelog/checkout-mcp-and-cart-mcp-now-support-ucp-buyer-consent",
+  "caption": "Programmatic management of GitHub Copilot models is now generally available. Discover how administrators can automate governance and control model availability across structural tiers. #GitHubCopilot #DeveloperTools #EngineeringLeadership #DevOps",
+  "source_url": "https://github.blog/changelog/2026-10-19-copilot-model-policy-api-for-enterprise-orgs-and-teams",
   "sources": [
-    "https://shopify.dev/changelog/checkout-mcp-and-cart-mcp-now-support-ucp-buyer-consent"
+    "https://github.blog/changelog/2026-10-19-copilot-model-policy-api-for-enterprise-orgs-and-teams"
   ],
-  "created_at": "2026-10-19T11:43:27.928655+00:00",
-  "origin_request": "queue/topic_requests/auto-2026-10-19-80cffe4a1501.json",
+  "created_at": "2026-10-20T10:44:29.815515+00:00",
+  "origin_request": "queue/topic_requests/auto-2026-10-20-ed6489056834.json",
   "document": {
-    "title": "Checkout MCP and Cart MCP now support UCP buyer consent",
+    "title": "Copilot model policy API for enterprise, orgs, and teams",
     "renderer": "v3",
     "carousel": {
-      "topic": "Checkout MCP and Cart MCP now support UCP buyer consent",
+      "topic": "Copilot model policy API for enterprise, orgs, and teams",
       "theme": "developer",
       "brand": {
         "name": "WAJAHAT NAQVI",
@@ -24,111 +24,111 @@
       "slides": [
         {
           "type": "cover",
-          "eyebrow": "Shopify Developer Update",
-          "title": "UCP Buyer Consent Support",
-          "subtitle": "Checkout MCP and Cart MCP integrations now support universal commerce protocol buyer consent."
+          "eyebrow": "GitHub Changelog",
+          "title": "Copilot Model Policy API",
+          "subtitle": "Programmatic control for enterprise, organizations, and teams"
         },
         {
           "type": "cards",
-          "eyebrow": "Core Capabilities",
-          "title": "Consent Integration",
+          "eyebrow": "What It Does",
+          "title": "Core API Functions",
           "cards": [
             [
               "01",
-              "Consent Object",
-              "Responses include buyer.consent detailing purposes, states, descriptions, and shop policy links."
+              "REST API Endpoints",
+              "Retrieve and update model policies programmatically using REST endpoints."
             ],
             [
               "02",
-              "Advertised Purposes",
-              "Storefronts cover analytics, preferences, sale or sharing, and marketing segments."
+              "GET and PATCH",
+              "Query current configurations and update settings seamlessly via script."
             ],
             [
               "03",
-              "Default Settings",
-              "Omissions apply store defaults by country, defaulting to opt-out if country is unknown."
+              "Automated Governance",
+              "Centrally manage model availability without manual UI intervention."
             ]
           ]
         },
         {
           "type": "comparison",
-          "eyebrow": "Validation & Requirements",
-          "title": "Rules and Handling",
+          "eyebrow": "Structural Tiers",
+          "title": "Available API Levels",
           "left": {
-            "label": "Warnings",
-            "title": "Missing Data",
+            "label": "Enterprise Level",
+            "title": "Top-Down Control",
             "items": [
-              "Triggers missing_consent_data",
-              "Blocks checkout completion",
-              "Requires missing details"
+              "Enterprise endpoint policies",
+              "Enterprise teams endpoint",
+              "Enterprise apps endpoint"
             ]
           },
           "right": {
-            "label": "Developer Actions",
-            "title": "Payload Rules",
+            "label": "Organization Level",
+            "title": "Scoped Management",
             "items": [
-              "Declare extension in profile",
-              "Render UI dynamically",
-              "Set source to platform"
+              "Organization endpoint",
+              "Delegated org mode",
+              "Team and app routing"
             ]
           }
         },
         {
           "type": "cards",
-          "eyebrow": "Availability",
-          "title": "Release Details",
+          "eyebrow": "Delegation Modes",
+          "title": "Flexible Control Hierarchy",
           "cards": [
             [
               "01",
-              "Release Date",
-              "Published on October 16, 2026."
+              "Organization Mode",
+              "Enterprise-level policies delegate model control directly down to organizations."
             ],
             [
               "02",
-              "Target Version",
-              "Requires UCP version 2026-08-25 and later."
+              "Enterprise Teams Mode",
+              "Extend precise model control down to specific teams and apps."
             ],
             [
               "03",
-              "Discovery Profiles",
-              "Storefronts list the extension under /.well-known/ucp."
+              "Granular Alignment",
+              "Align tooling requirements with internal compliance and security."
             ]
           ]
         },
         {
           "type": "timeline",
-          "eyebrow": "Implementation Steps",
-          "title": "Deployment Flow",
+          "eyebrow": "Release Status",
+          "title": "Availability & Guidance",
           "events": [
             [
-              "1",
-              "Update Profile",
-              "Declare the buyer consent extension at version 2026-08-25 in your agent profile."
+              "GA",
+              "Generally Available",
+              "The Copilot model policy API is officially live as of October 19, 2026."
             ],
             [
-              "2",
-              "Render Choices",
-              "Dynamically present consent options using descriptions and policy links supplied."
+              "API",
+              "Structural Tiers",
+              "Endpoints available across enterprises, teams, apps, and organizations."
             ],
             [
-              "3",
-              "Submit Payload",
-              "Relay buyer choices back on cart and checkout calls using platform source."
+              "Docs",
+              "Official Payload",
+              "Consult official documentation for proper configuration and payload parameters."
             ]
           ]
         },
         {
           "type": "closing",
-          "eyebrow": "Summary",
-          "title": "Enable Privacy Choices",
-          "subtitle": "Bring full storefront buyer consent capabilities directly into AI agent checkout flows today.",
-          "source": "Shopify Developer Changelog"
+          "eyebrow": "Get Started",
+          "title": "Automate Your Copilot Governance",
+          "subtitle": "Streamline enterprise AI tooling with programmatic model control.",
+          "source": "github.blog/changelog/2026-10-19-copilot-model-policy-api-for-enterprise-orgs-and-teams"
         }
       ],
-      "art_direction": "journal"
+      "art_direction": "editorial"
     }
   },
   "origin": "automatic",
   "priority_score": 75,
-  "source_published_at": "2026-10-16T14:00:00+00:00"
+  "source_published_at": "2026-10-19T21:32:18+00:00"
 }

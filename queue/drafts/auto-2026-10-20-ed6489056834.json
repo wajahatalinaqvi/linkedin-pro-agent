@@ -1,0 +1,134 @@
+{
+  "id": "auto-2026-10-20-ed6489056834",
+  "status": "ready",
+  "topic": "Copilot model policy API for enterprise, orgs, and teams",
+  "category": "Engineering Management",
+  "format": "document",
+  "caption": "Programmatic management of GitHub Copilot models is now generally available. Discover how administrators can automate governance and control model availability across structural tiers. #GitHubCopilot #DeveloperTools #EngineeringLeadership #DevOps",
+  "source_url": "https://github.blog/changelog/2026-10-19-copilot-model-policy-api-for-enterprise-orgs-and-teams",
+  "sources": [
+    "https://github.blog/changelog/2026-10-19-copilot-model-policy-api-for-enterprise-orgs-and-teams"
+  ],
+  "created_at": "2026-10-20T10:44:29.815515+00:00",
+  "origin_request": "queue/topic_requests/auto-2026-10-20-ed6489056834.json",
+  "document": {
+    "title": "Copilot model policy API for enterprise, orgs, and teams",
+    "renderer": "v3",
+    "carousel": {
+      "topic": "Copilot model policy API for enterprise, orgs, and teams",
+      "theme": "developer",
+      "brand": {
+        "name": "WAJAHAT NAQVI",
+        "subtitle": "Shopify · Full-stack · AI"
+      },
+      "slides": [
+        {
+          "type": "cover",
+          "eyebrow": "GitHub Changelog",
+          "title": "Copilot Model Policy API",
+          "subtitle": "Programmatic control for enterprise, organizations, and teams"
+        },
+        {
+          "type": "cards",
+          "eyebrow": "What It Does",
+          "title": "Core API Functions",
+          "cards": [
+            [
+              "01",
+              "REST API Endpoints",
+              "Retrieve and update model policies programmatically using REST endpoints."
+            ],
+            [
+              "02",
+              "GET and PATCH",
+              "Query current configurations and update settings seamlessly via script."
+            ],
+            [
+              "03",
+              "Automated Governance",
+              "Centrally manage model availability without manual UI intervention."
+            ]
+          ]
+        },
+        {
+          "type": "comparison",
+          "eyebrow": "Structural Tiers",
+          "title": "Available API Levels",
+          "left": {
+            "label": "Enterprise Level",
+            "title": "Top-Down Control",
+            "items": [
+              "Enterprise endpoint policies",
+              "Enterprise teams endpoint",
+              "Enterprise apps endpoint"
+            ]
+          },
+          "right": {
+            "label": "Organization Level",
+            "title": "Scoped Management",
+            "items": [
+              "Organization endpoint",
+              "Delegated org mode",
+              "Team and app routing"
+            ]
+          }
+        },
+        {
+          "type": "cards",
+          "eyebrow": "Delegation Modes",
+          "title": "Flexible Control Hierarchy",
+          "cards": [
+            [
+              "01",
+              "Organization Mode",
+              "Enterprise-level policies delegate model control directly down to organizations."
+            ],
+            [
+              "02",
+              "Enterprise Teams Mode",
+              "Extend precise model control down to specific teams and apps."
+            ],
+            [
+              "03",
+              "Granular Alignment",
+              "Align tooling requirements with internal compliance and security."
+            ]
+          ]
+        },
+        {
+          "type": "timeline",
+          "eyebrow": "Release Status",
+          "title": "Availability & Guidance",
+          "events": [
+            [
+              "GA",
+              "Generally Available",
+              "The Copilot model policy API is officially live as of October 19, 2026."
+            ],
+            [
+              "API",
+              "Structural Tiers",
+              "Endpoints available across enterprises, teams, apps, and organizations."
+            ],
+            [
+              "Docs",
+              "Official Payload",
+              "Consult official documentation for proper configuration and payload parameters."
+            ]
+          ]
+        },
+        {
+          "type": "closing",
+          "eyebrow": "Get Started",
+          "title": "Automate Your Copilot Governance",
+          "subtitle": "Streamline enterprise AI tooling with programmatic model control.",
+          "source": "github.blog/changelog/2026-10-19-copilot-model-policy-api-for-enterprise-orgs-and-teams"
+        }
+      ],
+      "art_direction": "editorial"
+    }
+  },
+  "origin": "automatic",
+  "priority_score": 75,
+  "source_published_at": "2026-10-19T21:32:18+00:00"
+}
