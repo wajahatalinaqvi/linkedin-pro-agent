@@ -316,7 +316,18 @@ def render_slide(slide: dict, data: dict, number: int) -> str:
     direction = str(data.get("art_direction") or "classic").lower()
     if direction not in {"classic", "editorial", "neon", "swiss", "collage", "blueprint", "gradient", "brutalist", "journal"}:
         raise ValueError("Unknown carousel art direction.")
-    return f'<section class="slide theme-{theme} art-{direction} layout-{layout} {tone}"><div class="slide-inner">{content}</div>{_brand(data, number)}</section>'
+    profile = data.get("creative_profile") or {}
+    from .creative_direction import COMPOSITIONS, TYPOGRAPHY, MOTIFS
+    variant = ""
+    if profile:
+        choices = profile.get("compositions") or []
+        composition = choices[(number - 1) % len(choices)] if choices else "mosaic"
+        font = str(profile.get("typography", "grotesk"))
+        motif = str(profile.get("motif", "blocks"))
+        if composition not in COMPOSITIONS or font not in TYPOGRAPHY.values() or motif not in MOTIFS.values():
+            raise ValueError("Invalid carousel creative profile.")
+        variant = f" compose-{composition} font-{font} motif-{motif}"
+    return f'<section class="slide theme-{theme} art-{direction} layout-{layout} {tone}{variant}"><div class="slide-inner">{content}</div>{_brand(data, number)}</section>'
 
 
 def render_html(data: dict) -> str:
