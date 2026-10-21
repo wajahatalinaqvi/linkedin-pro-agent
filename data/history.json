@@ -86,5 +86,18 @@
     ],
     "linkedin_post_id": "urn:li:ugcPost:7517819215601360896",
     "published_at": "2026-10-19T05:29:35.714401+00:00"
+  },
+  {
+    "id": "auto-2026-10-20-ed6489056834",
+    "topic": "Copilot model policy API for enterprise, orgs, and teams",
+    "category": "Engineering Management",
+    "format": "document",
+    "priority_score": 75,
+    "source_url": "https://github.blog/changelog/2026-10-19-copilot-model-policy-api-for-enterprise-orgs-and-teams",
+    "sources": [
+      "https://github.blog/changelog/2026-10-19-copilot-model-policy-api-for-enterprise-orgs-and-teams"
+    ],
+    "linkedin_post_id": "urn:li:ugcPost:7518549689873526784",
+    "published_at": "2026-10-21T05:52:14.215490+00:00"
   }
 ]

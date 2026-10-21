@@ -1,6 +1,6 @@
 {
   "id": "auto-2026-10-20-ed6489056834",
-  "status": "ready",
+  "status": "published",
   "topic": "Copilot model policy API for enterprise, orgs, and teams",
   "category": "Engineering Management",
   "format": "document",
@@ -130,5 +130,7 @@
   },
   "origin": "automatic",
   "priority_score": 75,
-  "source_published_at": "2026-10-19T21:32:18+00:00"
+  "source_published_at": "2026-10-19T21:32:18+00:00",
+  "linkedin_post_id": "urn:li:ugcPost:7518549689873526784",
+  "published_at": "2026-10-21T05:52:14.215490+00:00"
 }
