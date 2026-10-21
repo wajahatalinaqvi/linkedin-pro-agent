@@ -8,6 +8,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from .creative_direction import apply_creative_profile
+
 DESIGNS = (
     "editorial",     # paper, newspaper columns, serif headline
     "neon",          # dark electric poster with diagonals
@@ -54,7 +56,10 @@ def set_art_direction(carousel: dict, post_id: str, drafts_dir: Path) -> str:
     """Preserve an explicit approved design; otherwise assign and record one."""
     existing = carousel.get("art_direction")
     if existing:
-        return validate_direction(existing)
-    direction = pick_direction(post_id, drafts_dir)
-    carousel["art_direction"] = direction
+        direction = validate_direction(existing)
+    else:
+        direction = pick_direction(post_id, drafts_dir)
+        carousel["art_direction"] = direction
+    # Called only for new drafts. Published legacy files are never migrated.
+    apply_creative_profile(carousel, post_id, direction)
     return direction
