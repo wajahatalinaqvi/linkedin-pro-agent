@@ -1,21 +1,21 @@
 {
-  "id": "auto-2026-10-20-ed6489056834",
-  "status": "published",
-  "topic": "Copilot model policy API for enterprise, orgs, and teams",
-  "category": "Engineering Management",
+  "id": "auto-2026-10-21-55c557b3bc02",
+  "status": "ready",
+  "topic": "Securing your app, together",
+  "category": "Developer Security",
   "format": "document",
-  "caption": "Programmatic management of GitHub Copilot models is now generally available. Discover how administrators can automate governance and control model availability across structural tiers. #GitHubCopilot #DeveloperTools #EngineeringLeadership #DevOps",
-  "source_url": "https://github.blog/changelog/2026-10-19-copilot-model-policy-api-for-enterprise-orgs-and-teams",
+  "caption": "AI-driven attacks are rising across the industry. Shopify issued an urgent action notice for developers to safeguard apps and protect merchant trust this week. Swipe through for the core directives. #ShopifyDev #AppSecurity #DevCommunity #CyberSecurity",
+  "source_url": "https://shopify.dev/changelog/securing-your-app-together",
   "sources": [
-    "https://github.blog/changelog/2026-10-19-copilot-model-policy-api-for-enterprise-orgs-and-teams"
+    "https://shopify.dev/changelog/securing-your-app-together"
   ],
-  "created_at": "2026-10-20T10:44:29.815515+00:00",
-  "origin_request": "queue/topic_requests/auto-2026-10-20-ed6489056834.json",
+  "created_at": "2026-10-21T10:56:09.768470+00:00",
+  "origin_request": "queue/topic_requests/auto-2026-10-21-55c557b3bc02.json",
   "document": {
-    "title": "Copilot model policy API for enterprise, orgs, and teams",
+    "title": "Securing your app, together",
     "renderer": "v3",
     "carousel": {
-      "topic": "Copilot model policy API for enterprise, orgs, and teams",
+      "topic": "Securing your app, together",
       "theme": "developer",
       "brand": {
         "name": "WAJAHAT NAQVI",
@@ -24,113 +24,125 @@
       "slides": [
         {
           "type": "cover",
-          "eyebrow": "GitHub Changelog",
-          "title": "Copilot Model Policy API",
-          "subtitle": "Programmatic control for enterprise, organizations, and teams"
+          "eyebrow": "URGENT ADVISORY",
+          "title": "Securing Your App, Together",
+          "subtitle": "Critical security steps for Shopify developers"
         },
         {
-          "type": "cards",
-          "eyebrow": "What It Does",
-          "title": "Core API Functions",
-          "cards": [
-            [
-              "01",
-              "REST API Endpoints",
-              "Retrieve and update model policies programmatically using REST endpoints."
-            ],
-            [
-              "02",
-              "GET and PATCH",
-              "Query current configurations and update settings seamlessly via script."
-            ],
-            [
-              "03",
-              "Automated Governance",
-              "Centrally manage model availability without manual UI intervention."
-            ]
-          ]
-        },
-        {
-          "type": "comparison",
-          "eyebrow": "Structural Tiers",
-          "title": "Available API Levels",
+          "type": "before_after",
+          "eyebrow": "SECURITY POSTURE",
+          "title": "Infrastructure & Data",
           "left": {
-            "label": "Enterprise Level",
-            "title": "Top-Down Control",
+            "label": "Partner Security",
+            "title": "Account Defense",
             "items": [
-              "Enterprise endpoint policies",
-              "Enterprise teams endpoint",
-              "Enterprise apps endpoint"
+              "Enable 2FA across accounts",
+              "Secure hosting and CDNs",
+              "Prune outdated permissions"
             ]
           },
           "right": {
-            "label": "Organization Level",
-            "title": "Scoped Management",
+            "label": "Data Handling",
+            "title": "Safe Rendering",
             "items": [
-              "Organization endpoint",
-              "Delegated org mode",
-              "Team and app routing"
+              "Treat all data as untrusted",
+              "Apply thorough escaping",
+              "Sanitize server inputs"
             ]
           }
         },
         {
-          "type": "cards",
-          "eyebrow": "Delegation Modes",
-          "title": "Flexible Control Hierarchy",
-          "cards": [
+          "type": "workflow",
+          "eyebrow": "PLATFORM ROADMAP",
+          "title": "What Comes Next",
+          "steps": [
             [
-              "01",
-              "Organization Mode",
-              "Enterprise-level policies delegate model control directly down to organizations."
+              "1",
+              "Action This Week",
+              "Immediate review of logs, tokens, and infrastructure required."
             ],
             [
-              "02",
-              "Enterprise Teams Mode",
-              "Extend precise model control down to specific teams and apps."
+              "2",
+              "Token Enforcement",
+              "Mandatory adoption of expiring access tokens coming soon for public apps."
             ],
             [
-              "03",
-              "Granular Alignment",
-              "Align tooling requirements with internal compliance and security."
+              "3",
+              "Platform Changes",
+              "Upcoming boundaries and IP restrictions detailed before rollout."
             ]
           ]
         },
         {
-          "type": "timeline",
-          "eyebrow": "Release Status",
-          "title": "Availability & Guidance",
-          "events": [
+          "type": "feature_grid",
+          "eyebrow": "IMMEDIATE ACTIONS",
+          "title": "Protecting Your App",
+          "features": [
             [
-              "GA",
-              "Generally Available",
-              "The Copilot model policy API is officially live as of October 19, 2026."
+              "1",
+              "AI Security Check",
+              "Use the new AI Toolkit to scan for unauthenticated routes and data access issues."
             ],
             [
-              "API",
-              "Structural Tiers",
-              "Endpoints available across enterprises, teams, apps, and organizations."
+              "2",
+              "Expiring Tokens",
+              "Prepare to migrate to short-lived offline access tokens to limit leak exposure."
             ],
             [
-              "Docs",
-              "Official Payload",
-              "Consult official documentation for proper configuration and payload parameters."
+              "3",
+              "Dashboard Monitoring",
+              "Inspect API requests and filter logs by client IP to spot suspicious sources."
+            ]
+          ]
+        },
+        {
+          "type": "cards",
+          "eyebrow": "DEVELOPER OBLIGATIONS",
+          "title": "Accountability & Alerts",
+          "cards": [
+            [
+              "1",
+              "Audit Immediately",
+              "Check applications using the provided vulnerability scanners right away."
+            ],
+            [
+              "2",
+              "Emergency Contacts",
+              "Keep your developer email current in the Partner Dashboard."
+            ],
+            [
+              "3",
+              "Report Issues",
+              "Send security vulnerability reports directly to Shopify's team."
             ]
           ]
         },
         {
           "type": "closing",
-          "eyebrow": "Get Started",
-          "title": "Automate Your Copilot Governance",
-          "subtitle": "Streamline enterprise AI tooling with programmatic model control.",
-          "source": "github.blog/changelog/2026-10-19-copilot-model-policy-api-for-enterprise-orgs-and-teams"
+          "eyebrow": "STAY SECURE",
+          "title": "Protect Merchant Trust",
+          "subtitle": "Review the full changelog and report issues to partner-security-reports@shopify.com",
+          "source": "https://shopify.dev/changelog/securing-your-app-together"
         }
       ],
-      "art_direction": "editorial"
+      "art_direction": "neon",
+      "storyboard": "sequence-6",
+      "creative_profile": {
+        "typography": "poster",
+        "motif": "rays",
+        "compositions": [
+          "spotlight",
+          "rail",
+          "mosaic",
+          "tiles",
+          "spotlight",
+          "rail"
+        ],
+        "edition": 558
+      }
     }
   },
   "origin": "automatic",
   "priority_score": 75,
-  "source_published_at": "2026-10-19T21:32:18+00:00",
-  "linkedin_post_id": "urn:li:ugcPost:7518549689873526784",
-  "published_at": "2026-10-21T05:52:14.215490+00:00"
+  "source_published_at": "2026-10-20T19:00:00+00:00"
 }

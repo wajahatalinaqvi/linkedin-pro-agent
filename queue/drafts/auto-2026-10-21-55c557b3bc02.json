@@ -1,0 +1,148 @@
+{
+  "id": "auto-2026-10-21-55c557b3bc02",
+  "status": "ready",
+  "topic": "Securing your app, together",
+  "category": "Developer Security",
+  "format": "document",
+  "caption": "AI-driven attacks are rising across the industry. Shopify issued an urgent action notice for developers to safeguard apps and protect merchant trust this week. Swipe through for the core directives. #ShopifyDev #AppSecurity #DevCommunity #CyberSecurity",
+  "source_url": "https://shopify.dev/changelog/securing-your-app-together",
+  "sources": [
+    "https://shopify.dev/changelog/securing-your-app-together"
+  ],
+  "created_at": "2026-10-21T10:56:09.768470+00:00",
+  "origin_request": "queue/topic_requests/auto-2026-10-21-55c557b3bc02.json",
+  "document": {
+    "title": "Securing your app, together",
+    "renderer": "v3",
+    "carousel": {
+      "topic": "Securing your app, together",
+      "theme": "developer",
+      "brand": {
+        "name": "WAJAHAT NAQVI",
+        "subtitle": "Shopify · Full-stack · AI"
+      },
+      "slides": [
+        {
+          "type": "cover",
+          "eyebrow": "URGENT ADVISORY",
+          "title": "Securing Your App, Together",
+          "subtitle": "Critical security steps for Shopify developers"
+        },
+        {
+          "type": "before_after",
+          "eyebrow": "SECURITY POSTURE",
+          "title": "Infrastructure & Data",
+          "left": {
+            "label": "Partner Security",
+            "title": "Account Defense",
+            "items": [
+              "Enable 2FA across accounts",
+              "Secure hosting and CDNs",
+              "Prune outdated permissions"
+            ]
+          },
+          "right": {
+            "label": "Data Handling",
+            "title": "Safe Rendering",
+            "items": [
+              "Treat all data as untrusted",
+              "Apply thorough escaping",
+              "Sanitize server inputs"
+            ]
+          }
+        },
+        {
+          "type": "workflow",
+          "eyebrow": "PLATFORM ROADMAP",
+          "title": "What Comes Next",
+          "steps": [
+            [
+              "1",
+              "Action This Week",
+              "Immediate review of logs, tokens, and infrastructure required."
+            ],
+            [
+              "2",
+              "Token Enforcement",
+              "Mandatory adoption of expiring access tokens coming soon for public apps."
+            ],
+            [
+              "3",
+              "Platform Changes",
+              "Upcoming boundaries and IP restrictions detailed before rollout."
+            ]
+          ]
+        },
+        {
+          "type": "feature_grid",
+          "eyebrow": "IMMEDIATE ACTIONS",
+          "title": "Protecting Your App",
+          "features": [
+            [
+              "1",
+              "AI Security Check",
+              "Use the new AI Toolkit to scan for unauthenticated routes and data access issues."
+            ],
+            [
+              "2",
+              "Expiring Tokens",
+              "Prepare to migrate to short-lived offline access tokens to limit leak exposure."
+            ],
+            [
+              "3",
+              "Dashboard Monitoring",
+              "Inspect API requests and filter logs by client IP to spot suspicious sources."
+            ]
+          ]
+        },
+        {
+          "type": "cards",
+          "eyebrow": "DEVELOPER OBLIGATIONS",
+          "title": "Accountability & Alerts",
+          "cards": [
+            [
+              "1",
+              "Audit Immediately",
+              "Check applications using the provided vulnerability scanners right away."
+            ],
+            [
+              "2",
+              "Emergency Contacts",
+              "Keep your developer email current in the Partner Dashboard."
+            ],
+            [
+              "3",
+              "Report Issues",
+              "Send security vulnerability reports directly to Shopify's team."
+            ]
+          ]
+        },
+        {
+          "type": "closing",
+          "eyebrow": "STAY SECURE",
+          "title": "Protect Merchant Trust",
+          "subtitle": "Review the full changelog and report issues to partner-security-reports@shopify.com",
+          "source": "https://shopify.dev/changelog/securing-your-app-together"
+        }
+      ],
+      "art_direction": "neon",
+      "storyboard": "sequence-6",
+      "creative_profile": {
+        "typography": "poster",
+        "motif": "rays",
+        "compositions": [
+          "spotlight",
+          "rail",
+          "mosaic",
+          "tiles",
+          "spotlight",
+          "rail"
+        ],
+        "edition": 558
+      }
+    }
+  },
+  "origin": "automatic",
+  "priority_score": 75,
+  "source_published_at": "2026-10-20T19:00:00+00:00"
+}
