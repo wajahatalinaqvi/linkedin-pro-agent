@@ -66,6 +66,7 @@ class VisualVarietyTests(unittest.TestCase):
                 self.assertIn("font-", rendered)
                 styles.append((direction, profile["typography"], profile["motif"]))
                 sequences.append(carousel["storyboard"])
+                (Path(tmp) / f"sample-{i}.json").write_text(json.dumps({"id": f"sample-{i}", "created_at": f"2026-10-{i+1:02d}T00:00:00Z", "document": {"carousel": carousel}}))
             self.assertGreater(len(set(styles)), 3)
             self.assertGreater(len(set(sequences)), 3)
 
