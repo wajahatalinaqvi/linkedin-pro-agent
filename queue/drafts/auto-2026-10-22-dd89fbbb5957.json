@@ -1,0 +1,148 @@
+{
+  "id": "auto-2026-10-22-dd89fbbb5957",
+  "status": "ready",
+  "topic": "Metaobject analytics queryable capability available in the Admin API",
+  "category": "Shopify Development",
+  "format": "document",
+  "caption": "Unlock advanced insights by controlling custom data structures directly through the GraphQL Admin API. Manage metaobject analytics capabilities seamlessly with the latest API updates. #ShopifyDev #GraphQL #Ecommerce #WebDevelopment",
+  "source_url": "https://shopify.dev/changelog/metaobject-analytics-queryable-capability-available-in-the-admin-api",
+  "sources": [
+    "https://shopify.dev/changelog/metaobject-analytics-queryable-capability-available-in-the-admin-api"
+  ],
+  "created_at": "2026-10-22T10:56:02.991708+00:00",
+  "origin_request": "queue/topic_requests/auto-2026-10-22-dd89fbbb5957.json",
+  "document": {
+    "title": "Metaobject analytics queryable capability available in the Admin API",
+    "renderer": "v3",
+    "carousel": {
+      "topic": "Metaobject analytics queryable capability available in the Admin API",
+      "theme": "shopify",
+      "brand": {
+        "name": "WAJAHAT NAQVI",
+        "subtitle": "Shopify · Full-stack · AI"
+      },
+      "slides": [
+        {
+          "type": "cover",
+          "eyebrow": "API Update",
+          "title": "Metaobject Analytics",
+          "subtitle": "Queryable capability now available in the Admin API"
+        },
+        {
+          "type": "cards",
+          "eyebrow": "Developer Impact",
+          "title": "Key Features",
+          "cards": [
+            [
+              "01",
+              "App Integration",
+              "Build apps that programmatically expose merchant data to analytics."
+            ],
+            [
+              "02",
+              "Targeted Control",
+              "Restrict custom data structures based on underlying field types."
+            ],
+            [
+              "03",
+              "Error Handling",
+              "Catch invalid definitions using new error codes."
+            ]
+          ]
+        },
+        {
+          "type": "feature_grid",
+          "eyebrow": "What It Does",
+          "title": "Core Capabilities",
+          "features": [
+            [
+              "01",
+              "Read & Configure",
+              "Control analyticsQueryable on metaobject definitions via the GraphQL Admin API."
+            ],
+            [
+              "02",
+              "Inspect Status",
+              "Check whether specific metaobject definitions can be queried within analytics."
+            ],
+            [
+              "03",
+              "Consistent Management",
+              "Aligns metaobject definitions with how metafield definitions handle analytics control."
+            ]
+          ]
+        },
+        {
+          "type": "workflow",
+          "eyebrow": "Migration & Requirements",
+          "title": "What You Need To Know",
+          "steps": [
+            [
+              "01",
+              "Release Date",
+              "Targeting GraphQL Admin API version 2027-01 and later."
+            ],
+            [
+              "02",
+              "No Forced Actions",
+              "Existing apps require no immediate refactoring unless adopting the feature."
+            ],
+            [
+              "03",
+              "Verify Eligibility",
+              "Check eligibility before enabling to handle mutation errors properly."
+            ]
+          ]
+        },
+        {
+          "type": "before_after",
+          "eyebrow": "API Changes",
+          "title": "Reading vs Writing",
+          "left": {
+            "label": "Reading",
+            "title": "Capabilities",
+            "items": [
+              "Exposes eligible status",
+              "Checks analytics-compatible fields",
+              "Verifies active capability state"
+            ]
+          },
+          "right": {
+            "label": "Writing",
+            "title": "Inputs",
+            "items": [
+              "Create input fields",
+              "Update input parameters",
+              "Configure enabled state"
+            ]
+          }
+        },
+        {
+          "type": "closing",
+          "eyebrow": "Shopify Changelog",
+          "title": "Start Building Today",
+          "subtitle": "Check the official changelog for full technical documentation.",
+          "source": "https://shopify.dev/changelog/metaobject-analytics-queryable-capability-available-in-the-admin-api"
+        }
+      ],
+      "art_direction": "swiss",
+      "storyboard": "sequence-7",
+      "creative_profile": {
+        "typography": "grotesk",
+        "motif": "blocks",
+        "compositions": [
+          "mosaic",
+          "tiles",
+          "spotlight",
+          "rail",
+          "mosaic",
+          "tiles"
+        ],
+        "edition": 987
+      }
+    }
+  },
+  "origin": "automatic",
+  "priority_score": 75,
+  "source_published_at": "2026-10-20T20:40:00+00:00"
+}

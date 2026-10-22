@@ -1,22 +1,22 @@
 {
-  "id": "auto-2026-10-21-55c557b3bc02",
+  "id": "auto-2026-10-22-dd89fbbb5957",
   "status": "ready",
-  "topic": "Securing your app, together",
-  "category": "Developer Security",
+  "topic": "Metaobject analytics queryable capability available in the Admin API",
+  "category": "Shopify Development",
   "format": "document",
-  "caption": "AI-driven attacks are rising across the industry. Shopify issued an urgent action notice for developers to safeguard apps and protect merchant trust this week. Swipe through for the core directives. #ShopifyDev #AppSecurity #DevCommunity #CyberSecurity",
-  "source_url": "https://shopify.dev/changelog/securing-your-app-together",
+  "caption": "Unlock advanced insights by controlling custom data structures directly through the GraphQL Admin API. Manage metaobject analytics capabilities seamlessly with the latest API updates. #ShopifyDev #GraphQL #Ecommerce #WebDevelopment",
+  "source_url": "https://shopify.dev/changelog/metaobject-analytics-queryable-capability-available-in-the-admin-api",
   "sources": [
-    "https://shopify.dev/changelog/securing-your-app-together"
+    "https://shopify.dev/changelog/metaobject-analytics-queryable-capability-available-in-the-admin-api"
   ],
-  "created_at": "2026-10-21T10:56:09.768470+00:00",
-  "origin_request": "queue/topic_requests/auto-2026-10-21-55c557b3bc02.json",
+  "created_at": "2026-10-22T10:56:02.991708+00:00",
+  "origin_request": "queue/topic_requests/auto-2026-10-22-dd89fbbb5957.json",
   "document": {
-    "title": "Securing your app, together",
+    "title": "Metaobject analytics queryable capability available in the Admin API",
     "renderer": "v3",
     "carousel": {
-      "topic": "Securing your app, together",
-      "theme": "developer",
+      "topic": "Metaobject analytics queryable capability available in the Admin API",
+      "theme": "shopify",
       "brand": {
         "name": "WAJAHAT NAQVI",
         "subtitle": "Shopify · Full-stack · AI"
@@ -24,125 +24,125 @@
       "slides": [
         {
           "type": "cover",
-          "eyebrow": "URGENT ADVISORY",
-          "title": "Securing Your App, Together",
-          "subtitle": "Critical security steps for Shopify developers"
+          "eyebrow": "API Update",
+          "title": "Metaobject Analytics",
+          "subtitle": "Queryable capability now available in the Admin API"
         },
         {
-          "type": "before_after",
-          "eyebrow": "SECURITY POSTURE",
-          "title": "Infrastructure & Data",
-          "left": {
-            "label": "Partner Security",
-            "title": "Account Defense",
-            "items": [
-              "Enable 2FA across accounts",
-              "Secure hosting and CDNs",
-              "Prune outdated permissions"
-            ]
-          },
-          "right": {
-            "label": "Data Handling",
-            "title": "Safe Rendering",
-            "items": [
-              "Treat all data as untrusted",
-              "Apply thorough escaping",
-              "Sanitize server inputs"
-            ]
-          }
-        },
-        {
-          "type": "workflow",
-          "eyebrow": "PLATFORM ROADMAP",
-          "title": "What Comes Next",
-          "steps": [
+          "type": "cards",
+          "eyebrow": "Developer Impact",
+          "title": "Key Features",
+          "cards": [
             [
-              "1",
-              "Action This Week",
-              "Immediate review of logs, tokens, and infrastructure required."
+              "01",
+              "App Integration",
+              "Build apps that programmatically expose merchant data to analytics."
             ],
             [
-              "2",
-              "Token Enforcement",
-              "Mandatory adoption of expiring access tokens coming soon for public apps."
+              "02",
+              "Targeted Control",
+              "Restrict custom data structures based on underlying field types."
             ],
             [
-              "3",
-              "Platform Changes",
-              "Upcoming boundaries and IP restrictions detailed before rollout."
+              "03",
+              "Error Handling",
+              "Catch invalid definitions using new error codes."
             ]
           ]
         },
         {
           "type": "feature_grid",
-          "eyebrow": "IMMEDIATE ACTIONS",
-          "title": "Protecting Your App",
+          "eyebrow": "What It Does",
+          "title": "Core Capabilities",
           "features": [
             [
-              "1",
-              "AI Security Check",
-              "Use the new AI Toolkit to scan for unauthenticated routes and data access issues."
+              "01",
+              "Read & Configure",
+              "Control analyticsQueryable on metaobject definitions via the GraphQL Admin API."
             ],
             [
-              "2",
-              "Expiring Tokens",
-              "Prepare to migrate to short-lived offline access tokens to limit leak exposure."
+              "02",
+              "Inspect Status",
+              "Check whether specific metaobject definitions can be queried within analytics."
             ],
             [
-              "3",
-              "Dashboard Monitoring",
-              "Inspect API requests and filter logs by client IP to spot suspicious sources."
+              "03",
+              "Consistent Management",
+              "Aligns metaobject definitions with how metafield definitions handle analytics control."
             ]
           ]
         },
         {
-          "type": "cards",
-          "eyebrow": "DEVELOPER OBLIGATIONS",
-          "title": "Accountability & Alerts",
-          "cards": [
+          "type": "workflow",
+          "eyebrow": "Migration & Requirements",
+          "title": "What You Need To Know",
+          "steps": [
             [
-              "1",
-              "Audit Immediately",
-              "Check applications using the provided vulnerability scanners right away."
+              "01",
+              "Release Date",
+              "Targeting GraphQL Admin API version 2027-01 and later."
             ],
             [
-              "2",
-              "Emergency Contacts",
-              "Keep your developer email current in the Partner Dashboard."
+              "02",
+              "No Forced Actions",
+              "Existing apps require no immediate refactoring unless adopting the feature."
             ],
             [
-              "3",
-              "Report Issues",
-              "Send security vulnerability reports directly to Shopify's team."
+              "03",
+              "Verify Eligibility",
+              "Check eligibility before enabling to handle mutation errors properly."
             ]
           ]
+        },
+        {
+          "type": "before_after",
+          "eyebrow": "API Changes",
+          "title": "Reading vs Writing",
+          "left": {
+            "label": "Reading",
+            "title": "Capabilities",
+            "items": [
+              "Exposes eligible status",
+              "Checks analytics-compatible fields",
+              "Verifies active capability state"
+            ]
+          },
+          "right": {
+            "label": "Writing",
+            "title": "Inputs",
+            "items": [
+              "Create input fields",
+              "Update input parameters",
+              "Configure enabled state"
+            ]
+          }
         },
         {
           "type": "closing",
-          "eyebrow": "STAY SECURE",
-          "title": "Protect Merchant Trust",
-          "subtitle": "Review the full changelog and report issues to partner-security-reports@shopify.com",
-          "source": "https://shopify.dev/changelog/securing-your-app-together"
+          "eyebrow": "Shopify Changelog",
+          "title": "Start Building Today",
+          "subtitle": "Check the official changelog for full technical documentation.",
+          "source": "https://shopify.dev/changelog/metaobject-analytics-queryable-capability-available-in-the-admin-api"
         }
       ],
-      "art_direction": "neon",
-      "storyboard": "sequence-6",
+      "art_direction": "swiss",
+      "storyboard": "sequence-7",
       "creative_profile": {
-        "typography": "poster",
-        "motif": "rays",
+        "typography": "grotesk",
+        "motif": "blocks",
         "compositions": [
-          "spotlight",
-          "rail",
           "mosaic",
           "tiles",
           "spotlight",
-          "rail"
+          "rail",
+          "mosaic",
+          "tiles"
         ],
-        "edition": 558
+        "edition": 987
       }
     }
   },
   "origin": "automatic",
   "priority_score": 75,
-  "source_published_at": "2026-10-20T19:00:00+00:00"
+  "source_published_at": "2026-10-20T20:40:00+00:00"
 }
