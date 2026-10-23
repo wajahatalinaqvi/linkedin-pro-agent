@@ -1,22 +1,22 @@
 {
-  "id": "auto-2026-10-22-dd89fbbb5957",
+  "id": "auto-2026-10-23-2402761e6cda",
   "status": "ready",
-  "topic": "Metaobject analytics queryable capability available in the Admin API",
-  "category": "Shopify Development",
+  "topic": "Discover a merchant's retail stores with UCP location search and lookup",
+  "category": "Developer Updates",
   "format": "document",
-  "caption": "Unlock advanced insights by controlling custom data structures directly through the GraphQL Admin API. Manage metaobject analytics capabilities seamlessly with the latest API updates. #ShopifyDev #GraphQL #Ecommerce #WebDevelopment",
-  "source_url": "https://shopify.dev/changelog/metaobject-analytics-queryable-capability-available-in-the-admin-api",
+  "caption": "Shopify storefronts now support Universal Commerce Protocol location capabilities, empowering AI agents to find physical stores and check item availability. #Shopify #Developers #AI #Commerce",
+  "source_url": "https://shopify.dev/changelog/discover-a-merchant-s-retail-stores-with-ucp-location-search-and-lookup",
   "sources": [
-    "https://shopify.dev/changelog/metaobject-analytics-queryable-capability-available-in-the-admin-api"
+    "https://shopify.dev/changelog/discover-a-merchant-s-retail-stores-with-ucp-location-search-and-lookup"
   ],
-  "created_at": "2026-10-22T10:56:02.991708+00:00",
-  "origin_request": "queue/topic_requests/auto-2026-10-22-dd89fbbb5957.json",
+  "created_at": "2026-10-23T06:47:37.680676+00:00",
+  "origin_request": "queue/topic_requests/auto-2026-10-23-2402761e6cda.json",
   "document": {
-    "title": "Metaobject analytics queryable capability available in the Admin API",
+    "title": "Discover a merchant's retail stores with UCP location search and lookup",
     "renderer": "v3",
     "carousel": {
-      "topic": "Metaobject analytics queryable capability available in the Admin API",
-      "theme": "shopify",
+      "topic": "Discover a merchant's retail stores with UCP location search and lookup",
+      "theme": "developer",
       "brand": {
         "name": "WAJAHAT NAQVI",
         "subtitle": "Shopify · Full-stack · AI"
@@ -24,29 +24,52 @@
       "slides": [
         {
           "type": "cover",
-          "eyebrow": "API Update",
-          "title": "Metaobject Analytics",
-          "subtitle": "Queryable capability now available in the Admin API"
+          "eyebrow": "Shopify Developer Update",
+          "title": "Universal Commerce Protocol",
+          "subtitle": "Discover merchant retail stores with UCP location search and lookup."
         },
         {
-          "type": "cards",
-          "eyebrow": "Developer Impact",
-          "title": "Key Features",
-          "cards": [
+          "type": "before_after",
+          "eyebrow": "Endpoint Tools",
+          "title": "Search vs Lookup",
+          "left": {
+            "label": "Search Locations",
+            "title": "search_locations",
+            "items": [
+              "Lists shop retail locations",
+              "Supports query and distance filters",
+              "Defaults to 10 per page up to 250"
+            ]
+          },
+          "right": {
+            "label": "Lookup Locations",
+            "title": "lookup_locations",
+            "items": [
+              "Retrieves locations by specific IDs",
+              "Processes up to 10 distinct IDs",
+              "Targeted direct retrieval tool"
+            ]
+          }
+        },
+        {
+          "type": "workflow",
+          "eyebrow": "Release Details",
+          "title": "Requirements & Availability",
+          "steps": [
             [
-              "01",
-              "App Integration",
-              "Build apps that programmatically expose merchant data to analytics."
+              "1",
+              "Release Date",
+              "Available starting with version 2026-08-25."
             ],
             [
-              "02",
-              "Targeted Control",
-              "Restrict custom data structures based on underlying field types."
+              "2",
+              "Prerequisites",
+              "Applies to storefronts with at least one active merchant-managed retail location."
             ],
             [
-              "03",
-              "Error Handling",
-              "Catch invalid definitions using new error codes."
+              "3",
+              "Discovery Profile",
+              "Qualifying locations list their capabilities in the discovery profile."
             ]
           ]
         },
@@ -57,92 +80,69 @@
           "features": [
             [
               "01",
-              "Read & Configure",
-              "Control analyticsQueryable on metaobject definitions via the GraphQL Admin API."
+              "Storefront MCP Endpoint",
+              "Exposes search and lookup tools at the storefront Model Context Protocol endpoint."
             ],
             [
               "02",
-              "Inspect Status",
-              "Check whether specific metaobject definitions can be queried within analytics."
+              "Proximity Filtering",
+              "Filter retail stores by name, city, or explicit distance relations."
             ],
             [
               "03",
-              "Consistent Management",
-              "Aligns metaobject definitions with how metafield definitions handle analytics control."
+              "Item Availability",
+              "Check product variant availability across specific physical store locations."
             ]
           ]
         },
         {
-          "type": "workflow",
-          "eyebrow": "Migration & Requirements",
-          "title": "What You Need To Know",
-          "steps": [
+          "type": "cards",
+          "eyebrow": "Best Practices",
+          "title": "Developer Guidelines",
+          "cards": [
             [
               "01",
-              "Release Date",
-              "Targeting GraphQL Admin API version 2027-01 and later."
+              "Agent Profiles",
+              "Declare required capabilities in agent profiles before invoking tools."
             ],
             [
               "02",
-              "No Forced Actions",
-              "Existing apps require no immediate refactoring unless adopting the feature."
+              "Buyer Privacy",
+              "Send distance center only from coordinates explicitly shared by the buyer."
             ],
             [
               "03",
-              "Verify Eligibility",
-              "Check eligibility before enabling to handle mutation errors properly."
+              "Provisional Data",
+              "Confirm availability and fulfillment options in cart and checkout."
             ]
           ]
-        },
-        {
-          "type": "before_after",
-          "eyebrow": "API Changes",
-          "title": "Reading vs Writing",
-          "left": {
-            "label": "Reading",
-            "title": "Capabilities",
-            "items": [
-              "Exposes eligible status",
-              "Checks analytics-compatible fields",
-              "Verifies active capability state"
-            ]
-          },
-          "right": {
-            "label": "Writing",
-            "title": "Inputs",
-            "items": [
-              "Create input fields",
-              "Update input parameters",
-              "Configure enabled state"
-            ]
-          }
         },
         {
           "type": "closing",
-          "eyebrow": "Shopify Changelog",
-          "title": "Start Building Today",
-          "subtitle": "Check the official changelog for full technical documentation.",
-          "source": "https://shopify.dev/changelog/metaobject-analytics-queryable-capability-available-in-the-admin-api"
+          "eyebrow": "Learn More",
+          "title": "Ready to Build?",
+          "subtitle": "Explore the official Shopify changelog to integrate UCP location search into your agents.",
+          "source": "https://shopify.dev/changelog/discover-a-merchant-s-retail-stores-with-ucp-location-search-and-lookup"
         }
       ],
-      "art_direction": "swiss",
-      "storyboard": "sequence-7",
+      "art_direction": "collage",
+      "storyboard": "sequence-6",
       "creative_profile": {
-        "typography": "grotesk",
-        "motif": "blocks",
+        "typography": "humanist",
+        "motif": "cutouts",
         "compositions": [
-          "mosaic",
           "tiles",
           "spotlight",
           "rail",
           "mosaic",
-          "tiles"
+          "tiles",
+          "spotlight"
         ],
-        "edition": 987
+        "edition": 204
       }
     }
   },
   "origin": "automatic",
   "priority_score": 75,
-  "source_published_at": "2026-10-20T20:40:00+00:00"
+  "source_published_at": "2026-10-22T18:00:00+00:00"
 }

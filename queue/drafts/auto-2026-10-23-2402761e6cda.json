@@ -1,0 +1,148 @@
+{
+  "id": "auto-2026-10-23-2402761e6cda",
+  "status": "ready",
+  "topic": "Discover a merchant's retail stores with UCP location search and lookup",
+  "category": "Developer Updates",
+  "format": "document",
+  "caption": "Shopify storefronts now support Universal Commerce Protocol location capabilities, empowering AI agents to find physical stores and check item availability. #Shopify #Developers #AI #Commerce",
+  "source_url": "https://shopify.dev/changelog/discover-a-merchant-s-retail-stores-with-ucp-location-search-and-lookup",
+  "sources": [
+    "https://shopify.dev/changelog/discover-a-merchant-s-retail-stores-with-ucp-location-search-and-lookup"
+  ],
+  "created_at": "2026-10-23T06:47:37.680676+00:00",
+  "origin_request": "queue/topic_requests/auto-2026-10-23-2402761e6cda.json",
+  "document": {
+    "title": "Discover a merchant's retail stores with UCP location search and lookup",
+    "renderer": "v3",
+    "carousel": {
+      "topic": "Discover a merchant's retail stores with UCP location search and lookup",
+      "theme": "developer",
+      "brand": {
+        "name": "WAJAHAT NAQVI",
+        "subtitle": "Shopify · Full-stack · AI"
+      },
+      "slides": [
+        {
+          "type": "cover",
+          "eyebrow": "Shopify Developer Update",
+          "title": "Universal Commerce Protocol",
+          "subtitle": "Discover merchant retail stores with UCP location search and lookup."
+        },
+        {
+          "type": "before_after",
+          "eyebrow": "Endpoint Tools",
+          "title": "Search vs Lookup",
+          "left": {
+            "label": "Search Locations",
+            "title": "search_locations",
+            "items": [
+              "Lists shop retail locations",
+              "Supports query and distance filters",
+              "Defaults to 10 per page up to 250"
+            ]
+          },
+          "right": {
+            "label": "Lookup Locations",
+            "title": "lookup_locations",
+            "items": [
+              "Retrieves locations by specific IDs",
+              "Processes up to 10 distinct IDs",
+              "Targeted direct retrieval tool"
+            ]
+          }
+        },
+        {
+          "type": "workflow",
+          "eyebrow": "Release Details",
+          "title": "Requirements & Availability",
+          "steps": [
+            [
+              "1",
+              "Release Date",
+              "Available starting with version 2026-08-25."
+            ],
+            [
+              "2",
+              "Prerequisites",
+              "Applies to storefronts with at least one active merchant-managed retail location."
+            ],
+            [
+              "3",
+              "Discovery Profile",
+              "Qualifying locations list their capabilities in the discovery profile."
+            ]
+          ]
+        },
+        {
+          "type": "feature_grid",
+          "eyebrow": "What It Does",
+          "title": "Core Capabilities",
+          "features": [
+            [
+              "01",
+              "Storefront MCP Endpoint",
+              "Exposes search and lookup tools at the storefront Model Context Protocol endpoint."
+            ],
+            [
+              "02",
+              "Proximity Filtering",
+              "Filter retail stores by name, city, or explicit distance relations."
+            ],
+            [
+              "03",
+              "Item Availability",
+              "Check product variant availability across specific physical store locations."
+            ]
+          ]
+        },
+        {
+          "type": "cards",
+          "eyebrow": "Best Practices",
+          "title": "Developer Guidelines",
+          "cards": [
+            [
+              "01",
+              "Agent Profiles",
+              "Declare required capabilities in agent profiles before invoking tools."
+            ],
+            [
+              "02",
+              "Buyer Privacy",
+              "Send distance center only from coordinates explicitly shared by the buyer."
+            ],
+            [
+              "03",
+              "Provisional Data",
+              "Confirm availability and fulfillment options in cart and checkout."
+            ]
+          ]
+        },
+        {
+          "type": "closing",
+          "eyebrow": "Learn More",
+          "title": "Ready to Build?",
+          "subtitle": "Explore the official Shopify changelog to integrate UCP location search into your agents.",
+          "source": "https://shopify.dev/changelog/discover-a-merchant-s-retail-stores-with-ucp-location-search-and-lookup"
+        }
+      ],
+      "art_direction": "collage",
+      "storyboard": "sequence-6",
+      "creative_profile": {
+        "typography": "humanist",
+        "motif": "cutouts",
+        "compositions": [
+          "tiles",
+          "spotlight",
+          "rail",
+          "mosaic",
+          "tiles",
+          "spotlight"
+        ],
+        "edition": 204
+      }
+    }
+  },
+  "origin": "automatic",
+  "priority_score": 75,
+  "source_published_at": "2026-10-22T18:00:00+00:00"
+}
