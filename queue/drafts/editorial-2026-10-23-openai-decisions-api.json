@@ -1,0 +1,165 @@
+{
+  "id": "editorial-2026-10-23-openai-decisions-api",
+  "status": "ready",
+  "topic": "OpenAI Decisions API: faster decisions for AI agents",
+  "category": "AI Agents / Developer Tools",
+  "format": "document",
+  "caption": "Most AI agents don't need a paragraph to make every decision.\n\nClassifying a message, routing a request, or choosing between a few actions is different from generating an explanation. Yet many agent workflows send both jobs through the same kind of model call.\n\nOpenAI's Decisions API is now generally available with GPT-6 Luna. It returns typed answers to bounded questions rather than writing a full response. OpenAI reports up to 10× faster results than running Luna through the Responses API for comparable tasks.\n\nThree details are worth noting:\n\n• The endpoint accepts text, images, and structured JSON as evidence.\n• A request can evaluate up to 400 questions.\n• Your application still decides what to do with the answer. The API doesn't execute the action for you.\n\nI think the useful design principle is straightforward: separate decisions from generation.\n\nUse a decision endpoint when you need a probability, a choice, or a score. Use a generative response when you actually need a written explanation, structured output, or tool invocation.\n\nOfficial details: https://openai.com/index/decisions-api/\n\n#AIAgents #APIDesign",
+  "source_url": "https://openai.com/index/decisions-api/",
+  "sources": [
+    "https://openai.com/index/decisions-api/",
+    "https://developers.openai.com/api/docs/guides/decisions"
+  ],
+  "created_at": "2026-10-23T09:28:00+00:00",
+  "origin": "editorial_selected",
+  "priority_score": 95,
+  "editorial_review": {
+    "selected_hook": "Your AI agent doesn't need to generate every decision",
+    "hook_options": [
+      "Your AI agent doesn't need to generate every decision",
+      "What if agent routing didn't need a full model response?",
+      "OpenAI built a faster path for AI decisions"
+    ],
+    "voice_angle": "developer_consequence",
+    "quality_gate": "manually_source_checked",
+    "human_approval_required": true,
+    "source_note": "October 22, 2026 official product announcement; compare speeds are OpenAI-reported"
+  },
+  "document": {
+    "title": "Your AI agent doesn't need to generate every decision",
+    "renderer": "v3",
+    "carousel": {
+      "topic": "OpenAI Decisions API is generally available",
+      "theme": "openai",
+      "design_version": "studio-v2",
+      "brand": {
+        "name": "WAJAHAT NAQVI",
+        "subtitle": "AI · Development · Software Engineering"
+      },
+      "art_direction": "swiss",
+      "creative_profile": {
+        "typography": "grotesk",
+        "motif": "blocks",
+        "compositions": [
+          "spotlight",
+          "rail",
+          "tiles",
+          "mosaic",
+          "rail",
+          "spotlight"
+        ],
+        "edition": 226
+      },
+      "slides": [
+        {
+          "type": "cover",
+          "eyebrow": "An important change for AI builders",
+          "title": "Your AI agent doesn't need to generate every decision",
+          "subtitle": "OpenAI's new Decisions API is built for fast, bounded answers.",
+          "footer": "6 slides · The practical developer breakdown →"
+        },
+        {
+          "type": "insight_list",
+          "eyebrow": "The overlooked bottleneck",
+          "title": "Many agent steps are decisions, not conversations",
+          "cards": [
+            [
+              "01",
+              "Classify incoming work",
+              "Decide whether an input matches a condition without asking for a full written explanation."
+            ],
+            [
+              "02",
+              "Route the next step",
+              "Choose from defined destinations or actions using the context your app already has."
+            ],
+            [
+              "03",
+              "Score against a rubric",
+              "Evaluate evidence and return a typed score that your application can use."
+            ]
+          ]
+        },
+        {
+          "type": "comparison",
+          "eyebrow": "Pick the right primitive",
+          "title": "A decision is not the same as a response",
+          "left": {
+            "label": "DECISIONS API",
+            "title": "Bounded answers",
+            "items": [
+              "Boolean probabilities",
+              "Choices from a fixed set",
+              "Rubric scores from supplied evidence"
+            ]
+          },
+          "right": {
+            "label": "RESPONSES API",
+            "title": "Open-ended work",
+            "items": [
+              "Generate explanations",
+              "Produce custom structured outputs",
+              "Request tool calls and complex workflows"
+            ]
+          }
+        },
+        {
+          "type": "cards",
+          "eyebrow": "What shipped in GA",
+          "title": "Three details worth knowing",
+          "cards": [
+            [
+              "400",
+              "Questions per request",
+              "The general-availability API supports up to 400 questions in a single request."
+            ],
+            [
+              "JSON",
+              "Inputs beyond plain text",
+              "Evaluate text, images, and structured JSON without forcing everything into one text string."
+            ],
+            [
+              "CACHE",
+              "Shared evidence reuse",
+              "Prompt caching can reduce the cost of evaluating new questions against recurring context."
+            ]
+          ]
+        },
+        {
+          "type": "process_map",
+          "eyebrow": "How the pieces fit",
+          "title": "A cleaner pattern for agent workflows",
+          "steps": [
+            [
+              "01",
+              "Provide the evidence",
+              "Pass the text, image, conversation, or structured JSON your decision requires."
+            ],
+            [
+              "02",
+              "Ask bounded questions",
+              "Define the possible choices, conditions, or rubric scores you want evaluated."
+            ],
+            [
+              "03",
+              "Read typed answers",
+              "Get probabilities, choices, or scores rather than generating a paragraph."
+            ],
+            [
+              "04",
+              "Let your application act",
+              "Use the returned answer to route work; your application still runs the action."
+            ]
+          ]
+        },
+        {
+          "type": "closing",
+          "eyebrow": "The takeaway",
+          "title": "Save generation for work that needs it",
+          "subtitle": "Use decisions for routing, classification, and scoring. Generate when the output really needs language or tools.",
+          "source": "https://openai.com/index/decisions-api/"
+        }
+      ]
+    }
+  }
+}
