@@ -96,7 +96,7 @@
           ]
         },
         {
-          "type": "cards",
+          "type": "insight_list",
           "eyebrow": "Best Practices",
           "title": "Three checks before you ship",
           "cards": [
@@ -150,6 +150,9 @@
   "editorial_review": {
     "voice_angle": "developer_consequence",
     "human_approval_required": true,
-    "revision_note": "Human-style rewrite; meaningful insights diagram; no invented experience"
+    "revision_note": "Human-style rewrite; meaningful insights diagram; no invented experience",
+    "visual_treatments": [
+      "insight_list"
+    ]
   }
 }
