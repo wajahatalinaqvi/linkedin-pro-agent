@@ -4,7 +4,7 @@
   "topic": "Discover a merchant's retail stores with UCP location search and lookup",
   "category": "Developer Updates",
   "format": "document",
-  "caption": "AI shopping agents can now discover a merchant’s physical stores.\n\nThat’s an interesting shift for Shopify developers: a shopping experience doesn’t always have to end at an online storefront.\n\nShopify’s UCP location tools let compatible agents search a merchant’s active retail locations and look up selected stores by ID. For a buyer, that can make location-aware shopping experiences more useful. For developers, it introduces a new discovery layer to consider when building commerce agents.\n\nA few details matter:\n• Search and lookup serve different purposes: discovering locations versus retrieving known ones.\n• These capabilities depend on eligible, active merchant-managed retail locations.\n• Location discovery is not the same as a confirmed inventory promise or pickup option. Final availability and fulfillment still need verification.\n\nThe bigger opportunity is connecting AI-powered shopping with the realities of physical retail—without making promises the storefront can’t keep.\n\nWould you use location discovery in an AI shopping assistant?\n\nSource: https://shopify.dev/changelog/discover-a-merchant-s-retail-stores-with-ucp-location-search-and-lookup\n\n#ShopifyDev #AICommerce #EcommerceDevelopment",
+  "caption": "AI shopping is getting a little more local.\n\nShopify has added location search and lookup capabilities that help compatible shopping agents discover a merchant’s physical retail stores.\n\nFor developers, two tools matter:\n\n• `search_locations` helps an agent discover locations using supported queries and filters.\n• `lookup_locations` retrieves details for locations the agent already knows.\n\nThat distinction sounds small, but it changes how you might design a shopping flow. An assistant could help someone find a relevant store before directing them toward the next step.\n\nThere’s an important limit: discovering a location does not confirm stock, pickup eligibility, or fulfillment. Those still need to be checked through the appropriate commerce flow.\n\nI’d treat this as a useful building block for location-aware shopping, not an end-to-end retail solution.\n\nOfficial details: https://shopify.dev/changelog/discover-a-merchant-s-retail-stores-with-ucp-location-search-and-lookup\n\n#ShopifyDev #AICommerce",
   "source_url": "https://shopify.dev/changelog/discover-a-merchant-s-retail-stores-with-ucp-location-search-and-lookup",
   "sources": [
     "https://shopify.dev/changelog/discover-a-merchant-s-retail-stores-with-ucp-location-search-and-lookup"
@@ -98,7 +98,7 @@
         {
           "type": "cards",
           "eyebrow": "Best Practices",
-          "title": "Build for real-world shopping",
+          "title": "Three checks before you ship",
           "cards": [
             [
               "01",
@@ -115,7 +115,8 @@
               "Provisional Data",
               "Confirm availability and fulfillment options in cart and checkout."
             ]
-          ]
+          ],
+          "visual_intent": "editorial_insights"
         },
         {
           "type": "closing",
@@ -145,5 +146,10 @@
   },
   "origin": "automatic",
   "priority_score": 75,
-  "source_published_at": "2026-10-22T18:00:00+00:00"
+  "source_published_at": "2026-10-22T18:00:00+00:00",
+  "editorial_review": {
+    "voice_angle": "developer_consequence",
+    "human_approval_required": true,
+    "revision_note": "Human-style rewrite; meaningful insights diagram; no invented experience"
+  }
 }
