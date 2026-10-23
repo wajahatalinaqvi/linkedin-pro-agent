@@ -1,0 +1,151 @@
+/* LinkedIn Studio V2: content-first layout, OPT-IN for new/revised drafts only.
+ * Deliberately does not affect existing published / legacy carousels.
+ * 1080 x 1350. Use balanced vertical space, larger typography and fewer boxes.
+ */
+.design-v2{
+  --safe-top:100px;--safe-bottom:69px;--safe-x:74px;
+  --content-bottom:140px;--content-height:1105px;
+  --display:Arial,Helvetica,sans-serif;
+}
+.design-v2 .slide-inner{padding:115px 75px 145px;display:flex;align-items:stretch;justify-content:center}
+.design-v2 .slide-inner>div:not(.cover-grid):not(.cover-orbit):not(.cover-mark):not(.closing-glow){
+  position:relative;z-index:2;width:100%;
+}
+.design-v2 .eyebrow{
+  font-size:19px;font-weight:800;letter-spacing:.10em;line-height:1.3;
+  gap:13px;margin-bottom:18px;max-width:850px;
+}
+.design-v2 .eyebrow:before{width:44px;height:4px;flex:none}
+.design-v2 .title{
+  font-size:73px!important;line-height:1.01!important;letter-spacing:-.047em!important;
+  font-family:var(--display)!important;max-width:930px;
+  margin:18px 0 0;
+}
+.design-v2 .lead{font-size:29px;line-height:1.34;max-width:865px;margin:25px 0 0}
+.design-v2 .brand-lockup{left:75px;bottom:63px;gap:16px}
+.design-v2 .brand-lockup b{font-size:16px;letter-spacing:.10em}
+.design-v2 .brand-lockup span{font-size:14px;letter-spacing:.03em}
+.design-v2 .page-number{right:75px;bottom:63px;font-size:16px;color:inherit;opacity:.58}
+.design-v2.light{background:#f8f7f2;color:#14242b}
+.design-v2.layout-cover{background:#102d36;color:white}
+.design-v2.layout-cover .slide-inner{padding:110px 75px 155px}
+.design-v2.layout-cover .cover-copy{
+  margin:0!important;padding:0!important;border:0!important;transform:none!important;
+  width:895px!important;max-width:895px!important;background:none!important;box-shadow:none!important;
+  display:flex;flex-direction:column;justify-content:center;min-height:890px;position:relative;z-index:5
+}
+.design-v2.layout-cover .display{
+  font-size:113px!important;line-height:.94!important;letter-spacing:-.065em!important;
+  max-width:855px!important;text-transform:none!important;
+  font-family:var(--display)!important;
+  margin:20px 0 0;
+}
+.design-v2.layout-cover .lead{font-size:34px;line-height:1.3;max-width:720px;color:rgba(255,255,255,.8)}
+.design-v2.layout-cover .eyebrow{color:#f9b9a2}
+.design-v2.layout-cover .cover-footer{
+  left:75px;bottom:162px;font-size:16px;letter-spacing:.09em;
+  color:#fff!important;z-index:6
+}
+.design-v2.layout-cover .cover-footer span{width:100px;height:5px}
+.design-v2.layout-cover .cover-grid,
+.design-v2.layout-cover .cover-orbit,
+.design-v2.layout-cover .cover-mark{display:none}
+.design-v2.layout-cover:before{
+  content:"";position:absolute;right:-195px;top:135px;width:550px;height:790px;
+  border:94px solid rgba(255,255,255,.065);border-radius:45% 20% 40% 25%;
+  transform:rotate(-21deg);z-index:0
+}
+.design-v2.layout-cover:after{
+  content:"";position:absolute;right:-250px;bottom:100px;width:610px;height:475px;
+  background:#ee8668;clip-path:polygon(15% 0,100% 27%,77% 100%,0 87%);
+  opacity:.86;z-index:0
+}
+.design-v2.layout-cover .brand-lockup,.design-v2.layout-cover .page-number{color:#fff!important}
+.design-v2.layout-cover .brand-lockup span{color:rgba(255,255,255,.65)!important}
+.design-v2.layout-cover .cover-copy *{position:relative;z-index:7}
+/* Real structure in the middle of the page, not tiny floating cards at the top */
+.design-v2 .comparison-layout,
+.design-v2 .timeline-layout,
+.design-v2 .cards-layout,
+.design-v2 .feature-layout,
+.design-v2 .workflow-layout{
+  display:flex;flex-direction:column;justify-content:center;min-height:1060px
+}
+.design-v2 .comparison-grid{margin-top:58px;grid-template-columns:1fr 1fr;gap:18px}
+.design-v2 .compare-panel{
+  min-height:685px;padding:38px 35px;border-radius:8px;box-shadow:none;
+  border:2px solid rgba(20,36,43,.14);
+  background:#fffefa!important;
+}
+.design-v2 .compare-panel.positive{
+  background:#e5f0ec!important;border-color:#83ae9f;
+}
+.design-v2 .compare-panel>span{font-size:17px;letter-spacing:.1em}
+.design-v2 .compare-panel h3{
+  font-size:38px;line-height:1.07;margin:70px 0 25px;overflow-wrap:anywhere
+}
+.design-v2 .compare-panel .bullet-list li{
+  font-size:22px;line-height:1.34;color:#33444c;border-color:#d6ddd9;padding:21px 0 20px 28px
+}
+.design-v2 .cards-layout .card-grid{display:flex;flex-direction:column;gap:0;margin-top:52px}
+.design-v2 .cards-layout .info-card{
+  display:grid;grid-template-columns:92px 1fr;column-gap:26px;align-items:center;
+  padding:30px 18px;min-height:207px;border:0;border-radius:0;box-shadow:none;
+  border-top:2px solid #b9c9c7;background:transparent!important;transform:none!important
+}
+.design-v2 .cards-layout .info-card:last-child{border-bottom:2px solid #b9c9c7}
+.design-v2 .info-card .card-marker{
+  background:#153842;color:#fff;border-radius:50%;height:70px;width:70px;
+  font-size:21px
+}
+.design-v2 .cards-layout .info-card h3{font-size:34px;margin:0 0 8px}
+.design-v2 .cards-layout .info-card p{font-size:23px;line-height:1.36;color:#42545a;grid-column:2}
+.design-v2 .feature-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:56px;max-width:930px
+}
+.design-v2 .feature-grid .info-card{
+  padding:34px;min-height:338px;border-radius:8px;box-shadow:none;
+  border:2px solid #d5d9d3;background:#fffdfa!important;transform:none!important
+}
+.design-v2 .feature-grid .info-card:first-child{
+  grid-column:span 2;min-height:315px;display:grid;grid-template-columns:110px 1fr;
+  align-items:center;column-gap:25px;background:#e9efea!important
+}
+.design-v2 .feature-grid .info-card:first-child h3{margin:0 0 10px;font-size:40px}
+.design-v2 .feature-grid .info-card:first-child p{grid-column:2;font-size:23px}
+.design-v2 .feature-grid .info-card h3{font-size:32px;line-height:1.1;margin:50px 0 14px}
+.design-v2 .feature-grid .info-card p{font-size:22px;line-height:1.36;color:#40545b}
+.design-v2 .workflow-rail{display:grid;grid-template-columns:1fr;gap:0;margin-top:50px}
+.design-v2 .workflow-step{
+  display:grid;grid-template-columns:95px 1fr;min-height:206px;
+  border:0;border-top:2px solid #b9c9c7;border-radius:0;background:none!important;
+  padding:25px 0;align-items:center
+}
+.design-v2 .workflow-step:last-child{border-bottom:2px solid #b9c9c7}
+.design-v2 .workflow-step::after{display:none}
+.design-v2 .workflow-step>span{
+  background:#153842;color:white;width:71px;height:71px;border-radius:50%;
+  display:grid;place-items:center;font-size:22px
+}
+.design-v2 .workflow-step b{font-size:33px;line-height:1.1;margin:0 0 12px}
+.design-v2 .workflow-step p{font-size:22px;line-height:1.36;margin:0;color:#42545a}
+.design-v2 .timeline-track{margin:58px 0 0 10px}
+.design-v2 .timeline-event{min-height:194px}
+.design-v2 .timeline-event h3{font-size:31px}
+.design-v2 .timeline-event p{font-size:23px;line-height:1.4}
+.design-v2 .timeline-event>span{font-size:18px}
+/* A conclusion is a full editorial statement, not a small headline stranded top left. */
+.design-v2.layout-closing{background:#102d36;color:#fff}
+.design-v2.layout-closing .slide-inner{padding-top:140px}
+.design-v2.layout-closing .closing-glow{opacity:.24}
+.design-v2.layout-closing .closing-copy{
+  margin:0;display:flex;flex-direction:column;justify-content:center;min-height:800px
+}
+.design-v2.layout-closing .display{font-size:112px!important;line-height:.94!important;max-width:850px!important}
+.design-v2.layout-closing .lead{color:rgba(255,255,255,.82);font-size:31px}
+.design-v2.layout-closing .closing-chip{font-size:16px;margin-top:50px;border-radius:4px}
+.design-v2.layout-closing .source-line{
+  bottom:128px;left:75px;right:75px;font-size:13px;line-height:1.4;
+  word-break:break-all;max-width:930px;color:rgba(255,255,255,.65)
+}
+.design-v2.layout-closing .brand-lockup span{color:rgba(255,255,255,.7)}
