@@ -17,6 +17,7 @@ import requests
 from post_store import ROOT, LATEST, load_json, create_draft, select_draft
 from content_priority import today_local, manual_requests_on_day, automatic_ready_on_day
 from free_prepare import generate_post, is_primary_source
+from editorial import ranked_candidates, editorial_score
 from carousel.art_direction import set_art_direction
 from carousel.render_pdf import render_carousel_pdf
 
@@ -85,7 +86,13 @@ def main() -> None:
             stories.extend(candidates_from_feed(feed, category, now))
         except (requests.RequestException, ET.ParseError, ValueError) as exc:
             print(f"SOURCE UNAVAILABLE ({category}): {type(exc).__name__}")
-    stories.sort(key=lambda x: (0 if x["category"] == "Shopify" else 1, -x["published"].timestamp()))
+    stories = ranked_candidates(stories, now)
+    if not stories:
+        print("NO EDITORIALLY STRONG STORY: available feed entries are too minor for a useful LinkedIn post.")
+        return
+    print("EDITORIAL CANDIDATES: " + ", ".join(
+        f"{s['editorial_score']}/100 {s['topic'][:52]}" for s in stories[:5]))
+
     for story in stories:
         if story["source_url"].rstrip("/") in known_urls:
             continue
@@ -98,7 +105,8 @@ def main() -> None:
         try:
             post = generate_post({"topic": story["topic"], "source_url": story["source_url"], "notes": "Prioritize practical developer and ecommerce impact. Never claim unverified launches."}, post_id)
             post["origin"] = "automatic"
-            post["priority_score"] = 75
+            post["priority_score"] = story["editorial_score"]
+            post["editorial_review"]["news_selection_score"] = story["editorial_score"]
             post["source_published_at"] = story["published"].isoformat()
             set_art_direction(post["document"]["carousel"], post_id, ROOT / "queue/drafts")
             pdf = ROOT / "generated" / f"{post_id}.pdf"

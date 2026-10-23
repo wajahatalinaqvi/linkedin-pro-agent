@@ -17,6 +17,7 @@ import requests
 
 from carousel.render_pdf import render_carousel_pdf
 from carousel.art_direction import set_art_direction
+from editorial_quality import review_generated
 from post_store import ROOT, LATEST, create_draft, draft_path, load_json, save_json, select_draft
 
 REQUEST_DIR = ROOT / "queue" / "topic_requests"
@@ -80,19 +81,28 @@ def generate_post(req: dict, post_id: str) -> dict:
     facts = verified_facts(source, req["topic"], req.get("notes", ""))
     instructions = (
         "You are preparing an editorial LinkedIn post. Use ONLY verified facts below. "
-        "Return a single JSON object with keys topic, category, caption, slides. "
-        "Write a substantive 110-220 word LinkedIn caption: first two lines must be a specific, curiosity-driving factual hook, then explain the practical consequence, 2-3 useful technical details, one caveat, a thoughtful closing question, and 2-4 relevant hashtags. No generic hype, no clickbait, no unsupported claims. "
+        "Return a single JSON object with keys topic, category, caption, slides, hook_options. "
+        "Write 3 distinctly angled hook_options (change/impact, developer pain, surprising but verified opportunity), each 4-14 words. Choose the strongest factual one as the cover slide title. Never introduce facts absent from the source. Write a substantive 110-220 word LinkedIn caption: first two lines must be a specific, curiosity-driving factual hook, then explain the practical consequence, 2-3 useful technical details, one caveat, a thoughtful closing question, and 2-4 relevant hashtags. No generic hype, no clickbait, no unsupported claims. "
         "Create exactly 6 slide objects in this order: cover, cards, comparison, cards, timeline, closing. Headline the cover with a short concrete reader benefit or surprising verified change, NOT the official announcement title or a product name alone. Other titles must carry a useful point; avoid generic labels such as Core Capabilities, Developer Guidelines, Ready to Build, Requirements and Availability. "
         "Every slide needs type, eyebrow and short title. Cover has subtitle. "
         "Each cards slide has three cards as arrays [number,title,body]. "
         "Comparison has left and right objects with label, title, items (list of 3 short strings). "
         "Timeline has events list of 3 [number,title,body] arrays. "
         "Closing has subtitle and source. Keep slide copy concise, but not empty: write content-rich bodies 12-25 words each with source-grounded details and a clear visual hierarchy. Limit cover title to roughly 4-10 words. "
-        "Do not include literal backslash-n or fictitious benchmarks, dates or quotations."
+        "Make the first sentence worth stopping for, not clickbait. Prefer specific consequences for Shopify developers, merchants, or AI builders. Share a truthful professional takeaway; do not invent personal experience. Avoid canned questions such as Agree?, generic hype, and hashtags in opening line. Source-derived accuracy is more important than excitement. Do not include literal backslash-n or fictitious benchmarks, dates or quotations."
     )
-    payload = gemini(instructions + "\nSOURCE: " + source +
-                     "\nUSER TOPIC: " + req["topic"] + "\nVERIFIED FACTS:\n" + facts)
-    generated = json.loads(response_text(payload))
+    prompt = (instructions + "\nSOURCE: " + source +
+              "\nUSER TOPIC: " + req["topic"] + "\nVERIFIED FACTS:\n" + facts)
+    generated = None
+    issues = []
+    for attempt in range(2):
+        payload = gemini(prompt + ("\nREWRITE TO FIX THESE ISSUES: " + "; ".join(issues) if attempt else ""))
+        generated = json.loads(response_text(payload))
+        issues = review_generated(generated)
+        if not issues:
+            break
+    if issues:
+        raise ValueError("Editorial review failed: " + "; ".join(issues[:4]))
     slides = generated.get("slides")
     caption = generated.get("caption")
     if not isinstance(slides, list) or len(slides) != 6:
@@ -114,6 +124,9 @@ def generate_post(req: dict, post_id: str) -> dict:
         "format": "document", "caption": caption.strip(), "source_url": source,
         "sources": [source], "created_at": datetime.now(timezone.utc).isoformat(),
         "origin_request": f"queue/topic_requests/{post_id}.json",
+        "editorial_review": {"hook_options": generated["hook_options"],
+                              "selected_hook": slides[0]["title"],
+                              "quality_gate": "editorial-v1", "human_approval_required": True},
         "document": {"title": topic, "renderer": "v3", "carousel": {
             "topic": topic, "theme": theme, "design_version": "studio-v2",
             "brand": {"name": "WAJAHAT NAQVI", "subtitle": "Shopify · Full-stack · AI"},
