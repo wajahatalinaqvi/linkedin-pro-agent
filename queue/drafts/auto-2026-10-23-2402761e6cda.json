@@ -4,7 +4,7 @@
   "topic": "Discover a merchant's retail stores with UCP location search and lookup",
   "category": "Developer Updates",
   "format": "document",
-  "caption": "Shopify storefronts now support Universal Commerce Protocol location capabilities, empowering AI agents to find physical stores and check item availability. #Shopify #Developers #AI #Commerce",
+  "caption": "AI shopping agents can now discover a merchant’s physical stores.\n\nThat’s an interesting shift for Shopify developers: a shopping experience doesn’t always have to end at an online storefront.\n\nShopify’s UCP location tools let compatible agents search a merchant’s active retail locations and look up selected stores by ID. For a buyer, that can make location-aware shopping experiences more useful. For developers, it introduces a new discovery layer to consider when building commerce agents.\n\nA few details matter:\n• Search and lookup serve different purposes: discovering locations versus retrieving known ones.\n• These capabilities depend on eligible, active merchant-managed retail locations.\n• Location discovery is not the same as a confirmed inventory promise or pickup option. Final availability and fulfillment still need verification.\n\nThe bigger opportunity is connecting AI-powered shopping with the realities of physical retail—without making promises the storefront can’t keep.\n\nWould you use location discovery in an AI shopping assistant?\n\nSource: https://shopify.dev/changelog/discover-a-merchant-s-retail-stores-with-ucp-location-search-and-lookup\n\n#ShopifyDev #AICommerce #EcommerceDevelopment",
   "source_url": "https://shopify.dev/changelog/discover-a-merchant-s-retail-stores-with-ucp-location-search-and-lookup",
   "sources": [
     "https://shopify.dev/changelog/discover-a-merchant-s-retail-stores-with-ucp-location-search-and-lookup"
@@ -12,7 +12,7 @@
   "created_at": "2026-10-23T06:47:37.680676+00:00",
   "origin_request": "queue/topic_requests/auto-2026-10-23-2402761e6cda.json",
   "document": {
-    "title": "Discover a merchant's retail stores with UCP location search and lookup",
+    "title": "AI agents can find your nearest Shopify store",
     "renderer": "v3",
     "carousel": {
       "topic": "Discover a merchant's retail stores with UCP location search and lookup",
@@ -25,13 +25,13 @@
         {
           "type": "cover",
           "eyebrow": "Shopify Developer Update",
-          "title": "Universal Commerce Protocol",
-          "subtitle": "Discover merchant retail stores with UCP location search and lookup."
+          "title": "AI agents can find your nearest Shopify store",
+          "subtitle": "A new bridge between AI-powered shopping and physical retail."
         },
         {
           "type": "before_after",
           "eyebrow": "Endpoint Tools",
-          "title": "Search vs Lookup",
+          "title": "Find stores. Then get the details.",
           "left": {
             "label": "Search Locations",
             "title": "search_locations",
@@ -54,7 +54,7 @@
         {
           "type": "workflow",
           "eyebrow": "Release Details",
-          "title": "Requirements & Availability",
+          "title": "Three details you can’t ignore",
           "steps": [
             [
               "1",
@@ -76,7 +76,7 @@
         {
           "type": "feature_grid",
           "eyebrow": "What It Does",
-          "title": "Core Capabilities",
+          "title": "Where it gets useful",
           "features": [
             [
               "01",
@@ -98,7 +98,7 @@
         {
           "type": "cards",
           "eyebrow": "Best Practices",
-          "title": "Developer Guidelines",
+          "title": "Build for real-world shopping",
           "cards": [
             [
               "01",
@@ -120,8 +120,8 @@
         {
           "type": "closing",
           "eyebrow": "Learn More",
-          "title": "Ready to Build?",
-          "subtitle": "Explore the official Shopify changelog to integrate UCP location search into your agents.",
+          "title": "AI commerce meets the high street",
+          "subtitle": "Location discovery is a beginning—not a guarantee of inventory or fulfillment.",
           "source": "https://shopify.dev/changelog/discover-a-merchant-s-retail-stores-with-ucp-location-search-and-lookup"
         }
       ],
@@ -139,7 +139,8 @@
           "spotlight"
         ],
         "edition": 204
-      }
+      },
+      "design_version": "studio-v2"
     }
   },
   "origin": "automatic",
