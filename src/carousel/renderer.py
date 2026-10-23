@@ -9,6 +9,7 @@ from typing import Any, Iterable
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 CSS = (HERE / "carousel.css").read_text(encoding="utf-8")
+STUDIO_CSS = (HERE / "studio_v2.css").read_text(encoding="utf-8")
 
 SUPPORTED_LAYOUTS = {
     "cover", "browser", "code", "network", "architecture", "cards",
@@ -327,7 +328,8 @@ def render_slide(slide: dict, data: dict, number: int) -> str:
         if composition not in COMPOSITIONS or font not in TYPOGRAPHY.values() or motif not in MOTIFS.values():
             raise ValueError("Invalid carousel creative profile.")
         variant = f" compose-{composition} font-{font} motif-{motif}"
-    return f'<section class="slide theme-{theme} art-{direction} layout-{layout} {tone}{variant}"><div class="slide-inner">{content}</div>{_brand(data, number)}</section>'
+    edition = " design-v2" if data.get("design_version") == "studio-v2" else ""
+    return f'<section class="slide theme-{theme} art-{direction} layout-{layout} {tone}{variant}{edition}"><div class="slide-inner">{content}</div>{_brand(data, number)}</section>'
 
 
 def render_html(data: dict) -> str:
@@ -340,5 +342,5 @@ def render_html(data: dict) -> str:
     return (
         '<!doctype html><html><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=1080, initial-scale=1">'
-        f'<style>{CSS}</style></head><body>{content}</body></html>'
+        f'<style>{CSS}{STUDIO_CSS if data.get("design_version") == "studio-v2" else ""}</style></head><body>{content}</body></html>'
     )
