@@ -1,158 +1,165 @@
 {
-  "id": "auto-2026-10-23-2402761e6cda",
+  "id": "editorial-2026-10-23-openai-decisions-api",
   "status": "ready",
-  "topic": "Discover a merchant's retail stores with UCP location search and lookup",
-  "category": "Developer Updates",
+  "topic": "OpenAI Decisions API: faster decisions for AI agents",
+  "category": "AI Agents / Developer Tools",
   "format": "document",
-  "caption": "AI shopping is getting a little more local.\n\nShopify has added location search and lookup capabilities that help compatible shopping agents discover a merchant’s physical retail stores.\n\nFor developers, two tools matter:\n\n• `search_locations` helps an agent discover locations using supported queries and filters.\n• `lookup_locations` retrieves details for locations the agent already knows.\n\nThat distinction sounds small, but it changes how you might design a shopping flow. An assistant could help someone find a relevant store before directing them toward the next step.\n\nThere’s an important limit: discovering a location does not confirm stock, pickup eligibility, or fulfillment. Those still need to be checked through the appropriate commerce flow.\n\nI’d treat this as a useful building block for location-aware shopping, not an end-to-end retail solution.\n\nOfficial details: https://shopify.dev/changelog/discover-a-merchant-s-retail-stores-with-ucp-location-search-and-lookup\n\n#ShopifyDev #AICommerce",
-  "source_url": "https://shopify.dev/changelog/discover-a-merchant-s-retail-stores-with-ucp-location-search-and-lookup",
+  "caption": "Most AI agents don't need a paragraph to make every decision.\n\nClassifying a message, routing a request, or choosing between a few actions is different from generating an explanation. Yet many agent workflows send both jobs through the same kind of model call.\n\nOpenAI's Decisions API is now generally available with GPT-6 Luna. It returns typed answers to bounded questions rather than writing a full response. OpenAI reports up to 10× faster results than running Luna through the Responses API for comparable tasks.\n\nThree details are worth noting:\n\n• The endpoint accepts text, images, and structured JSON as evidence.\n• A request can evaluate up to 400 questions.\n• Your application still decides what to do with the answer. The API doesn't execute the action for you.\n\nI think the useful design principle is straightforward: separate decisions from generation.\n\nUse a decision endpoint when you need a probability, a choice, or a score. Use a generative response when you actually need a written explanation, structured output, or tool invocation.\n\nOfficial details: https://openai.com/index/decisions-api/\n\n#AIAgents #APIDesign",
+  "source_url": "https://openai.com/index/decisions-api/",
   "sources": [
-    "https://shopify.dev/changelog/discover-a-merchant-s-retail-stores-with-ucp-location-search-and-lookup"
+    "https://openai.com/index/decisions-api/",
+    "https://developers.openai.com/api/docs/guides/decisions"
   ],
-  "created_at": "2026-10-23T06:47:37.680676+00:00",
-  "origin_request": "queue/topic_requests/auto-2026-10-23-2402761e6cda.json",
+  "created_at": "2026-10-23T09:28:00+00:00",
+  "origin": "editorial_selected",
+  "priority_score": 95,
+  "editorial_review": {
+    "selected_hook": "Your AI agent doesn't need to generate every decision",
+    "hook_options": [
+      "Your AI agent doesn't need to generate every decision",
+      "What if agent routing didn't need a full model response?",
+      "OpenAI built a faster path for AI decisions"
+    ],
+    "voice_angle": "developer_consequence",
+    "quality_gate": "manually_source_checked",
+    "human_approval_required": true,
+    "source_note": "October 22, 2026 official product announcement; compare speeds are OpenAI-reported"
+  },
   "document": {
-    "title": "AI agents can find your nearest Shopify store",
+    "title": "Your AI agent doesn't need to generate every decision",
     "renderer": "v3",
     "carousel": {
-      "topic": "Discover a merchant's retail stores with UCP location search and lookup",
-      "theme": "developer",
+      "topic": "OpenAI Decisions API is generally available",
+      "theme": "openai",
+      "design_version": "studio-v2",
       "brand": {
         "name": "WAJAHAT NAQVI",
-        "subtitle": "Shopify · Full-stack · AI"
+        "subtitle": "AI · Development · Software Engineering"
+      },
+      "art_direction": "swiss",
+      "creative_profile": {
+        "typography": "grotesk",
+        "motif": "blocks",
+        "compositions": [
+          "spotlight",
+          "rail",
+          "tiles",
+          "mosaic",
+          "rail",
+          "spotlight"
+        ],
+        "edition": 226
       },
       "slides": [
         {
           "type": "cover",
-          "eyebrow": "Shopify Developer Update",
-          "title": "AI agents can find your nearest Shopify store",
-          "subtitle": "A new bridge between AI-powered shopping and physical retail."
+          "eyebrow": "An important change for AI builders",
+          "title": "Your AI agent doesn't need to generate every decision",
+          "subtitle": "OpenAI's new Decisions API is built for fast, bounded answers.",
+          "footer": "6 slides · The practical developer breakdown →"
         },
         {
-          "type": "before_after",
-          "eyebrow": "Endpoint Tools",
-          "title": "Find stores. Then get the details.",
+          "type": "insight_list",
+          "eyebrow": "The overlooked bottleneck",
+          "title": "Many agent steps are decisions, not conversations",
+          "cards": [
+            [
+              "01",
+              "Classify incoming work",
+              "Decide whether an input matches a condition without asking for a full written explanation."
+            ],
+            [
+              "02",
+              "Route the next step",
+              "Choose from defined destinations or actions using the context your app already has."
+            ],
+            [
+              "03",
+              "Score against a rubric",
+              "Evaluate evidence and return a typed score that your application can use."
+            ]
+          ]
+        },
+        {
+          "type": "comparison",
+          "eyebrow": "Pick the right primitive",
+          "title": "A decision is not the same as a response",
           "left": {
-            "label": "Search Locations",
-            "title": "search_locations",
+            "label": "DECISIONS API",
+            "title": "Bounded answers",
             "items": [
-              "Lists shop retail locations",
-              "Supports query and distance filters",
-              "Defaults to 10 per page up to 250"
+              "Boolean probabilities",
+              "Choices from a fixed set",
+              "Rubric scores from supplied evidence"
             ]
           },
           "right": {
-            "label": "Lookup Locations",
-            "title": "lookup_locations",
+            "label": "RESPONSES API",
+            "title": "Open-ended work",
             "items": [
-              "Retrieves locations by specific IDs",
-              "Processes up to 10 distinct IDs",
-              "Targeted direct retrieval tool"
+              "Generate explanations",
+              "Produce custom structured outputs",
+              "Request tool calls and complex workflows"
             ]
           }
         },
         {
-          "type": "workflow",
-          "eyebrow": "Release Details",
-          "title": "Three details you can’t ignore",
-          "steps": [
-            [
-              "1",
-              "Release Date",
-              "Available starting with version 2026-08-25."
-            ],
-            [
-              "2",
-              "Prerequisites",
-              "Applies to storefronts with at least one active merchant-managed retail location."
-            ],
-            [
-              "3",
-              "Discovery Profile",
-              "Qualifying locations list their capabilities in the discovery profile."
-            ]
-          ]
-        },
-        {
-          "type": "feature_grid",
-          "eyebrow": "What It Does",
-          "title": "Where it gets useful",
-          "features": [
-            [
-              "01",
-              "Storefront MCP Endpoint",
-              "Exposes search and lookup tools at the storefront Model Context Protocol endpoint."
-            ],
-            [
-              "02",
-              "Proximity Filtering",
-              "Filter retail stores by name, city, or explicit distance relations."
-            ],
-            [
-              "03",
-              "Item Availability",
-              "Check product variant availability across specific physical store locations."
-            ]
-          ]
-        },
-        {
-          "type": "insight_list",
-          "eyebrow": "Best Practices",
-          "title": "Three checks before you ship",
+          "type": "cards",
+          "eyebrow": "What shipped in GA",
+          "title": "Three details worth knowing",
           "cards": [
             [
+              "400",
+              "Questions per request",
+              "The general-availability API supports up to 400 questions in a single request."
+            ],
+            [
+              "JSON",
+              "Inputs beyond plain text",
+              "Evaluate text, images, and structured JSON without forcing everything into one text string."
+            ],
+            [
+              "CACHE",
+              "Shared evidence reuse",
+              "Prompt caching can reduce the cost of evaluating new questions against recurring context."
+            ]
+          ]
+        },
+        {
+          "type": "process_map",
+          "eyebrow": "How the pieces fit",
+          "title": "A cleaner pattern for agent workflows",
+          "steps": [
+            [
               "01",
-              "Agent Profiles",
-              "Declare required capabilities in agent profiles before invoking tools."
+              "Provide the evidence",
+              "Pass the text, image, conversation, or structured JSON your decision requires."
             ],
             [
               "02",
-              "Buyer Privacy",
-              "Send distance center only from coordinates explicitly shared by the buyer."
+              "Ask bounded questions",
+              "Define the possible choices, conditions, or rubric scores you want evaluated."
             ],
             [
               "03",
-              "Provisional Data",
-              "Confirm availability and fulfillment options in cart and checkout."
+              "Read typed answers",
+              "Get probabilities, choices, or scores rather than generating a paragraph."
+            ],
+            [
+              "04",
+              "Let your application act",
+              "Use the returned answer to route work; your application still runs the action."
             ]
-          ],
-          "visual_intent": "editorial_insights"
+          ]
         },
         {
           "type": "closing",
-          "eyebrow": "Learn More",
-          "title": "AI commerce meets the high street",
-          "subtitle": "Location discovery is a beginning—not a guarantee of inventory or fulfillment.",
-          "source": "https://shopify.dev/changelog/discover-a-merchant-s-retail-stores-with-ucp-location-search-and-lookup"
+          "eyebrow": "The takeaway",
+          "title": "Save generation for work that needs it",
+          "subtitle": "Use decisions for routing, classification, and scoring. Generate when the output really needs language or tools.",
+          "source": "https://openai.com/index/decisions-api/"
         }
-      ],
-      "art_direction": "collage",
-      "storyboard": "sequence-6",
-      "creative_profile": {
-        "typography": "humanist",
-        "motif": "cutouts",
-        "compositions": [
-          "tiles",
-          "spotlight",
-          "rail",
-          "mosaic",
-          "tiles",
-          "spotlight"
-        ],
-        "edition": 204
-      },
-      "design_version": "studio-v2"
+      ]
     }
-  },
-  "origin": "automatic",
-  "priority_score": 75,
-  "source_published_at": "2026-10-22T18:00:00+00:00",
-  "editorial_review": {
-    "voice_angle": "developer_consequence",
-    "human_approval_required": true,
-    "revision_note": "Human-style rewrite; meaningful insights diagram; no invented experience",
-    "visual_treatments": [
-      "insight_list"
-    ]
   }
 }
