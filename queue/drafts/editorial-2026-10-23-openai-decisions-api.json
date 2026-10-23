@@ -1,6 +1,6 @@
 {
   "id": "editorial-2026-10-23-openai-decisions-api",
-  "status": "ready",
+  "status": "published",
   "topic": "OpenAI Decisions API: faster decisions for AI agents",
   "category": "AI Agents / Developer Tools",
   "format": "document",
@@ -161,5 +161,7 @@
         }
       ]
     }
-  }
+  },
+  "linkedin_post_id": "urn:li:ugcPost:7519336813073805312",
+  "published_at": "2026-10-23T09:59:59.070454+00:00"
 }
