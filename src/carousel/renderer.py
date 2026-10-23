@@ -15,7 +15,7 @@ SUPPORTED_LAYOUTS = {
     "cover", "browser", "code", "network", "architecture", "cards",
     "feature_grid", "comparison", "before_after", "timeline", "metrics",
     "quote", "screenshot", "annotated_screenshot", "workflow", "ecommerce",
-    "model_comparison", "closing",
+    "model_comparison", "closing", "process_map", "insight_list",
 }
 
 
@@ -284,6 +284,27 @@ def _closing(slide: dict) -> str:
     )
 
 
+
+def _process_map(slide: dict) -> str:
+    output = []
+    for index, step in enumerate((slide.get("steps") or [])[:4], 1):
+        _, heading, detail = _card_data(step, index)
+        output.append(
+            f'<div class="process-node"><span>{index:02d}</span><div><h3>{esc(heading)}</h3><p>{esc(detail)}</p></div></div>'
+        )
+    return f'<div class="process-layout">{_heading(slide)}<div class="process-rail">{"".join(output)}</div></div>'
+
+
+def _insight_list(slide: dict) -> str:
+    output = []
+    for index, item in enumerate((slide.get("cards") or [])[:4], 1):
+        _, heading, detail = _card_data(item, index)
+        output.append(
+            f'<div class="insight-node"><span>{index:02d}</span><div><h3>{esc(heading)}</h3><p>{esc(detail)}</p></div></div>'
+        )
+    return f'<div class="insight-layout">{_heading(slide)}<div class="insight-rail">{"".join(output)}</div></div>'
+
+
 def render_slide(slide: dict, data: dict, number: int) -> str:
     layout = str(slide.get("type") or slide.get("layout") or "cards").strip().lower()
     if layout == "split":
@@ -310,6 +331,8 @@ def render_slide(slide: dict, data: dict, number: int) -> str:
         "ecommerce": _ecommerce,
         "model_comparison": _model_comparison,
         "closing": _closing,
+        "process_map": _process_map,
+        "insight_list": _insight_list,
     }
     content = renderers[layout](slide)
     theme = _theme(data)

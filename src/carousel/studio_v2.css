@@ -149,3 +149,14 @@
   word-break:break-all;max-width:930px;color:rgba(255,255,255,.65)
 }
 .design-v2.layout-closing .brand-lockup span{color:rgba(255,255,255,.7)}
+
+
+/* Opt-in visual storytelling blocks with source-grounded copy. */
+.design-v2 .process-layout,.design-v2 .insight-layout{min-height:1060px;display:flex;flex-direction:column;justify-content:center}
+.design-v2 .process-rail,.design-v2 .insight-rail{margin-top:58px;display:flex;flex-direction:column}
+.design-v2 .process-node,.design-v2 .insight-node{display:grid;grid-template-columns:108px 1fr;gap:25px;align-items:center;min-height:205px;border-top:2px solid #b7c6c4;padding:26px 6px}
+.design-v2 .process-node:last-child,.design-v2 .insight-node:last-child{border-bottom:2px solid #b7c6c4}
+.design-v2 .process-node>span{height:78px;width:78px;border-radius:50%;display:grid;place-items:center;background:#193b43;color:white;font-size:22px;font-weight:800}
+.design-v2 .insight-node>span{color:#b97057;font:800 65px/1 Arial,sans-serif;letter-spacing:-.08em}
+.design-v2 .process-node h3,.design-v2 .insight-node h3{font-size:32px;line-height:1.1;margin:0 0 12px}
+.design-v2 .process-node p,.design-v2 .insight-node p{font-size:22px;line-height:1.36;color:#40545a;margin:0}

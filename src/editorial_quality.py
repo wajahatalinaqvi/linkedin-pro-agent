@@ -59,8 +59,8 @@ def review_generated(generated: dict) -> list[str]:
             issues.append("Caption opening uses generic or engagement-bait language.")
         if "\n\n" not in stripped:
             issues.append("Use short paragraphs to support mobile reading.")
-        if stripped.count("#") > 5:
-            issues.append("Use no more than 4-5 relevant hashtags.")
+        if stripped.count("#") > 2:
+            issues.append("Use no more than two relevant hashtags.")
     vague_titles = ("core capabilities", "developer guidelines", "ready to build", "requirements & availability")
     for i, slide in enumerate(slides[1:], 2):
         head = str(slide.get("title") or "").strip()

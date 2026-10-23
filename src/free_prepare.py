@@ -18,6 +18,8 @@ import requests
 from carousel.render_pdf import render_carousel_pdf
 from carousel.art_direction import set_art_direction
 from editorial_quality import review_generated
+from writing_voice import choose_angle, EDITORIAL_VOICE
+from carousel.visual_storytelling import apply_visual_storytelling
 from post_store import ROOT, LATEST, create_draft, draft_path, load_json, save_json, select_draft
 
 REQUEST_DIR = ROOT / "queue" / "topic_requests"
@@ -79,17 +81,20 @@ def verified_facts(source: str, topic: str, notes: str) -> str:
 def generate_post(req: dict, post_id: str) -> dict:
     source = req["source_url"].strip()
     facts = verified_facts(source, req["topic"], req.get("notes", ""))
+    voice_angle, angle_guidance = choose_angle(post_id)
     instructions = (
-        "You are preparing an editorial LinkedIn post. Use ONLY verified facts below. "
+        "You are a skilled human technical editor writing for developers on LinkedIn. "
+        + EDITORIAL_VOICE + " " + angle_guidance + " "
+        "Use ONLY verified facts below. "
         "Return a single JSON object with keys topic, category, caption, slides, hook_options. "
-        "Write 3 distinctly angled hook_options (change/impact, developer pain, surprising but verified opportunity), each 4-14 words. Choose the strongest factual one as the cover slide title. Never introduce facts absent from the source. Write a substantive 110-220 word LinkedIn caption: first two lines must be a specific, curiosity-driving factual hook, then explain the practical consequence, 2-3 useful technical details, one caveat, a thoughtful closing question, and 2-4 relevant hashtags. No generic hype, no clickbait, no unsupported claims. "
-        "Create exactly 6 slide objects in this order: cover, cards, comparison, cards, timeline, closing. Headline the cover with a short concrete reader benefit or surprising verified change, NOT the official announcement title or a product name alone. Other titles must carry a useful point; avoid generic labels such as Core Capabilities, Developer Guidelines, Ready to Build, Requirements and Availability. "
+        "Write 3 distinctly angled hook_options (change/impact, developer pain, surprising but verified opportunity), each 4-14 words. Choose the strongest factual one as the cover slide title. Never introduce facts absent from the source. Write a substantive 110-220 word LinkedIn caption: first two lines must be a specific, curiosity-driving factual hook, then explain the practical consequence, 2-3 useful technical details, one caveat, and an original specific takeaway. Do not force a question. Use 0-2 hashtags. No generic hype, no clickbait, no unsupported claims. "
+        "Create exactly 6 slide objects in this order: cover, cards, comparison, cards, timeline, closing. Give each slide a specific reader insight, not a generic section label. Slide 2 may set visual_intent='editorial_insights' for 3 real insights. Slide 5 may set visual_intent='process' ONLY if the 3 steps describe a genuinely sequential process confirmed in the verified source. Otherwise omit visual_intent. Headline the cover with a short concrete reader benefit or surprising verified change, NOT the official announcement title or a product name alone. Other titles must carry a useful point; avoid generic labels such as Core Capabilities, Developer Guidelines, Ready to Build, Requirements and Availability. "
         "Every slide needs type, eyebrow and short title. Cover has subtitle. "
         "Each cards slide has three cards as arrays [number,title,body]. "
         "Comparison has left and right objects with label, title, items (list of 3 short strings). "
         "Timeline has events list of 3 [number,title,body] arrays. "
         "Closing has subtitle and source. Keep slide copy concise, but not empty: write content-rich bodies 12-25 words each with source-grounded details and a clear visual hierarchy. Limit cover title to roughly 4-10 words. "
-        "Make the first sentence worth stopping for, not clickbait. Prefer specific consequences for Shopify developers, merchants, or AI builders. Share a truthful professional takeaway; do not invent personal experience. Avoid canned questions such as Agree?, generic hype, and hashtags in opening line. Source-derived accuracy is more important than excitement. Do not include literal backslash-n or fictitious benchmarks, dates or quotations."
+        "Make the first sentence worth stopping for, not clickbait. Prefer specific consequences for Shopify developers, merchants, or AI builders. Share a truthful professional takeaway; do not invent personal experience. Avoid canned questions such as Agree?, generic hype, and hashtags in opening line. Source-derived accuracy is more important than excitement. Do not fake personal experience, anecdotes, quotes, numbers, testing, metrics, or clients. Avoid generic AI phrasing, motivational closers and engagement bait. Do not include literal backslash-n or fictitious benchmarks, dates or quotations."
     )
     prompt = (instructions + "\nSOURCE: " + source +
               "\nUSER TOPIC: " + req["topic"] + "\nVERIFIED FACTS:\n" + facts)
@@ -125,6 +130,7 @@ def generate_post(req: dict, post_id: str) -> dict:
         "sources": [source], "created_at": datetime.now(timezone.utc).isoformat(),
         "origin_request": f"queue/topic_requests/{post_id}.json",
         "editorial_review": {"hook_options": generated["hook_options"],
+                              "voice_angle": voice_angle,
                               "selected_hook": slides[0]["title"],
                               "quality_gate": "editorial-v1", "human_approval_required": True},
         "document": {"title": topic, "renderer": "v3", "carousel": {
@@ -165,6 +171,7 @@ def prepare(request_name: str) -> tuple[str, str]:
         if any(x.get("id") == post_id or x.get("source_url") == post["source_url"] for x in history):
             raise ValueError("Story already published. No duplicate draft created.")
         direction = set_art_direction(post["document"]["carousel"], post_id, ROOT / "queue" / "drafts")
+        post["editorial_review"]["visual_treatments"] = apply_visual_storytelling(post["document"]["carousel"])
         print(f"ART DIRECTION: {direction}")
         destination = ROOT / "generated" / f"{post_id}.pdf"
         render_carousel_pdf(post["document"]["carousel"], destination)

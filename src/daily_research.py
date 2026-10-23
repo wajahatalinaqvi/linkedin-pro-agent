@@ -19,6 +19,7 @@ from content_priority import today_local, manual_requests_on_day, automatic_read
 from free_prepare import generate_post, is_primary_source
 from editorial import ranked_candidates, editorial_score
 from carousel.art_direction import set_art_direction
+from carousel.visual_storytelling import apply_visual_storytelling
 from carousel.render_pdf import render_carousel_pdf
 
 FEEDS = [
@@ -109,6 +110,7 @@ def main() -> None:
             post["editorial_review"]["news_selection_score"] = story["editorial_score"]
             post["source_published_at"] = story["published"].isoformat()
             set_art_direction(post["document"]["carousel"], post_id, ROOT / "queue/drafts")
+            post["editorial_review"]["visual_treatments"] = apply_visual_storytelling(post["document"]["carousel"])
             pdf = ROOT / "generated" / f"{post_id}.pdf"
             render_carousel_pdf(post["document"]["carousel"], pdf)
             create_draft(post, select=False)
