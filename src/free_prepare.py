@@ -81,13 +81,13 @@ def generate_post(req: dict, post_id: str) -> dict:
     instructions = (
         "You are preparing an editorial LinkedIn post. Use ONLY verified facts below. "
         "Return a single JSON object with keys topic, category, caption, slides. "
-        "Write a natural punchy caption with 3-4 relevant hashtags. "
-        "Create exactly 6 slide objects in this order: cover, cards, comparison, cards, timeline, closing. "
+        "Write a substantive 110-220 word LinkedIn caption: first two lines must be a specific, curiosity-driving factual hook, then explain the practical consequence, 2-3 useful technical details, one caveat, a thoughtful closing question, and 2-4 relevant hashtags. No generic hype, no clickbait, no unsupported claims. "
+        "Create exactly 6 slide objects in this order: cover, cards, comparison, cards, timeline, closing. Headline the cover with a short concrete reader benefit or surprising verified change, NOT the official announcement title or a product name alone. Other titles must carry a useful point; avoid generic labels such as Core Capabilities, Developer Guidelines, Ready to Build, Requirements and Availability. "
         "Every slide needs type, eyebrow and short title. Cover has subtitle. "
         "Each cards slide has three cards as arrays [number,title,body]. "
         "Comparison has left and right objects with label, title, items (list of 3 short strings). "
         "Timeline has events list of 3 [number,title,body] arrays. "
-        "Closing has subtitle and source. Keep headings readable on a phone. "
+        "Closing has subtitle and source. Keep slide copy concise, but not empty: write content-rich bodies 12-25 words each with source-grounded details and a clear visual hierarchy. Limit cover title to roughly 4-10 words. "
         "Do not include literal backslash-n or fictitious benchmarks, dates or quotations."
     )
     payload = gemini(instructions + "\nSOURCE: " + source +
@@ -102,7 +102,7 @@ def generate_post(req: dict, post_id: str) -> dict:
             raise ValueError(f"Slide {index}: expected {layout} layout.")
         if not isinstance(slide.get("title"), str) or not 4 <= len(slide["title"]) <= 105:
             raise ValueError(f"Slide {index} heading is missing or too long.")
-    if not isinstance(caption, str) or not 100 <= len(caption) <= 2900:
+    if not isinstance(caption, str) or not 350 <= len(caption) <= 2900:
         raise ValueError("Draft caption is missing or too long.")
     topic = str(generated.get("topic") or req["topic"])[:160]
     category = str(generated.get("category") or "Developer Tools")[:80]
@@ -115,7 +115,7 @@ def generate_post(req: dict, post_id: str) -> dict:
         "sources": [source], "created_at": datetime.now(timezone.utc).isoformat(),
         "origin_request": f"queue/topic_requests/{post_id}.json",
         "document": {"title": topic, "renderer": "v3", "carousel": {
-            "topic": topic, "theme": theme,
+            "topic": topic, "theme": theme, "design_version": "studio-v2",
             "brand": {"name": "WAJAHAT NAQVI", "subtitle": "Shopify · Full-stack · AI"},
             "slides": slides,
         }},
