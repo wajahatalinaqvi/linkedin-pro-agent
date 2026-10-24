@@ -1,167 +1,162 @@
 {
-  "id": "editorial-2026-10-23-openai-decisions-api",
-  "status": "published",
-  "topic": "OpenAI Decisions API: faster decisions for AI agents",
-  "category": "AI Agents / Developer Tools",
+  "id": "auto-2026-10-24-d99a0b10cf26",
+  "status": "ready",
+  "topic": "Public monitoring adds triage, validity, API, and webhooks",
+  "category": "Developer Security",
   "format": "document",
-  "caption": "Most AI agents don't need a paragraph to make every decision.\n\nClassifying a message, routing a request, or choosing between a few actions is different from generating an explanation. Yet many agent workflows send both jobs through the same kind of model call.\n\nOpenAI's Decisions API is now generally available with GPT-6 Luna. It returns typed answers to bounded questions rather than writing a full response. OpenAI reports up to 10× faster results than running Luna through the Responses API for comparable tasks.\n\nThree details are worth noting:\n\n• The endpoint accepts text, images, and structured JSON as evidence.\n• A request can evaluate up to 400 questions.\n• Your application still decides what to do with the answer. The API doesn't execute the action for you.\n\nI think the useful design principle is straightforward: separate decisions from generation.\n\nUse a decision endpoint when you need a probability, a choice, or a score. Use a generative response when you actually need a written explanation, structured output, or tool invocation.\n\nOfficial details: https://openai.com/index/decisions-api/\n\n#AIAgents #APIDesign",
-  "source_url": "https://openai.com/index/decisions-api/",
+  "caption": "GitHub public monitoring now enables programmatic alert management, but closing an alert does not automatically revoke the exposed credential.\n\nEnterprise security teams managing leaked secrets in public repositories often struggle with noise and manual triage workflows. Recent platform updates introduce automated token validity checks alongside REST API endpoints and webhook integrations for enterprise environments. Security engineers can now query attributed findings programmatically using specific endpoints and receive real-time notifications for newly detected leaks via the secret_scanning_public_monitoring_alert event.\n\nThree technical details stand out. First, alert validity is continuously tracked, tagging exposures as Active, Inactive, or Unknown. Second, enterprise dashboards support advanced filtering by repository, committer, secret type, and state. Third, programmatic access via GET requests allows direct integration into custom SIEM and SOAR pipelines.\n\nAn important operational caveat remains. Dismissing or closing an alert updates its state within the enterprise dashboard exclusively. It does not trigger automatic credential revocation or remove the underlying secret from the public repository.\n\nProgrammatic triage reduces response latency, yet downstream remediation still requires explicit manual intervention from developers or security operators.",
+  "source_url": "https://github.blog/changelog/2026-10-23-public-monitoring-adds-triage-validity-api-and-webhooks",
   "sources": [
-    "https://openai.com/index/decisions-api/",
-    "https://developers.openai.com/api/docs/guides/decisions"
+    "https://github.blog/changelog/2026-10-23-public-monitoring-adds-triage-validity-api-and-webhooks"
   ],
-  "created_at": "2026-10-23T09:28:00+00:00",
-  "origin": "editorial_selected",
-  "priority_score": 95,
+  "created_at": "2026-10-24T10:03:51.428983+00:00",
+  "origin_request": "queue/topic_requests/auto-2026-10-24-d99a0b10cf26.json",
   "editorial_review": {
-    "selected_hook": "Your AI agent doesn't need to generate every decision",
     "hook_options": [
-      "Your AI agent doesn't need to generate every decision",
-      "What if agent routing didn't need a full model response?",
-      "OpenAI built a faster path for AI decisions"
+      "Automated Secret Monitoring Without Automatic Revocation",
+      "Managing Public Leaks With New Enterprise APIs",
+      "Continuous Validity Checks for Public Secret Scans"
     ],
-    "voice_angle": "developer_consequence",
-    "quality_gate": "manually_source_checked",
+    "voice_angle": "surprising_boundary",
+    "selected_hook": "Automated Secret Monitoring Without Automatic Revocation",
+    "quality_gate": "editorial-v1",
     "human_approval_required": true,
-    "source_note": "October 22, 2026 official product announcement; compare speeds are OpenAI-reported"
+    "news_selection_score": 62,
+    "visual_treatments": []
   },
   "document": {
-    "title": "Your AI agent doesn't need to generate every decision",
+    "title": "Public monitoring adds triage, validity, API, and webhooks",
     "renderer": "v3",
     "carousel": {
-      "topic": "OpenAI Decisions API is generally available",
-      "theme": "openai",
+      "topic": "Public monitoring adds triage, validity, API, and webhooks",
+      "theme": "developer",
       "design_version": "studio-v2",
       "brand": {
         "name": "WAJAHAT NAQVI",
-        "subtitle": "AI · Development · Software Engineering"
-      },
-      "art_direction": "swiss",
-      "creative_profile": {
-        "typography": "grotesk",
-        "motif": "blocks",
-        "compositions": [
-          "spotlight",
-          "rail",
-          "tiles",
-          "mosaic",
-          "rail",
-          "spotlight"
-        ],
-        "edition": 226
+        "subtitle": "Shopify · Full-stack · AI"
       },
       "slides": [
         {
           "type": "cover",
-          "eyebrow": "An important change for AI builders",
-          "title": "Your AI agent doesn't need to generate every decision",
-          "subtitle": "OpenAI's new Decisions API is built for fast, bounded answers.",
-          "footer": "6 slides · The practical developer breakdown →"
+          "eyebrow": "GitHub Security Update",
+          "title": "Automated Secret Monitoring Without Automatic Revocation",
+          "subtitle": "Public monitoring adds triage, validity checks, REST APIs, and webhooks for enterprise security operations."
         },
         {
-          "type": "insight_list",
-          "eyebrow": "The overlooked bottleneck",
-          "title": "Many agent steps are decisions, not conversations",
-          "cards": [
+          "type": "workflow",
+          "eyebrow": "Operational Flow",
+          "title": "Managing Public Secret Exposures",
+          "steps": [
             [
-              "01",
-              "Classify incoming work",
-              "Decide whether an input matches a condition without asking for a full written explanation."
+              "1",
+              "Detection and Tagging",
+              "System identifies potential leaks and runs continuous validity checks to determine if tokens remain active."
             ],
             [
-              "02",
-              "Route the next step",
-              "Choose from defined destinations or actions using the context your app already has."
+              "2",
+              "Programmatic Triage",
+              "Security teams ingest findings via webhooks and REST APIs to filter and prioritize active exposures."
             ],
             [
-              "03",
-              "Score against a rubric",
-              "Evaluate evidence and return a typed score that your application can use."
+              "3",
+              "Dashboard Updates",
+              "Operators update alert states in the dashboard while performing manual credential revocation externally."
             ]
           ]
         },
         {
-          "type": "comparison",
-          "eyebrow": "Pick the right primitive",
-          "title": "A decision is not the same as a response",
+          "type": "feature_grid",
+          "eyebrow": "Core Capabilities",
+          "title": "Enterprise Alert Management",
+          "features": [
+            [
+              "01",
+              "State Control",
+              "Dismiss or reopen alerts directly within enterprise dashboards with optional contextual comments for team visibility."
+            ],
+            [
+              "02",
+              "Audit Trails",
+              "View a complete timeline and audit trail of state changes across all monitored repositories and security teams."
+            ],
+            [
+              "03",
+              "Advanced Filters",
+              "Filter and sort findings by repository, committer, secret type, attribution method, and current alert state."
+            ]
+          ]
+        },
+        {
+          "type": "cards",
+          "eyebrow": "Integration Layer",
+          "title": "APIs and Webhooks",
+          "cards": [
+            [
+              "01",
+              "REST Endpoints",
+              "Query attributed findings programmatically using enterprise secret scanning endpoints for automated pipeline ingestion."
+            ],
+            [
+              "02",
+              "Webhook Events",
+              "Leverage enterprise-level support for public monitoring alert events to deliver real-time notifications to external systems."
+            ],
+            [
+              "03",
+              "SIEM Integration",
+              "Feed structured data directly into custom security operations and incident response tools for faster triage."
+            ]
+          ]
+        },
+        {
+          "type": "before_after",
+          "eyebrow": "Scope and Boundaries",
+          "title": "What the Update Enables vs. Restricts",
           "left": {
-            "label": "DECISIONS API",
-            "title": "Bounded answers",
+            "label": "Enabled",
+            "title": "Automation and Triage",
             "items": [
-              "Boolean probabilities",
-              "Choices from a fixed set",
-              "Rubric scores from supplied evidence"
+              "Continuous token validity checks tagging alerts as active or inactive",
+              "Programmatic REST API access for custom security queries",
+              "Real-time webhook notifications for newly detected public leaks"
             ]
           },
           "right": {
-            "label": "RESPONSES API",
-            "title": "Open-ended work",
+            "label": "Restricted",
+            "title": "Manual Boundaries",
             "items": [
-              "Generate explanations",
-              "Produce custom structured outputs",
-              "Request tool calls and complex workflows"
+              "No automatic credential revocation upon dashboard updates",
+              "No automatic removal of secrets from public repositories",
+              "Limited to public preview availability for enterprise cloud"
             ]
           }
         },
         {
-          "type": "cards",
-          "eyebrow": "What shipped in GA",
-          "title": "Three details worth knowing",
-          "cards": [
-            [
-              "400",
-              "Questions per request",
-              "The general-availability API supports up to 400 questions in a single request."
-            ],
-            [
-              "JSON",
-              "Inputs beyond plain text",
-              "Evaluate text, images, and structured JSON without forcing everything into one text string."
-            ],
-            [
-              "CACHE",
-              "Shared evidence reuse",
-              "Prompt caching can reduce the cost of evaluating new questions against recurring context."
-            ]
-          ]
-        },
-        {
-          "type": "process_map",
-          "eyebrow": "How the pieces fit",
-          "title": "A cleaner pattern for agent workflows",
-          "steps": [
-            [
-              "01",
-              "Provide the evidence",
-              "Pass the text, image, conversation, or structured JSON your decision requires."
-            ],
-            [
-              "02",
-              "Ask bounded questions",
-              "Define the possible choices, conditions, or rubric scores you want evaluated."
-            ],
-            [
-              "03",
-              "Read typed answers",
-              "Get probabilities, choices, or scores rather than generating a paragraph."
-            ],
-            [
-              "04",
-              "Let your application act",
-              "Use the returned answer to route work; your application still runs the action."
-            ]
-          ]
-        },
-        {
           "type": "closing",
-          "eyebrow": "The takeaway",
-          "title": "Save generation for work that needs it",
-          "subtitle": "Use decisions for routing, classification, and scoring. Generate when the output really needs language or tools.",
-          "source": "https://openai.com/index/decisions-api/"
+          "eyebrow": "Availability",
+          "title": "Access and Licensing",
+          "subtitle": "Available in public preview for GitHub Enterprise Cloud customers with Advanced Security or Secret Protection licenses at no additional cost.",
+          "source": "github.blog/changelog"
         }
-      ]
+      ],
+      "art_direction": "gradient",
+      "storyboard": "sequence-5",
+      "creative_profile": {
+        "typography": "contrast",
+        "motif": "orbs",
+        "compositions": [
+          "rail",
+          "mosaic",
+          "tiles",
+          "spotlight",
+          "rail",
+          "mosaic"
+        ],
+        "edition": 463
+      }
     }
   },
-  "linkedin_post_id": "urn:li:ugcPost:7519336813073805312",
-  "published_at": "2026-10-23T09:59:59.070454+00:00"
+  "origin": "automatic",
+  "priority_score": 62,
+  "source_published_at": "2026-10-23T17:17:58+00:00"
 }
