@@ -142,19 +142,24 @@ def _boundaries(c, s):
     nodes = s["nodes"]
     if len(nodes) != 4:
         raise ValueError("Boundary map requires exactly four nodes.")
-    for index, node in enumerate(nodes):
-        y = H - (547 + index*155) - 116
+    # Fixed top-aligned grid: 62 pt below the two-line introduction;
+    # 128 pt high rows with identical 42 pt connector gaps. Last row leaves
+    # 99 pt to the footer rule at ~1247 pt. Preserve baseline rhythm.
+    card_tops = (510, 680, 850, 1020)
+    card_height = 128
+    for index, (node, top) in enumerate(zip(nodes, card_tops)):
+        y = H - top - card_height
         _rect(c, "#26424A" if index % 2 == 0 else "#20363D",
-              66, y, 944, 112, radius=14)
-        _rect(c, SIGNAL if index == 3 else SOFT, 66, y, 11, 112)
-        _text(c, f"{index+1:02d}", 98, 552+index*155, 28,
+              66, y, 944, card_height, radius=14)
+        _rect(c, SIGNAL if index == 3 else SOFT, 66, y, 11, card_height)
+        _text(c, f"{index+1:02d}", 98, top+34, 28,
               SIGNAL if index == 3 else SOFT, "EditorialBold")
-        _text(c, node["title"].upper(), 182, 548+index*155, 37,
+        _text(c, node["title"].upper(), 182, top+24, 37,
               "#F5F7F4", "EditorialBold", limit=740)
-        _text(c, node["note"], 184, 599+index*155, 21,
+        _text(c, node["note"], 184, top+77, 21,
               "#AEC8C5", limit=760)
         if index < 3:
-            _text(c, "↓", 528, 670+index*155, 28, SIGNAL, "EditorialBold")
+            _text(c, "↓", 528, top+136, 28, SIGNAL, "EditorialBold")
     c.showPage()
 
 
