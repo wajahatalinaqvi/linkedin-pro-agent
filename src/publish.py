@@ -13,6 +13,7 @@ from dotenv import load_dotenv
 from linkedin import LinkedInClient, LinkedInError
 from slides import SlideRenderError, render_document
 from carousel.render_pdf import render_carousel_pdf
+from carousel.discussion_pdf import render_discussion_pdf
 from post_store import load_post, save_post
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -127,10 +128,8 @@ def prepare_document(post: dict):
 
     if renderer == "v3" and document.get("carousel"):
         carousel = document.get("carousel") or {}
-        rendered = render_carousel_pdf(
-            carousel,
-            output,
-        )
+        rendered = (render_discussion_pdf(carousel, output) if carousel.get('design_version') == 'discussion-v1'
+                    else render_carousel_pdf(carousel, output))
 
         return rendered, title
 
