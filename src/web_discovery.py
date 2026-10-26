@@ -22,7 +22,20 @@ import os
 
 import requests
 
-from free_prepare import is_primary_source
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+def is_primary_source(url: str) -> bool:
+    """Reuse the same official host allowlist without importing PDF tooling."""
+    parsed = urlparse(url)
+    if parsed.scheme != "https" or not parsed.hostname:
+        return False
+    config = json.loads((ROOT / "config/official_sources.json").read_text(encoding="utf-8"))
+    hosts = [urlparse(x["url"]).hostname or "" for x in config.get("sources", [])]
+    host = parsed.hostname.lower()
+    return any(host == h or host.endswith("." + h) for h in hosts)
+
 
 MAX_AGE = timedelta(days=3)
 QUERIES = (
