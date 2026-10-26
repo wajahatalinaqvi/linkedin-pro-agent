@@ -6,7 +6,9 @@ ANGLES = (
     ("developer_consequence", "Take a specific developer-facing position: what should builders do differently? Explain one implementation detail and a caveat."),
     ("surprising_boundary", "Lead with a verified contrast: what the feature enables versus what it explicitly does not guarantee."),
     ("workflow_shift", "Explain the actual workflow change. Prefer precise verbs, tool names, and practical decisions over slogans."),
-    ("merchant_decision", "Lead with an operational consequence for merchants, then explain a developer implication and a caveat."),
+    ("merchant_decision", "Lead with an operational consequence for Shopify merchants, then explain a developer implication and a caveat."),
+    ("engineering_tradeoff", "Where genuinely supported by the source, explain a technical tradeoff and invite practitioners to compare approaches. Never manufacture controversy."),
+    ("frontend_impact", "Explain what a frontend or full-stack developer would actually change in code, configuration, or workflow. Admit when no actionable change exists."),
 )
 EDITORIAL_VOICE = (
     "Write like a technically literate developer sharing a thoughtful observation with peers. "

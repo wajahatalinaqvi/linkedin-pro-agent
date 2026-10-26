@@ -29,7 +29,28 @@ LOW_VALUE = (
     "typo", "documentation correction", "minor fix", "minor update",
     "chore", "routine maintenance", "formatting", "bugfix",
 )
-MINIMUM_EDITORIAL_SCORE = 56
+# Pick meaningful developer news over routine product/business announcements.
+MINIMUM_EDITORIAL_SCORE = 60
+CORE_DEVELOPER = (
+    "shopify", "react", "next.js", "nextjs", "typescript", "javascript",
+    "frontend", "liquid", "graphql", "laravel", "api", "sdk", "webhook",
+    "coding agent", "coding agents", "codex", "claude code", "developer",
+    "agent tool", "tool calling", "agentic", "mcp", "cursor",
+)
+AI_ENGINEERING = ("agent", "agents", "model", "inference", "reasoning",
+                  "openai", "anthropic", "claude", "gemini", "ai")
+PRACTICAL_CHANGES = ("migrat", "deprecat", "security", "vulnerab", "auth",
+                     "shipping", "checkout", "deploy", "release",
+                     "preview", "app", "commerce", "integration", "rate limit")
+DISCUSSION_TERMS = ("permission", "access", "privacy", "security",
+                    "open source", "cost", "pricing", "performance",
+                    "speed", "automation", "risk", "breaking")
+LOW_AUDIENCE_FIT = (
+    "quarterly results", "earnings", "funding round", "investor",
+    "board of directors", "executive appointment", "office opening",
+    "partnership announcement", "customer success story",
+    "enterprise alert management", "public monitoring",
+)
 
 
 def _has(text: str, word: str) -> bool:
@@ -38,8 +59,12 @@ def _has(text: str, word: str) -> bool:
     return bool(re.search(r"(?<![a-z])" + re.escape(word) + r"[a-z]*(?![a-z])", text))
 
 
+def _matches(text: str, phrases: tuple[str, ...]) -> int:
+    return sum(phrase in text for phrase in phrases)
+
+
 def editorial_score(story: dict, now: datetime) -> int:
-    """Transparent 0-100 ordering based on recency, change, and niche relevance."""
+    """Practical developer value + novelty + discussion potential, not a viral prediction."""
     title = str(story.get("topic") or "").lower()
     category = str(story.get("category") or "").lower()
     published = story.get("published")
@@ -47,16 +72,32 @@ def editorial_score(story: dict, now: datetime) -> int:
     if isinstance(published, datetime):
         if published.tzinfo is None:
             published = published.replace(tzinfo=timezone.utc)
-        age_hours = max(0, (now - published).total_seconds() / 3600)
-        freshness = 20 if age_hours <= 24 else 14 if age_hours <= 48 else 8 if age_hours <= 72 else 0
-    impact = sum(_has(title, word) for word in IMPACT)
-    practical = sum(_has(title, word) for word in PRACTICAL)
+        age = max(0, (now - published).total_seconds() / 3600)
+        freshness = 20 if age <= 24 else 14 if age <= 48 else 8 if age <= 72 else 0
+
+    core = _matches(title, CORE_DEVELOPER)
+    ai = _matches(title, AI_ENGINEERING)
+    practical = _matches(title, PRACTICAL_CHANGES)
+    discussion = _matches(title, DISCUSSION_TERMS)
     change = sum(_has(title, word) for word in CHANGE)
-    score = (12 + freshness + min(30, impact * 12)
-             + min(18, practical * 6) + min(12, change * 6)
-             + (6 if "shopify" in category or "github" in category else 0))
-    if any(bad in title for bad in LOW_VALUE):
-        score -= 30
+
+    score = (
+        8 + freshness
+        + min(28, core * 16)
+        + min(16, ai * 8)
+        + min(14, practical * 7)
+        + min(9, discussion * 5)
+        + min(10, change * 5)
+        + (7 if category in {"shopify", "openai engineering"} else 0)
+    )
+    if any(phrase in title for phrase in LOW_AUDIENCE_FIT):
+        score -= 38
+    if any(phrase in title for phrase in LOW_VALUE):
+        score -= 45
+    # A generic announcement with no specific engineering connection is not
+    # worth forcing into a daily LinkedIn post, even from a prestigious brand.
+    if core == 0 and ai == 0:
+        score = min(score, 32)
     return max(0, min(100, score))
 
 

@@ -12,6 +12,9 @@ BANNED = (
     "the future is here", "unbelievable", "mind blowing", "must see",
     "breaking news", "ready to build", "core capabilities",
     "developer guidelines", "everything you need to know",
+    "in today's fast-paced", "let's dive in", "the future of",
+    "revolutionary", "unlock the power", "delve into",
+    "exciting development", "here's why it matters",
 )
 
 
@@ -61,6 +64,12 @@ def review_generated(generated: dict) -> list[str]:
             issues.append("Use short paragraphs to support mobile reading.")
         if stripped.count("#") > 2:
             issues.append("Use no more than two relevant hashtags.")
+        if stripped.count("—") > 2:
+            issues.append("Avoid repetitive em-dash phrasing.")
+        if any(phrase in stripped.lower() for phrase in BANNED):
+            issues.append("Caption contains generic hype or AI-template language.")
+        if re.search(r"\b(?:i (?:tested|built|launched)|my client|we tested)\b", stripped, flags=re.IGNORECASE):
+            issues.append("First-hand experience claims require explicit author approval.")
     vague_titles = ("core capabilities", "developer guidelines", "ready to build", "requirements & availability")
     for i, slide in enumerate(slides[1:], 2):
         head = str(slide.get("title") or "").strip()

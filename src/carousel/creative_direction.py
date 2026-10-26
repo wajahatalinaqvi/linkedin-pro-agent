@@ -70,7 +70,8 @@ def remix_storyboard(carousel: dict, post_id: str, direction: str) -> None:
         elif slide["type"] == "comparison" and (slot + index) % 2 == 0:
             slide["type"] = "before_after"
     carousel["slides"] = reordered
-    carousel["storyboard"] = f"sequence-{index + 1}"
+    carousel["storyboard"] = "original-sequence"
+    carousel["storyboard_treatment"] = f"treatment-{index + 1}"
 
 
 def apply_creative_profile(carousel: dict, post_id: str, direction: str) -> dict:

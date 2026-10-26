@@ -24,6 +24,15 @@ class EditorialTests(unittest.TestCase):
         low = {"topic": "Minor documentation correction", "category": "GitHub", "published": now}
         self.assertEqual(ranked_candidates([low], now), [])
 
+    def test_ai_engineering_story_outweighs_enterprise_admin(self):
+        now = datetime(2026, 10, 26, 9, tzinfo=timezone.utc)
+        developer = {"topic": "New coding agents can access build tools",
+                     "category": "OpenAI", "published": now}
+        enterprise = {"topic": "Enterprise alert management adds filters",
+                      "category": "GitHub developer tools", "published": now}
+        self.assertGreater(editorial_score(developer, now), editorial_score(enterprise, now))
+        self.assertEqual(ranked_candidates([enterprise, developer], now)[0]["topic"], developer["topic"])
+
     def test_copy_gate_rejects_clickbait(self):
         content = self.example()
         content["slides"][0]["title"] = "This changes everything"

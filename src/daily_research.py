@@ -25,6 +25,8 @@ from carousel.render_pdf import render_carousel_pdf
 FEEDS = [
     ("Shopify", "https://shopify.dev/changelog/feed.xml"),
     ("GitHub developer tools", "https://github.blog/changelog/feed/"),
+    ("OpenAI", "https://openai.com/news/rss.xml"),
+    ("OpenAI Engineering", "https://openai.com/news/engineering/rss.xml"),
 ]
 ATOM = "{http://www.w3.org/2005/Atom}"
 
@@ -104,7 +106,7 @@ def main() -> None:
         if (ROOT / "queue/drafts" / f"{post_id}.json").exists():
             continue
         try:
-            post = generate_post({"topic": story["topic"], "source_url": story["source_url"], "notes": "Prioritize practical developer and ecommerce impact. Never claim unverified launches."}, post_id)
+            post = generate_post({"topic": story["topic"], "source_url": story["source_url"], "notes": "Write for Shopify app, React/Next.js and AI tooling developers. Prioritize practical implementation implications, thoughtful tradeoffs and source-backed caveats; do not manufacture debate or pretend first-hand experience."}, post_id)
             post["origin"] = "automatic"
             post["priority_score"] = story["editorial_score"]
             post["editorial_review"]["news_selection_score"] = story["editorial_score"]
