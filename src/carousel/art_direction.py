@@ -52,6 +52,30 @@ def pick_direction(post_id: str, drafts_dir: Path) -> str:
     return DESIGNS[chosen_index]
 
 
+def pick_layout_family(post_id: str, drafts_dir: Path) -> str:
+    """Avoid recent families while keeping new designs stable per saved draft."""
+    from .creative_direction import LAYOUT_FAMILIES, stable_number
+    recent = []
+    if drafts_dir.is_dir():
+        for path in drafts_dir.glob("*.json"):
+            try:
+                item = json.loads(path.read_text(encoding="utf-8"))
+            except (ValueError, OSError):
+                continue
+            if not isinstance(item, dict) or item.get("id") == post_id:
+                continue
+            carousel = (item.get("document") or {}).get("carousel") or {}
+            family = (carousel.get("creative_profile") or {}).get("layout_family")
+            if family in LAYOUT_FAMILIES:
+                recent.append((item.get("created_at", ""), str(item.get("id", "")), family))
+    recent.sort()
+    avoid = {entry[2] for entry in recent[-2:]}
+    available = [name for name in LAYOUT_FAMILIES if name not in avoid]
+    if not available:
+        available = list(LAYOUT_FAMILIES)
+    return available[stable_number(post_id) % len(available)]
+
+
 def set_art_direction(carousel: dict, post_id: str, drafts_dir: Path) -> str:
     """Preserve an explicit approved design; otherwise assign and record one."""
     existing = carousel.get("art_direction")
@@ -61,5 +85,7 @@ def set_art_direction(carousel: dict, post_id: str, drafts_dir: Path) -> str:
         direction = pick_direction(post_id, drafts_dir)
         carousel["art_direction"] = direction
     # Called only for new drafts. Published legacy files are never migrated.
-    apply_creative_profile(carousel, post_id, direction)
+    profile = apply_creative_profile(carousel, post_id, direction)
+    if profile and "layout_family" not in profile:
+        profile["layout_family"] = pick_layout_family(post_id, drafts_dir)
     return direction

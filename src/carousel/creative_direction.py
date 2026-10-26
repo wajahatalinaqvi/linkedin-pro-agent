@@ -29,6 +29,7 @@ MOTIFS = {
     "journal": "arches",
 }
 COMPOSITIONS = ("mosaic", "rail", "spotlight", "tiles")
+LAYOUT_FAMILIES = ("editorial", "asymmetric", "technical", "typography")
 # Slot IDs reference the model's VERIFIED six-slide draft. Only the order
 # changes; no facts or attribution are synthesized.
 STORYBOARDS = (
@@ -56,12 +57,11 @@ def remix_storyboard(carousel: dict, post_id: str, direction: str) -> None:
         return
     # Stable differences across posts, even with the same topic and direction.
     index = stable_number(f"{post_id}|{direction}|storyboard") % len(STORYBOARDS)
-    order = STORYBOARDS[index]
-    reordered = [deepcopy(slides[i]) for i in order]
+    # Preserve narrative: cover -> impact -> comparison -> implications -> steps -> takeaway.
+    # Changing the semantic order made technical posts confusing; vary treatment instead.
+    reordered = deepcopy(slides)
     for slot, slide in enumerate(reordered[1:-1], start=1):
-        # Turn some conventional rectangular-card layouts into alternative
-        # visual grammars while retaining the original verified content.
-        if slide["type"] == "cards" and (slot + index) % 2 == 0:
+        if slide["type"] == "cards" and (slot + index) % 2 == 0 and 2 <= len(slide.get("cards", [])) <= 4:
             slide["type"] = "feature_grid"
             slide["features"] = slide.pop("cards", [])
         elif slide["type"] == "timeline" and (slot + index) % 2 == 1:

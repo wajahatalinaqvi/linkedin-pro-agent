@@ -160,3 +160,86 @@
 .design-v2 .insight-node>span{color:#b97057;font:800 65px/1 Arial,sans-serif;letter-spacing:-.08em}
 .design-v2 .process-node h3,.design-v2 .insight-node h3{font-size:32px;line-height:1.1;margin:0 0 12px}
 .design-v2 .process-node p,.design-v2 .insight-node p{font-size:22px;line-height:1.36;color:#40545a;margin:0}
+
+
+/* Studio V2 final geometry rules. Stronger than legacy per-art-direction styles:
+ * choose predictable shapes according to actual card count, not nth-child accidents. */
+section.slide.design-v2 .feature-grid{
+  width:100%;max-width:none;min-width:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  align-content:center;gap:22px;margin-top:42px
+}
+section.slide.design-v2 .feature-grid .info-card{
+  grid-column:auto;grid-row:auto;display:flex;flex-direction:column;align-items:flex-start;
+  min-width:0;min-height:0;height:auto;margin:0;padding:30px 31px;
+  transform:none;box-shadow:none;border-radius:12px;
+  border:2px solid #d5dcd6;background:#fffdfa!important;
+}
+section.slide.design-v2 .feature-grid .info-card h3{
+  font-size:31px;line-height:1.12;letter-spacing:-.02em;
+  margin:23px 0 10px;overflow-wrap:anywhere;
+}
+section.slide.design-v2 .feature-grid .info-card p{
+  grid-column:auto;font-size:21px;line-height:1.34;color:#40545b;
+  overflow-wrap:anywhere;margin:0;
+}
+section.slide.design-v2 .feature-grid .info-card .card-marker{
+  flex:none;height:62px;width:62px;font-size:19px;
+}
+/* 2 and 4: no feature row, every cell is equal. */
+section.slide.design-v2 .feature-grid.card-count-2 .info-card{min-height:410px;justify-content:center}
+section.slide.design-v2 .feature-grid.card-count-4 .info-card{min-height:265px;justify-content:center}
+section.slide.design-v2 .feature-grid.card-count-4 .info-card h3{font-size:29px;margin-top:17px}
+section.slide.design-v2 .feature-grid.card-count-4 .info-card p{font-size:20px}
+/* 3: meaningful hero + a balanced pair, never a missing right-hand cell. */
+section.slide.design-v2 .feature-grid.card-count-3 .info-card:first-child{
+  grid-column:1 / -1;min-height:235px;display:grid;grid-template-columns:86px minmax(0,1fr);
+  column-gap:18px;align-content:center;align-items:center;
+  background:#e6eee9!important;
+}
+section.slide.design-v2 .feature-grid.card-count-3 .info-card:first-child h3{
+  margin:0 0 10px;font-size:36px;
+}
+section.slide.design-v2 .feature-grid.card-count-3 .info-card:first-child p{
+  grid-column:2;font-size:22px;
+}
+section.slide.design-v2 .feature-grid.card-count-3 .info-card:not(:first-child){
+  min-height:310px;justify-content:center;
+}
+/* One card is an editorial feature, not a half-filled grid. */
+section.slide.design-v2 .feature-grid.card-count-1{grid-template-columns:1fr}
+section.slide.design-v2 .feature-grid.card-count-1 .info-card{
+  min-height:440px;justify-content:center
+}
+/* Count-aware standard cards are vertical lists, aligned to one common grid. */
+section.slide.design-v2 .cards-layout .card-grid.card-count-2 .info-card,
+section.slide.design-v2 .cards-layout .card-grid.card-count-3 .info-card,
+section.slide.design-v2 .cards-layout .card-grid.card-count-4 .info-card{
+  width:100%;max-width:none;transform:none;
+}
+/* Four identity systems: typography, framing and content rhythm.
+   The grid geometry above stays consistent within all four identities. */
+section.slide.design-v2.family-editorial .title{font-family:Georgia,serif!important;letter-spacing:-.045em!important}
+section.slide.design-v2.family-editorial .feature-grid .info-card{
+  border-radius:0;border-top:4px solid #183942;border-left:0;border-right:0;border-bottom:1px solid #b4c4bd
+}
+section.slide.design-v2.family-asymmetric .title{max-width:770px;font-size:78px!important}
+section.slide.design-v2.family-asymmetric .feature-grid.card-count-3 .info-card:first-child{background:#dbe9e0!important}
+section.slide.design-v2.family-asymmetric .feature-grid .info-card{border-radius:20px 3px 20px 3px}
+section.slide.design-v2.family-technical .title{
+  font-family:Consolas,"Courier New",monospace!important;font-size:63px!important;letter-spacing:-.065em!important
+}
+section.slide.design-v2.family-technical .feature-grid .info-card{
+  border:2px solid #8aa9a5;border-radius:3px;background:#eff6f4!important
+}
+section.slide.design-v2.family-technical .feature-grid.card-count-3 .info-card:first-child{
+  background:#d8e9e5!important
+}
+section.slide.design-v2.family-typography .title{
+  font-family:Impact,"Arial Narrow",Arial,sans-serif!important;font-size:91px!important;letter-spacing:-.03em!important
+}
+section.slide.design-v2.family-typography .feature-grid .info-card{
+  border:0;border-bottom:5px solid #213b42;border-radius:0;background:#f5f4ed!important
+}
+section.slide.design-v2.family-typography .feature-grid.card-count-3 .info-card:first-child{
+  background:#e3ece7!important
+}

@@ -116,7 +116,8 @@ def _cards(values: Iterable[Any], class_name: str = "card-grid") -> str:
             f'<article class="info-card"><span class="card-marker">{esc(marker)}</span>'
             f'<h3>{esc(title)}</h3><p>{esc(body)}</p></article>'
         )
-    return f'<div class="{class_name}">' + "".join(output) + "</div>"
+    count = len(output)
+    return f'<div class="{class_name} card-count-{count}">' + "".join(output) + "</div>"
 
 
 def _code_block(slide: dict) -> str:
@@ -350,7 +351,11 @@ def render_slide(slide: dict, data: dict, number: int) -> str:
         motif = str(profile.get("motif", "blocks"))
         if composition not in COMPOSITIONS or font not in TYPOGRAPHY.values() or motif not in MOTIFS.values():
             raise ValueError("Invalid carousel creative profile.")
-        variant = f" compose-{composition} font-{font} motif-{motif}"
+        family = str(profile.get("layout_family", "editorial"))
+        from .creative_direction import LAYOUT_FAMILIES
+        if family not in LAYOUT_FAMILIES:
+            raise ValueError("Unknown carousel layout family.")
+        variant = f" compose-{composition} font-{font} motif-{motif} family-{family}"
     edition = " design-v2" if data.get("design_version") == "studio-v2" else ""
     return f'<section class="slide theme-{theme} art-{direction} layout-{layout} {tone}{variant}{edition}"><div class="slide-inner">{content}</div>{_brand(data, number)}</section>'
 
