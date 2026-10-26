@@ -18,6 +18,7 @@ from post_store import ROOT, LATEST, load_json, create_draft, select_draft
 from content_priority import today_local, manual_requests_on_day, automatic_ready_on_day
 from free_prepare import generate_post, is_primary_source
 from editorial import ranked_candidates, editorial_score
+from web_discovery import discover_web_stories
 from carousel.art_direction import set_art_direction
 from carousel.visual_storytelling import apply_visual_storytelling
 from carousel.render_pdf import render_carousel_pdf
@@ -89,7 +90,21 @@ def main() -> None:
             stories.extend(candidates_from_feed(feed, category, now))
         except (requests.RequestException, ET.ParseError, ValueError) as exc:
             print(f"SOURCE UNAVAILABLE ({category}): {type(exc).__name__}")
-    stories = ranked_candidates(stories, now)
+    # Supplement official RSS with broad search-index discovery.
+    web_stories, report = discover_web_stories(now)
+    print("WEB DISCOVERY: "
+          f"{report['successful_queries']}/{report['queries']} searches succeeded; "
+          f"{report['official_candidates']} official candidates; "
+          f"{report['unresolved_leads']} non-primary links excluded.")
+    if report["provider_errors"]:
+        print("WEB SEARCH ISSUES: " + "; ".join(report["provider_errors"][:8]))
+    stories.extend(web_stories)
+    by_url = {}
+    for story in stories:
+        link = story["source_url"].split("#", 1)[0].rstrip("/")
+        if link not in by_url or story["published"] > by_url[link]["published"]:
+            by_url[link] = story
+    stories = ranked_candidates(list(by_url.values()), now)
     if not stories:
         print("NO EDITORIALLY STRONG STORY: available feed entries are too minor for a useful LinkedIn post.")
         return
