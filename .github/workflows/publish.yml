@@ -1,4 +1,4 @@
-name: Publish approved LinkedIn post
+name: "04 | Publish approved post"
 
 on:
   workflow_dispatch:
@@ -42,6 +42,7 @@ jobs:
         run: python -m playwright install --with-deps chromium
 
       - name: Publish approved post
+        id: publish
         env:
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
           LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
@@ -63,3 +64,10 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "chore: record approved LinkedIn publication"
           git push
+
+      - name: Outcome summary
+        if: always()
+        env:
+          DRAFT_ID: ${{ inputs.post_id }}
+          PUBLISH_OUTCOME: ${{ steps.publish.outcome }}
+        run: python src/actions_summary.py publish --post-id "$DRAFT_ID" --outcome "$PUBLISH_OUTCOME"

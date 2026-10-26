@@ -1,4 +1,4 @@
-name: Request priority LinkedIn topic
+name: "02 | Request priority topic"
 
 on:
   workflow_dispatch:

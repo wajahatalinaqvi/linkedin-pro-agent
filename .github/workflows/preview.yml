@@ -1,4 +1,4 @@
-name: Preview prepared LinkedIn post
+name: "03 | Preview a saved draft"
 
 on:
   workflow_dispatch:
@@ -7,11 +7,6 @@ on:
         description: "Optional saved draft ID; blank previews latest"
         required: false
         type: string
-  push:
-    branches:
-      - main
-    paths:
-      - queue/latest.json
 
 permissions:
   contents: read

@@ -1,4 +1,4 @@
-name: Validate LinkedIn agent
+name: "90 | Agent tests"
 on:
   push:
     branches: [main]
@@ -7,6 +7,10 @@ on:
       - "tests/**"
       - ".github/workflows/**"
   workflow_dispatch:
+
+concurrency:
+  group: agent-validation-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read

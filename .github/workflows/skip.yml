@@ -1,4 +1,4 @@
-name: Skip current LinkedIn post
+name: "83 | Skip saved draft"
 
 on:
   workflow_dispatch:

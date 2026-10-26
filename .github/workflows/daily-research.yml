@@ -1,4 +1,4 @@
-name: Daily automatic LinkedIn research
+name: "01 | Daily research (draft only)"
 
 on:
   schedule:
@@ -49,3 +49,10 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -m "content: save automatic LinkedIn draft"
           git push
+
+      - name: Outcome summary
+        if: always()
+        env:
+          DRAFT_ID: ${{ steps.research.outputs.post_id }}
+          RESEARCH_OUTCOME: ${{ steps.research.outcome }}
+        run: python src/actions_summary.py daily --post-id "$DRAFT_ID" --outcome "$RESEARCH_OUTCOME"

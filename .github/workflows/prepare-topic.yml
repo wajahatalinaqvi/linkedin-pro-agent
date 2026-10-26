@@ -1,4 +1,4 @@
-name: Prepare existing topic request (free tier)
+name: "81 | Retry existing topic"
 
 on:
   workflow_dispatch:
