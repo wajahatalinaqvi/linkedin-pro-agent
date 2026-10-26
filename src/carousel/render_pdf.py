@@ -16,6 +16,62 @@ ROOT = Path(__file__).resolve().parents[2]
 GENERATED_DIR = ROOT / "generated"
 
 
+
+
+def _audit_studio_layout(page) -> None:
+    """Reject unsafe card geometry in newly generated Studio V2 PDFs.
+
+    Browser geometry checks catch collisions and clipped card text that Python
+    unit tests cannot see. Legacy and discussion designs remain unchanged.
+    """
+    issues = page.evaluate("""() => {
+      const problems = [];
+      const rect = el => el.getBoundingClientRect();
+      const overlaps = (a, b) => Math.min(a.right,b.right) > Math.max(a.left,b.left) + 2
+                            && Math.min(a.bottom,b.bottom) > Math.max(a.top,b.top) + 2;
+      document.querySelectorAll('section.slide.design-v2').forEach((slide, pageIndex) => {
+        const frame = rect(slide);
+        slide.querySelectorAll('.feature-grid').forEach(grid => {
+          const cards = [...grid.querySelectorAll(':scope > .info-card')];
+          const found = (grid.className.match(/card-count-(\\d+)/) || [])[1];
+          if (Number(found) !== cards.length) {
+            problems.push('Slide '+(pageIndex+1)+': card count does not match grid');
+          }
+          const boxes = cards.map(rect);
+          boxes.forEach((box, index) => {
+            if (box.left < frame.left + 45 || box.right > frame.right - 45) {
+              problems.push('Slide '+(pageIndex+1)+': card '+(index+1)+' breaches side margins');
+            }
+            if (box.bottom > frame.bottom - 110) {
+              problems.push('Slide '+(pageIndex+1)+': card '+(index+1)+' intersects footer space');
+            }
+            const children = [...cards[index].querySelectorAll('h3,p')];
+            children.forEach(node => {
+              const r = rect(node);
+              if (r.left < box.left + 12 || r.right > box.right - 12 ||
+                  r.bottom > box.bottom - 10 || r.top < box.top + 8) {
+                problems.push('Slide '+(pageIndex+1)+': text extends beyond card '+(index+1));
+              }
+              if (node.scrollWidth > node.clientWidth + 4 ||
+                  node.scrollHeight > node.clientHeight + 4) {
+                problems.push('Slide '+(pageIndex+1)+': card text is clipped');
+              }
+            });
+          });
+          for (let a=0;a<boxes.length;a++) {
+            for (let b=a+1;b<boxes.length;b++) {
+              if(overlaps(boxes[a],boxes[b])) {
+                problems.push('Slide '+(pageIndex+1)+': cards '+(a+1)+' and '+(b+1)+' overlap');
+              }
+            }
+          }
+        });
+      });
+      return problems;
+    }""")
+    if issues:
+        raise ValueError("Studio V2 layout rejected before PDF export: " + "; ".join(issues[:6]))
+
 def render_carousel_pdf(data: dict, output_path: Path) -> Path:
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -42,6 +98,8 @@ def render_carousel_pdf(data: dict, output_path: Path) -> Path:
                       image.parentElement.classList.add('image-missing');
                     })"""
                 )
+            if data.get("design_version") == "studio-v2":
+                _audit_studio_layout(page)
             page.pdf(
                 path=str(output_path),
                 print_background=True,
