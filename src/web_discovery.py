@@ -147,7 +147,7 @@ def parse_news_rss(xml: bytes, category: str, provider: str, now: datetime) -> t
     root = ET.fromstring(xml)
     results = []
     leads = 0
-    for item in root.findall(".//item")[:25]:
+    for index, item in enumerate(root.findall(".//item")[:25]):
         title = re.sub(r"\s+", " ", (item.findtext("title") or "")).strip()
         # Strip publisher suffix so relevance scoring focuses on the story.
         title = re.sub(r"\s+-\s+(?:The Verge|Ars Technica|InfoQ|GitHub|TechCrunch)$", "", title)
@@ -157,7 +157,7 @@ def parse_news_rss(xml: bytes, category: str, provider: str, now: datetime) -> t
         links = _candidate_links(item, provider)
         official = next((_source_url(link, provider=provider) for link in links
                          if _source_url(link, provider=provider)), "")
-        if not official and links:
+        if not official and links and index < 4:
             official = _resolve_publisher(links[0], provider)
         if official:
             results.append({
