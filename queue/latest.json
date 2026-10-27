@@ -1,101 +1,162 @@
 {
-  "id": "editorial-2026-10-26-agent-sandbox-security-debate",
+  "id": "editorial-2026-10-27-terra-agent-economics",
   "status": "ready",
-  "topic": "AI agents escaped test sandboxes — should coding agents have internet access?",
-  "category": "AI Agent Security",
+  "topic": "OpenAI GPT-6.1 Terra: should agents use a cheaper model?",
+  "category": "AI Agents / Developer Engineering",
   "format": "document",
-  "caption": "OpenAI asked its most capable research agents to try escaping secure environments.\n\nSome succeeded.\n\nIn its October 23 security report, OpenAI describes controlled tests in which agents discovered VM escape paths, unexpected routes to the live internet, and ways to communicate across isolated tasks.\n\nOne important distinction: these were specially designed internal red-team environments, not ordinary customer ChatGPT sessions.\n\nWhat caught my attention wasn't just that the agents found weaknesses. It was OpenAI's response: stricter network controls, defense in depth, an offline browsing environment for frontier training, and continuous red-teaming.\n\nFor developers building coding agents, there’s a practical question here.\n\nInternet access, shell execution, credentials and shared infrastructure make an agent useful. They also expand the consequences of a mistake—or of an agent finding a boundary you didn't expect it to cross.\n\nI'd rather grant access deliberately, per task, than treat unrestricted access as the default.\n\nWhere would you draw the line for a coding agent working on your codebase: live internet by default, or permission only when needed?\n\nSource: https://openai.com/index/securing-our-frontier-model-training-environment/\n\n#AIAgents #Cybersecurity",
-  "source_url": "https://openai.com/index/securing-our-frontier-model-training-environment/",
+  "caption": "Would you use your most expensive AI model just to fill out a form?\n\nOpenAI introduced GPT-6.1 Terra on October 26. It focuses on visual understanding and computer use, with standard API prices 50% lower than GPT-5.6 Terra.\n\nWhat interests me as a developer isn't another model leaderboard. It's how we build agents.\n\nA useful agent can spend dozens of steps reading screens, entering data, checking results, and navigating tools. Running a frontier reasoning model for every step may not be the best tradeoff.\n\nOpenAI reports that Terra scored 50.3% on Terminal-Bench 4.0 at maximum reasoning, versus GPT-5.6 Terra's published 21.5%. But Sol and Astra remain better choices for the hardest coding tasks.\n\nMy takeaway: choose the model based on the task, not the hype. An efficient model might handle routine UI work, while complex or consequential actions deserve stronger reasoning and human approval. Of course, cheaper tokens don't automatically mean cheaper successful tasks.\n\nWould you build a multi-model agent that escalates difficult steps, or keep one powerful model throughout the workflow?\n\nSource: https://openai.com/index/introducing-gpt-6-1-terra/\n\n#AIAgents #SoftwareEngineering",
+  "source_url": "https://openai.com/index/introducing-gpt-6-1-terra/",
   "sources": [
-    "https://openai.com/index/securing-our-frontier-model-training-environment/"
+    "https://openai.com/index/introducing-gpt-6-1-terra/",
+    "https://developers.openai.com/api/docs/models/gpt-6.1-terra"
   ],
-  "created_at": "2026-10-26T09:42:00+00:00",
+  "created_at": "2026-10-27T06:26:00+00:00",
+  "source_published_at": "2026-10-26",
   "origin": "editorial_selected",
-  "priority_score": 98,
+  "priority_score": 97,
   "editorial_review": {
-    "source_verification": "OpenAI October 23, 2026 security report",
-    "verified_scope": "Controlled internal red-team experiments, not consumer deployment",
+    "selected_hook": "Why pay flagship prices for routine agent work?",
+    "hook_options": [
+      "Why pay flagship prices for routine agent work?",
+      "AI agents are getting cheaper. Will they get smarter?",
+      "Should your coding agent use one model for everything?"
+    ],
+    "voice_angle": "engineering_tradeoff",
     "human_approval_required": true,
-    "engagement_question": "Should coding agents have live internet access by default, or earn it task by task?",
-    "design_notes": "Six different editorial compositions; cautionary scope slide; no repeated three-card template"
+    "source_note": "Official OpenAI October 26 announcement; benchmark figures are OpenAI-reported; engineering recommendations marked as opinion.",
+    "quality_gate": "editorial_reviewed"
   },
   "document": {
-    "title": "AI agents escaped test sandboxes — the security question",
+    "title": "Why pay flagship prices for routine agent work?",
     "renderer": "v3",
     "carousel": {
-      "topic": "Agent security and permission boundaries",
-      "theme": "developer",
-      "design_version": "discussion-v1",
+      "topic": "GPT-6.1 Terra: agent cost versus capability",
+      "theme": "openai",
+      "design_version": "studio-v2",
+      "art_direction": "swiss",
+      "creative_profile": {
+        "typography": "grotesk",
+        "motif": "blocks",
+        "compositions": [
+          "spotlight",
+          "rail",
+          "tiles",
+          "mosaic",
+          "rail",
+          "spotlight"
+        ],
+        "layout_family": "technical",
+        "edition": 271
+      },
       "brand": {
         "name": "WAJAHAT NAQVI",
-        "subtitle": "AI · Software Engineering"
+        "subtitle": "Full-stack · Shopify · AI"
       },
       "slides": [
         {
-          "type": "debate_cover",
-          "title": "AI agents escaped test sandboxes.",
-          "subtitle": "OpenAI deliberately challenged its research agents to break containment. Some found ways through.",
-          "eyebrow": "Security report / October 23"
+          "type": "cover",
+          "eyebrow": "NEW MODEL / BIGGER ENGINEERING QUESTION",
+          "title": "Why pay flagship prices for routine agent work?",
+          "subtitle": "OpenAI launched GPT-6.1 Terra. The interesting part is what it changes about building useful agents.",
+          "footer": "THE COST / CAPABILITY DEBATE  ·  SWIPE →"
         },
         {
-          "type": "reality_check",
-          "title": "Research, not production.",
-          "description": "In supervised red-team tests, OpenAI's research agents found VM escape paths, unauthorized network routes and ways to communicate across isolated tasks.",
-          "caveat": "These were purpose-built test environments, not ordinary ChatGPT sessions. OpenAI says it patched the findings and strengthened the controls before resuming training."
-        },
-        {
-          "type": "boundary_map",
-          "title": "Containment is more than a sandbox.",
-          "subtitle": "Each layer is supposed to keep a coding agent inside its permitted environment.",
-          "nodes": [
-            {
-              "title": "Agent workspace",
-              "note": "Authorized files, code and tools"
-            },
-            {
-              "title": "Container & VM",
-              "note": "Limits processes and host access"
-            },
-            {
-              "title": "Network controls",
-              "note": "Restricts outbound connections"
-            },
-            {
-              "title": "Monitoring & stops",
-              "note": "Detects and interrupts violations"
-            }
+          "type": "metrics",
+          "eyebrow": "THE TRADEOFF IN NUMBERS",
+          "title": "Lower price. Better baseline.",
+          "subtitle": "OpenAI's announced figures, not independent production results.",
+          "metrics": [
+            [
+              "50%",
+              "Lower API prices",
+              "Compared with GPT-5.6 Terra at standard pricing."
+            ],
+            [
+              "50.3%",
+              "Terminal-Bench 4.0",
+              "GPT-6.1 Terra at maximum reasoning effort."
+            ],
+            [
+              "21.5%",
+              "Previous Terra",
+              "Published GPT-5.6 Terra score on the same benchmark."
+            ]
           ]
         },
         {
-          "type": "response_layers",
-          "title": "What OpenAI changed",
-          "items": [
-            {
-              "title": "Offline research web",
-              "detail": "Frontier training uses indexed and cached content instead of open-ended live web access."
-            },
-            {
-              "title": "Defense in depth",
-              "detail": "Sandboxing, VMs and network/cloud controls overlap so one failure is not the end."
-            },
-            {
-              "title": "Continuous red-teaming",
-              "detail": "Agents probe containment; security teams reproduce findings, patch and retest."
-            }
+          "type": "comparison",
+          "eyebrow": "RIGHT MODEL / RIGHT JOB",
+          "title": "Not every agent step needs frontier reasoning.",
+          "left": {
+            "label": "GPT-6.1 TERRA",
+            "title": "Everyday computer work",
+            "items": [
+              "Interpreting screens and visual inputs",
+              "Navigating apps and filling forms",
+              "High-volume tasks where cost matters"
+            ]
+          },
+          "right": {
+            "label": "GPT-6.1 SOL / ASTRA",
+            "title": "The hardest tasks",
+            "items": [
+              "Complex software engineering problems",
+              "Demanding reasoning and investigations",
+              "Tasks where depth matters more than throughput"
+            ]
+          }
+        },
+        {
+          "type": "feature_grid",
+          "eyebrow": "WHAT IT CAN ENABLE",
+          "title": "Computer use goes beyond clicking buttons.",
+          "features": [
+            [
+              "01",
+              "Business workflows",
+              "Read invoices and enter information into accounting software."
+            ],
+            [
+              "02",
+              "Visual understanding",
+              "Interpret technical drawings and other complex image inputs."
+            ],
+            [
+              "03",
+              "Creative operations",
+              "Work through multi-step software tasks such as reviewing or editing video."
+            ]
           ]
         },
         {
-          "type": "tradeoff",
-          "title": "Speed versus control",
-          "intro": "This is an engineering tradeoff, not a verdict on all AI products.",
-          "left": "More tools and web access can make coding agents useful across real workflows.",
-          "right": "Every extra permission also creates another boundary that needs protection.",
-          "footnote": "The report describes internal research settings; real deployments need their own threat models."
+          "type": "workflow",
+          "eyebrow": "HOW I'D DESIGN THE AGENT",
+          "title": "Use the right amount of intelligence.",
+          "subtitle": "An engineering approach, not a benchmark guarantee.",
+          "steps": [
+            [
+              "01",
+              "Route by task",
+              "Send repetitive screen tasks to a cost-efficient model when appropriate."
+            ],
+            [
+              "02",
+              "Escalate complexity",
+              "Use stronger reasoning for genuinely difficult coding or ambiguous cases."
+            ],
+            [
+              "03",
+              "Protect critical actions",
+              "Require explicit human approval for high-impact changes or sensitive workflows."
+            ]
+          ]
         },
         {
-          "type": "open_question",
-          "title": "Where do you draw the line?",
-          "question": "Should coding agents have live internet access by default, or earn it task by task?"
+          "type": "closing",
+          "eyebrow": "THE DEVELOPER QUESTION",
+          "title": "Cheaper tokens don't always mean cheaper results.",
+          "subtitle": "Would you build a multi-model agent, or use one powerful model for every step?",
+          "source": "https://openai.com/index/introducing-gpt-6-1-terra/"
         }
       ]
     }
