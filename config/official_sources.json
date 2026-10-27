@@ -1,15 +1,121 @@
 {
-  "policy": "Prefer primary sources. Secondary sources may add context but cannot replace claim verification.",
+  "policy": "Discover broadly across the internet; draft only from original company publications or reputable original reporting that Gemini can retrieve and verify. Attribute the actual source, never present journalism as an official company announcement, and require human approval.",
   "sources": [
-    {"category": "OpenAI", "name": "OpenAI News", "url": "https://openai.com/news/"},
-    {"category": "OpenAI", "name": "OpenAI Developer Changelog", "url": "https://developers.openai.com/api/docs/changelog"},
-    {"category": "Anthropic / Claude", "name": "Anthropic News", "url": "https://www.anthropic.com/news"},
-    {"category": "Anthropic / Claude", "name": "Anthropic Documentation", "url": "https://docs.anthropic.com/"},
-    {"category": "Anthropic / Claude", "name": "Claude Products", "url": "https://claude.com/"},
-    {"category": "Shopify", "name": "Shopify Changelog", "url": "https://changelog.shopify.com/"},
-    {"category": "Shopify", "name": "Shopify Developer Documentation", "url": "https://shopify.dev/"},
-    {"category": "Shopify", "name": "Shopify Editions", "url": "https://www.shopify.com/editions"},
-    {"category": "Shopify", "name": "Shopify Help Center", "url": "https://help.shopify.com/"},
-    {"category": "Developer Tools", "name": "GitHub Changelog", "url": "https://github.blog/changelog/"}
+    {
+      "category": "OpenAI",
+      "name": "OpenAI News",
+      "url": "https://openai.com/news/"
+    },
+    {
+      "category": "OpenAI",
+      "name": "OpenAI Developer Changelog",
+      "url": "https://developers.openai.com/api/docs/changelog"
+    },
+    {
+      "category": "Anthropic / Claude",
+      "name": "Anthropic News",
+      "url": "https://www.anthropic.com/news"
+    },
+    {
+      "category": "Anthropic / Claude",
+      "name": "Anthropic Documentation",
+      "url": "https://docs.anthropic.com/"
+    },
+    {
+      "category": "Anthropic / Claude",
+      "name": "Claude Products",
+      "url": "https://claude.com/"
+    },
+    {
+      "category": "Shopify",
+      "name": "Shopify Changelog",
+      "url": "https://changelog.shopify.com/"
+    },
+    {
+      "category": "Shopify",
+      "name": "Shopify Developer Documentation",
+      "url": "https://shopify.dev/"
+    },
+    {
+      "category": "Shopify",
+      "name": "Shopify Editions",
+      "url": "https://www.shopify.com/editions"
+    },
+    {
+      "category": "Shopify",
+      "name": "Shopify Help Center",
+      "url": "https://help.shopify.com/"
+    },
+    {
+      "category": "Developer Tools",
+      "name": "GitHub Changelog",
+      "url": "https://github.blog/changelog/"
+    },
+    {
+      "category": "Developer Engineering",
+      "name": "Google Developers Blog",
+      "url": "https://developers.googleblog.com/",
+      "kind": "company"
+    },
+    {
+      "category": "Developer Engineering",
+      "name": "Vercel Blog",
+      "url": "https://vercel.com/blog",
+      "kind": "company"
+    },
+    {
+      "category": "Developer Engineering",
+      "name": "Next.js",
+      "url": "https://nextjs.org/blog",
+      "kind": "company"
+    },
+    {
+      "category": "Developer Engineering",
+      "name": "React",
+      "url": "https://react.dev/blog",
+      "kind": "company"
+    },
+    {
+      "category": "Developer Engineering",
+      "name": "Cloudflare Blog",
+      "url": "https://blog.cloudflare.com/",
+      "kind": "company"
+    },
+    {
+      "category": "Developer Engineering",
+      "name": "Microsoft DevBlogs",
+      "url": "https://devblogs.microsoft.com/",
+      "kind": "company"
+    },
+    {
+      "category": "Developer Engineering",
+      "name": "Google Blog",
+      "url": "https://blog.google/",
+      "kind": "company"
+    },
+    {
+      "category": "Developer Reporting",
+      "name": "InfoQ",
+      "url": "https://www.infoq.com/",
+      "kind": "original_reporting"
+    },
+    {
+      "category": "Developer Reporting",
+      "name": "Ars Technica",
+      "url": "https://arstechnica.com/",
+      "kind": "original_reporting"
+    },
+    {
+      "category": "Developer Reporting",
+      "name": "The Verge",
+      "url": "https://www.theverge.com/",
+      "kind": "original_reporting"
+    },
+    {
+      "category": "Developer Reporting",
+      "name": "Wired",
+      "url": "https://www.wired.com/",
+      "kind": "original_reporting"
+    }
   ]
 }
