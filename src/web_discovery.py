@@ -21,6 +21,7 @@ import xml.etree.ElementTree as ET
 import os
 
 import requests
+from html.parser import HTMLParser
 
 import json
 from pathlib import Path
@@ -98,17 +99,66 @@ def _source_url(link: str, *, provider: str) -> str:
     return url if is_primary_source(url) else ""
 
 
+
+class _Links(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.links = []
+    def handle_starttag(self, tag, attrs):
+        if tag == "a":
+            href = dict(attrs).get("href", "")
+            if href:
+                self.links.append(href)
+
+
+def _candidate_links(item, provider: str) -> list[str]:
+    """Try publisher links in RSS metadata, not only opaque aggregator URLs."""
+    links = [(item.findtext("link") or "").strip()]
+    for element in item:
+        if element.tag.lower().endswith(("origlink", "original-link", "sourceurl")):
+            if element.text:
+                links.append(element.text.strip())
+        if element.tag.lower().endswith("source"):
+            if element.attrib.get("url"):
+                links.append(element.attrib["url"])
+    parser = _Links()
+    parser.feed(item.findtext("description") or "")
+    links.extend(parser.links[:8])
+    return links
+
+
+def _resolve_publisher(link: str, provider: str) -> str:
+    """Follow bounded redirect only for news aggregator URLs, never fetch arbitrary sites."""
+    parsed = urlparse(link)
+    if parsed.hostname not in {"news.google.com", "www.bing.com", "bing.com"}:
+        return ""
+    try:
+        response = requests.get(
+            link, timeout=7, headers=REQUEST_HEADERS, allow_redirects=True,
+            stream=True
+        )
+        final = response.url
+        response.close()
+        return _source_url(final, provider="resolved")
+    except requests.RequestException:
+        return ""
+
 def parse_news_rss(xml: bytes, category: str, provider: str, now: datetime) -> tuple[list[dict], int]:
     root = ET.fromstring(xml)
     results = []
     leads = 0
     for item in root.findall(".//item")[:25]:
         title = re.sub(r"\s+", " ", (item.findtext("title") or "")).strip()
+        # Strip publisher suffix so relevance scoring focuses on the story.
+        title = re.sub(r"\s+-\s+(?:The Verge|Ars Technica|InfoQ|GitHub|TechCrunch)$", "", title)
         published = _date(item.findtext("pubDate") or "")
         if not title or not _recent(published, now):
             continue
-        link = (item.findtext("link") or "").strip()
-        official = _source_url(link, provider=provider)
+        links = _candidate_links(item, provider)
+        official = next((_source_url(link, provider=provider) for link in links
+                         if _source_url(link, provider=provider)), "")
+        if not official and links:
+            official = _resolve_publisher(links[0], provider)
         if official:
             results.append({
                 "topic": title,
