@@ -113,5 +113,19 @@
     ],
     "linkedin_post_id": "urn:li:ugcPost:7519336813073805312",
     "published_at": "2026-10-23T09:59:59.070454+00:00"
+  },
+  {
+    "id": "editorial-2026-10-27-terra-agent-economics",
+    "topic": "OpenAI GPT-6.1 Terra: should agents use a cheaper model?",
+    "category": "AI Agents / Developer Engineering",
+    "format": "document",
+    "priority_score": 97,
+    "source_url": "https://openai.com/index/introducing-gpt-6-1-terra/",
+    "sources": [
+      "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+      "https://openai.com/index/introducing-gpt-6-1-terra/"
+    ],
+    "linkedin_post_id": "urn:li:ugcPost:7520736314280005632",
+    "published_at": "2026-10-27T06:41:06.285939+00:00"
   }
 ]
