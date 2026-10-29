@@ -131,6 +131,30 @@ def _code_block(slide: dict) -> str:
     )
 
 
+def _source_visual(slide: dict, data: dict, number: int, body: str) -> str:
+    config = data.get("source_visuals") or {}
+    paths = config.get("images") or []
+    mapping = {1: 0, 2: 1, 4: 2}
+    index = mapping.get(number)
+    if not config.get("enabled") or index is None or index >= len(paths):
+        return body
+    source = _image_source(paths[index])
+    if not source:
+        if config.get("required"):
+            raise ValueError("Required original screenshot is missing: " + str(paths[index]))
+        return body
+    img = f'<img class="original-shot" src="{esc(source)}" alt="Original publisher website screenshot">'
+    heading = _heading(slide, large=number == 1)
+    attribution = esc(config.get("attribution") or "ORIGINAL SOURCE")
+    if number == 1:
+        return (f'<div class="source-cover-image">{img}</div>'
+                f'<div class="source-cover-tint"></div><div class="source-cover-content">'
+                f'{heading}<p class="source-credit">SOURCE MATERIAL · {attribution}</p></div>')
+    return (f'<div class="source-editorial-layout"><div class="source-editorial-heading">'
+            f'{heading}</div><div class="source-shot-wrap">{img}</div>'
+            f'<div class="source-caption">ORIGINAL SOURCE SCREENSHOT · {attribution}</div></div>')
+
+
 def _cover(slide: dict) -> str:
     footer = slide.get("footer") or "Swipe for the practical breakdown →"
     return (
@@ -336,6 +360,8 @@ def render_slide(slide: dict, data: dict, number: int) -> str:
         "insight_list": _insight_list,
     }
     content = renderers[layout](slide)
+    if data.get("source_visuals", {}).get("enabled") and number in (1, 2, 4):
+        content = _source_visual(slide, data, number, content)
     theme = _theme(data)
     tone = "dark" if layout in {"cover", "code", "network", "architecture", "quote", "closing"} else "light"
     direction = str(data.get("art_direction") or "classic").lower()
@@ -357,6 +383,8 @@ def render_slide(slide: dict, data: dict, number: int) -> str:
             raise ValueError("Unknown carousel layout family.")
         variant = f" compose-{composition} font-{font} motif-{motif} family-{family}"
     edition = " design-v2" if data.get("design_version") == "studio-v2" else ""
+    if data.get("source_visuals", {}).get("enabled") and number in (1, 2, 4):
+        edition += " source-led source-cover" if number == 1 else " source-led source-feature"
     return f'<section class="slide theme-{theme} art-{direction} layout-{layout} {tone}{variant}{edition}"><div class="slide-inner">{content}</div>{_brand(data, number)}</section>'
 
 

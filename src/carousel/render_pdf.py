@@ -76,6 +76,9 @@ def render_carousel_pdf(data: dict, output_path: Path) -> Path:
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
+    if (data.get("source_visuals") or {}).get("enabled"):
+        from source_visuals import ensure_source_images
+        ensure_source_images(data)
     html = render_html(data)
 
     with sync_playwright() as playwright:
