@@ -35,10 +35,18 @@ def save_json(path: Path, value) -> None:
     temporary.replace(path)
 
 
+def normalize_post_id(post_id: str) -> str:
+    """Accept a draft ID or its filename, never a path."""
+    value = str(post_id or "").strip()
+    if value.lower().endswith(".json"):
+        value = value[:-5]
+    return validate_id(value) if value else ""
+
+
 def load_post(post_id: str = "") -> tuple[dict, Path]:
     """Explicit post_id selects a saved draft; blank uses legacy latest.json."""
+    post_id = normalize_post_id(post_id)
     if post_id:
-        validate_id(post_id)
         path = draft_path(post_id)
         if path.is_file():
             post = load_json(path, {})
