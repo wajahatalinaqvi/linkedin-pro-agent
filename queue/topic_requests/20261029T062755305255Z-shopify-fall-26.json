@@ -4,6 +4,7 @@
   "notes": "Describe the new edition of the shopify with their website look n feel and what is new",
   "requested_at": "2026-10-29T06:27:55.305255+00:00",
   "priority": "user_requested",
-  "status": "needs_review",
-  "message": "Editorial review failed: Each candidate hook must be distinct, meaningful, and fit the cover.; The chosen cover title must be one of the three hook options.; Open with one strong, specific first line."
+  "status": "ready",
+  "draft_id": "20261029T062755305255Z-shopify-fall-26",
+  "selected_as_latest": true
 }

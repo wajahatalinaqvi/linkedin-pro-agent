@@ -1,0 +1,166 @@
+{
+  "id": "20261029T062755305255Z-shopify-fall-26",
+  "status": "ready",
+  "topic": "Shopify Fall '26",
+  "category": "Platform Updates",
+  "format": "document",
+  "caption": "Shopify Fall '26 introduces agentic commerce standards alongside unified store editing tools and deeper administrative automation.\n\nFor developers building custom storefronts or managing complex themes, the platform introduces structured approaches like markdown-based preference definition and expanded API access. Through standard protocols, external systems can connect with Shop sign-in workflows and checkout endpoints. This shifts how headless architectures interact with native platform features.\n\nKey updates include the `shop.md` specification for AI agent discovery, the unified Canvas workspace for visual editing alongside Sidekick, and automated fraud prevention through Shopify Protect. However, developers should note that rollout timelines vary across regions and subscription tiers, with certain advanced automation features deploying gradually.\n\nAs AI agents begin executing checkouts directly via Shop Pay, how will you adapt your frontend routing and inventory verification layers for automated traffic?",
+  "source_url": "https://www.shopify.com/editions/fall2026?syclid=dbhe9r3ntfms73aq139g&utm_campaign=fall-26-edition_rkerbz&utm_content=core_en_launchemail&utm_medium=email&utm_source=mozart",
+  "sources": [
+    "https://www.shopify.com/editions/fall2026?syclid=dbhe9r3ntfms73aq139g&utm_campaign=fall-26-edition_rkerbz&utm_content=core_en_launchemail&utm_medium=email&utm_source=mozart"
+  ],
+  "created_at": "2026-10-29T06:47:25.236774+00:00",
+  "origin_request": "queue/topic_requests/20261029T062755305255Z-shopify-fall-26.json",
+  "editorial_review": {
+    "hook_options": [
+      "Agentic commerce standards reshape store architecture",
+      "How shop.md specifications change AI agent integration",
+      "Building headless workflows with new Shopify APIs"
+    ],
+    "voice_angle": "engineering_tradeoff",
+    "selected_hook": "Agentic commerce standards reshape store architecture",
+    "quality_gate": "editorial-v1",
+    "human_approval_required": true,
+    "visual_treatments": []
+  },
+  "document": {
+    "title": "Shopify Fall '26",
+    "renderer": "v3",
+    "carousel": {
+      "topic": "Shopify Fall '26",
+      "theme": "shopify",
+      "design_version": "studio-v2",
+      "brand": {
+        "name": "WAJAHAT NAQVI",
+        "subtitle": "Shopify · Full-stack · AI"
+      },
+      "slides": [
+        {
+          "type": "cover",
+          "eyebrow": "Shopify Fall '26",
+          "title": "Agentic commerce standards reshape store architecture",
+          "subtitle": "A technical look at markdown discovery, unified workspaces, and automated checkout integrations.",
+          "short_title": "Agentic commerce standards reshape store architecture"
+        },
+        {
+          "type": "cards",
+          "eyebrow": "Core Architecture",
+          "title": "Expanding Agentic Workflows and AI Discovery",
+          "short_title": "AI Discovery",
+          "cards": [
+            [
+              "01",
+              "Markdown Specifications",
+              "Integrates a `shop.md` specification enabling AI systems like ChatGPT and Claude to discover products securely."
+            ],
+            [
+              "02",
+              "Direct Checkout",
+              "Extends Shop Pay checkout support to alternative personal agents including Claude Duet, Grok Bot, and Microsoft Copilot."
+            ],
+            [
+              "03",
+              "Sourcing Tools",
+              "Allows product sourcing directly through chat interfaces using integrated Shopify Collective protocols."
+            ]
+          ]
+        },
+        {
+          "type": "before_after",
+          "eyebrow": "Workspace Evolution",
+          "title": "Comparing Storefront Design and Administration",
+          "short_title": "Workspace Updates",
+          "left": {
+            "label": "Traditional Workflow",
+            "title": "Fragmented Edits",
+            "items": [
+              "Manual layout updates across separate theme settings",
+              "Isolated assistant prompts without multi-step context",
+              "Siloed content management and preview cycles"
+            ]
+          },
+          "right": {
+            "label": "Canvas Workspace",
+            "title": "Unified Operations",
+            "items": [
+              "Unified visual workspace for complete storefront design",
+              "Sidekick integration for simultaneous store changes",
+              "Native support for right-to-left language layouts"
+            ]
+          }
+        },
+        {
+          "type": "cards",
+          "eyebrow": "Developer Tooling",
+          "title": "New APIs and CLI Capabilities",
+          "short_title": "Developer Tooling",
+          "cards": [
+            [
+              "01",
+              "CLI Previews",
+              "Utilize tools via `shop.dev` and Shopify CLI to build store previews before signup."
+            ],
+            [
+              "02",
+              "Theme Preferences",
+              "Define theme structures and preferences for Sidekick using structured markdown files."
+            ],
+            [
+              "03",
+              "External Logins",
+              "Expose APIs enabling external login pages and lead-capture flows to connect Shop sign-in."
+            ]
+          ]
+        },
+        {
+          "type": "timeline",
+          "eyebrow": "Platform Security",
+          "title": "Automating Payments and Fraud Protection",
+          "short_title": "Payments & Security",
+          "events": [
+            [
+              "01",
+              "Shopify Protect",
+              "Automatically blocks high-risk checkout orders and compiles carrier proof-of-delivery data."
+            ],
+            [
+              "02",
+              "Dispute Management",
+              "Provides AI-driven dispute responses to streamline chargeback resolution workflows for merchants."
+            ],
+            [
+              "03",
+              "Tax Automation",
+              "Introduces US-managed sales tax collection and remittance capabilities for new merchants."
+            ]
+          ]
+        },
+        {
+          "type": "closing",
+          "eyebrow": "Availability",
+          "title": "Staged Rollouts and Regional Constraints",
+          "subtitle": "Review specific tier requirements and regional rollout schedules before implementing new capabilities.",
+          "source": "Shopify Editions: Fall '26",
+          "short_title": "Availability"
+        }
+      ],
+      "art_direction": "editorial",
+      "storyboard": "original-sequence",
+      "storyboard_treatment": "treatment-3",
+      "creative_profile": {
+        "typography": "literary",
+        "motif": "rules",
+        "compositions": [
+          "tiles",
+          "spotlight",
+          "rail",
+          "mosaic",
+          "tiles",
+          "spotlight"
+        ],
+        "edition": 869,
+        "layout_family": "asymmetric"
+      }
+    }
+  }
+}
