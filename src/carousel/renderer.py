@@ -10,6 +10,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 CSS = (HERE / "carousel.css").read_text(encoding="utf-8")
 STUDIO_CSS = (HERE / "studio_v2.css").read_text(encoding="utf-8")
+SOURCE_CSS = (HERE / "source_editorial.css").read_text(encoding="utf-8")
 
 SUPPORTED_LAYOUTS = {
     "cover", "browser", "code", "network", "architecture", "cards",
@@ -360,8 +361,10 @@ def render_slide(slide: dict, data: dict, number: int) -> str:
         "insight_list": _insight_list,
     }
     content = renderers[layout](slide)
-    if data.get("source_visuals", {}).get("enabled") and number in (1, 2, 4):
-        content = _source_visual(slide, data, number, content)
+    from .source_editorial import render_source_page
+    source_content = render_source_page(slide, data, number, _image_source, esc, _card_data)
+    if source_content is not None:
+        content = source_content
     theme = _theme(data)
     tone = "dark" if layout in {"cover", "code", "network", "architecture", "quote", "closing"} else "light"
     direction = str(data.get("art_direction") or "classic").lower()
@@ -389,8 +392,8 @@ def render_slide(slide: dict, data: dict, number: int) -> str:
         if palette:
             variant += f" palette-{palette}"
     edition = " design-v2" if data.get("design_version") == "studio-v2" else ""
-    if data.get("source_visuals", {}).get("enabled") and number in (1, 2, 4):
-        edition += " source-led source-cover" if number == 1 else " source-led source-feature"
+    if source_content is not None:
+        edition += " se-active"
     return f'<section class="slide theme-{theme} art-{direction} layout-{layout} {tone}{variant}{edition}"><div class="slide-inner">{content}</div>{_brand(data, number)}</section>'
 
 
@@ -404,5 +407,5 @@ def render_html(data: dict) -> str:
     return (
         '<!doctype html><html><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=1080, initial-scale=1">'
-        f'<style>{CSS}{STUDIO_CSS if data.get("design_version") == "studio-v2" else ""}</style></head><body>{content}</body></html>'
+        f'<style>{CSS}{STUDIO_CSS if data.get("design_version") == "studio-v2" else ""}{SOURCE_CSS if data.get("source_visuals", {}).get("enabled") else ""}</style></head><body>{content}</body></html>'
     )
