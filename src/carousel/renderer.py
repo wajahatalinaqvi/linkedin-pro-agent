@@ -381,7 +381,13 @@ def render_slide(slide: dict, data: dict, number: int) -> str:
         from .creative_direction import LAYOUT_FAMILIES
         if family not in LAYOUT_FAMILIES:
             raise ValueError("Unknown carousel layout family.")
+        from .art_direction import PALETTE_FAMILIES
+        palette = profile.get("palette_family")
+        if palette and palette not in (*PALETTE_FAMILIES, "source-blue"):
+            raise ValueError("Unknown palette family.")
         variant = f" compose-{composition} font-{font} motif-{motif} family-{family}"
+        if palette:
+            variant += f" palette-{palette}"
     edition = " design-v2" if data.get("design_version") == "studio-v2" else ""
     if data.get("source_visuals", {}).get("enabled") and number in (1, 2, 4):
         edition += " source-led source-cover" if number == 1 else " source-led source-feature"

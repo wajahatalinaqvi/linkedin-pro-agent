@@ -49,6 +49,7 @@ jobs:
           REQUEST_PATH: ${{ steps.request.outputs.request_path }}
         run: python src/free_prepare.py --request "$REQUEST_PATH" --github-output "$GITHUB_OUTPUT"
       - name: Generate original source-motion teaser
+        continue-on-error: true
         if: steps.prepare.outputs.post_id != ''
         env:
           POST_ID: ${{ steps.prepare.outputs.post_id }}

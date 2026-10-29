@@ -76,6 +76,28 @@ def pick_layout_family(post_id: str, drafts_dir: Path) -> str:
     return available[stable_number(post_id) % len(available)]
 
 
+PALETTE_FAMILIES = ("navy-coral", "forest-cream", "violet-ink", "terracotta-sand",
+                    "midnight-mint", "graphite-amber")
+
+def pick_palette_family(post_id: str, drafts_dir: Path) -> str:
+    """Choose a palette absent from the two latest saved profiles."""
+    from .creative_direction import stable_number
+    recent = []
+    if drafts_dir.is_dir():
+        for path in drafts_dir.glob("*.json"):
+            try:
+                post = json.loads(path.read_text(encoding="utf-8"))
+                profile = ((post.get("document") or {}).get("carousel") or {}).get("creative_profile") or {}
+                palette = profile.get("palette_family")
+                if palette in PALETTE_FAMILIES and post.get("id") != post_id:
+                    recent.append((post.get("created_at", ""),palette))
+            except (OSError, ValueError, AttributeError):
+                continue
+    avoid = {color for _,color in sorted(recent)[-2:]}
+    available = [color for color in PALETTE_FAMILIES if color not in avoid]
+    return available[stable_number(post_id + "|palette") % len(available or PALETTE_FAMILIES)]
+
+
 def set_art_direction(carousel: dict, post_id: str, drafts_dir: Path) -> str:
     """Preserve an explicit approved design; otherwise assign and record one."""
     existing = carousel.get("art_direction")
@@ -88,4 +110,6 @@ def set_art_direction(carousel: dict, post_id: str, drafts_dir: Path) -> str:
     profile = apply_creative_profile(carousel, post_id, direction)
     if profile and "layout_family" not in profile:
         profile["layout_family"] = pick_layout_family(post_id, drafts_dir)
+    if profile and "palette_family" not in profile:
+        profile["palette_family"] = pick_palette_family(post_id, drafts_dir)
     return direction

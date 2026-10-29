@@ -266,3 +266,19 @@ section.slide.design-v2.source-cover .source-cover-content .eyebrow{color:#94caf
 section.slide.design-v2.source-cover .source-cover-content .lead{color:#ebefff!important;font-size:30px;max-width:750px}
 section.slide.design-v2.source-cover .source-credit{margin-top:72px;font:700 16px Arial,sans-serif;letter-spacing:.12em;color:#8cc9ff}
 section.slide.design-v2.source-cover .brand-lockup,section.slide.design-v2.source-cover .page-number{color:#fff!important;z-index:5}
+
+
+/* Per-post palette identity. Six alternatives beyond recycled Shopify blue.
+   Source-led artwork is allowed to follow its real publisher's visual identity. */
+.slide.design-v2.palette-forest-cream{--bg:#f6f0e3;--surface:#f5f0e5;--accent:#195b43;--accent-2:#b8cd8c;--accent-3:#a4b69e;--line:#bcc7b9}
+.slide.design-v2.palette-violet-ink{--bg:#efedf9;--surface:#f4f0fe;--accent:#5840aa;--accent-2:#cb9cf6;--accent-3:#a2a0d0;--line:#bbb6d3}
+.slide.design-v2.palette-terracotta-sand{--bg:#f6ede1;--surface:#f9eee4;--accent:#a94f36;--accent-2:#ddab7b;--accent-3:#d2b89e;--line:#d8bbaa}
+.slide.design-v2.palette-midnight-mint{--bg:#ebf6f3;--surface:#e5f3f0;--accent:#126c69;--accent-2:#9dddd1;--accent-3:#84bcb5;--line:#99c9c2}
+.slide.design-v2.palette-graphite-amber{--bg:#f3f1ea;--surface:#f8f3e5;--accent:#4b4f4b;--accent-2:#ddb86f;--accent-3:#b4a98a;--line:#c1b8a8}
+.slide.design-v2.palette-navy-coral{--bg:#f7f4ed;--surface:#f8f5eb;--accent:#193d4b;--accent-2:#e28a70;--accent-3:#89b5c0;--line:#a8c1bf}
+.slide.design-v2:not(.source-led)[class*="palette-"].light{background:var(--bg)}
+.slide.design-v2:not(.source-led)[class*="palette-"] .eyebrow{color:var(--accent)}
+.slide.design-v2:not(.source-led)[class*="palette-"] .card-marker,
+.slide.design-v2:not(.source-led)[class*="palette-"] .workflow-step>span,
+.slide.design-v2:not(.source-led)[class*="palette-"] .process-node>span{background:var(--accent)}
+.slide.design-v2:not(.source-led)[class*="palette-"] .insight-node>span{color:var(--accent)}

@@ -159,7 +159,8 @@
           "spotlight"
         ],
         "edition": 869,
-        "layout_family": "asymmetric"
+        "layout_family": "asymmetric",
+        "palette_family": "source-blue"
       },
       "source_visuals": {
         "enabled": true,

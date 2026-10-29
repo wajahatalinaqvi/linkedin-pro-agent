@@ -53,6 +53,7 @@ jobs:
         run: python src/publish.py --post-id "$POST_ID" --render-only
 
       - name: Generate optional original-motion teaser
+        continue-on-error: true
         if: steps.inspect.outputs.ready == 'true' && steps.inspect.outputs.format == 'document'
         env:
           POST_ID: ${{ inputs.post_id }}
