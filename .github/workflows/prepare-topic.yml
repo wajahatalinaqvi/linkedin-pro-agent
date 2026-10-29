@@ -34,6 +34,12 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           REQUEST_FILE: ${{ inputs.request_file }}
         run: python src/free_prepare.py --request "queue/topic_requests/$REQUEST_FILE" --github-output "$GITHUB_OUTPUT"
+      - name: Generate original source-motion teaser
+        if: steps.prepare.outputs.post_id != ''
+        env:
+          POST_ID: ${{ steps.prepare.outputs.post_id }}
+        run: python src/source_video.py --post-id "$POST_ID"
+
       - name: Upload preview
         if: steps.prepare.outputs.post_id != ''
         uses: actions/upload-artifact@v4
@@ -42,6 +48,7 @@ jobs:
           path: |
             ${{ steps.prepare.outputs.pdf_path }}
             queue/drafts/${{ steps.prepare.outputs.post_id }}.json
+            generated/*-motion.mp4
           retention-days: 7
       - name: Persist state and draft
         run: |
@@ -49,6 +56,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add queue/topic_requests/ queue/latest.json
           if [ -d queue/drafts ]; then git add -A queue/drafts; fi
+          if [ -d queue/assets ]; then git add -A queue/assets; fi
           git diff --cached --quiet && exit 0
           git commit -m "content: prepare requested LinkedIn draft"
           git push

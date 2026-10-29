@@ -20,6 +20,7 @@ from carousel.art_direction import set_art_direction
 from editorial_quality import review_generated
 from writing_voice import choose_angle, EDITORIAL_VOICE
 from carousel.visual_storytelling import apply_visual_storytelling
+from source_visuals import build_visual_config
 from post_store import ROOT, LATEST, create_draft, draft_path, load_json, save_json, select_draft
 
 REQUEST_DIR = ROOT / "queue" / "topic_requests"
@@ -176,6 +177,14 @@ def prepare(request_name: str) -> tuple[str, str]:
         history = load_json(ROOT / "data" / "history.json", []) or []
         if any(x.get("id") == post_id or x.get("source_url") == post["source_url"] for x in history):
             raise ValueError("Story already published. No duplicate draft created.")
+        # Request-led campaigns can use source screenshots when the topic
+        # points to an official visual product launch. Capture happens during
+        # rendering; existing drafts without this setting are unchanged.
+        from urllib.parse import urlparse
+        source_path = urlparse(post["source_url"]).path.lower()
+        if "/editions/" in source_path or any(s in source_path for s in ("/launch/", "/introducing-", "/announcements/")):
+            post["document"]["carousel"]["source_visuals"] = build_visual_config(
+                post_id, post["source_url"], required=False)
         direction = set_art_direction(post["document"]["carousel"], post_id, ROOT / "queue" / "drafts")
         post["editorial_review"]["visual_treatments"] = apply_visual_storytelling(post["document"]["carousel"])
         print(f"ART DIRECTION: {direction}")

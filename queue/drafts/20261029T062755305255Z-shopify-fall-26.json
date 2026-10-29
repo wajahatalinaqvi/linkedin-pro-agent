@@ -160,6 +160,19 @@
         ],
         "edition": 869,
         "layout_family": "asymmetric"
+      },
+      "source_visuals": {
+        "enabled": true,
+        "required": false,
+        "url": "https://www.shopify.com/editions/fall2026",
+        "attribution": "shopify.com/editions/fall2026",
+        "images": [
+          "queue/assets/20261029T062755305255Z-shopify-fall-26/source-1.jpg",
+          "queue/assets/20261029T062755305255Z-shopify-fall-26/source-2.jpg",
+          "queue/assets/20261029T062755305255Z-shopify-fall-26/source-3.jpg"
+        ],
+        "design_system": "source-editorial",
+        "capture_method": "real_browser_screenshot"
       }
     }
   }
