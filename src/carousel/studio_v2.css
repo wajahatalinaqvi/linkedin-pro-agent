@@ -282,3 +282,22 @@ section.slide.design-v2.source-cover .brand-lockup,section.slide.design-v2.sourc
 .slide.design-v2:not(.source-led)[class*="palette-"] .workflow-step>span,
 .slide.design-v2:not(.source-led)[class*="palette-"] .process-node>span{background:var(--accent)}
 .slide.design-v2:not(.source-led)[class*="palette-"] .insight-node>span{color:var(--accent)}
+
+
+/* Editorial source visual refinements: intentional breathing room and legibility. */
+section.slide.design-v2.source-feature .source-editorial-layout{padding-top:105px}
+section.slide.design-v2.source-feature .source-editorial-heading{margin-bottom:35px}
+section.slide.design-v2.source-feature .source-editorial-heading .title{font-size:61px!important;line-height:1.08!important;max-width:900px}
+section.slide.design-v2.source-feature .source-editorial-heading .lead{font-size:25px;line-height:1.4;max-width:850px}
+section.slide.design-v2.source-feature .source-shot-wrap{
+ height:610px;box-sizing:border-box;border:8px solid #173657;
+ box-shadow:17px 17px 0 rgba(28,77,143,.13);
+}
+section.slide.design-v2.source-feature .source-caption{font-size:16px;margin-top:28px}
+section.slide.design-v2.source-cover .source-cover-tint{
+ background:linear-gradient(90deg,rgba(1,9,36,.97),rgba(1,9,36,.84) 46%,rgba(1,9,36,.28)),
+ linear-gradient(0deg,rgba(2,8,25,.75),transparent 58%);
+}
+section.slide.design-v2.source-cover .source-cover-content{padding-top:110px;min-height:1030px}
+section.slide.design-v2.source-cover .source-cover-content .display{font-size:94px!important;line-height:1.02!important;max-width:880px}
+section.slide.design-v2.source-cover .source-credit{margin-top:53px}
