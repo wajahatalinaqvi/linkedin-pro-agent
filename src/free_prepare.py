@@ -87,7 +87,7 @@ def generate_post(req: dict, post_id: str) -> dict:
         + EDITORIAL_VOICE + " " + angle_guidance + " "
         "Use ONLY verified facts below. "
         "Return a single JSON object with keys topic, category, caption, slides, hook_options. "
-        "Write 3 distinctly angled hook_options (specific technical change, realistic developer pain, source-backed tradeoff), each 4-14 words. Choose the strongest verifiable one as the cover title. Include a meaningful, field-relevant implication for AI tooling, Shopify apps, or React/Next.js developers. Never invent claims not in the verified source. Write a substantive 110-220 word LinkedIn caption: first two lines must be a specific, curiosity-driving factual hook, then explain the practical consequence, 2-3 useful technical details, one caveat, and an original specific takeaway. Do not force a question. Use 0-2 hashtags. No generic hype, no clickbait, no unsupported claims. "
+        "Write exactly three DISTINCT hook_options (technical change, developer pain, grounded tradeoff), each 4-14 words and under 95 characters. IMPORTANT: set slides[0].title EXACTLY equal to one of the three hook_options, character for character. Include a meaningful, field-relevant implication for AI tooling, Shopify apps, or React/Next.js developers. Never invent claims not in the verified source. Write a substantive 110-220 word LinkedIn caption: the first line must be a specific 20-150 character factual hook (not just a product name), then explain the practical consequence, 2-3 useful technical details, one caveat, and an original specific takeaway. Do not force a question. Use 0-2 hashtags. No generic hype, no clickbait, no unsupported claims. "
         "Create exactly 6 slide objects in this order: cover, cards, comparison, cards, timeline, closing. Give each slide a specific reader insight, not a generic section label. Slide 2 may set visual_intent='editorial_insights' for 3 real insights. Slide 5 may set visual_intent='process' ONLY if the 3 steps describe a genuinely sequential process confirmed in the verified source. Otherwise omit visual_intent. Headline the cover with a short concrete reader benefit or surprising verified change, NOT the official announcement title or a product name alone. Other titles must carry a useful point; avoid generic labels such as Core Capabilities, Developer Guidelines, Ready to Build, Requirements and Availability. "
         "Every slide needs type, eyebrow and short title. Cover has subtitle. "
         "Each cards slide has three cards as arrays [number,title,body]. "
@@ -100,8 +100,14 @@ def generate_post(req: dict, post_id: str) -> dict:
               "\nUSER TOPIC: " + req["topic"] + "\nVERIFIED FACTS:\n" + facts)
     generated = None
     issues = []
-    for attempt in range(2):
-        payload = gemini(prompt + ("\nREWRITE TO FIX THESE ISSUES: " + "; ".join(issues) if attempt else ""))
+    for attempt in range(3):
+        correction = (
+            "\nYOUR PREVIOUS OUTPUT FAILED VALIDATION. Rewrite the complete JSON "
+            "and resolve EVERY problem. The chosen cover title MUST match one "
+            "hook_options entry exactly. The first caption line must be 20-150 "
+            "characters. Problems: " + "; ".join(issues)
+        ) if attempt else ""
+        payload = gemini(prompt + correction)
         generated = json.loads(response_text(payload))
         issues = review_generated(generated)
         if not issues:

@@ -67,3 +67,18 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -m "content: request priority LinkedIn topic"
           git push
+
+      - name: Verify a new draft was prepared
+        env:
+          POST_ID: ${{ steps.prepare.outputs.post_id }}
+          REQUEST_PATH: ${{ steps.request.outputs.request_path }}
+        run: |
+          if [ -z "$POST_ID" ]; then
+            echo "### Priority topic not ready" >> "$GITHUB_STEP_SUMMARY"
+            echo "The requested topic was saved, but its draft failed preparation." >> "$GITHUB_STEP_SUMMARY"
+            echo "Request: $REQUEST_PATH" >> "$GITHUB_STEP_SUMMARY"
+            echo "Review the NEEDS REVIEW message. Use 81 | Retry existing topic after corrections." >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          echo "### Draft prepared: $POST_ID" >> "$GITHUB_STEP_SUMMARY"
+          echo "Review the PDF artifact before manually publishing." >> "$GITHUB_STEP_SUMMARY"

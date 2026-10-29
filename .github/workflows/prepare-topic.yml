@@ -52,3 +52,16 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -m "content: prepare requested LinkedIn draft"
           git push
+
+      - name: Verify retry created a ready draft
+        env:
+          POST_ID: ${{ steps.prepare.outputs.post_id }}
+          REQUEST_FILE: ${{ inputs.request_file }}
+        run: |
+          if [ -z "$POST_ID" ]; then
+            echo "### Draft still needs review" >> "$GITHUB_STEP_SUMMARY"
+            echo "Request file: $REQUEST_FILE" >> "$GITHUB_STEP_SUMMARY"
+            echo "The request state was saved, but no post is ready. Review the prepare logs." >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          echo "### Draft prepared: $POST_ID" >> "$GITHUB_STEP_SUMMARY"
