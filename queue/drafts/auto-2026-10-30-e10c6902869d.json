@@ -1,0 +1,168 @@
+{
+  "id": "auto-2026-10-30-e10c6902869d",
+  "status": "ready",
+  "topic": "Merchant email now available on the ThemeSale object in the Partners API",
+  "category": "Shopify Development",
+  "format": "document",
+  "caption": "Theme developers can now access purchasing merchant email addresses directly on the ThemeSale object in the Partners API.\n\nThis update removes friction when connecting with buyers. Instead of manual lookups, developers can build automated workflows in Next.js backend services to sync buyer data and route support inquiries immediately after purchase.\n\nTo implement this, query the new email field within your Partners API calls and pass the payload securely to your CRM or custom tooling. Ensure your database handling respects standard merchant identifiers alongside the new contact point.\n\nA critical caveat remains. Shopify explicitly reminds builders that handling this data must strictly comply with all applicable privacy and marketing laws under the Partner Program Agreement.\n\nBuilders should audit their onboarding flows to utilize direct buyer contact data while rigorously enforcing data minimization and consent standards.\n\n#ShopifyDev #PartnersAPI",
+  "source_url": "https://shopify.dev/changelog/merchant-email-now-available-on-the-themesale-object-in-the-partners-api",
+  "sources": [
+    "https://shopify.dev/changelog/merchant-email-now-available-on-the-themesale-object-in-the-partners-api"
+  ],
+  "created_at": "2026-10-30T11:56:02.849365+00:00",
+  "origin_request": "queue/topic_requests/auto-2026-10-30-e10c6902869d.json",
+  "editorial_review": {
+    "hook_options": [
+      "Access merchant email on ThemeSale",
+      "ThemeSale object exposes merchant email",
+      "Direct merchant email on ThemeSale"
+    ],
+    "voice_angle": "developer_consequence",
+    "selected_hook": "Access merchant email on ThemeSale",
+    "quality_gate": "editorial-v1",
+    "human_approval_required": true,
+    "news_selection_score": 63,
+    "visual_treatments": [
+      "insight_list"
+    ]
+  },
+  "document": {
+    "title": "Merchant email now available on the ThemeSale object in the Partners API",
+    "renderer": "v3",
+    "carousel": {
+      "topic": "Merchant email now available on the ThemeSale object in the Partners API",
+      "theme": "shopify",
+      "design_version": "studio-v2",
+      "brand": {
+        "name": "WAJAHAT NAQVI",
+        "subtitle": "Shopify · Full-stack · AI"
+      },
+      "slides": [
+        {
+          "type": "cover",
+          "eyebrow": "Partners API Update",
+          "title": "Access merchant email on ThemeSale",
+          "subtitle": "Streamline theme buyer communication using direct purchase data from the Partners API."
+        },
+        {
+          "type": "insight_list",
+          "eyebrow": "Implementation Details",
+          "title": "Integrating buyer contact data",
+          "visual_intent": "editorial_insights",
+          "cards": [
+            [
+              "01",
+              "API Query",
+              "Retrieve the purchasing merchant email address directly from the ThemeSale object without manual extraction steps."
+            ],
+            [
+              "02",
+              "Backend Sync",
+              "Process incoming sales data inside your Next.js server actions to automatically populate customer relationship management tools."
+            ],
+            [
+              "03",
+              "Support Routing",
+              "Direct incoming support requests from theme buyers to dedicated onboarding queues based on verified purchase records."
+            ]
+          ]
+        },
+        {
+          "type": "before_after",
+          "eyebrow": "Workflow Shift",
+          "title": "Manual vs automated buyer outreach",
+          "left": {
+            "label": "Legacy Approach",
+            "title": "Disconnected data",
+            "items": [
+              "Manual lookup of buyer records",
+              "Delayed onboarding communication",
+              "Siloed support ticket routing"
+            ]
+          },
+          "right": {
+            "label": "Current Approach",
+            "title": "Programmatic sync",
+            "items": [
+              "Direct email access via ThemeSale",
+              "Automated Next.js backend workflows",
+              "Streamlined merchant onboarding"
+            ]
+          }
+        },
+        {
+          "type": "cards",
+          "eyebrow": "Technical Caveat",
+          "title": "Compliance and privacy requirements",
+          "cards": [
+            [
+              "01",
+              "Legal Obligations",
+              "All data usage must strictly comply with applicable privacy and marketing laws governing merchant communications."
+            ],
+            [
+              "02",
+              "Agreement Terms",
+              "Developers remain bound by the specific compliance mandates outlined within the Shopify Partner Program Agreement."
+            ],
+            [
+              "03",
+              "Data Minimization",
+              "Store and process only the necessary contact details required to fulfill legitimate theme support and onboarding."
+            ]
+          ]
+        },
+        {
+          "type": "timeline",
+          "eyebrow": "Release Context",
+          "title": "Deployment and availability",
+          "events": [
+            [
+              "1",
+              "Surface Target",
+              "Released specifically for the Themes surface within the broader Shopify Partners API ecosystem."
+            ],
+            [
+              "2",
+              "Data Exposure",
+              "The merchant email field is now exposed directly on the ThemeSale object for authorized API queries."
+            ],
+            [
+              "3",
+              "Workflow Integration",
+              "Enables custom AI tooling and CRM integrations to trigger communication flows based on actual sales data."
+            ]
+          ]
+        },
+        {
+          "type": "closing",
+          "eyebrow": "Final Takeaway",
+          "title": "Audit your onboarding pipelines",
+          "subtitle": "Leverage direct buyer contact data responsibly while adhering to strict privacy agreements.",
+          "source": "Shopify Changelog"
+        }
+      ],
+      "art_direction": "neon",
+      "storyboard": "original-sequence",
+      "storyboard_treatment": "treatment-3",
+      "creative_profile": {
+        "typography": "poster",
+        "motif": "rays",
+        "compositions": [
+          "mosaic",
+          "tiles",
+          "spotlight",
+          "rail",
+          "mosaic",
+          "tiles"
+        ],
+        "edition": 650,
+        "layout_family": "editorial",
+        "palette_family": "graphite-amber"
+      }
+    }
+  },
+  "origin": "automatic",
+  "priority_score": 63,
+  "source_published_at": "2026-10-28T15:50:00+00:00"
+}
