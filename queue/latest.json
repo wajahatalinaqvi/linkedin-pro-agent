@@ -1,6 +1,6 @@
 {
   "id": "20261029T062755305255Z-shopify-fall-26",
-  "status": "ready",
+  "status": "published",
   "topic": "Shopify Fall '26",
   "category": "Platform Updates",
   "format": "document",
@@ -176,5 +176,7 @@
         "capture_method": "real_browser_screenshot"
       }
     }
-  }
+  },
+  "linkedin_post_id": "urn:li:ugcPost:7521820439631998976",
+  "published_at": "2026-10-30T06:29:01.854230+00:00"
 }
