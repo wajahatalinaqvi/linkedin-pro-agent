@@ -1,0 +1,168 @@
+{
+  "id": "editorial-2026-11-02-octoverse-agent-pr-review",
+  "status": "ready",
+  "topic": "GitHub Octoverse 2026: AI starts 40%+ of PRs. Who reviews?",
+  "category": "AI Coding / Software Engineering",
+  "format": "document",
+  "caption": "More than 40% of GitHub pull requests now start with an AI agent’s first draft.\n\nIn March, that figure was 17%. By September, GitHub counted around 110 million agent-started PRs in a single month.\n\nThat’s one of the standout findings in its Octoverse 2026 report.\n\nAnother number caught my eye: 90% of agent-involved pull requests merged within two weeks in September, compared with roughly 86% without detected agent involvement.\n\nFaster merging sounds good, but it isn’t the same thing as higher-quality code.\n\nFor developers building Shopify apps, Next.js applications, or backend services, the harder question is how we review growing volumes of AI-generated changes.\n\nMy view: keep PRs focused, require meaningful tests and security checks, and make sure a human owns the final merge decision. An agent can write the first draft. It shouldn’t replace engineering judgment.\n\nWhat’s your minimum review requirement before approving an AI-written pull request?\n\nSource: https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/\n\n#AICoding #SoftwareEngineering",
+  "source_url": "https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/",
+  "sources": [
+    "https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/"
+  ],
+  "created_at": "2026-11-02T06:00:00+00:00",
+  "source_published_at": "2026-10-28",
+  "origin": "editorial_selected",
+  "priority_score": 99,
+  "editorial_review": {
+    "human_approval_required": true,
+    "verified_source": "GitHub Octoverse 2026 report published Oct 28",
+    "facts": [
+      "More than 40% of GitHub PRs started with an agent first draft in September, compared to 17% in March.",
+      "GitHub counted 110 million agent-started PRs in September 2026.",
+      "90% of agent-involved PRs merged within two weeks in September, compared to about 86% without detected agent involvement."
+    ],
+    "caveat": "Merge rate does not directly measure quality or prove agent involvement caused faster merging",
+    "hook_options": [
+      "AI starts the PR. Who owns the bugs?",
+      "GitHub says 40%+ of PRs start with agents. Now what?",
+      "AI-written PR passes CI. Would you approve it?"
+    ],
+    "selected_hook": "AI starts the PR. Who owns the bugs?",
+    "custom_pdf_prepared_separately": true
+  },
+  "document": {
+    "title": "AI starts the PR. Who owns the bugs?",
+    "renderer": "v3",
+    "carousel": {
+      "topic": "AI agents begin more than 40% of GitHub PRs — review responsibility",
+      "theme": "developer",
+      "design_version": "studio-v2",
+      "art_direction": "brutalist",
+      "brand": {
+        "name": "WAJAHAT NAQVI",
+        "subtitle": "AI · Shopify · Full-stack"
+      },
+      "slides": [
+        {
+          "type": "cover",
+          "eyebrow": "GITHUB OCTOVERSE 2026 / DEVELOPER DEBATE",
+          "title": "AI starts the PR. Who owns the bugs?",
+          "subtitle": "Over 40% of GitHub pull requests began with an agent's first draft in September 2026.",
+          "footer": "THE REVIEW QUESTION / SWIPE"
+        },
+        {
+          "type": "metrics",
+          "eyebrow": "THE ADOPTION SHIFT",
+          "title": "Six months changed how PRs begin.",
+          "subtitle": "GitHub-reported first-draft attribution, not the proportion of code authored by agents.",
+          "metrics": [
+            [
+              "17%",
+              "March 2026",
+              "Share of GitHub pull requests started with an agent."
+            ],
+            [
+              ">40%",
+              "September 2026",
+              "Share of GitHub pull requests started with an agent."
+            ],
+            [
+              "110M",
+              "September 2026",
+              "Agent-started pull requests reported by GitHub."
+            ]
+          ]
+        },
+        {
+          "type": "comparison",
+          "eyebrow": "SPEED IS NOT QUALITY",
+          "title": "More AI-assisted PRs are merging quickly.",
+          "left": {
+            "label": "AGENT-INVOLVED",
+            "title": "90% merged in two weeks",
+            "items": [
+              "September 2026 GitHub data",
+              "Includes pull requests with detected agent involvement",
+              "A speed indicator, not a code-quality score"
+            ]
+          },
+          "right": {
+            "label": "NO DETECTED AGENT",
+            "title": "About 86% merged",
+            "items": [
+              "Comparison group in September",
+              "Share merged within two weeks",
+              "The comparison alone does not establish causation"
+            ]
+          }
+        },
+        {
+          "type": "cards",
+          "eyebrow": "WHY REVIEW STILL MATTERS",
+          "title": "Fast pull requests still need engineering judgment.",
+          "cards": [
+            [
+              "01",
+              "Scope changes",
+              "GitHub reports 87% of agent-started PRs change multiple files, compared with 79% of other PRs."
+            ],
+            [
+              "02",
+              "Review the behavior",
+              "A passing build alone does not prove the change is correct or secure."
+            ],
+            [
+              "03",
+              "Keep accountability",
+              "A developer still needs to understand and approve what is merged."
+            ]
+          ]
+        },
+        {
+          "type": "workflow",
+          "eyebrow": "PRACTICAL REVIEW BAR",
+          "title": "Three checks before merging AI-written code.",
+          "steps": [
+            [
+              "01",
+              "Keep it scoped",
+              "One task and a readable diff, without unrelated changes."
+            ],
+            [
+              "02",
+              "Demand evidence",
+              "Tests, security checks, and a clear description of behavior."
+            ],
+            [
+              "03",
+              "Own the decision",
+              "Human review and explicit approval, especially for sensitive code."
+            ]
+          ]
+        },
+        {
+          "type": "closing",
+          "eyebrow": "YOUR TAKE",
+          "title": "The bot wrote it. Would you merge it?",
+          "subtitle": "If an agent-generated PR passes CI, what else must you check before approving it?",
+          "source": "https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/"
+        }
+      ],
+      "creative_profile": {
+        "typography": "condensed",
+        "motif": "stamps",
+        "compositions": [
+          "mosaic",
+          "spotlight",
+          "rail",
+          "tiles",
+          "spotlight",
+          "mosaic"
+        ],
+        "layout_family": "typography",
+        "palette_family": "graphite-amber",
+        "edition": 1102
+      }
+    }
+  }
+}
