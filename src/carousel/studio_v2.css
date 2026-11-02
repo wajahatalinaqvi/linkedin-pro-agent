@@ -301,3 +301,14 @@ section.slide.design-v2.source-cover .source-cover-tint{
 section.slide.design-v2.source-cover .source-cover-content{padding-top:110px;min-height:1030px}
 section.slide.design-v2.source-cover .source-cover-content .display{font-size:94px!important;line-height:1.02!important;max-width:880px}
 section.slide.design-v2.source-cover .source-credit{margin-top:53px}
+
+/* Numeric metrics must remain a single, aligned typographic unit.
+   "110M", "40%+" and similar values must never split or drift apart. */
+section.slide.design-v2 .metric-grid .metric > .metric-value{
+  display:block;
+  white-space:nowrap;
+  overflow-wrap:normal;
+  word-break:normal;
+  font-variant-numeric:lining-nums tabular-nums;
+  letter-spacing:-.045em;
+}

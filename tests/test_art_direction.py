@@ -98,6 +98,21 @@ class VisualVarietyTests(unittest.TestCase):
                 }))
             self.assertIn(pick_layout_family("new-draft", root), ("asymmetric", "typography"))
 
+    def test_metric_value_is_one_unbroken_typographic_unit(self):
+        slides = [
+            {"type":"cover","title":"AI-written code review"},
+            {"type":"metrics","title":"GitHub Octoverse figures",
+             "metrics":[["110M","Agent-started PRs","In September 2026."]]},
+            {"type":"comparison","title":"Two different workflows"},
+            {"type":"cards","title":"Review lessons"},
+            {"type":"workflow","title":"Review steps"},
+            {"type":"closing","title":"Approval remains human"},
+        ]
+        html = render_html({"design_version":"studio-v2","theme":"developer","slides":slides})
+        self.assertIn('<span class="metric-value">110M</span>', html)
+        self.assertIn("white-space:nowrap", html)
+        self.assertNotIn('>110</span><span>M</span>', html)
+
     def test_legacy_default_keeps_old_design(self):
         slides = [
             {"type": "cover", "title": "Published legacy cover"},

@@ -244,7 +244,7 @@ def _metrics(slide: dict) -> str:
     rendered = []
     for index, metric in enumerate((slide.get("metrics") or [])[:4], start=1):
         marker, title, body = _card_data(metric, index)
-        rendered.append(f'<article class="metric"><span>{esc(marker)}</span><b>{esc(title)}</b><p>{esc(body)}</p></article>')
+        rendered.append(f'<article class="metric"><span class="metric-value">{esc(marker)}</span><b>{esc(title)}</b><p>{esc(body)}</p></article>')
     return f'<div class="metrics-layout">{_heading(slide)}<div class="metric-grid">{"".join(rendered)}</div></div>'
 
 
