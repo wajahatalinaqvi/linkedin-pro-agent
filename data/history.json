@@ -140,5 +140,18 @@
     ],
     "linkedin_post_id": "urn:li:ugcPost:7521820439631998976",
     "published_at": "2026-10-30T06:29:01.854230+00:00"
+  },
+  {
+    "id": "editorial-2026-11-02-octoverse-agent-pr-review",
+    "topic": "GitHub Octoverse 2026: AI starts 40%+ of PRs. Who reviews?",
+    "category": "AI Coding / Software Engineering",
+    "format": "document",
+    "priority_score": 99,
+    "source_url": "https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/",
+    "sources": [
+      "https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/"
+    ],
+    "linkedin_post_id": "urn:li:ugcPost:7522913629613092866",
+    "published_at": "2026-11-02T06:52:58.690810+00:00"
   }
 ]

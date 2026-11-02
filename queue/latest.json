@@ -1,6 +1,6 @@
 {
   "id": "editorial-2026-11-02-octoverse-agent-pr-review",
-  "status": "ready",
+  "status": "published",
   "topic": "GitHub Octoverse 2026: AI starts 40%+ of PRs. Who reviews?",
   "category": "AI Coding / Software Engineering",
   "format": "document",
@@ -164,5 +164,7 @@
         "edition": 1102
       }
     }
-  }
+  },
+  "linkedin_post_id": "urn:li:ugcPost:7522913629613092866",
+  "published_at": "2026-11-02T06:52:58.690810+00:00"
 }
