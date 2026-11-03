@@ -1,170 +1,186 @@
 {
-  "id": "editorial-2026-11-02-octoverse-agent-pr-review",
-  "status": "published",
-  "topic": "GitHub Octoverse 2026: AI starts 40%+ of PRs. Who reviews?",
-  "category": "AI Coding / Software Engineering",
+  "id": "auto-2026-11-03-2387c8857ccd",
+  "status": "ready",
+  "topic": "Verifying AI Tool Integrations Against Source Documentation",
+  "category": "Developer Workflow",
   "format": "document",
-  "caption": "110 million pull requests started with AI agents in just ONE month.\n\nBut here's the question: Who's responsible when that code breaks?\n\nAccording to GitHub's Octoverse 2026 report, AI agents started more than 40% of pull requests in September, compared with just 17% in March.\n\nThat's a massive shift in how software gets built.\n\nAnother interesting finding: 90% of agent-involved PRs merged within two weeks, compared with roughly 86% without detected agent involvement.\n\nImpressive numbers. But faster delivery doesn't automatically mean better code.\n\nAs developers, we still need to think about:\n\n→ Code quality and maintainability\n→ Security vulnerabilities and unexpected behavior\n→ Proper testing before deployment\n→ Who takes responsibility when something goes wrong\n\nWorking with Shopify, Next.js, and AI tools, I believe the real advantage isn't generating more code. It's delivering reliable software without compromising engineering standards.\n\nAI can write the first draft. Engineering judgment still matters.\n\nWould you approve an AI-generated pull request if all automated tests passed, or would you still insist on a detailed human review?\n\nCurious to hear how other developers are handling this.\n\nSource: https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/\n\n#AIAgents #SoftwareEngineering #CodeReview",
-  "source_url": "https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/",
+  "caption": "Root domain homepages rarely contain the granular partner documentation needed for third-party engineering pipelines.\n\nWhen evaluating developer tools like Codex or specialized integrations, relying on root landing pages often leads to missing architectural details. Developers working with AI tooling or building Next.js applications need to cross-reference direct integration docs rather than relying on general platform homepages.\n\nThe practical consequence is that automated reviews and third-party extensions require dedicated partner documentation to verify API contracts and context windows. Without direct docs, configuration guesswork introduces security and runtime risks.\n\nA key caveat is that marketing landing pages change frequently and omit technical constraints, making them poor substitutes for SDK documentation. A sensible takeaway is to always verify integration claims against official changelogs and partner directories before updating CI/CD pipelines.\n\n#DeveloperTools #AIengineering",
+  "source_url": "https://openai.com",
   "sources": [
-    "https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/"
+    "https://openai.com"
   ],
-  "created_at": "2026-11-02T06:00:00+00:00",
-  "source_published_at": "2026-10-28",
-  "origin": "editorial_selected",
-  "priority_score": 99,
+  "created_at": "2026-11-03T13:22:41.695820+00:00",
+  "origin_request": "queue/topic_requests/auto-2026-11-03-2387c8857ccd.json",
   "editorial_review": {
-    "human_approval_required": true,
-    "verified_source": "GitHub Octoverse 2026 report published Oct 28",
-    "facts": [
-      "More than 40% of GitHub PRs started with an agent first draft in September, compared to 17% in March.",
-      "GitHub counted 110 million agent-started PRs in September 2026.",
-      "90% of agent-involved PRs merged within two weeks in September, compared to about 86% without detected agent involvement."
-    ],
-    "caveat": "Merge rate does not directly measure quality or prove agent involvement caused faster merging",
     "hook_options": [
-      "AI starts the PR. Who owns the bugs?",
-      "GitHub says 40%+ of PRs start with agents. Now what?",
-      "AI-written PR passes CI. Would you approve it?"
+      "Verify Third-Party AI Docs Directly",
+      "Landing pages hide crucial integration details",
+      "Why root domains lack developer specifics"
     ],
-    "selected_hook": "AI starts the PR. Who owns the bugs?",
-    "custom_pdf_prepared_separately": true
+    "voice_angle": "frontend_impact",
+    "selected_hook": "Verify Third-Party AI Docs Directly",
+    "quality_gate": "editorial-v1",
+    "human_approval_required": true,
+    "news_selection_score": 60,
+    "visual_treatments": [
+      "insight_list"
+    ]
   },
   "document": {
-    "title": "AI starts the PR. Who owns the bugs?",
+    "title": "Verifying AI Tool Integrations Against Source Documentation",
     "renderer": "v3",
     "carousel": {
-      "topic": "AI agents begin more than 40% of GitHub PRs — review responsibility",
+      "topic": "Verifying AI Tool Integrations Against Source Documentation",
       "theme": "developer",
       "design_version": "studio-v2",
-      "art_direction": "brutalist",
       "brand": {
         "name": "WAJAHAT NAQVI",
-        "subtitle": "AI · Shopify · Full-stack"
+        "subtitle": "Shopify · Full-stack · AI"
       },
       "slides": [
         {
           "type": "cover",
-          "eyebrow": "GITHUB OCTOVERSE 2026 / DEVELOPER DEBATE",
-          "title": "AI starts the PR. Who owns the bugs?",
-          "subtitle": "Over 40% of GitHub pull requests began with an agent's first draft in September 2026.",
-          "footer": "THE REVIEW QUESTION / SWIPE"
+          "eyebrow": "Integration Verification",
+          "title": "Verify Third-Party AI Docs Directly",
+          "subtitle": "Avoiding assumptions when auditing AI code review extensions on platform homepages.",
+          "source": "OpenAI Homepage Review"
         },
         {
-          "type": "metrics",
-          "eyebrow": "THE ADOPTION SHIFT",
-          "title": "Six months changed how PRs begin.",
-          "subtitle": "GitHub-reported first-draft attribution, not the proportion of code authored by agents.",
-          "metrics": [
+          "type": "insight_list",
+          "eyebrow": "Source Constraints",
+          "title": "Root Domain Limitations",
+          "visual_intent": "editorial_insights",
+          "features": [
             [
-              "17%",
-              "March 2026",
-              "Share of GitHub pull requests started with an agent."
+              1,
+              "Landing Page Scope",
+              "Official homepages focus on general product navigation, enterprise tiering, and high-level platform releases."
             ],
             [
-              ">40%",
-              "September 2026",
-              "Share of GitHub pull requests started with an agent."
+              2,
+              "Missing Integration Details",
+              "Specific third-party tool collaborations and context engine implementations are absent from root landing pages."
             ],
             [
-              "110M",
-              "September 2026",
-              "Agent-started pull requests reported by GitHub."
+              3,
+              "Documentation Routing",
+              "Engineers must navigate directly to dedicated developer portals or partner directories for implementation specifics."
+            ]
+          ],
+          "cards": [
+            [
+              1,
+              "Landing Page Scope",
+              "Official homepages focus on general product navigation, enterprise tiering, and high-level platform releases."
+            ],
+            [
+              2,
+              "Missing Integration Details",
+              "Specific third-party tool collaborations and context engine implementations are absent from root landing pages."
+            ],
+            [
+              3,
+              "Documentation Routing",
+              "Engineers must navigate directly to dedicated developer portals or partner directories for implementation specifics."
             ]
           ]
         },
         {
           "type": "comparison",
-          "eyebrow": "SPEED IS NOT QUALITY",
-          "title": "More AI-assisted PRs are merging quickly.",
+          "eyebrow": "Workflow Reality",
+          "title": "Root Pages vs. Developer Portals",
           "left": {
-            "label": "AGENT-INVOLVED",
-            "title": "90% merged in two weeks",
+            "label": "Root Domain",
+            "title": "Platform Homepage",
             "items": [
-              "September 2026 GitHub data",
-              "Includes pull requests with detected agent involvement",
-              "A speed indicator, not a code-quality score"
+              "High-level product summaries",
+              "General developer forum links",
+              "Marketing and safety overviews"
             ]
           },
           "right": {
-            "label": "NO DETECTED AGENT",
-            "title": "About 86% merged",
+            "label": "Developer Portal",
+            "title": "Technical Documentation",
             "items": [
-              "Comparison group in September",
-              "Share merged within two weeks",
-              "The comparison alone does not establish causation"
+              "Granular API specifications",
+              "Partner integration guides",
+              "SDK configuration references"
             ]
           }
         },
         {
-          "type": "cards",
-          "eyebrow": "WHY REVIEW STILL MATTERS",
-          "title": "Fast pull requests still need engineering judgment.",
-          "cards": [
+          "type": "feature_grid",
+          "eyebrow": "Frontend Impact",
+          "title": "Next.js and App Architecture",
+          "features": [
             [
-              "01",
-              "Scope changes",
-              "GitHub reports 87% of agent-started PRs change multiple files, compared with 79% of other PRs."
+              1,
+              "API Contract Safety",
+              "Frontend developers must confirm payload structures against official documentation instead of relying on third-party marketing claims."
             ],
             [
-              "02",
-              "Review the behavior",
-              "A passing build alone does not prove the change is correct or secure."
+              2,
+              "Shopify App Logic",
+              "Merchant extensions and backend webhooks require verified endpoint stability to prevent silent data synchronization failures."
             ],
             [
-              "03",
-              "Keep accountability",
-              "A developer still needs to understand and approve what is merged."
+              3,
+              "Tooling Reliability",
+              "Relying on unverified integration paths introduces maintenance debt into modern React and Next.js build pipelines."
             ]
           ]
         },
         {
           "type": "workflow",
-          "eyebrow": "PRACTICAL REVIEW BAR",
-          "title": "Three checks before merging AI-written code.",
+          "eyebrow": "Evaluation Strategy",
+          "title": "Auditing New AI Tools",
           "steps": [
             [
-              "01",
-              "Keep it scoped",
-              "One task and a readable diff, without unrelated changes."
+              1,
+              "Identify the Source",
+              "Locate primary documentation rather than relying on promotional landing pages or general homepages."
             ],
             [
-              "02",
-              "Demand evidence",
-              "Tests, security checks, and a clear description of behavior."
+              2,
+              "Cross-Reference APIs",
+              "Verify endpoint availability, rate limits, and authentication requirements against official SDK references."
             ],
             [
-              "03",
-              "Own the decision",
-              "Human review and explicit approval, especially for sensitive code."
+              3,
+              "Test in Isolation",
+              "Implement experimental integrations in staged environments before updating core CI/CD workflows."
             ]
           ]
         },
         {
           "type": "closing",
-          "eyebrow": "YOUR TAKE",
-          "title": "The bot wrote it. Would you merge it?",
-          "subtitle": "If an agent-generated PR passes CI, what else must you check before approving it?",
-          "source": "https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/"
+          "eyebrow": "Professional Takeaway",
+          "title": "Prioritize Verified Documentation",
+          "subtitle": "Maintain rigorous verification standards when adding external AI tooling to engineering workflows.",
+          "source": "OpenAI Homepage Analysis"
         }
       ],
+      "art_direction": "collage",
+      "storyboard": "original-sequence",
+      "storyboard_treatment": "treatment-8",
       "creative_profile": {
-        "typography": "condensed",
-        "motif": "stamps",
+        "typography": "humanist",
+        "motif": "cutouts",
         "compositions": [
           "mosaic",
-          "spotlight",
-          "rail",
           "tiles",
           "spotlight",
-          "mosaic"
+          "rail",
+          "mosaic",
+          "tiles"
         ],
-        "layout_family": "typography",
-        "palette_family": "graphite-amber",
-        "edition": 1102
+        "edition": 630,
+        "layout_family": "asymmetric",
+        "palette_family": "terracotta-sand"
       }
     }
   },
-  "linkedin_post_id": "urn:li:ugcPost:7522913629613092866",
-  "published_at": "2026-11-02T06:52:58.690810+00:00"
+  "origin": "automatic",
+  "priority_score": 60,
+  "source_published_at": "2026-11-02T19:25:14+00:00"
 }
