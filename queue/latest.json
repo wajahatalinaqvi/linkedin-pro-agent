@@ -1,186 +1,167 @@
 {
-  "id": "auto-2026-11-03-2387c8857ccd",
+  "id": "editorial-2026-11-05-shopify-partner-tier-reset",
   "status": "ready",
-  "topic": "Verifying AI Tool Integrations Against Source Documentation",
-  "category": "Developer Workflow",
+  "topic": "Shopify Partner Program 2027: Select, Plus and Premier tiers retire",
+  "category": "Shopify Partners / Agencies",
   "format": "document",
-  "caption": "Root domain homepages rarely contain the granular partner documentation needed for third-party engineering pipelines.\n\nWhen evaluating developer tools like Codex or specialized integrations, relying on root landing pages often leads to missing architectural details. Developers working with AI tooling or building Next.js applications need to cross-reference direct integration docs rather than relying on general platform homepages.\n\nThe practical consequence is that automated reviews and third-party extensions require dedicated partner documentation to verify API contracts and context windows. Without direct docs, configuration guesswork introduces security and runtime risks.\n\nA key caveat is that marketing landing pages change frequently and omit technical constraints, making them poor substitutes for SDK documentation. A sensible takeaway is to always verify integration claims against official changelogs and partner directories before updating CI/CD pipelines.\n\n#DeveloperTools #AIengineering",
-  "source_url": "https://openai.com",
+  "caption": "Shopify is retiring its “Plus Partner” tier. But the Partner Program isn't going anywhere.\n\nOn November 4, Shopify announced a new tier model for service and agency partners, effective January 1, 2027.\n\nSelect, Plus and Premier are retiring. The new tiers are Silver, Gold, Platinum and Diamond.\n\nHere's what matters more than the names:\n\n→ Qualification now depends on BOTH attributed GMV and the number of shops you launched or transferred.\n→ Silver starts at $25K in attributed GMV and one attributed shop over a year.\n→ Promotions move from quarterly to daily, with a six-month tier lock after promotion.\n→ You can already preview your projected 2027 tier in Dev Dashboard.\n\nCurrent tiers and benefits remain until January 1. These changes apply to service and agency partners, not the separate app and theme programs.\n\nAs someone working in Shopify development, I'm interested in how we measure real partner impact.\n\nWhat about specialists who improve conversion, performance and revenue on stores they didn't originally launch?\n\nDoes this make partner recognition fairer, or just change who gets rewarded?\n\nOfficial announcement: https://www.shopify.com/partners/blog/shopify-partner-program-tiers\n\n#ShopifyPartners #EcommerceDevelopment",
+  "source_url": "https://www.shopify.com/partners/blog/shopify-partner-program-tiers",
   "sources": [
-    "https://openai.com"
+    "https://www.shopify.com/partners/blog/shopify-partner-program-tiers",
+    "https://help.shopify.com/en/partners/partner-program/about"
   ],
-  "created_at": "2026-11-03T13:22:41.695820+00:00",
-  "origin_request": "queue/topic_requests/auto-2026-11-03-2387c8857ccd.json",
+  "created_at": "2026-11-05T06:39:00+00:00",
+  "source_published_at": "2026-11-04",
+  "origin": "editorial_selected",
+  "priority_score": 98,
   "editorial_review": {
-    "hook_options": [
-      "Verify Third-Party AI Docs Directly",
-      "Landing pages hide crucial integration details",
-      "Why root domains lack developer specifics"
-    ],
-    "voice_angle": "frontend_impact",
-    "selected_hook": "Verify Third-Party AI Docs Directly",
-    "quality_gate": "editorial-v1",
     "human_approval_required": true,
-    "news_selection_score": 60,
-    "visual_treatments": [
-      "insight_list"
-    ]
+    "verified_source": "Official Shopify November 4, 2026 Partner Program announcement and Help Center",
+    "hook_options": [
+      "Shopify is retiring its old Partner tiers.",
+      "Shopify's Plus Partner tier has an expiration date.",
+      "Shopify tiers are changing. Who actually benefits?"
+    ],
+    "selected_hook": "Shopify is retiring its old Partner tiers.",
+    "caveat": "Applies to service and agency partners; old tier names retire January 1, 2027; current benefits persist until then.",
+    "custom_pdf_prepared_separately": true
   },
   "document": {
-    "title": "Verifying AI Tool Integrations Against Source Documentation",
+    "title": "Shopify Partner Program 2027: What's Actually Changing",
     "renderer": "v3",
     "carousel": {
-      "topic": "Verifying AI Tool Integrations Against Source Documentation",
-      "theme": "developer",
+      "topic": "Shopify Partner Program agency-tier reset 2027",
+      "theme": "shopify",
       "design_version": "studio-v2",
       "brand": {
         "name": "WAJAHAT NAQVI",
-        "subtitle": "Shopify · Full-stack · AI"
+        "subtitle": "Shopify / Full-stack / AI"
+      },
+      "art_direction": "editorial",
+      "creative_profile": {
+        "typography": "literary",
+        "motif": "rules",
+        "compositions": [
+          "mosaic",
+          "spotlight",
+          "rail",
+          "tiles",
+          "spotlight",
+          "rail"
+        ],
+        "layout_family": "editorial",
+        "palette_family": "forest-cream",
+        "edition": 1105
       },
       "slides": [
         {
           "type": "cover",
-          "eyebrow": "Integration Verification",
-          "title": "Verify Third-Party AI Docs Directly",
-          "subtitle": "Avoiding assumptions when auditing AI code review extensions on platform homepages.",
-          "source": "OpenAI Homepage Review"
+          "eyebrow": "NOVEMBER 4 / SHOPIFY PARTNER PROGRAM",
+          "title": "Shopify is retiring its old Partner tiers.",
+          "subtitle": "The Partner Program stays. Select, Plus and Premier tier names retire January 1, 2027."
         },
         {
-          "type": "insight_list",
-          "eyebrow": "Source Constraints",
-          "title": "Root Domain Limitations",
-          "visual_intent": "editorial_insights",
-          "features": [
-            [
-              1,
-              "Landing Page Scope",
-              "Official homepages focus on general product navigation, enterprise tiering, and high-level platform releases."
-            ],
-            [
-              2,
-              "Missing Integration Details",
-              "Specific third-party tool collaborations and context engine implementations are absent from root landing pages."
-            ],
-            [
-              3,
-              "Documentation Routing",
-              "Engineers must navigate directly to dedicated developer portals or partner directories for implementation specifics."
-            ]
-          ],
+          "type": "cards",
+          "eyebrow": "THE NEW SYSTEM",
+          "title": "The names change. The rules change too.",
           "cards": [
             [
-              1,
-              "Landing Page Scope",
-              "Official homepages focus on general product navigation, enterprise tiering, and high-level platform releases."
+              "01",
+              "Retiring names",
+              "Select, Plus and Premier retire on January 1, 2027."
             ],
             [
-              2,
-              "Missing Integration Details",
-              "Specific third-party tool collaborations and context engine implementations are absent from root landing pages."
+              "02",
+              "New tiers",
+              "Silver, Gold, Platinum and Diamond."
             ],
             [
-              3,
-              "Documentation Routing",
-              "Engineers must navigate directly to dedicated developer portals or partner directories for implementation specifics."
+              "03",
+              "No one-to-one swap",
+              "Partners are recalculated against the updated requirements."
+            ]
+          ]
+        },
+        {
+          "type": "cards",
+          "eyebrow": "GMV + ATTRIBUTED SHOPS",
+          "title": "Two numbers decide your tier.",
+          "cards": [
+            [
+              "01",
+              "Silver: $25K / 1 shop",
+              "GMV and attributed shop measured over 365 days."
+            ],
+            [
+              "02",
+              "Gold: $5M / 5 shops",
+              "Both thresholds measured over four years."
+            ],
+            [
+              "03",
+              "Platinum: $50M / 20 shops",
+              "Both thresholds measured over four years."
+            ],
+            [
+              "04",
+              "Diamond: $500M / 25 shops",
+              "Both thresholds measured over four years."
             ]
           ]
         },
         {
           "type": "comparison",
-          "eyebrow": "Workflow Reality",
-          "title": "Root Pages vs. Developer Portals",
+          "eyebrow": "WHAT ACTUALLY COUNTS",
+          "title": "Collaborator access does not make a shop attributed.",
           "left": {
-            "label": "Root Domain",
-            "title": "Platform Homepage",
+            "label": "COUNTS",
+            "title": "Launched or transferred",
             "items": [
-              "High-level product summaries",
-              "General developer forum links",
-              "Marketing and safety overviews"
+              "Merchant shops you launched or transferred",
+              "Any Shopify plan qualifies",
+              "Attributed GMV across sales channels"
             ]
           },
           "right": {
-            "label": "Developer Portal",
-            "title": "Technical Documentation",
+            "label": "DOES NOT COUNT",
+            "title": "Access is not attribution",
             "items": [
-              "Granular API specifications",
-              "Partner integration guides",
-              "SDK configuration references"
+              "Collaborator access on its own",
+              "Referral submission alone",
+              "Development, sandbox, staff, or test stores"
             ]
           }
         },
         {
-          "type": "feature_grid",
-          "eyebrow": "Frontend Impact",
-          "title": "Next.js and App Architecture",
-          "features": [
-            [
-              1,
-              "API Contract Safety",
-              "Frontend developers must confirm payload structures against official documentation instead of relying on third-party marketing claims."
-            ],
-            [
-              2,
-              "Shopify App Logic",
-              "Merchant extensions and backend webhooks require verified endpoint stability to prevent silent data synchronization failures."
-            ],
-            [
-              3,
-              "Tooling Reliability",
-              "Relying on unverified integration paths introduces maintenance debt into modern React and Next.js build pipelines."
-            ]
-          ]
-        },
-        {
           "type": "workflow",
-          "eyebrow": "Evaluation Strategy",
-          "title": "Auditing New AI Tools",
+          "eyebrow": "EFFECTIVE JANUARY 1, 2027",
+          "title": "Daily promotions. Six-month protection.",
           "steps": [
             [
-              1,
-              "Identify the Source",
-              "Locate primary documentation rather than relying on promotional landing pages or general homepages."
+              "01",
+              "New daily promotions",
+              "The qualifying tier is reflected automatically, instead of quarterly."
             ],
             [
-              2,
-              "Cross-Reference APIs",
-              "Verify endpoint availability, rate limits, and authentication requirements against official SDK references."
+              "02",
+              "Six-month tier lock",
+              "Once earned, the tier is maintained for at least six months."
             ],
             [
-              3,
-              "Test in Isolation",
-              "Implement experimental integrations in staged environments before updating core CI/CD workflows."
+              "03",
+              "Preview it now",
+              "See your projected tier in Dev Dashboard > Organization settings > Partner program."
             ]
           ]
         },
         {
           "type": "closing",
-          "eyebrow": "Professional Takeaway",
-          "title": "Prioritize Verified Documentation",
-          "subtitle": "Maintain rigorous verification standards when adding external AI tooling to engineering workflows.",
-          "source": "OpenAI Homepage Analysis"
+          "eyebrow": "THE PARTNER DEBATE",
+          "title": "Fewer labels. Bigger scoreboard?",
+          "subtitle": "Does an attributed GMV + shop-count model recognize the specialists who improve stores they did not launch?",
+          "source": "https://www.shopify.com/partners/blog/shopify-partner-program-tiers"
         }
-      ],
-      "art_direction": "collage",
-      "storyboard": "original-sequence",
-      "storyboard_treatment": "treatment-8",
-      "creative_profile": {
-        "typography": "humanist",
-        "motif": "cutouts",
-        "compositions": [
-          "mosaic",
-          "tiles",
-          "spotlight",
-          "rail",
-          "mosaic",
-          "tiles"
-        ],
-        "edition": 630,
-        "layout_family": "asymmetric",
-        "palette_family": "terracotta-sand"
-      }
+      ]
     }
-  },
-  "origin": "automatic",
-  "priority_score": 60,
-  "source_published_at": "2026-11-02T19:25:14+00:00"
+  }
 }
